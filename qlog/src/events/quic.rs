@@ -463,6 +463,13 @@ pub enum QuicFrame {
         raw: Option<Bytes>,
     },
 
+    BlockInfo {
+        stream_id: u64,
+        block_size: u64,
+        block_priority: u64,
+        block_deadline: u64,
+    },
+
     Unknown {
         raw_frame_type: u64,
     },

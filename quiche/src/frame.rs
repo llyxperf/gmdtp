@@ -63,6 +63,8 @@ pub enum Frame {
     Ping,
 
     ACK {
+        #[cfg(feature = "dtp")]
+        timestamp: u64,
         ack_delay: u64,
         ranges: ranges::RangeSet,
         ecn_counts: Option<EcnCounts>,
@@ -176,6 +178,14 @@ pub enum Frame {
 
     DatagramHeader {
         length: usize,
+    },
+
+    #[cfg(feature = "dtp")]
+    BlockInfo {
+        stream_id: u64,
+        block_size: u64,
+        block_priority: u64,
+        block_deadline: u64,
     },
 }
 
@@ -307,6 +317,14 @@ impl Frame {
 
             0x1e => Frame::HandshakeDone,
 
+            #[cfg(feature = "dtp")]
+            0x20 => Frame::BlockInfo {
+                stream_id: b.get_varint()?,
+                block_size: b.get_varint()?,
+                block_priority: b.get_varint()?,
+                block_deadline: b.get_varint()?,
+            },
+
             0x30 | 0x31 => parse_datagram_frame(frame_type, b)?,
 
             _ => return Err(Error::InvalidFrame),
@@ -366,6 +384,8 @@ impl Frame {
             },
 
             Frame::ACK {
+                #[cfg(feature = "dtp")]
+                timestamp,
                 ack_delay,
                 ranges,
                 ecn_counts,
@@ -382,6 +402,8 @@ impl Frame {
                 let ack_block = (first.end - 1) - first.start;
 
                 b.put_varint(first.end - 1)?;
+                #[cfg(feature = "dtp")]
+                b.put_varint(*timestamp)?;
                 b.put_varint(*ack_delay)?;
                 b.put_varint(it.len() as u64)?;
                 b.put_varint(ack_block)?;
@@ -571,6 +593,21 @@ impl Frame {
             },
 
             Frame::DatagramHeader { .. } => (),
+
+            #[cfg(feature = "dtp")]
+            Frame::BlockInfo {
+                stream_id,
+                block_size,
+                block_priority,
+                block_deadline,
+            } => {
+                b.put_varint(0x20)?;
+
+                b.put_varint(*stream_id)?;
+                b.put_varint(*block_size)?;
+                b.put_varint(*block_priority)?;
+                b.put_varint(*block_deadline)?;
+            },
         }
 
         Ok(before - b.cap())
@@ -583,6 +620,8 @@ impl Frame {
             Frame::Ping => 1,
 
             Frame::ACK {
+                #[cfg(feature = "dtp")]
+                timestamp,
                 ack_delay,
                 ranges,
                 ecn_counts,
@@ -592,8 +631,17 @@ impl Frame {
                 let first = it.next().unwrap();
                 let ack_block = (first.end - 1) - first.start;
 
+                #[cfg(not(feature = "dtp"))]
                 let mut len = 1 + // frame type
                     octets::varint_len(first.end - 1) + // largest_ack
+                    octets::varint_len(*ack_delay) + // ack_delay
+                    octets::varint_len(it.len() as u64) + // block_count
+                    octets::varint_len(ack_block); // first_block
+
+                #[cfg(feature = "dtp")]
+                let mut len = 1 + // frame type
+                    octets::varint_len(first.end - 1) + // largest_ack
+                    octets::varint_len(*timestamp) + // timestamp
                     octets::varint_len(*ack_delay) + // ack_delay
                     octets::varint_len(it.len() as u64) + // block_count
                     octets::varint_len(ack_block); // first_block
@@ -786,6 +834,20 @@ impl Frame {
                 2 + // length, always encode as 2-byte varint
                 *length // data
             },
+
+            #[cfg(feature = "dtp")]
+            Frame::BlockInfo {
+                stream_id,
+                block_size,
+                block_priority,
+                block_deadline,
+            } => {
+                1 + // frame type
+                octets::varint_len(*stream_id) + // stream_id
+                octets::varint_len(*block_size) + // block_size
+                octets::varint_len(*block_priority) + // block_priority
+                octets::varint_len(*block_deadline) // block_deadline
+            },
         }
     }
 
@@ -811,6 +873,7 @@ impl Frame {
                 ack_delay,
                 ranges,
                 ecn_counts,
+                ..
             } => {
                 let ack_ranges = AckedRanges::Double(
                     ranges.iter().map(|r| (r.start, r.end - 1)).collect(),
@@ -978,6 +1041,19 @@ impl Frame {
                 length: *length as u64,
                 raw: None,
             },
+
+            #[cfg(feature = "dtp")]
+            Frame::BlockInfo {
+                stream_id,
+                block_size,
+                block_priority,
+                block_deadline,
+            } => QuicFrame::BlockInfo {
+                stream_id: *stream_id,
+                block_size: *block_size,
+                block_priority: *block_priority,
+                block_deadline: *block_deadline,
+            },
         }
     }
 }
@@ -994,14 +1070,23 @@ impl std::fmt::Debug for Frame {
             },
 
             Frame::ACK {
+                #[cfg(feature = "dtp")]
+                timestamp,
                 ack_delay,
                 ranges,
                 ecn_counts,
             } => {
+                #[cfg(not(feature = "dtp"))]
                 write!(
                     f,
                     "ACK delay={} blocks={:?} ecn_counts={:?}",
                     ack_delay, ranges, ecn_counts
+                )?;
+                #[cfg(feature = "dtp")]
+                write!(
+                    f,
+                    "ACK timestamp={} delay={} blocks={:?} ecn_counts={:?}",
+                    timestamp, ack_delay, ranges, ecn_counts
                 )?;
             },
 
@@ -1147,6 +1232,20 @@ impl std::fmt::Debug for Frame {
             Frame::DatagramHeader { length } => {
                 write!(f, "DATAGRAM len={}", length)?;
             },
+
+            #[cfg(feature = "dtp")]
+            Frame::BlockInfo {
+                stream_id,
+                block_size,
+                block_priority,
+                block_deadline,
+            } => {
+                write!(
+                    f,
+                    "BLOCK_INFO stream={} size={} priority={} deadline={}",
+                    stream_id, block_size, block_priority, block_deadline
+                )?;
+            },
         }
 
         Ok(())
@@ -1157,6 +1256,8 @@ fn parse_ack_frame(ty: u64, b: &mut octets::Octets) -> Result<Frame> {
     let first = ty as u8;
 
     let largest_ack = b.get_varint()?;
+    #[cfg(feature = "dtp")]
+    let timestamp = b.get_varint()?;
     let ack_delay = b.get_varint()?;
     let block_count = b.get_varint()?;
     let ack_block = b.get_varint()?;
@@ -1203,6 +1304,8 @@ fn parse_ack_frame(ty: u64, b: &mut octets::Octets) -> Result<Frame> {
     };
 
     Ok(Frame::ACK {
+        #[cfg(feature = "dtp")]
+        timestamp,
         ack_delay,
         ranges,
         ecn_counts,
@@ -1376,6 +1479,8 @@ mod tests {
         ranges.insert(3000..5000);
 
         let frame = Frame::ACK {
+            #[cfg(feature = "dtp")]
+            timestamp: 0,
             ack_delay: 874_656_534,
             ranges,
             ecn_counts: None,
@@ -1386,7 +1491,10 @@ mod tests {
             frame.to_bytes(&mut b).unwrap()
         };
 
+        #[cfg(not(feature = "dtp"))]
         assert_eq!(wire_len, 17);
+        #[cfg(feature = "dtp")]
+        assert_eq!(wire_len, 18);
 
         let mut b = octets::Octets::with_slice(&d);
         assert_eq!(Frame::from_bytes(&mut b, packet::Type::Short), Ok(frame));
@@ -1418,6 +1526,8 @@ mod tests {
         });
 
         let frame = Frame::ACK {
+            #[cfg(feature = "dtp")]
+            timestamp: 0,
             ack_delay: 874_656_534,
             ranges,
             ecn_counts,
@@ -1428,7 +1538,10 @@ mod tests {
             frame.to_bytes(&mut b).unwrap()
         };
 
+        #[cfg(not(feature = "dtp"))]
         assert_eq!(wire_len, 23);
+        #[cfg(feature = "dtp")]
+        assert_eq!(wire_len, 24);
 
         let mut b = octets::Octets::with_slice(&d);
         assert_eq!(Frame::from_bytes(&mut b, packet::Type::Short), Ok(frame));

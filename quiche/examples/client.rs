@@ -35,7 +35,27 @@ const MAX_DATAGRAM_SIZE: usize = 1350;
 
 const HTTP_REQ_STREAM_ID: u64 = 4;
 
+struct SimpleLogger;
+
+impl log::Log for SimpleLogger {
+    fn enabled(&self, _metadata: &log::Metadata) -> bool {
+        true
+    }
+
+    fn log(&self, record: &log::Record) {
+        println!("{} - {}", record.level(), record.args());
+    }
+
+    fn flush(&self) {}
+}
+
+static LOGGER: SimpleLogger = SimpleLogger;
+
 fn main() {
+    log::set_logger(&LOGGER)
+        .map(|()| log::set_max_level(log::LevelFilter::Info))
+        .unwrap();
+
     let mut buf = [0; 65535];
     let mut out = [0; MAX_DATAGRAM_SIZE];
 
@@ -190,7 +210,12 @@ fn main() {
             info!("sending HTTP request for {}", url.path());
 
             let req = format!("GET {}\r\n", url.path());
-            conn.stream_send(HTTP_REQ_STREAM_ID, req.as_bytes(), true)
+            let block = std::sync::Arc::new(quiche::Block {
+                size: req.len() as u64,
+                priority: 0,
+                deadline: 200,
+            });
+            conn.block_send(HTTP_REQ_STREAM_ID, req.as_bytes(), true, block)
                 .unwrap();
 
             req_sent = true;

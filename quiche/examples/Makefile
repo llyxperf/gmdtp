@@ -21,6 +21,8 @@ LIBS = $(LIB_DIR)/libquiche.a -lev -ldl -pthread -lm
 
 all: client server http3-client http3-server
 
+dtptest: dtptest-client dtptest-server
+
 client: client.c $(INCLUDE_DIR)/quiche.h $(LIB_DIR)/libquiche.a
 	$(CC) $(CFLAGS) $(LDFLAGS) $< -o $@ $(INCS) $(LIBS)
 
@@ -33,8 +35,14 @@ http3-client: http3-client.c $(INCLUDE_DIR)/quiche.h $(LIB_DIR)/libquiche.a
 http3-server: http3-server.c $(INCLUDE_DIR)/quiche.h $(LIB_DIR)/libquiche.a
 	$(CC) $(CFLAGS) $(LDFLAGS) $< -o $@ $(INCS) $(LIBS)
 
+dtptest-client: dtptest-client.c $(INCLUDE_DIR)/quiche.h $(LIB_DIR)/libquiche.a
+	$(CC) $(CFLAGS) $(LDFLAGS) $< -o $@ $(INCS) $(LIBS)
+
+dtptest-server: dtptest-server.c $(INCLUDE_DIR)/quiche.h $(LIB_DIR)/libquiche.a
+	$(CC) $(CFLAGS) $(LDFLAGS) $< -o $@ $(INCS) $(LIBS)
+
 $(LIB_DIR)/libquiche.a: $(shell find $(SOURCE_DIR) -type f -name '*.rs')
-	cd .. && cargo build --target-dir $(BUILD_DIR) --features ffi
+	cd .. && cargo build --target-dir $(BUILD_DIR) --features ffi,dtp
 
 clean:
 	@$(RM) -rf client server http3-client http3-server build/ *.dSYM/

@@ -49,7 +49,27 @@ struct Client {
 
 type ClientMap = HashMap<quiche::ConnectionId<'static>, Client>;
 
+struct SimpleLogger;
+
+impl log::Log for SimpleLogger {
+    fn enabled(&self, _metadata: &log::Metadata) -> bool {
+        true
+    }
+
+    fn log(&self, record: &log::Record) {
+        println!("{} - {}", record.level(), record.args());
+    }
+
+    fn flush(&self) {}
+}
+
+static LOGGER: SimpleLogger = SimpleLogger;
+
 fn main() {
+    log::set_logger(&LOGGER)
+        .map(|()| log::set_max_level(log::LevelFilter::Info))
+        .unwrap();
+
     let mut buf = [0; 65535];
     let mut out = [0; MAX_DATAGRAM_SIZE];
 
@@ -463,7 +483,24 @@ fn handle_stream(client: &mut Client, stream_id: u64, buf: &[u8], root: &str) {
             stream_id
         );
 
-        let written = match conn.stream_send(stream_id, &body, true) {
+        // let written = match conn.stream_send(stream_id, &body, true) {
+        //     Ok(v) => v,
+
+        //     Err(quiche::Error::Done) => 0,
+
+        //     Err(e) => {
+        //         error!("{} stream send failed {:?}", conn.trace_id(), e);
+        //         return;
+        //     },
+        // };
+
+        let block = std::sync::Arc::new(quiche::Block {
+            size: body.len() as u64,
+            priority: 0,
+            deadline: 200,
+        });
+
+        let written = match conn.block_send(stream_id, &body, true, block) {
             Ok(v) => v,
 
             Err(quiche::Error::Done) => 0,

@@ -44,6 +44,10 @@ fuzzing = []
 # Build and expose the FFI API.
 ffi = []
 
+dtp = []
+
+diffserv = ["dtp"]
+
 [package.metadata.docs.rs]
 no-default-features = true
 features = ["boringssl-boring-crate", "qlog"]

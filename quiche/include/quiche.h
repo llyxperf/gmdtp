@@ -302,6 +302,8 @@ typedef struct {
 
     // The time to send the packet out.
     struct timespec at;
+
+    uint8_t diffserv;
 } quiche_send_info;
 
 // Writes a single QUIC packet to be sent to the peer.
@@ -318,6 +320,27 @@ ssize_t quiche_conn_stream_recv(quiche_conn *conn, uint64_t stream_id,
 // Writes data to a stream.
 ssize_t quiche_conn_stream_send(quiche_conn *conn, uint64_t stream_id,
                                 const uint8_t *buf, size_t buf_len, bool fin);
+
+typedef struct quiche_block {
+    /// The DTP block size.
+    uint64_t size;
+    /// The DTP block priority.
+    uint64_t priority;
+    /// The DTP block deadline.
+    uint64_t deadline;
+} quiche_block;
+
+// Writes DTP block to a stream
+ssize_t quiche_conn_block_send(quiche_conn *conn, uint64_t stream_id,
+                               const uint8_t *buf, size_t buf_len, bool fin,
+                               quiche_block *block);
+
+// Get DTP block info
+void quiche_conn_block_info(quiche_conn *conn, uint64_t stream_id,
+                            quiche_block *block);
+
+// Get DTP bct
+uint64_t quiche_conn_bct(quiche_conn *conn, uint64_t stream_id);
 
 enum quiche_shutdown {
     QUICHE_SHUTDOWN_READ = 0,

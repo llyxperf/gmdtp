@@ -355,6 +355,8 @@ use qlog::events::EventType;
 use qlog::events::RawInfo;
 
 use std::cmp;
+#[cfg(feature = "dtp")]
+use std::sync::Arc;
 use std::time;
 
 use std::net::SocketAddr;
@@ -573,6 +575,12 @@ pub struct SendInfo {
     ///
     /// [Pacing]: index.html#pacing
     pub at: time::Instant,
+
+    /// The diffserv field the packet should be sent with.
+    ///
+    /// Need to left shift 2 when used in the IP header.
+    #[cfg(feature = "diffserv")]
+    pub diffserv: u8,
 }
 
 /// Represents information carried by `CONNECTION_CLOSE` frames.
@@ -2567,6 +2575,9 @@ impl Connection {
 
         let mut done = 0;
 
+        #[cfg(feature = "diffserv")]
+        let mut diffserv = 0;
+
         // Limit output packet size to respect the sender and receiver's
         // maximum UDP payload size limit.
         let mut left = cmp::min(out.len(), self.max_send_udp_payload_size());
@@ -2579,9 +2590,23 @@ impl Connection {
 
         // Generate coalesced packets.
         while left > 0 {
+            #[cfg(not(feature = "diffserv"))]
             let (ty, written) = match self
                 .send_single(&mut out[done..done + left], has_initial)
             {
+                Ok(v) => v,
+
+                Err(Error::BufferTooShort) | Err(Error::Done) => break,
+
+                Err(e) => return Err(e),
+            };
+
+            #[cfg(feature = "diffserv")]
+            let (ty, written) = match self.send_single(
+                &mut out[done..done + left],
+                has_initial,
+                &mut diffserv,
+            ) {
                 Ok(v) => v,
 
                 Err(Error::BufferTooShort) | Err(Error::Done) => break,
@@ -2631,6 +2656,9 @@ impl Connection {
             to: self.peer_addr,
 
             at: self.recovery.get_packet_send_time(),
+
+            #[cfg(feature = "diffserv")]
+            diffserv,
         };
 
         Ok((done, info))
@@ -2638,6 +2666,7 @@ impl Connection {
 
     fn send_single(
         &mut self, out: &mut [u8], has_initial: bool,
+        #[cfg(feature = "diffserv")] diffserv: &mut u8,
     ) -> Result<(packet::Type, usize)> {
         let now = time::Instant::now();
 
@@ -2655,7 +2684,24 @@ impl Connection {
 
         let pkt_type = self.write_pkt_type()?;
 
+        #[cfg(feature = "diffserv")]
+        match pkt_type {
+            Type::Initial |
+            Type::Handshake |
+            Type::Retry |
+            Type::VersionNegotiation => {
+                *diffserv = 5 << 3;
+            },
+            _ => {},
+        }
+
         let epoch = pkt_type.to_epoch()?;
+
+        #[cfg(feature = "dtp")]
+        let rate_rtt = (
+            self.recovery.delivery_rate() as f32,
+            self.recovery.rtt().as_millis() as f32,
+        );
 
         // Process lost frames.
         for lost in self.recovery.lost[epoch].drain(..) {
@@ -2701,6 +2747,8 @@ impl Connection {
                             stream_id,
                             urgency,
                             incremental,
+                            #[cfg(feature = "dtp")]
+                            rate_rtt,
                         );
                     }
 
@@ -2737,6 +2785,17 @@ impl Connection {
 
                 frame::Frame::MaxData { .. } => {
                     self.almost_full = true;
+                },
+
+                #[cfg(feature = "dtp")]
+                frame::Frame::BlockInfo { stream_id, .. } => {
+                    error!("BlockInfo frame lost");
+                    let stream = match self.streams.get_mut(stream_id) {
+                        Some(v) => v,
+
+                        None => continue,
+                    };
+                    stream.send.set_block_info_sent(false);
                 },
 
                 _ => (),
@@ -2840,14 +2899,27 @@ impl Connection {
                 self.recovery.loss_probes[epoch] > 0) &&
             !is_closing
         {
+            let scale =
+                2_u64.pow(self.local_transport_params.ack_delay_exponent as u32);
+
             let ack_delay =
                 self.pkt_num_spaces[epoch].largest_rx_pkt_time.elapsed();
 
-            let ack_delay = ack_delay.as_micros() as u64 /
-                2_u64
-                    .pow(self.local_transport_params.ack_delay_exponent as u32);
+            #[cfg(feature = "dtp")]
+            let timestamp = time::SystemTime::now()
+                .duration_since(time::UNIX_EPOCH)
+                .expect("SystemTime before UNIX EPOCH!")
+                .as_micros() as u64 -
+                ack_delay.as_micros() as u64;
+
+            let ack_delay = ack_delay.as_micros() as u64 / scale;
+
+            #[cfg(feature = "dtp")]
+            let timestamp = timestamp / scale;
 
             let frame = frame::Frame::ACK {
+                #[cfg(feature = "dtp")]
+                timestamp,
                 ack_delay,
                 ranges: self.pkt_num_spaces[epoch].recv_pkt_need_ack.clone(),
                 ecn_counts: None, // sending ECN is not supported at this time
@@ -2855,6 +2927,11 @@ impl Connection {
 
             if push_frame_to_pkt!(b, frames, frame, left) {
                 self.pkt_num_spaces[epoch].ack_elicited = false;
+
+                #[cfg(feature = "diffserv")]
+                if *diffserv < 4 << 3 {
+                    *diffserv = 4 << 3;
+                }
             }
         }
 
@@ -2868,6 +2945,11 @@ impl Connection {
 
                     ack_eliciting = true;
                     in_flight = true;
+
+                    #[cfg(feature = "diffserv")]
+                    if *diffserv < 4 << 3 {
+                        *diffserv = 4 << 3;
+                    }
                 }
             }
 
@@ -2883,6 +2965,11 @@ impl Connection {
                     ack_eliciting = true;
                     in_flight = true;
                 }
+
+                #[cfg(feature = "diffserv")]
+                if *diffserv < 4 << 3 {
+                    *diffserv = 4 << 3;
+                }
             }
 
             // Create MAX_STREAMS_UNI frame.
@@ -2897,6 +2984,11 @@ impl Connection {
                     ack_eliciting = true;
                     in_flight = true;
                 }
+
+                #[cfg(feature = "diffserv")]
+                if *diffserv < 4 << 3 {
+                    *diffserv = 4 << 3;
+                }
             }
 
             // Create DATA_BLOCKED frame.
@@ -2908,6 +3000,11 @@ impl Connection {
 
                     ack_eliciting = true;
                     in_flight = true;
+                }
+
+                #[cfg(feature = "diffserv")]
+                if *diffserv < 4 << 3 {
+                    *diffserv = 4 << 3;
                 }
             }
 
@@ -2951,6 +3048,11 @@ impl Connection {
                     // Also send MAX_DATA when MAX_STREAM_DATA is sent, to avoid a
                     // potential race condition.
                     self.almost_full = true;
+
+                    #[cfg(feature = "diffserv")]
+                    if *diffserv < 4 << 3 {
+                        *diffserv = 4 << 3;
+                    }
                 }
             }
 
@@ -2971,6 +3073,11 @@ impl Connection {
 
                     ack_eliciting = true;
                     in_flight = true;
+
+                    #[cfg(feature = "diffserv")]
+                    if *diffserv < 4 << 3 {
+                        *diffserv = 4 << 3;
+                    }
                 }
             }
 
@@ -2991,6 +3098,11 @@ impl Connection {
 
                     ack_eliciting = true;
                     in_flight = true;
+
+                    #[cfg(feature = "diffserv")]
+                    if *diffserv < 4 << 3 {
+                        *diffserv = 4 << 3;
+                    }
                 }
             }
 
@@ -3012,6 +3124,38 @@ impl Connection {
 
                     ack_eliciting = true;
                     in_flight = true;
+
+                    #[cfg(feature = "diffserv")]
+                    if *diffserv < 4 << 3 {
+                        *diffserv = 4 << 3;
+                    }
+                }
+            }
+
+            #[cfg(feature = "dtp")]
+            for (stream_id, _) in self
+                .streams
+                .cancelled()
+                .map(|(&k, &v)| (k, v))
+                .collect::<Vec<(u64, u64)>>()
+            {
+                let stream = self.streams.get(stream_id).unwrap();
+                let frame = frame::Frame::ResetStream {
+                    stream_id,
+                    error_code: 0,
+                    final_size: stream.block().size,
+                };
+
+                if push_frame_to_pkt!(b, frames, frame, left) {
+                    self.streams.mark_cancelled(stream_id, false, 0);
+
+                    ack_eliciting = true;
+                    in_flight = true;
+
+                    #[cfg(feature = "diffserv")]
+                    if *diffserv < 4 << 3 {
+                        *diffserv = 4 << 3;
+                    }
                 }
             }
 
@@ -3029,6 +3173,11 @@ impl Connection {
 
                     ack_eliciting = true;
                     in_flight = true;
+
+                    #[cfg(feature = "diffserv")]
+                    if *diffserv < 4 << 3 {
+                        *diffserv = 4 << 3;
+                    }
                 }
             }
         }
@@ -3049,6 +3198,11 @@ impl Connection {
 
                         ack_eliciting = true;
                         in_flight = true;
+
+                        #[cfg(feature = "diffserv")]
+                        if *diffserv < 4 << 3 {
+                            *diffserv = 4 << 3;
+                        }
                     }
                 }
             } else {
@@ -3064,6 +3218,11 @@ impl Connection {
 
                     ack_eliciting = true;
                     in_flight = true;
+
+                    #[cfg(feature = "diffserv")]
+                    if *diffserv < 4 << 3 {
+                        *diffserv = 4 << 3;
+                    }
                 }
             }
         }
@@ -3077,6 +3236,11 @@ impl Connection {
 
                 ack_eliciting = true;
                 in_flight = true;
+
+                #[cfg(feature = "diffserv")]
+                if *diffserv < 4 << 3 {
+                    *diffserv = 4 << 3;
+                }
             }
         }
 
@@ -3142,6 +3306,11 @@ impl Connection {
                     ack_eliciting = true;
                     in_flight = true;
                     has_data = true;
+
+                    #[cfg(feature = "diffserv")]
+                    if *diffserv < 4 << 3 {
+                        *diffserv = 4 << 3;
+                    }
                 }
             }
         }
@@ -3262,6 +3431,30 @@ impl Connection {
 
                 let stream_off = stream.send.off_front();
 
+                // Create BlockInfo frame if needed.
+                #[cfg(feature = "dtp")]
+                if stream.block.is_some() && !stream.send.is_block_info_sent() {
+                    debug!("sending BLOCK_INFO frame {}", stream_id);
+                    let block = &stream.block.clone().unwrap();
+                    let frame = frame::Frame::BlockInfo {
+                        stream_id,
+                        block_size: block.size,
+                        block_priority: block.priority,
+                        block_deadline: block.deadline,
+                    };
+
+                    if push_frame_to_pkt!(b, frames, frame, left) {
+                        stream.send.set_block_info_sent(true);
+                        ack_eliciting = true;
+                        in_flight = true;
+
+                        #[cfg(feature = "diffserv")]
+                        if *diffserv < 4 << 3 {
+                            *diffserv = 4 << 3;
+                        }
+                    }
+                }
+
                 // Encode the frame.
                 //
                 // Instead of creating a `frame::Frame` object, encode the frame
@@ -3324,6 +3517,57 @@ impl Connection {
                     ack_eliciting = true;
                     in_flight = true;
                     has_data = true;
+
+                    #[cfg(feature = "diffserv")]
+                    if stream.block.is_some() {
+                        let block = &stream.block();
+                        match block {
+                            Block {
+                                deadline: 0..=100, ..
+                            } |
+                            Block { priority: 0, .. } =>
+                                if *diffserv < 5 << 3 {
+                                    *diffserv = 5 << 3;
+                                },
+                            Block {
+                                deadline: 101..=200,
+                                ..
+                            } |
+                            Block { priority: 1, .. } =>
+                                if *diffserv < 4 << 3 {
+                                    *diffserv = 4 << 3;
+                                },
+                            Block {
+                                deadline: 201..=500,
+                                ..
+                            } |
+                            Block { priority: 2, .. } =>
+                                if *diffserv < 3 << 3 {
+                                    *diffserv = 3 << 3;
+                                },
+                            Block {
+                                deadline: 501..=1000,
+                                ..
+                            } |
+                            Block {
+                                priority: 3..=4, ..
+                            } =>
+                                if *diffserv < 2 << 3 {
+                                    *diffserv = 2 << 3;
+                                },
+                            Block {
+                                deadline: 1001..=2000,
+                                ..
+                            } |
+                            Block {
+                                priority: 5..=6, ..
+                            } =>
+                                if *diffserv < 1 << 3 {
+                                    *diffserv = 1 << 3;
+                                },
+                            _ => {},
+                        }
+                    }
                 }
 
                 // If the stream is still flushable, push it to the back of the
@@ -3331,7 +3575,16 @@ impl Connection {
                 if stream.is_flushable() {
                     let urgency = stream.urgency;
                     let incremental = stream.incremental;
-                    self.streams.push_flushable(stream_id, urgency, incremental);
+                    self.streams.push_flushable(
+                        stream_id,
+                        urgency,
+                        incremental,
+                        #[cfg(feature = "dtp")]
+                        (
+                            self.recovery.delivery_rate() as f32,
+                            self.recovery.rtt().as_millis() as f32,
+                        ),
+                    );
                 }
 
                 // When fuzzing, try to coalesce multiple STREAM frames in the
@@ -3359,6 +3612,11 @@ impl Connection {
             if push_frame_to_pkt!(b, frames, frame, left) {
                 ack_eliciting = true;
                 in_flight = true;
+
+                #[cfg(feature = "diffserv")]
+                if *diffserv < 4 << 3 {
+                    *diffserv = 4 << 3;
+                }
             }
         }
 
@@ -3792,7 +4050,16 @@ impl Connection {
         // Consider the stream flushable also when we are sending a zero-length
         // frame that has the fin flag set.
         if (flushable || empty_fin) && !was_flushable {
-            self.streams.push_flushable(stream_id, urgency, incremental);
+            self.streams.push_flushable(
+                stream_id,
+                urgency,
+                incremental,
+                #[cfg(feature = "dtp")]
+                (
+                    self.recovery.delivery_rate() as f32,
+                    self.recovery.rtt().as_millis() as f32,
+                ),
+            );
         }
 
         if !writable {
@@ -3822,6 +4089,195 @@ impl Connection {
         }
 
         Ok(sent)
+    }
+
+    /// Writes data to a DTP block.
+    ///
+    /// On success the number of bytes written is returned, or [`Done`] if no
+    /// data was written (e.g. because the stream has no capacity).
+    ///
+    /// Applications can provide a 0-length buffer with the fin flag set to
+    /// true. This will lead to a 0-length FIN STREAM frame being sent at the
+    /// latest offset. The `Ok(0)` value is only returned when the application
+    /// provided a 0-length buffer.
+    ///
+    /// In addition, if the peer has signalled that it doesn't want to receive
+    /// any more data from this stream by sending the `STOP_SENDING` frame, the
+    /// [`StreamStopped`] error will be returned instead of any data.
+    ///
+    /// Note that in order to avoid buffering an infinite amount of data in the
+    /// stream's send buffer, streams are only allowed to buffer outgoing data
+    /// up to the amount that the peer allows it to send (that is, up to the
+    /// stream's outgoing flow control capacity).
+    ///
+    /// This means that the number of written bytes returned can be lower than
+    /// the length of the input buffer when the stream doesn't have enough
+    /// capacity for the operation to complete. The application should retry the
+    /// operation once the stream is reported as writable again.
+    ///
+    /// Applications should call this method only after the handshake is
+    /// completed (whenever [`is_established()`] returns `true`) or during
+    /// early data if enabled (whenever [`is_in_early_data()`] returns `true`).
+    ///
+    /// [`Done`]: enum.Error.html#variant.Done
+    /// [`StreamStopped`]: enum.Error.html#variant.StreamStopped
+    /// [`is_established()`]: struct.Connection.html#method.is_established
+    /// [`is_in_early_data()`]: struct.Connection.html#method.is_in_early_data
+    ///
+    /// ## Examples:
+    ///
+    /// ```no_run
+    /// # let mut buf = [0; 512];
+    /// # let socket = std::net::UdpSocket::bind("127.0.0.1:0").unwrap();
+    /// # let mut config = quiche::Config::new(quiche::PROTOCOL_VERSION)?;
+    /// # let scid = quiche::ConnectionId::from_ref(&[0xba; 16]);
+    /// # let from = "127.0.0.1:1234".parse().unwrap();
+    /// # let mut conn = quiche::accept(&scid, None, from, &mut config)?;
+    /// # let stream_id = 0;
+    /// conn.stream_send(stream_id, b"hello", true)?;
+    /// # Ok::<(), quiche::Error>(())
+    /// ```
+    #[cfg(feature = "dtp")]
+    pub fn block_send(
+        &mut self, stream_id: u64, buf: &[u8], fin: bool, block: Arc<Block>,
+    ) -> Result<usize> {
+        // We can't write on the peer's unidirectional streams.
+        if !stream::is_bidi(stream_id) &&
+            !stream::is_local(stream_id, self.is_server)
+        {
+            return Err(Error::InvalidStreamState(stream_id));
+        }
+
+        // Mark the connection as blocked if the connection-level flow control
+        // limit doesn't let us buffer all the data.
+        //
+        // Note that this is separate from "send capacity" as that also takes
+        // congestion control into consideration.
+        if self.max_tx_data - self.tx_data < buf.len() as u64 {
+            self.blocked_limit = Some(self.max_tx_data);
+        }
+
+        // Truncate the input buffer based on the connection's send capacity if
+        // necessary.
+        //
+        // When the cap is zero, the method returns Ok(0) *only* when the passed
+        // buffer is empty. We return Error::Done otherwise.
+        let cap = self.tx_cap;
+        // if cap == 0 && !(fin && buf.is_empty()) {
+        //     return Err(Error::Done);
+        // }
+
+        let (unblocked_buf, unblocked_fin) = if cap < buf.len() {
+            (&buf[..cap], false)
+        } else {
+            (buf, fin)
+        };
+
+        // Get existing stream or create a new one.
+        let stream = self.get_or_create_block(stream_id, true, Some(block))?;
+
+        #[cfg(feature = "qlog")]
+        let offset = stream.send.off_back();
+
+        let was_flushable = stream.is_flushable();
+
+        let sent = match stream.send.write(unblocked_buf, unblocked_fin) {
+            Ok(v) => v,
+
+            Err(e) => {
+                self.streams.mark_writable(stream_id, false);
+                return Err(e);
+            },
+        };
+
+        if cap < buf.len() {
+            match stream.send.write(&buf[cap..], fin) {
+                Ok(v) => v,
+
+                Err(e) => {
+                    self.streams.mark_writable(stream_id, false);
+                    return Err(e);
+                },
+            };
+        }
+
+        let urgency = stream.urgency;
+        let incremental = stream.incremental;
+
+        let flushable = stream.is_flushable();
+
+        let writable = stream.is_writable();
+
+        let empty_fin = unblocked_buf.is_empty() && fin;
+
+        if sent < buf.len() {
+            let max_off = stream.send.max_off();
+
+            if stream.send.blocked_at() != Some(max_off) {
+                stream.send.update_blocked_at(Some(max_off));
+                self.streams.mark_blocked(stream_id, true, max_off);
+            }
+        } else {
+            stream.send.update_blocked_at(None);
+            self.streams.mark_blocked(stream_id, false, 0);
+        }
+
+        // If the stream is now flushable push it to the flushable queue, but
+        // only if it wasn't already queued.
+        //
+        // Consider the stream flushable also when we are sending a zero-length
+        // frame that has the fin flag set.
+        if (flushable || empty_fin) && !was_flushable {
+            self.streams.push_flushable(
+                stream_id,
+                urgency,
+                incremental,
+                (
+                    self.recovery.delivery_rate() as f32,
+                    self.recovery.rtt().as_millis() as f32,
+                ),
+            );
+        }
+
+        if !writable {
+            self.streams.mark_writable(stream_id, false);
+        }
+
+        self.tx_cap -= sent;
+
+        self.tx_data += sent as u64;
+
+        qlog_with_type!(QLOG_DATA_MV, self.qlog, q, {
+            let ev_data = EventData::DataMoved(qlog::events::quic::DataMoved {
+                stream_id: Some(stream_id),
+                offset: Some(offset),
+                length: Some(sent as u64),
+                from: Some(DataRecipient::Application),
+                to: Some(DataRecipient::Transport),
+                data: None,
+            });
+
+            let now = time::Instant::now();
+            q.add_event_data_with_instant(ev_data, now).ok();
+        });
+
+        if sent == 0 && !unblocked_buf.is_empty() {
+            return Err(Error::Done);
+        }
+
+        Ok(sent)
+    }
+
+    /// Get the block info if exists.
+    #[cfg(feature = "dtp")]
+    pub fn block_info(&self, stream_id: u64) -> Option<Block> {
+        self.streams.get(stream_id).and_then(|s| Some(s.block()))
+    }
+
+    /// Get the bct.
+    #[cfg(feature = "dtp")]
+    pub fn bct(&self, stream_id: u64) -> u64 {
+        self.streams.get(stream_id).map_or(0, |s| s.recv.bct())
     }
 
     /// Sets the priority for a stream.
@@ -4970,6 +5426,7 @@ impl Connection {
 
         // If there are flushable, almost full or blocked streams, use the
         // Application epoch.
+        #[cfg(not(feature = "dtp"))]
         if (self.is_established() || self.is_in_early_data()) &&
             (self.should_send_handshake_done() ||
                 self.almost_full ||
@@ -4994,6 +5451,34 @@ impl Connection {
             return Ok(packet::Type::Short);
         }
 
+        // If there are flushable, almost full or blocked streams, use the
+        // Application epoch.
+        #[cfg(feature = "dtp")]
+        if (self.is_established() || self.is_in_early_data()) &&
+            (self.should_send_handshake_done() ||
+                self.almost_full ||
+                self.blocked_limit.is_some() ||
+                self.dgram_send_queue.has_pending() ||
+                self.local_error
+                    .as_ref()
+                    .map_or(false, |conn_err| conn_err.is_app) ||
+                self.streams.should_update_max_streams_bidi() ||
+                self.streams.should_update_max_streams_uni() ||
+                self.streams.has_flushable() ||
+                self.streams.has_almost_full() ||
+                self.streams.has_blocked() ||
+                self.streams.has_reset() ||
+                self.streams.has_stopped() ||
+                self.streams.has_cancelled())
+        {
+            // Only clients can send 0-RTT packets.
+            if !self.is_server && self.is_in_early_data() {
+                return Ok(packet::Type::ZeroRTT);
+            }
+
+            return Ok(packet::Type::Short);
+        }
+
         Err(Error::Done)
     }
 
@@ -5008,6 +5493,24 @@ impl Connection {
             &self.peer_transport_params,
             local,
             self.is_server,
+            #[cfg(feature = "dtp")]
+            None,
+        )
+    }
+
+    /// Returns the mutable DTP stream with the given ID if it exists, or
+    /// creates a new one otherwise.
+    #[cfg(feature = "dtp")]
+    fn get_or_create_block(
+        &mut self, id: u64, local: bool, block: Option<std::sync::Arc<Block>>,
+    ) -> Result<&mut stream::Stream> {
+        self.streams.get_or_create(
+            id,
+            &self.local_transport_params,
+            &self.peer_transport_params,
+            local,
+            self.is_server,
+            block,
         )
     }
 
@@ -5279,7 +5782,16 @@ impl Connection {
                 if stream.is_flushable() && !was_flushable {
                     let urgency = stream.urgency;
                     let incremental = stream.incremental;
-                    self.streams.push_flushable(stream_id, urgency, incremental);
+                    self.streams.push_flushable(
+                        stream_id,
+                        urgency,
+                        incremental,
+                        #[cfg(feature = "dtp")]
+                        (
+                            self.recovery.delivery_rate() as f32,
+                            self.recovery.rtt().as_millis() as f32,
+                        ),
+                    );
                 }
 
                 if writable {
@@ -5380,6 +5892,45 @@ impl Connection {
             },
 
             frame::Frame::DatagramHeader { .. } => unreachable!(),
+
+            #[cfg(feature = "dtp")]
+            frame::Frame::BlockInfo {
+                stream_id,
+                block_size,
+                block_priority,
+                block_deadline,
+            } => {
+                // Peer can't send on our unidirectional streams.
+                if !stream::is_bidi(stream_id) &&
+                    stream::is_local(stream_id, self.is_server)
+                {
+                    return Err(Error::InvalidStreamState(stream_id));
+                }
+
+                let block = Arc::new(Block {
+                    size: block_size,
+                    priority: block_priority,
+                    deadline: block_deadline,
+                });
+
+                // Get existing stream or create a new one, but if the stream
+                // has already been closed and collected, ignore the frame.
+                //
+                // This can happen if e.g. an ACK frame is lost, and the peer
+                // retransmits another frame before it realizes that the stream
+                // is gone.
+                //
+                // Note that it makes it impossible to check if the frame is
+                // illegal, since we have no state, but since we ignore the
+                // frame, it should be fine.
+                match self.get_or_create_block(stream_id, false, Some(block)) {
+                    Ok(v) => v,
+
+                    Err(Error::Done) => return Ok(()),
+
+                    Err(e) => return Err(e),
+                };
+            },
         }
 
         Ok(())
@@ -8162,6 +8713,8 @@ mod tests {
         ranges.insert(0..6);
 
         let frames = [frame::Frame::ACK {
+            #[cfg(feature = "dtp")]
+            timestamp: 0,
             ack_delay: 15,
             ranges,
             ecn_counts: None,
@@ -10665,14 +11218,36 @@ mod tests {
         testing::process_flight(&mut pipe.client, flight).unwrap();
 
         // Client sends Initial packet with ACK.
+        #[cfg(not(feature = "diffserv"))]
         let (ty, len) = pipe.client.send_single(&mut buf, false).unwrap();
+        #[cfg(feature = "diffserv")]
+        let mut diffserv = 0;
+        #[cfg(feature = "diffserv")]
+        let (ty, len) = pipe
+            .client
+            .send_single(&mut buf, true, &mut diffserv)
+            .unwrap();
+
         assert_eq!(ty, Type::Initial);
+        #[cfg(feature = "diffserv")]
+        assert_eq!(diffserv, 5 << 3);
 
         assert_eq!(pipe.server_recv(&mut buf[..len]), Ok(len));
 
         // Client sends Handshake packet.
+        #[cfg(not(feature = "diffserv"))]
         let (ty, len) = pipe.client.send_single(&mut buf, false).unwrap();
+        #[cfg(feature = "diffserv")]
+        let mut diffserv = 0;
+        #[cfg(feature = "diffserv")]
+        let (ty, len) = pipe
+            .client
+            .send_single(&mut buf, true, &mut diffserv)
+            .unwrap();
+
         assert_eq!(ty, Type::Handshake);
+        #[cfg(feature = "diffserv")]
+        assert_eq!(diffserv, 5 << 3);
 
         // Packet type is corrupted to Initial.
         buf[0] &= !(0x20);
@@ -11390,6 +11965,9 @@ pub use crate::packet::Type;
 pub use crate::recovery::CongestionControlAlgorithm;
 
 pub use crate::stream::StreamIter;
+
+#[cfg(feature = "dtp")]
+pub use crate::stream::Block;
 
 mod crypto;
 mod dgram;
