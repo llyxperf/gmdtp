@@ -14,8 +14,8 @@
 
 #include <ev.h>
 
-#include "log_helper.h"
 #include "dtp_config.h"
+#include "log_helper.h"
 #include <quiche.h>
 
 #include <argp.h>
@@ -294,8 +294,9 @@ static void recv_cb(EV_P_ ev_io *w, int revents) {
         quiche_block block_info;
         quiche_conn_block_info(conn_io->conn, s, &block_info);
 
-        dump_file("%ld,%ld,%ld,%ld,%ld\n", s, bct, block_info.size,
-                  block_info.priority, block_info.deadline);
+        dump_file("%ld,%ld,%ld,%ld,%ld,%ld\n", s, bct / 1000, block_info.size,
+                  block_info.priority, block_info.deadline,
+                  ended_at - started_at);
       }
     }
 
@@ -407,6 +408,7 @@ int main(int argc, char *argv[]) {
     return -1;
   }
 
+  dump_file("block_id,bct,size,priority,deadline,duration\n");
   started_at = get_current_usec();
 
   struct conn_io *conn_io = malloc(sizeof(*conn_io));

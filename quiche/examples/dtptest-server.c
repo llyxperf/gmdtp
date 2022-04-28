@@ -342,9 +342,9 @@ static void sender_cb(struct ev_loop *loop, ev_timer *w, int revents) {
 
     int stream_id = 4 * (conn_io->send_round + 1) + 1;
     log_info("send stream %d", stream_id);
-    // ssize_t sent = quiche_conn_block_send(conn_io->conn, stream_id, buf, block.size, true,
-    //                        &block);
-    ssize_t sent = quiche_conn_stream_send(conn_io->conn, stream_id, buf, block.size, true);
+    ssize_t sent = quiche_conn_block_send(conn_io->conn, stream_id, buf, block.size, true,
+                           &block);
+    // ssize_t sent = quiche_conn_stream_send(conn_io->conn, stream_id, buf, block.size, true);
     
     if (sent != block.size) {
       log_debug("failed to send block %d completely: sent %zd", conn_io->send_round, sent);
