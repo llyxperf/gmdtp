@@ -366,20 +366,23 @@ impl StreamMap {
             let stream = self.get_mut(stream_id).unwrap();
             let block = &stream.block;
             if block.is_some() {
-                debug!("push_flushable stream_id={}", stream_id);
                 let service_time =
                     stream.send.started_at.unwrap().elapsed().as_secs_f32();
-                match block.clone().unwrap().real_priority(
-                    recovery.0,
-                    recovery.1,
-                    service_time,
-                ) {
+                let block = block.clone().unwrap();
+                if service_time * 1000.0 > block.deadline as f32 {
+                    let (final_size, _unsent) =
+                        stream.send.shutdown().unwrap_or((0, 0));
+                    self.mark_cancelled(stream_id, true, final_size);
+                    return;
+                }
+                match block.real_priority(recovery.0, recovery.1, service_time) {
                     Some(priority) => {
-                        let flushable_block = std::cmp::Reverse(FlushableBlock {
-                            stream_id,
-                            priority,
-                        });
-                        self.flushable.dtp_scheduler.push(flushable_block);
+                        self.flushable.dtp_scheduler.push(std::cmp::Reverse(
+                            FlushableBlock {
+                                stream_id,
+                                priority,
+                            },
+                        ));
                     },
                     None => {
                         let (final_size, _unsent) =
@@ -462,10 +465,6 @@ impl StreamMap {
     #[cfg(feature = "dtp")]
     pub fn pop_flushable(&mut self) -> Option<u64> {
         if !self.flushable.dtp_scheduler.is_empty() {
-            debug!(
-                "pop_flushable dtp_scheduler: {:?}",
-                self.flushable.dtp_scheduler
-            );
             let node = self.flushable.dtp_scheduler.pop().map(|x| x.0.stream_id);
             return node;
         }
@@ -505,7 +504,6 @@ impl StreamMap {
     #[cfg(feature = "dtp")]
     pub fn update_flushable(&mut self, recovery: (f32, f32)) {
         let flushable = self.flushable.dtp_scheduler.clone().into_vec();
-        debug!("update_flushable {:?}", flushable);
         let flushable = flushable
             .iter()
             .filter_map(|std::cmp::Reverse(b)| {
@@ -514,7 +512,6 @@ impl StreamMap {
                 let service_time =
                     stream.send.started_at.unwrap().elapsed().as_secs_f32();
                 if service_time * 1000.0 > block.deadline as f32 {
-                    // debug!("out of ddl {} {}", service_time, block.deadline);
                     let (final_size, _unsent) =
                         stream.send.shutdown().unwrap_or((0, 0));
                     self.mark_cancelled(b.stream_id, true, final_size);
@@ -540,7 +537,6 @@ impl StreamMap {
                 }
             })
             .collect::<Vec<_>>();
-        debug!("after update_flushable {:?}", flushable);
         self.flushable.dtp_scheduler = BinaryHeap::from(flushable);
     }
 
@@ -574,7 +570,6 @@ impl StreamMap {
     /// If the stream was already in the list, this does nothing.
     pub fn mark_almost_full(&mut self, stream_id: u64, almost_full: bool) {
         if almost_full {
-            debug!("mark_almost_full {}", stream_id);
             self.almost_full.insert(stream_id);
         } else {
             self.almost_full.remove(&stream_id);
@@ -587,7 +582,6 @@ impl StreamMap {
     /// If the stream was already in the list, this does nothing.
     pub fn mark_blocked(&mut self, stream_id: u64, blocked: bool, off: u64) {
         if blocked {
-            debug!("mark_blocked: {:?}", stream_id);
             self.blocked.insert(stream_id, off);
         } else {
             self.blocked.remove(&stream_id);
@@ -602,7 +596,6 @@ impl StreamMap {
         &mut self, stream_id: u64, reset: bool, error_code: u64, final_size: u64,
     ) {
         if reset {
-            debug!("mark_reset: {:?}", stream_id);
             self.reset.insert(stream_id, (error_code, final_size));
         } else {
             self.reset.remove(&stream_id);
@@ -617,7 +610,6 @@ impl StreamMap {
         &mut self, stream_id: u64, stopped: bool, error_code: u64,
     ) {
         if stopped {
-            debug!("mark_stopped: {:?}", stream_id);
             self.stopped.insert(stream_id, error_code);
         } else {
             self.stopped.remove(&stream_id);
@@ -632,8 +624,8 @@ impl StreamMap {
         &mut self, stream_id: u64, cancelled: bool, final_size: u64,
     ) {
         if cancelled {
+            info!("marking stream {} cancelled", stream_id);
             self.cancelled.insert(stream_id, final_size);
-            info!("cancelled stream {}", stream_id);
         } else {
             self.cancelled.remove(&stream_id);
         }
@@ -872,20 +864,15 @@ impl Block {
         let size = self.size as f32;
 
         let trans_factor = 1_f32 -
-            (size as f32 / (1000.0 * delivery_rate) + 0.5 * rtt + service_time) /
-                deadline as f32;
+            (size / (1000.0 * delivery_rate) + 0.5 * rtt + service_time) /
+                deadline;
 
         if trans_factor < 0.0 {
-            // debug!(
-            //     "trans_factor < 0 recovery {} {} {}",
-            //     delivery_rate, rtt, service_time
-            // );
             None
         } else {
             Some(
                 (8_f32 / 8_u64.checked_sub(self.priority).unwrap() as f32) *
-                    trans_factor *
-                    10.0,
+                    trans_factor,
             )
         }
     }
@@ -1114,7 +1101,6 @@ impl RecvBuf {
     /// as handling incoming data that overlaps data that is already in the
     /// buffer.
     pub fn write(&mut self, buf: RangeBuf) -> Result<()> {
-        // debug!("recvbuf.write is_fin {}", buf.fin());
         if buf.max_off() > self.max_data() {
             return Err(Error::FlowControl);
         }
@@ -1122,29 +1108,17 @@ impl RecvBuf {
         if let Some(fin_off) = self.fin_off {
             // Stream's size is known, forbid data beyond that point.
             if buf.max_off() > fin_off {
-                // debug!(
-                //     "recvbuf.write max_off {} > fin_off {}",
-                //     buf.max_off(),
-                //     fin_off
-                // );
                 return Err(Error::FinalSize);
             }
 
             // Stream's size is already known, forbid changing it.
             if buf.fin() && fin_off != buf.max_off() {
-                // debug!(
-                //     "recvbuf.write fin_off {} != max_off {}",
-                //     fin_off,
-                //     buf.max_off()
-                // );
                 return Err(Error::FinalSize);
             }
         }
 
         // Stream's known size is lower than data already received.
         if buf.fin() && buf.max_off() < self.len {
-            // debug!("recvbuf.write fin_off {} < len {}", buf.max_off(),
-            // self.len);
             return Err(Error::FinalSize);
         }
 
@@ -1387,7 +1361,6 @@ impl RecvBuf {
     /// This happens when the stream's receive final size is known, and the
     /// application has read all data from the stream.
     pub fn is_fin(&self) -> bool {
-        // debug!("is_fin: fin_off={:?}", self.fin_off);
         if self.fin_off == Some(self.off) {
             return true;
         }
@@ -1490,7 +1463,6 @@ impl SendBuf {
     /// (this may be lower than the size of the input buffer, in case of partial
     /// writes).
     pub fn write(&mut self, mut data: &[u8], mut fin: bool) -> Result<usize> {
-        // debug!("sendbuf.write len {} fin {}", data.len(), fin);
         let max_off = self.off + data.len() as u64;
 
         // Get the stream send capacity. This will return an error if the stream
@@ -1504,20 +1476,16 @@ impl SendBuf {
 
             // We are not buffering the full input, so clear the fin flag.
             fin = false;
-
-            // debug!("data.len() > capacity {} fin -> false", capacity);
         }
 
         if let Some(fin_off) = self.fin_off {
             // Can't write past final offset.
             if max_off > fin_off {
-                // debug!("max_off > fin_off {} > {}", max_off, fin_off);
                 return Err(Error::FinalSize);
             }
 
             // Can't "undo" final offset.
             if max_off == fin_off && !fin {
-                // debug!("max_off == fin_off {} && !fin", fin_off);
                 return Err(Error::FinalSize);
             }
         }
@@ -1541,7 +1509,6 @@ impl SendBuf {
 
         // Split the remaining input data into consistently-sized buffers to
         // avoid fragmentation.
-        // debug!("data len {} fin {}", data.len(), fin);
         for chunk in data.chunks(SEND_BUFFER_SIZE) {
             len += chunk.len();
 
@@ -1555,7 +1522,6 @@ impl SendBuf {
             self.off += chunk.len() as u64;
             self.len += chunk.len() as u64;
         }
-        // debug!("self.off {}", self.off);
 
         Ok(len)
     }
@@ -1835,12 +1801,6 @@ impl SendBuf {
 
     /// Returns true if there is data to be written.
     fn ready(&self) -> bool {
-        // debug!(
-        //     "is_empty() {} off_front() {} off {}",
-        //     self.data.is_empty(),
-        //     self.off_front(),
-        //     self.off
-        // );
         !self.data.is_empty() && self.off_front() < self.off
     }
 

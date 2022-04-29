@@ -3434,7 +3434,6 @@ impl Connection {
                 // Create BlockInfo frame if needed.
                 #[cfg(feature = "dtp")]
                 if stream.block.is_some() && !stream.send.is_block_info_sent() {
-                    debug!("sending BLOCK_INFO frame {}", stream_id);
                     let block = &stream.block.clone().unwrap();
                     let frame = frame::Frame::BlockInfo {
                         stream_id,
