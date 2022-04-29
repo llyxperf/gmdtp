@@ -2699,8 +2699,8 @@ impl Connection {
 
         #[cfg(feature = "dtp")]
         let rate_rtt = (
-            self.recovery.delivery_rate() as f32,
-            self.recovery.rtt().as_millis() as f32,
+            (self.recovery.delivery_rate() >> 10),
+            (self.recovery.rtt().as_millis() >> 1) as u64,
         );
 
         // Process lost frames.
@@ -3580,8 +3580,8 @@ impl Connection {
                         incremental,
                         #[cfg(feature = "dtp")]
                         (
-                            self.recovery.delivery_rate() as f32,
-                            self.recovery.rtt().as_millis() as f32,
+                            (self.recovery.delivery_rate() >> 10),
+                            (self.recovery.rtt().as_millis() >> 1) as u64,
                         ),
                     );
                 }
@@ -4055,8 +4055,8 @@ impl Connection {
                 incremental,
                 #[cfg(feature = "dtp")]
                 (
-                    self.recovery.delivery_rate() as f32,
-                    self.recovery.rtt().as_millis() as f32,
+                    (self.recovery.delivery_rate() >> 10),
+                    (self.recovery.rtt().as_millis() >> 1) as u64,
                 ),
             );
         }
@@ -4232,8 +4232,8 @@ impl Connection {
                 urgency,
                 incremental,
                 (
-                    self.recovery.delivery_rate() as f32,
-                    self.recovery.rtt().as_millis() as f32,
+                    (self.recovery.delivery_rate() >> 10),
+                    (self.recovery.rtt().as_millis() >> 1) as u64,
                 ),
             );
         }
@@ -5787,8 +5787,8 @@ impl Connection {
                         incremental,
                         #[cfg(feature = "dtp")]
                         (
-                            self.recovery.delivery_rate() as f32,
-                            self.recovery.rtt().as_millis() as f32,
+                            (self.recovery.delivery_rate() >> 10),
+                            (self.recovery.rtt().as_millis() >> 1) as u64,
                         ),
                     );
                 }

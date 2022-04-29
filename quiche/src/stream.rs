@@ -188,7 +188,7 @@ pub struct StreamMap {
     cancelled: StreamIdHashMap<u64>,
 
     #[cfg(feature = "dtp")]
-    prev_bw_rtt: (f32, f32),
+    prev_bw_rtt: (u64, u64),
 
     /// The maximum size of a stream window.
     max_stream_window: u64,
@@ -348,15 +348,15 @@ impl StreamMap {
     /// spurious cycles through the queue, so it should be avoided.
     pub fn push_flushable(
         &mut self, stream_id: u64, urgency: u8, incr: bool,
-        #[cfg(feature = "dtp")] recovery: (f32, f32),
+        #[cfg(feature = "dtp")] recovery: (u64, u64),
     ) {
         #[cfg(feature = "dtp")]
         {
             // Check whether the network changes are large enough (10% of
             // previous)
             let prev_bw_rtt = self.prev_bw_rtt;
-            if ((prev_bw_rtt.0 - recovery.0).abs() > (0.1 * prev_bw_rtt.0)) ||
-                ((prev_bw_rtt.1 - recovery.1).abs() > (0.1 * prev_bw_rtt.1))
+            if (prev_bw_rtt.0.abs_diff(recovery.0) > (prev_bw_rtt.0 / 10)) ||
+                (prev_bw_rtt.1.abs_diff(recovery.1) > (prev_bw_rtt.1 / 10))
             {
                 self.update_flushable(recovery);
             }
@@ -367,9 +367,9 @@ impl StreamMap {
             let block = &stream.block;
             if block.is_some() {
                 let service_time =
-                    stream.send.started_at.unwrap().elapsed().as_secs_f32();
+                    stream.send.started_at.unwrap().elapsed().as_millis() as u64;
                 let block = block.clone().unwrap();
-                if service_time * 1000.0 > block.deadline as f32 {
+                if service_time > block.deadline {
                     let (final_size, _unsent) =
                         stream.send.shutdown().unwrap_or((0, 0));
                     self.mark_cancelled(stream_id, true, final_size);
@@ -502,7 +502,7 @@ impl StreamMap {
     }
 
     #[cfg(feature = "dtp")]
-    pub fn update_flushable(&mut self, recovery: (f32, f32)) {
+    pub fn update_flushable(&mut self, recovery: (u64, u64)) {
         let flushable = self.flushable.dtp_scheduler.clone().into_vec();
         let flushable = flushable
             .iter()
@@ -510,8 +510,8 @@ impl StreamMap {
                 let stream = self.get_mut(b.stream_id).unwrap();
                 let block = stream.block.as_ref().unwrap();
                 let service_time =
-                    stream.send.started_at.unwrap().elapsed().as_secs_f32();
-                if service_time * 1000.0 > block.deadline as f32 {
+                    stream.send.started_at.unwrap().elapsed().as_millis() as u64;
+                if service_time > block.deadline {
                     let (final_size, _unsent) =
                         stream.send.shutdown().unwrap_or((0, 0));
                     self.mark_cancelled(b.stream_id, true, final_size);
@@ -805,7 +805,7 @@ impl StreamMap {
 #[derive(Debug, Clone)]
 pub struct FlushableBlock {
     pub stream_id: u64,
-    pub priority: f32,
+    pub priority: u64,
 }
 
 #[cfg(feature = "dtp")]
@@ -857,24 +857,23 @@ pub struct Block {
 #[cfg(feature = "dtp")]
 impl Block {
     /// Calculate the real priority used in scheduler for this block.
+    ///
+    /// ## Arguments
+    ///
+    /// - `delivery_rate`: The delivery rate of the stream. Bytes per
+    ///   microsecond.
+    /// - `rtt`: Half of the round trip time of the stream.
+    /// - `service_time`: The service time of the stream. microseconds.
+    ///
+    /// ## Return
+    ///
+    /// The real priority of the block used in the scheduler.
     pub fn real_priority(
-        &self, delivery_rate: f32, rtt: f32, service_time: f32,
-    ) -> Option<f32> {
-        let deadline = self.deadline as f32;
-        let size = self.size as f32;
-
-        let trans_factor = 1_f32 -
-            (size / (1000.0 * delivery_rate) + 0.5 * rtt + service_time) /
-                deadline;
-
-        if trans_factor < 0.0 {
-            None
-        } else {
-            Some(
-                (8_f32 / 8_u64.checked_sub(self.priority).unwrap() as f32) *
-                    trans_factor,
-            )
-        }
+        &self, delivery_rate: u64, rtt: u64, service_time: u64,
+    ) -> Option<u64> {
+        self.deadline
+            .checked_sub(self.size / delivery_rate + rtt + service_time)
+            .map(|v| v * (self.priority + 1))
     }
 }
 
