@@ -2326,6 +2326,7 @@ impl Connection {
                     supported_versions: None,
                     raw: Some(qlog_raw_info),
                     datagram_id: None,
+                    trigger: None,
                 });
 
             q.add_event_data_with_instant(ev_data, now).ok();
@@ -3717,6 +3718,7 @@ impl Connection {
                 supported_versions: None,
                 raw: Some(qlog_raw_info),
                 datagram_id: None,
+                trigger: None,
             });
 
             q.add_event_data_with_instant(ev_data, now).ok();
