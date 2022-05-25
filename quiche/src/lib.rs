@@ -3201,8 +3201,8 @@ impl Connection {
                         in_flight = true;
 
                         #[cfg(feature = "diffserv")]
-                        if *diffserv < 4 << 3 {
-                            *diffserv = 4 << 3;
+                        if *diffserv < 5 << 3 {
+                            *diffserv = 5 << 3;
                         }
                     }
                 }
