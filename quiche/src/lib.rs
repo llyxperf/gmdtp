@@ -361,7 +361,6 @@ use std::time;
 
 use std::net::SocketAddr;
 
-use std::pin::Pin;
 use std::str::FromStr;
 
 use std::collections::VecDeque;
@@ -1254,7 +1253,7 @@ pub struct Connection {
 pub fn accept(
     scid: &ConnectionId, odcid: Option<&ConnectionId>, from: SocketAddr,
     config: &mut Config,
-) -> Result<Pin<Box<Connection>>> {
+) -> Result<Connection> {
     let conn = Connection::new(scid, odcid, from, config, true)?;
 
     Ok(conn)
@@ -1280,7 +1279,7 @@ pub fn accept(
 pub fn connect(
     server_name: Option<&str>, scid: &ConnectionId, to: SocketAddr,
     config: &mut Config,
-) -> Result<Pin<Box<Connection>>> {
+) -> Result<Connection> {
     let mut conn = Connection::new(scid, None, to, config, false)?;
 
     if let Some(server_name) = server_name {
@@ -1492,7 +1491,7 @@ impl Connection {
     fn new(
         scid: &ConnectionId, odcid: Option<&ConnectionId>, peer: SocketAddr,
         config: &mut Config, is_server: bool,
-    ) -> Result<Pin<Box<Connection>>> {
+    ) -> Result<Connection> {
         let tls = config.tls_ctx.new_handshake()?;
         Connection::with_tls(scid, odcid, peer, config, tls, is_server)
     }
@@ -1500,13 +1499,13 @@ impl Connection {
     fn with_tls(
         scid: &ConnectionId, odcid: Option<&ConnectionId>, peer: SocketAddr,
         config: &mut Config, tls: tls::Handshake, is_server: bool,
-    ) -> Result<Pin<Box<Connection>>> {
+    ) -> Result<Connection> {
         let max_rx_data = config.local_transport_params.initial_max_data;
 
         let scid_as_hex: Vec<String> =
             scid.iter().map(|b| format!("{:02x}", b)).collect();
 
-        let mut conn = Box::pin(Connection {
+        let mut conn = Connection {
             version: config.version,
 
             dcid: ConnectionId::default(),
@@ -1633,7 +1632,7 @@ impl Connection {
             ),
 
             emit_dgram: true,
-        });
+        };
 
         if let Some(odcid) = odcid {
             conn.local_transport_params
@@ -1648,8 +1647,7 @@ impl Connection {
         conn.local_transport_params.initial_source_connection_id =
             Some(scid.to_vec().into());
 
-        let conn_ptr = &conn as &Connection as *const Connection;
-        conn.handshake.init(conn_ptr, is_server)?;
+        conn.handshake.init(is_server)?;
 
         conn.handshake
             .use_legacy_codepoint(config.version != PROTOCOL_VERSION_V1);
@@ -5317,12 +5315,27 @@ impl Connection {
     ///
     /// If the connection is already established, it does nothing.
     fn do_handshake(&mut self) -> Result<()> {
+        let mut ex_data = tls::ExData {
+            application_protos: &self.application_protos,
+
+            pkt_num_spaces: &mut self.pkt_num_spaces,
+
+            session: &mut self.session,
+
+            local_error: &mut self.local_error,
+
+            keylog: self.keylog.as_mut(),
+
+            trace_id: &self.trace_id,
+
+            is_server: self.is_server,
+        };
+
         if self.handshake_completed {
-            // Handshake is already complete, nothing more to do.
-            return Ok(());
+            return self.handshake.process_post_handshake(&mut ex_data);
         }
 
-        match self.handshake.do_handshake() {
+        match self.handshake.do_handshake(&mut ex_data) {
             Ok(_) => (),
 
             Err(Error::Done) => {
@@ -5681,11 +5694,7 @@ impl Connection {
                     self.handshake.provide_data(level, recv_buf)?;
                 }
 
-                if self.is_established() {
-                    self.handshake.process_post_handshake()?;
-                } else {
-                    self.do_handshake()?;
-                }
+                self.do_handshake()?;
             },
 
             frame::Frame::CryptoHeader { .. } => unreachable!(),
@@ -6048,7 +6057,7 @@ impl Connection {
         // delivery rate draft. This is also separate from `recovery.app_limited`
         // and only applies to delivery rate calculation.
         self.tx_cap >= self.recovery.cwnd_available() &&
-            (self.tx_data - self.last_tx_data) <
+            (self.tx_data.saturating_sub(self.last_tx_data)) <
                 self.recovery.cwnd_available() as u64 &&
             self.recovery.cwnd_available() > 0
     }
@@ -6668,8 +6677,8 @@ pub mod testing {
     use super::*;
 
     pub struct Pipe {
-        pub client: Pin<Box<Connection>>,
-        pub server: Pin<Box<Connection>>,
+        pub client: Connection,
+        pub server: Connection,
     }
 
     impl Pipe {
@@ -11957,6 +11966,67 @@ mod tests {
 
         Ok(())
     }
+
+    #[test]
+    /// Tests that resetting a stream restores flow control for unsent data.
+    fn last_tx_data_larger_than_tx_data() {
+        let mut config = Config::new(PROTOCOL_VERSION).unwrap();
+        config
+            .set_application_protos(b"\x06proto1\x06proto2")
+            .unwrap();
+        config.set_initial_max_data(12000);
+        config.set_initial_max_stream_data_bidi_local(20000);
+        config.set_initial_max_stream_data_bidi_remote(20000);
+        config.set_max_recv_udp_payload_size(1200);
+        config.verify_peer(false);
+
+        let mut pipe = testing::Pipe::with_client_config(&mut config).unwrap();
+        assert_eq!(pipe.handshake(), Ok(()));
+
+        // Client opens stream 4 and 8.
+        assert_eq!(pipe.client.stream_send(4, b"a", true), Ok(1));
+        assert_eq!(pipe.client.stream_send(8, b"b", true), Ok(1));
+        assert_eq!(pipe.advance(), Ok(()));
+
+        // Server reads stream data.
+        let mut b = [0; 15];
+        pipe.server.stream_recv(4, &mut b).unwrap();
+
+        // Server sends stream data close to cwnd (12000).
+        let buf = [0; 10000];
+        assert_eq!(pipe.server.stream_send(4, &buf, false), Ok(10000));
+
+        testing::emit_flight(&mut pipe.server).unwrap();
+
+        // Server buffers some data, until send capacity limit reached.
+        let mut buf = [0; 1200];
+        assert_eq!(pipe.server.stream_send(4, &buf, false), Ok(1200));
+        assert_eq!(pipe.server.stream_send(8, &buf, false), Ok(800));
+        assert_eq!(pipe.server.stream_send(4, &buf, false), Err(Error::Done));
+
+        // Wait for PTO to expire.
+        let timer = pipe.server.timeout().unwrap();
+        std::thread::sleep(timer + time::Duration::from_millis(1));
+
+        pipe.server.on_timeout();
+
+        // Server sends PTO probe (not limited to cwnd),
+        // to update last_tx_data.
+        let (len, _) = pipe.server.send(&mut buf).unwrap();
+        assert_eq!(len, 1200);
+
+        // Client sends STOP_SENDING to decrease tx_data
+        // by unsent data. It will make last_tx_data > tx_data
+        // and trigger #1232 bug.
+        let frames = [frame::Frame::StopSending {
+            stream_id: 4,
+            error_code: 42,
+        }];
+
+        let pkt_type = packet::Type::Short;
+        pipe.send_pkt_to_server(pkt_type, &frames, &mut buf)
+            .unwrap();
+    }
 }
 
 pub use crate::packet::ConnectionId;
@@ -11984,6 +12054,3 @@ mod ranges;
 mod recovery;
 mod stream;
 mod tls;
-
-#[cfg(feature = "boringssl-boring-crate")]
-pub use tls::QUICHE_EX_DATA_INDEX;
