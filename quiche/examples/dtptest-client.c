@@ -33,6 +33,8 @@ static struct argp_option options[] = {
     {"out", 'o', "FILE", 0, "Write received data to FILE"},
     {"verbose", 'v', "LEVEL", 0, "Print verbose debug messages"},
     {"color", 'c', 0, 0, "Colorize log messages"},
+    {"diffserv", 'd', 0, 0, "Enable DiffServ"},
+    {"quic", 'q', 0, 0, "Use QUIC instead of DTP"},
     {0}};
 
 struct arguments {
@@ -41,6 +43,9 @@ struct arguments {
   char *server_ip;
   char *server_port;
 };
+
+static bool DIFFSERV_ENABLE = false;
+static bool QUIC_ENABLE = false;
 
 static struct arguments args;
 
@@ -58,6 +63,12 @@ static error_t parse_opt(int key, char *arg, struct argp_state *state) {
     break;
   case 'c':
     LOG_COLOR = 1;
+    break;
+  case 'd':
+    DIFFSERV_ENABLE = true;
+    break;
+  case 'q':
+    QUIC_ENABLE = true;
     break;
   case ARGP_KEY_ARG:
     switch (state->arg_num) {
@@ -116,9 +127,12 @@ struct conn_io {
 
 /***** utilites *****/
 
-static void debug_log(const char *line, void *argp) { log_info("%s", line); }
+static void debug_log(const char *line, void *argp) { log_error("%s", line); }
 
 void set_tos(int ai_family, int sock, int tos) {
+  if (!DIFFSERV_ENABLE)
+    return;
+
   switch (ai_family) {
   case AF_INET:
     if (setsockopt(sock, IPPROTO_IP, IP_TOS, &tos, sizeof(tos)) < 0) {
@@ -175,12 +189,13 @@ static void flush_egress(struct ev_loop *loop, struct conn_io *conn_io) {
     ev_timer_again(loop, &conn_io->timer);
   }
 
-  struct timespec now = {0, 0};
-  clock_gettime(CLOCK_REALTIME, &now);
+  // struct timespec now = {0, 0};
+  // clock_gettime(CLOCK_REALTIME, &now);
 
-  double repeat = (send_info.at.tv_sec - now.tv_sec) +
-                  (send_info.at.tv_nsec - now.tv_nsec) / 1e9f;
-  conn_io->pacer.repeat = repeat > 0 ? repeat : 0.001;
+  // double repeat = (send_info.at.tv_sec - now.tv_sec) +
+  //                 (send_info.at.tv_nsec - now.tv_nsec) / 1e9f;
+  // conn_io->pacer.repeat = repeat > 0 ? repeat : 0.001;
+  conn_io->pacer.repeat = 0.0001;
   ev_timer_again(loop, &conn_io->pacer);
 }
 
@@ -294,7 +309,7 @@ static void recv_cb(EV_P_ ev_io *w, int revents) {
         quiche_block block_info;
         quiche_conn_block_info(conn_io->conn, s, &block_info);
 
-        dump_file("%ld,%ld,%ld,%ld,%ld,%ld\n", s, bct / 1000, block_info.size,
+        dump_file("%ld,%ld,%ld,%ld,%ld,%ld\n", s, bct, block_info.size,
                   block_info.priority, block_info.deadline,
                   ended_at - started_at);
       }
@@ -378,8 +393,8 @@ int main(int argc, char *argv[]) {
   quiche_config_set_initial_max_stream_data_bidi_local(config, 10000000);
   quiche_config_set_initial_max_stream_data_bidi_remote(config, 10000000);
   quiche_config_set_initial_max_stream_data_uni(config, 1000000);
-  quiche_config_set_initial_max_streams_bidi(config, 10000);
-  quiche_config_set_initial_max_streams_uni(config, 10000);
+  quiche_config_set_initial_max_streams_bidi(config, 40000);
+  quiche_config_set_initial_max_streams_uni(config, 40000);
   quiche_config_set_disable_active_migration(config, true);
 
   if (getenv("SSLKEYLOGFILE")) {

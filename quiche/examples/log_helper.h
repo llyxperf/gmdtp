@@ -37,6 +37,7 @@ static int LOG_COLOR = 0;
     }                                                                          \
     fprintf(HELPER_LOG, __VA_ARGS__);                                          \
     LOG_COLOR ? fprintf(HELPER_LOG, "\x1b[0m\n") : fprintf(HELPER_LOG, "\n");  \
+    fflush(NULL);                                                              \
   } while (0)
 
 #define log_error(...)                                                         \
@@ -68,6 +69,7 @@ static int LOG_COLOR = 0;
 #define dump_file(...)                                                         \
   do {                                                                         \
     fprintf(HELPER_OUT, __VA_ARGS__);                                          \
+    fflush(NULL);                                                              \
   } while (0)
 
 #define dump_info(...)                                                         \

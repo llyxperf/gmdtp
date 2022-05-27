@@ -26,7 +26,7 @@ struct dtp_config *parse_dtp_config(const char *filename, int *number) {
   float send_time_gap;
 
   int cfgs_len = 0;
-  static int max_cfgs_len = 10000;
+  static int max_cfgs_len = 40000;
   dtp_config *cfgs = malloc(max_cfgs_len * sizeof(dtp_config));
 
   fd = fopen(filename, "r");

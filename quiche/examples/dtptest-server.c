@@ -34,6 +34,8 @@ static struct argp_option options[] = {
     {"out", 'o', "FILE", 0, "Write received data to FILE"},
     {"verbose", 'v', "LEVEL", 0, "Print verbose debug messages"},
     {"color", 'c', 0, 0, "Colorize log messages"},
+    {"diffserv", 'd', 0, 0, "Enable DiffServ"},
+    {"quic", 'q', 0, 0, "Use QUIC instead of DTP"},
     {0}};
 
 struct arguments {
@@ -43,6 +45,9 @@ struct arguments {
   char *server_port;
   char *dtp_trace_file;
 };
+
+static bool DIFFSERV_ENABLE = false;
+static bool QUIC_ENABLE = false;
 
 static struct arguments args;
 
@@ -60,6 +65,12 @@ static error_t parse_opt(int key, char *arg, struct argp_state *state) {
     break;
   case 'c':
     LOG_COLOR = 1;
+    break;
+  case 'd':
+    DIFFSERV_ENABLE = true;
+    break;
+  case 'q':
+    QUIC_ENABLE = true;
     break;
   case ARGP_KEY_ARG:
     switch (state->arg_num) {
@@ -195,9 +206,12 @@ static uint8_t *gen_cid(uint8_t *cid, size_t cid_len) {
   return cid;
 }
 
-static void debug_log(const char *line, void *argp) { log_trace("%s", line); }
+static void debug_log(const char *line, void *argp) { log_info("%s", line); }
 
 void set_tos(int ai_family, int sock, int tos) {
+  if (!DIFFSERV_ENABLE)
+    return;
+
   switch (ai_family) {
   case AF_INET:
     if (setsockopt(sock, IPPROTO_IP, IP_TOS, &tos, sizeof(tos)) < 0) {
@@ -312,12 +326,13 @@ static void flush_egress(struct ev_loop *loop, struct conn_io *conn_io) {
   conn_io->timer.repeat = t;
   ev_timer_again(loop, &conn_io->timer);
 
-  struct timespec now = {0, 0};
-  clock_gettime(CLOCK_REALTIME, &now);
+  // struct timespec now = {0, 0};
+  // clock_gettime(CLOCK_REALTIME, &now);
 
-  double repeat = (send_info.at.tv_sec - now.tv_sec) +
-                          (send_info.at.tv_nsec - now.tv_nsec) / 1e9f;
-  conn_io->pacer.repeat = repeat > 0 ? repeat : 0.001;
+  // double repeat = (send_info.at.tv_sec - now.tv_sec) +
+  //                         (send_info.at.tv_nsec - now.tv_nsec) / 1e9f;
+  // conn_io->pacer.repeat = repeat > 0 ? repeat : 0.001;
+  conn_io->pacer.repeat = 0.0001;
   ev_timer_again(loop, &conn_io->pacer);
 }
 
@@ -342,12 +357,18 @@ static void sender_cb(struct ev_loop *loop, ev_timer *w, int revents) {
 
     int stream_id = 4 * (conn_io->send_round + 1) + 1;
     log_info("send stream %d", stream_id);
-    ssize_t sent = quiche_conn_block_send(conn_io->conn, stream_id, buf, block.size, true,
-                           &block);
-    // ssize_t sent = quiche_conn_stream_send(conn_io->conn, stream_id, buf, block.size, true);
-    
+    ssize_t sent = 0;
+    if (QUIC_ENABLE) {
+      sent = quiche_conn_stream_send(conn_io->conn, stream_id, buf,
+                                             block.size, true);
+    } else {
+      sent = quiche_conn_block_send(conn_io->conn, stream_id, buf,
+                                            block.size, true, &block);
+    }
+
     if (sent != block.size) {
-      log_debug("failed to send block %d completely: sent %zd", conn_io->send_round, sent);
+      log_debug("failed to send block %d completely: sent %zd",
+                conn_io->send_round, sent);
     }
 
     conn_io->send_round++;
@@ -531,8 +552,8 @@ static void recv_cb(struct ev_loop *loop, ev_io *w, int revents) {
 
       quiche_conn_stats(conn_io->conn, &stats);
       dump_info("connection closed, recv=%zu sent=%zu lost=%zu rtt=%" PRIu64
-               "ns cwnd=%zu\n",
-               stats.recv, stats.sent, stats.lost, stats.rtt, stats.cwnd);
+                "ns cwnd=%zu\n",
+                stats.recv, stats.sent, stats.lost, stats.rtt, stats.cwnd);
       fflush(NULL);
 
       HASH_DELETE(hh, conns->h, conn_io);
@@ -559,8 +580,8 @@ static void timeout_cb(EV_P_ ev_timer *w, int revents) {
 
     quiche_conn_stats(conn_io->conn, &stats);
     dump_info("connection closed, recv=%zu sent=%zu lost=%zu rtt=%" PRIu64
-             "ns cwnd=%zu\n",
-             stats.recv, stats.sent, stats.lost, stats.rtt, stats.cwnd);
+              "ns cwnd=%zu\n",
+              stats.recv, stats.sent, stats.lost, stats.rtt, stats.cwnd);
     fflush(NULL);
 
     HASH_DELETE(hh, conns->h, conn_io);
@@ -631,10 +652,10 @@ int main(int argc, char *argv[]) {
   quiche_config_set_max_send_udp_payload_size(config, MAX_DATAGRAM_SIZE);
   quiche_config_set_initial_max_data(config, 1000000000);
   quiche_config_set_initial_max_stream_data_uni(config, 10000000);
-  quiche_config_set_initial_max_streams_uni(config, 10000);
+  quiche_config_set_initial_max_streams_uni(config, 40000);
   quiche_config_set_initial_max_stream_data_bidi_local(config, 10000000);
   quiche_config_set_initial_max_stream_data_bidi_remote(config, 10000000);
-  quiche_config_set_initial_max_streams_bidi(config, 10000);
+  quiche_config_set_initial_max_streams_bidi(config, 40000);
   quiche_config_set_cc_algorithm(config, QUICHE_CC_RENO);
 
   struct connections c;
