@@ -373,6 +373,10 @@ impl StreamMap {
                     let (final_size, _unsent) =
                         stream.send.shutdown().unwrap_or((0, 0));
                     self.mark_cancelled(stream_id, true, final_size);
+                    info!(
+                        "service_time {} > block.deadline {}",
+                        service_time, block.deadline
+                    );
                     return;
                 }
                 match block.real_priority(recovery.0, recovery.1, service_time) {
@@ -514,7 +518,12 @@ impl StreamMap {
                 if service_time > block.deadline {
                     let (final_size, _unsent) =
                         stream.send.shutdown().unwrap_or((0, 0));
+                    info!(
+                        "service_time {} > block.deadline {}",
+                        service_time, block.deadline
+                    );
                     self.mark_cancelled(b.stream_id, true, final_size);
+
                     None
                 } else {
                     match block.real_priority(
@@ -881,9 +890,19 @@ impl Block {
     pub fn real_priority(
         &self, delivery_rate: u64, rtt: u64, service_time: u64,
     ) -> Option<u64> {
-        self.deadline
+        match self
+            .deadline
             .checked_sub(self.size / delivery_rate + rtt + service_time)
-            .map(|v| v * (self.priority + 1))
+        {
+            Some(v) => Some(v * (self.priority + 1)),
+            None => {
+                info!(
+                    "real_priority < 0: ddl {} size {} rate {} rtt {} service {}",
+                    self.deadline, self.size, delivery_rate, rtt, service_time
+                );
+                None
+            },
+        }
     }
 }
 

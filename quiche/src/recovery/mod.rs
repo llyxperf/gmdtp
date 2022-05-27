@@ -627,6 +627,10 @@ impl Recovery {
         self.rtt() + cmp::max(self.rttvar * 4, GRANULARITY)
     }
 
+    pub fn pacing_rate(&self) -> u64 {
+        self.pacing_rate
+    }
+
     pub fn delivery_rate(&self) -> u64 {
         self.delivery_rate.sample_delivery_rate()
     }

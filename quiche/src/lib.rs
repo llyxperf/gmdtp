@@ -2698,7 +2698,7 @@ impl Connection {
 
         #[cfg(feature = "dtp")]
         let rate_rtt = (
-            (self.recovery.delivery_rate() >> 10),
+            (self.recovery.pacing_rate() >> 10),
             (self.recovery.rtt().as_millis() >> 1) as u64,
         );
 
@@ -3579,7 +3579,7 @@ impl Connection {
                         incremental,
                         #[cfg(feature = "dtp")]
                         (
-                            (self.recovery.delivery_rate() >> 10),
+                            (self.recovery.pacing_rate() >> 10),
                             (self.recovery.rtt().as_millis() >> 1) as u64,
                         ),
                     );
@@ -4055,7 +4055,7 @@ impl Connection {
                 incremental,
                 #[cfg(feature = "dtp")]
                 (
-                    (self.recovery.delivery_rate() >> 10),
+                    (self.recovery.pacing_rate() >> 10),
                     (self.recovery.rtt().as_millis() >> 1) as u64,
                 ),
             );
@@ -4232,7 +4232,7 @@ impl Connection {
                 urgency,
                 incremental,
                 (
-                    (self.recovery.delivery_rate() >> 10),
+                    (self.recovery.pacing_rate() >> 10),
                     (self.recovery.rtt().as_millis() >> 1) as u64,
                 ),
             );
@@ -5798,7 +5798,7 @@ impl Connection {
                         incremental,
                         #[cfg(feature = "dtp")]
                         (
-                            (self.recovery.delivery_rate() >> 10),
+                            (self.recovery.pacing_rate() >> 10),
                             (self.recovery.rtt().as_millis() >> 1) as u64,
                         ),
                     );
