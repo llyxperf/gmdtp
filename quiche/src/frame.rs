@@ -186,6 +186,7 @@ pub enum Frame {
         block_size: u64,
         block_priority: u64,
         block_deadline: u64,
+        started_at: u64,
     },
 }
 
@@ -323,6 +324,7 @@ impl Frame {
                 block_size: b.get_varint()?,
                 block_priority: b.get_varint()?,
                 block_deadline: b.get_varint()?,
+                started_at: b.get_varint()?,
             },
 
             0x30 | 0x31 => parse_datagram_frame(frame_type, b)?,
@@ -600,6 +602,7 @@ impl Frame {
                 block_size,
                 block_priority,
                 block_deadline,
+                started_at,
             } => {
                 b.put_varint(0x20)?;
 
@@ -607,6 +610,7 @@ impl Frame {
                 b.put_varint(*block_size)?;
                 b.put_varint(*block_priority)?;
                 b.put_varint(*block_deadline)?;
+                b.put_varint(*started_at)?;
             },
         }
 
@@ -841,12 +845,14 @@ impl Frame {
                 block_size,
                 block_priority,
                 block_deadline,
+                started_at,
             } => {
                 1 + // frame type
                 octets::varint_len(*stream_id) + // stream_id
                 octets::varint_len(*block_size) + // block_size
                 octets::varint_len(*block_priority) + // block_priority
-                octets::varint_len(*block_deadline) // block_deadline
+                octets::varint_len(*block_deadline) + // block_deadline
+                octets::varint_len(*started_at) // started_at
             },
         }
     }
@@ -1058,11 +1064,13 @@ impl Frame {
                 block_size,
                 block_priority,
                 block_deadline,
+                started_at,
             } => QuicFrame::BlockInfo {
                 stream_id: *stream_id,
                 block_size: *block_size,
                 block_priority: *block_priority,
                 block_deadline: *block_deadline,
+                started_at: *started_at,
             },
         }
     }
@@ -1249,11 +1257,12 @@ impl std::fmt::Debug for Frame {
                 block_size,
                 block_priority,
                 block_deadline,
+                started_at,
             } => {
                 write!(
                     f,
-                    "BLOCK_INFO stream={} size={} priority={} deadline={}",
-                    stream_id, block_size, block_priority, block_deadline
+                    "BLOCK_INFO stream={} size={} priority={} deadline={} started_at={}",
+                    stream_id, block_size, block_priority, block_deadline, started_at
                 )?;
             },
         }

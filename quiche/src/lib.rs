@@ -3439,6 +3439,7 @@ impl Connection {
                         block_size: block.size,
                         block_priority: block.priority,
                         block_deadline: block.deadline,
+                        started_at: stream.send.started_at(),
                     };
 
                     if push_frame_to_pkt!(b, frames, frame, left) {
@@ -5909,6 +5910,7 @@ impl Connection {
                 block_size,
                 block_priority,
                 block_deadline,
+                started_at,
             } => {
                 // Peer can't send on our unidirectional streams.
                 if !stream::is_bidi(stream_id) &&
@@ -5933,8 +5935,16 @@ impl Connection {
                 // Note that it makes it impossible to check if the frame is
                 // illegal, since we have no state, but since we ignore the
                 // frame, it should be fine.
-                match self.get_or_create_block(stream_id, false, Some(block)) {
-                    Ok(v) => v,
+                match self.get_or_create_block(
+                    stream_id,
+                    false,
+                    Some(block.clone()),
+                ) {
+                    Ok(v) => {
+                        v.recv.started_at =
+                            Some(time::Duration::from_micros(started_at));
+                        v.block = Some(block);
+                    },
 
                     Err(Error::Done) => return Ok(()),
 

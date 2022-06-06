@@ -366,8 +366,13 @@ impl StreamMap {
             let stream = self.get_mut(stream_id).unwrap();
             let block = &stream.block;
             if block.is_some() {
-                let service_time =
-                    stream.send.started_at.unwrap().elapsed().as_millis() as u64;
+                let service_time = stream
+                    .send
+                    .started_at
+                    .unwrap()
+                    .elapsed()
+                    .unwrap()
+                    .as_millis() as u64;
                 let block = block.clone().unwrap();
                 if service_time > block.deadline {
                     let (final_size, _unsent) =
@@ -513,8 +518,13 @@ impl StreamMap {
             .filter_map(|std::cmp::Reverse(b)| {
                 let stream = self.get_mut(b.stream_id).unwrap();
                 let block = stream.block.as_ref().unwrap();
-                let service_time =
-                    stream.send.started_at.unwrap().elapsed().as_millis() as u64;
+                let service_time = stream
+                    .send
+                    .started_at
+                    .unwrap()
+                    .elapsed()
+                    .unwrap()
+                    .as_millis() as u64;
                 if service_time > block.deadline {
                     let (final_size, _unsent) =
                         stream.send.shutdown().unwrap_or((0, 0));
@@ -947,6 +957,7 @@ impl Stream {
                 max_window,
                 #[cfg(feature = "dtp")]
                 block.clone().map(|b| Arc::downgrade(&b)),
+                None,
             ),
             send: SendBuf::new(
                 max_tx_data,
@@ -1095,8 +1106,10 @@ pub struct RecvBuf {
     pub block: Option<Weak<Block>>,
 
     /// When the block start to be transmitted
+    ///
+    /// Duration since the UNIX_EPOCH
     #[cfg(feature = "dtp")]
-    started_at: Option<time::Instant>,
+    pub started_at: Option<time::Duration>,
 
     /// The completion time of the block
     #[cfg(feature = "dtp")]
@@ -1108,6 +1121,7 @@ impl RecvBuf {
     fn new(
         max_data: u64, max_window: u64,
         #[cfg(feature = "dtp")] block: Option<Weak<Block>>,
+        #[cfg(feature = "dtp")] started_at: Option<time::Duration>,
     ) -> RecvBuf {
         RecvBuf {
             flow_control: flowcontrol::FlowControl::new(
@@ -1118,7 +1132,7 @@ impl RecvBuf {
             #[cfg(feature = "dtp")]
             block,
             #[cfg(feature = "dtp")]
-            started_at: Some(time::Instant::now()),
+            started_at,
             ..RecvBuf::default()
         }
     }
@@ -1166,7 +1180,10 @@ impl RecvBuf {
             self.fin_off = Some(buf.max_off());
             #[cfg(feature = "dtp")]
             {
-                self.bct = self.started_at.unwrap().elapsed();
+                self.bct = time::SystemTime::now()
+                    .duration_since(time::UNIX_EPOCH)
+                    .unwrap() -
+                    self.started_at.unwrap_or(time::Duration::default());
             }
         }
 
@@ -1465,7 +1482,7 @@ pub struct SendBuf {
 
     /// When the block start to be transmitted
     #[cfg(feature = "dtp")]
-    started_at: Option<time::Instant>,
+    started_at: Option<time::SystemTime>,
 }
 
 impl SendBuf {
@@ -1480,7 +1497,7 @@ impl SendBuf {
             #[cfg(feature = "dtp")]
             block_info_sent: false,
             #[cfg(feature = "dtp")]
-            started_at: Some(time::Instant::now()),
+            started_at: Some(time::SystemTime::now()),
             ..SendBuf::default()
         }
     }
@@ -1864,6 +1881,16 @@ impl SendBuf {
     pub fn set_block_info_sent(&mut self, sent: bool) {
         self.block_info_sent = sent;
     }
+
+    /// Returns the started_at time in microseconds since the UNIX_EPOCH.
+    #[cfg(feature = "dtp")]
+    pub fn started_at(&mut self) -> u64 {
+        self.started_at
+            .unwrap()
+            .duration_since(time::SystemTime::UNIX_EPOCH)
+            .unwrap()
+            .as_micros() as u64
+    }
 }
 
 /// Buffer holding data at a specific offset.
@@ -2008,7 +2035,8 @@ mod tests {
     #[test]
     fn empty_read() {
         #[cfg(feature = "dtp")]
-        let mut recv = RecvBuf::new(std::u64::MAX, DEFAULT_STREAM_WINDOW, None);
+        let mut recv =
+            RecvBuf::new(std::u64::MAX, DEFAULT_STREAM_WINDOW, None, None);
         assert_eq!(recv.len, 0);
 
         let mut buf = [0; 32];
@@ -2019,7 +2047,7 @@ mod tests {
     #[test]
     fn empty_stream_frame() {
         #[cfg(feature = "dtp")]
-        let mut recv = RecvBuf::new(15, DEFAULT_STREAM_WINDOW, None);
+        let mut recv = RecvBuf::new(15, DEFAULT_STREAM_WINDOW, None, None);
         assert_eq!(recv.len, 0);
 
         let buf = RangeBuf::from(b"hello", 0, false);
@@ -2076,7 +2104,8 @@ mod tests {
     #[test]
     fn ordered_read() {
         #[cfg(feature = "dtp")]
-        let mut recv = RecvBuf::new(std::u64::MAX, DEFAULT_STREAM_WINDOW, None);
+        let mut recv =
+            RecvBuf::new(std::u64::MAX, DEFAULT_STREAM_WINDOW, None, None);
         assert_eq!(recv.len, 0);
 
         let mut buf = [0; 32];
@@ -2114,7 +2143,8 @@ mod tests {
     #[test]
     fn split_read() {
         #[cfg(feature = "dtp")]
-        let mut recv = RecvBuf::new(std::u64::MAX, DEFAULT_STREAM_WINDOW, None);
+        let mut recv =
+            RecvBuf::new(std::u64::MAX, DEFAULT_STREAM_WINDOW, None, None);
         assert_eq!(recv.len, 0);
 
         let mut buf = [0; 32];
@@ -2155,7 +2185,8 @@ mod tests {
     #[test]
     fn incomplete_read() {
         #[cfg(feature = "dtp")]
-        let mut recv = RecvBuf::new(std::u64::MAX, DEFAULT_STREAM_WINDOW, None);
+        let mut recv =
+            RecvBuf::new(std::u64::MAX, DEFAULT_STREAM_WINDOW, None, None);
         assert_eq!(recv.len, 0);
 
         let mut buf = [0; 32];
@@ -2184,7 +2215,8 @@ mod tests {
     #[test]
     fn zero_len_read() {
         #[cfg(feature = "dtp")]
-        let mut recv = RecvBuf::new(std::u64::MAX, DEFAULT_STREAM_WINDOW, None);
+        let mut recv =
+            RecvBuf::new(std::u64::MAX, DEFAULT_STREAM_WINDOW, None, None);
         assert_eq!(recv.len, 0);
 
         let mut buf = [0; 32];
@@ -2213,7 +2245,8 @@ mod tests {
     #[test]
     fn past_read() {
         #[cfg(feature = "dtp")]
-        let mut recv = RecvBuf::new(std::u64::MAX, DEFAULT_STREAM_WINDOW, None);
+        let mut recv =
+            RecvBuf::new(std::u64::MAX, DEFAULT_STREAM_WINDOW, None, None);
         assert_eq!(recv.len, 0);
 
         let mut buf = [0; 32];
@@ -2253,7 +2286,8 @@ mod tests {
     #[test]
     fn fully_overlapping_read() {
         #[cfg(feature = "dtp")]
-        let mut recv = RecvBuf::new(std::u64::MAX, DEFAULT_STREAM_WINDOW, None);
+        let mut recv =
+            RecvBuf::new(std::u64::MAX, DEFAULT_STREAM_WINDOW, None, None);
         assert_eq!(recv.len, 0);
 
         let mut buf = [0; 32];
@@ -2285,7 +2319,8 @@ mod tests {
     #[test]
     fn fully_overlapping_read2() {
         #[cfg(feature = "dtp")]
-        let mut recv = RecvBuf::new(std::u64::MAX, DEFAULT_STREAM_WINDOW, None);
+        let mut recv =
+            RecvBuf::new(std::u64::MAX, DEFAULT_STREAM_WINDOW, None, None);
         assert_eq!(recv.len, 0);
 
         let mut buf = [0; 32];
@@ -2317,7 +2352,8 @@ mod tests {
     #[test]
     fn fully_overlapping_read3() {
         #[cfg(feature = "dtp")]
-        let mut recv = RecvBuf::new(std::u64::MAX, DEFAULT_STREAM_WINDOW, None);
+        let mut recv =
+            RecvBuf::new(std::u64::MAX, DEFAULT_STREAM_WINDOW, None, None);
         assert_eq!(recv.len, 0);
 
         let mut buf = [0; 32];
@@ -2349,7 +2385,8 @@ mod tests {
     #[test]
     fn fully_overlapping_read_multi() {
         #[cfg(feature = "dtp")]
-        let mut recv = RecvBuf::new(std::u64::MAX, DEFAULT_STREAM_WINDOW, None);
+        let mut recv =
+            RecvBuf::new(std::u64::MAX, DEFAULT_STREAM_WINDOW, None, None);
         assert_eq!(recv.len, 0);
 
         let mut buf = [0; 32];
@@ -2387,7 +2424,8 @@ mod tests {
     #[test]
     fn overlapping_start_read() {
         #[cfg(feature = "dtp")]
-        let mut recv = RecvBuf::new(std::u64::MAX, DEFAULT_STREAM_WINDOW, None);
+        let mut recv =
+            RecvBuf::new(std::u64::MAX, DEFAULT_STREAM_WINDOW, None, None);
         assert_eq!(recv.len, 0);
 
         let mut buf = [0; 32];
@@ -2418,7 +2456,8 @@ mod tests {
     #[test]
     fn overlapping_end_read() {
         #[cfg(feature = "dtp")]
-        let mut recv = RecvBuf::new(std::u64::MAX, DEFAULT_STREAM_WINDOW, None);
+        let mut recv =
+            RecvBuf::new(std::u64::MAX, DEFAULT_STREAM_WINDOW, None, None);
         assert_eq!(recv.len, 0);
 
         let mut buf = [0; 32];
@@ -2449,7 +2488,8 @@ mod tests {
     #[test]
     fn overlapping_end_twice_read() {
         #[cfg(feature = "dtp")]
-        let mut recv = RecvBuf::new(std::u64::MAX, DEFAULT_STREAM_WINDOW, None);
+        let mut recv =
+            RecvBuf::new(std::u64::MAX, DEFAULT_STREAM_WINDOW, None, None);
         assert_eq!(recv.len, 0);
 
         let mut buf = [0; 32];
@@ -2492,7 +2532,8 @@ mod tests {
     #[test]
     fn overlapping_end_twice_and_contained_read() {
         #[cfg(feature = "dtp")]
-        let mut recv = RecvBuf::new(std::u64::MAX, DEFAULT_STREAM_WINDOW, None);
+        let mut recv =
+            RecvBuf::new(std::u64::MAX, DEFAULT_STREAM_WINDOW, None, None);
         assert_eq!(recv.len, 0);
 
         let mut buf = [0; 32];
@@ -2535,7 +2576,8 @@ mod tests {
     #[test]
     fn partially_multi_overlapping_reordered_read() {
         #[cfg(feature = "dtp")]
-        let mut recv = RecvBuf::new(std::u64::MAX, DEFAULT_STREAM_WINDOW, None);
+        let mut recv =
+            RecvBuf::new(std::u64::MAX, DEFAULT_STREAM_WINDOW, None, None);
         assert_eq!(recv.len, 0);
 
         let mut buf = [0; 32];
@@ -2573,7 +2615,8 @@ mod tests {
     #[test]
     fn partially_multi_overlapping_reordered_read2() {
         #[cfg(feature = "dtp")]
-        let mut recv = RecvBuf::new(std::u64::MAX, DEFAULT_STREAM_WINDOW, None);
+        let mut recv =
+            RecvBuf::new(std::u64::MAX, DEFAULT_STREAM_WINDOW, None, None);
         assert_eq!(recv.len, 0);
 
         let mut buf = [0; 32];
