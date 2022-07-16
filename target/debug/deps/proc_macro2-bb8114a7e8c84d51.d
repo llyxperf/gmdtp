@@ -1,0 +1,12 @@
+/home/qwe/Desktop/code/gm-dtp/target/debug/deps/proc_macro2-bb8114a7e8c84d51.rmeta: /home/qwe/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.37/src/lib.rs /home/qwe/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.37/src/marker.rs /home/qwe/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.37/src/parse.rs /home/qwe/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.37/src/detection.rs /home/qwe/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.37/src/fallback.rs /home/qwe/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.37/src/wrapper.rs
+
+/home/qwe/Desktop/code/gm-dtp/target/debug/deps/libproc_macro2-bb8114a7e8c84d51.rlib: /home/qwe/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.37/src/lib.rs /home/qwe/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.37/src/marker.rs /home/qwe/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.37/src/parse.rs /home/qwe/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.37/src/detection.rs /home/qwe/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.37/src/fallback.rs /home/qwe/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.37/src/wrapper.rs
+
+/home/qwe/Desktop/code/gm-dtp/target/debug/deps/proc_macro2-bb8114a7e8c84d51.d: /home/qwe/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.37/src/lib.rs /home/qwe/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.37/src/marker.rs /home/qwe/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.37/src/parse.rs /home/qwe/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.37/src/detection.rs /home/qwe/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.37/src/fallback.rs /home/qwe/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.37/src/wrapper.rs
+
+/home/qwe/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.37/src/lib.rs:
+/home/qwe/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.37/src/marker.rs:
+/home/qwe/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.37/src/parse.rs:
+/home/qwe/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.37/src/detection.rs:
+/home/qwe/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.37/src/fallback.rs:
+/home/qwe/.cargo/registry/src/github.com-1ecc6299db9ec823/proc-macro2-1.0.37/src/wrapper.rs:
