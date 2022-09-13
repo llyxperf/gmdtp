@@ -1,8 +1,8 @@
 crypto/CMakeFiles/crypto.dir/bn_extra/bn_asn1.c.o: \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/bn_extra/bn_asn1.c \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/bn_extra/bn_asn1.c \
  /usr/include/stdc-predef.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/../include/openssl/bn.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/../include/openssl/base.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/../include/openssl/bn.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/../include/openssl/base.h \
  /usr/lib/gcc/x86_64-linux-gnu/7/include/stddef.h \
  /usr/lib/gcc/x86_64-linux-gnu/7/include/stdint.h /usr/include/stdint.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
@@ -24,9 +24,9 @@ crypto/CMakeFiles/crypto.dir/bn_extra/bn_asn1.c.o: \
  /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
  /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h \
  /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/../include/openssl/is_boringssl.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/../include/openssl/opensslconf.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/../include/openssl/thread.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/../include/openssl/is_boringssl.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/../include/openssl/opensslconf.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/../include/openssl/thread.h \
  /usr/include/inttypes.h /usr/include/stdio.h \
  /usr/include/x86_64-linux-gnu/bits/types/__FILE.h \
  /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
@@ -36,6 +36,6 @@ crypto/CMakeFiles/crypto.dir/bn_extra/bn_asn1.c.o: \
  /usr/lib/gcc/x86_64-linux-gnu/7/include/stdarg.h \
  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
  /usr/include/x86_64-linux-gnu/bits/sys_errlist.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/../include/openssl/bytestring.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/../include/openssl/span.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/../include/openssl/err.h
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/../include/openssl/bytestring.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/../include/openssl/span.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/../include/openssl/err.h

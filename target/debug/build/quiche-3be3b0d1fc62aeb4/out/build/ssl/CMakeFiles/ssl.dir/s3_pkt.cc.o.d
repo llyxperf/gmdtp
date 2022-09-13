@@ -1,8 +1,8 @@
 ssl/CMakeFiles/ssl.dir/s3_pkt.cc.o: \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/s3_pkt.cc \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/s3_pkt.cc \
  /usr/include/stdc-predef.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/../include/openssl/ssl.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/../include/openssl/base.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/../include/openssl/ssl.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/../include/openssl/base.h \
  /usr/lib/gcc/x86_64-linux-gnu/7/include/stddef.h \
  /usr/lib/gcc/x86_64-linux-gnu/7/include/stdint.h /usr/include/stdint.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
@@ -36,8 +36,8 @@ ssl/CMakeFiles/ssl.dir/s3_pkt.cc.o: \
  /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
  /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h \
  /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/../include/openssl/is_boringssl.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/../include/openssl/opensslconf.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/../include/openssl/is_boringssl.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/../include/openssl/opensslconf.h \
  /usr/include/c++/7/memory /usr/include/c++/7/bits/stl_algobase.h \
  /usr/include/x86_64-linux-gnu/c++/7/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/7/bits/os_defines.h \
@@ -135,52 +135,52 @@ ssl/CMakeFiles/ssl.dir/s3_pkt.cc.o: \
  /usr/include/c++/7/bits/atomic_base.h \
  /usr/include/c++/7/bits/atomic_lockfree_defines.h \
  /usr/include/c++/7/backward/auto_ptr.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/../include/openssl/bio.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/../include/openssl/buffer.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/../include/openssl/buf.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/../include/openssl/err.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/../include/openssl/ex_data.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/../include/openssl/stack.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/../include/openssl/type_check.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/../include/openssl/thread.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/../include/openssl/buf.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/../include/openssl/pem.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/../include/openssl/base64.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/../include/openssl/cipher.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/../include/openssl/digest.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/../include/openssl/evp.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/../include/openssl/aead.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/../include/openssl/nid.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/../include/openssl/pkcs7.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/../include/openssl/x509.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/../include/openssl/asn1.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/../include/openssl/bn.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/../include/openssl/bio.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/../include/openssl/buffer.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/../include/openssl/buf.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/../include/openssl/err.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/../include/openssl/ex_data.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/../include/openssl/stack.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/../include/openssl/type_check.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/../include/openssl/thread.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/../include/openssl/buf.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/../include/openssl/pem.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/../include/openssl/base64.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/../include/openssl/cipher.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/../include/openssl/digest.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/../include/openssl/evp.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/../include/openssl/aead.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/../include/openssl/nid.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/../include/openssl/pkcs7.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/../include/openssl/x509.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/../include/openssl/asn1.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/../include/openssl/bn.h \
  /usr/include/inttypes.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/../include/openssl/dh.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/../include/openssl/dsa.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/../include/openssl/engine.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/../include/openssl/ecdh.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/../include/openssl/ec_key.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/../include/openssl/ec.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/../include/openssl/ecdsa.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/../include/openssl/obj.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/../include/openssl/bytestring.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/../include/openssl/span.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/../include/openssl/dh.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/../include/openssl/dsa.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/../include/openssl/engine.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/../include/openssl/ecdh.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/../include/openssl/ec_key.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/../include/openssl/ec.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/../include/openssl/ecdsa.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/../include/openssl/obj.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/../include/openssl/bytestring.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/../include/openssl/span.h \
  /usr/include/c++/7/algorithm /usr/include/c++/7/bits/stl_algo.h \
  /usr/include/c++/7/bits/algorithmfwd.h \
  /usr/include/c++/7/bits/stl_heap.h \
  /usr/include/c++/7/bits/uniform_int_dist.h /usr/include/c++/7/limits \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/../include/openssl/pool.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/../include/openssl/rsa.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/../include/openssl/sha.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/../include/openssl/x509_vfy.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/../include/openssl/crypto.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/../include/openssl/mem.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/../include/openssl/pool.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/../include/openssl/rsa.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/../include/openssl/sha.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/../include/openssl/x509_vfy.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/../include/openssl/crypto.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/../include/openssl/mem.h \
  /usr/include/c++/7/stdlib.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/../include/openssl/ssl3.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/../include/openssl/tls1.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/../include/openssl/ssl3.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/../include/openssl/tls1.h \
  /usr/include/x86_64-linux-gnu/sys/time.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/../include/openssl/hmac.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/../include/openssl/hmac.h \
  /usr/include/assert.h \
  /usr/lib/gcc/x86_64-linux-gnu/7/include-fixed/limits.h \
  /usr/lib/gcc/x86_64-linux-gnu/7/include-fixed/syslimits.h \
@@ -191,8 +191,8 @@ ssl/CMakeFiles/ssl.dir/s3_pkt.cc.o: \
  /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
  /usr/include/x86_64-linux-gnu/bits/uio_lim.h /usr/include/string.h \
  /usr/include/strings.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/../include/openssl/rand.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/../crypto/err/internal.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/../crypto/internal.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/internal.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/../include/openssl/lhash.h
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/../include/openssl/rand.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/../crypto/err/internal.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/../crypto/internal.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/internal.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/../include/openssl/lhash.h

@@ -557,7 +557,7 @@ pub fn decrypt_pkt<'a>(
         .ok_or(Error::InvalidPacket)?;
 
     let mut ciphertext = payload.peek_bytes(payload_len)?;
-
+//encryption.
     let payload_len =
         aead.open_with_u64_counter(pn, header.as_ref(), ciphertext.as_mut())?;
 
@@ -598,6 +598,7 @@ pub fn encrypt_pkt(
   //  print!("\n{}+{}\n",offs,&payload_len);
     // Encrypt + authenticate payload.
     let ciphertext = payload.slice(payload_len)?;
+    //encrypt the buf by straightly alter the ciphertext
     aead.seal_with_u64_counter(pn, header.as_ref(), ciphertext)?;
 
     encrypt_hdr(&mut header, pn_len, ciphertext, aead)?;

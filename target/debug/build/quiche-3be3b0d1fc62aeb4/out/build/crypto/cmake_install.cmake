@@ -1,8 +1,8 @@
-# Install script for directory: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto
+# Install script for directory: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out")
+  set(CMAKE_INSTALL_PREFIX "/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -44,8 +44,8 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/cmake_install.cmake")
-  include("/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/test/cmake_install.cmake")
+  include("/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/cmake_install.cmake")
+  include("/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/test/cmake_install.cmake")
 
 endif()
 

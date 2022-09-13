@@ -8,11 +8,11 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/test/abi_test.cc" "crypto/test/CMakeFiles/test_support_lib.dir/abi_test.cc.o" "gcc" "crypto/test/CMakeFiles/test_support_lib.dir/abi_test.cc.o.d"
-  "/home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/test/file_test.cc" "crypto/test/CMakeFiles/test_support_lib.dir/file_test.cc.o" "gcc" "crypto/test/CMakeFiles/test_support_lib.dir/file_test.cc.o.d"
-  "/home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/test/malloc.cc" "crypto/test/CMakeFiles/test_support_lib.dir/malloc.cc.o" "gcc" "crypto/test/CMakeFiles/test_support_lib.dir/malloc.cc.o.d"
-  "/home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/test/test_util.cc" "crypto/test/CMakeFiles/test_support_lib.dir/test_util.cc.o" "gcc" "crypto/test/CMakeFiles/test_support_lib.dir/test_util.cc.o.d"
-  "/home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/test/wycheproof_util.cc" "crypto/test/CMakeFiles/test_support_lib.dir/wycheproof_util.cc.o" "gcc" "crypto/test/CMakeFiles/test_support_lib.dir/wycheproof_util.cc.o.d"
+  "/home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/test/abi_test.cc" "crypto/test/CMakeFiles/test_support_lib.dir/abi_test.cc.o" "gcc" "crypto/test/CMakeFiles/test_support_lib.dir/abi_test.cc.o.d"
+  "/home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/test/file_test.cc" "crypto/test/CMakeFiles/test_support_lib.dir/file_test.cc.o" "gcc" "crypto/test/CMakeFiles/test_support_lib.dir/file_test.cc.o.d"
+  "/home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/test/malloc.cc" "crypto/test/CMakeFiles/test_support_lib.dir/malloc.cc.o" "gcc" "crypto/test/CMakeFiles/test_support_lib.dir/malloc.cc.o.d"
+  "/home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/test/test_util.cc" "crypto/test/CMakeFiles/test_support_lib.dir/test_util.cc.o" "gcc" "crypto/test/CMakeFiles/test_support_lib.dir/test_util.cc.o.d"
+  "/home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/test/wycheproof_util.cc" "crypto/test/CMakeFiles/test_support_lib.dir/wycheproof_util.cc.o" "gcc" "crypto/test/CMakeFiles/test_support_lib.dir/wycheproof_util.cc.o.d"
   )
 
 # Targets to which this target links.

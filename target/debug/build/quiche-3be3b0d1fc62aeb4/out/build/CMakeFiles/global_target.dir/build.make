@@ -53,10 +53,10 @@ RM = /usr/local/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/qwe/Desktop/code/gm-dtp/deps/boringssl
+CMAKE_SOURCE_DIR = /home/qwe/Desktop/code/gmdtp/deps/boringssl
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build
+CMAKE_BINARY_DIR = /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build
 
 # Utility rule file for global_target.
 
@@ -78,6 +78,6 @@ CMakeFiles/global_target.dir/clean:
 .PHONY : CMakeFiles/global_target.dir/clean
 
 CMakeFiles/global_target.dir/depend:
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/qwe/Desktop/code/gm-dtp/deps/boringssl /home/qwe/Desktop/code/gm-dtp/deps/boringssl /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles/global_target.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/qwe/Desktop/code/gmdtp/deps/boringssl /home/qwe/Desktop/code/gmdtp/deps/boringssl /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles/global_target.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/global_target.dir/depend
 

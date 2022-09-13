@@ -1,5 +1,5 @@
 crypto/CMakeFiles/crypto.dir/cipher_extra/e_rc4.c.o: \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/cipher_extra/e_rc4.c \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/cipher_extra/e_rc4.c \
  /usr/include/stdc-predef.h /usr/include/assert.h /usr/include/features.h \
  /usr/include/x86_64-linux-gnu/sys/cdefs.h \
  /usr/include/x86_64-linux-gnu/bits/wordsize.h \
@@ -10,8 +10,8 @@ crypto/CMakeFiles/crypto.dir/cipher_extra/e_rc4.c.o: \
  /usr/lib/gcc/x86_64-linux-gnu/7/include/stddef.h \
  /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/../include/openssl/cipher.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/../include/openssl/base.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/../include/openssl/cipher.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/../include/openssl/base.h \
  /usr/lib/gcc/x86_64-linux-gnu/7/include/stdint.h /usr/include/stdint.h \
  /usr/include/x86_64-linux-gnu/bits/types.h \
  /usr/include/x86_64-linux-gnu/bits/typesizes.h \
@@ -26,7 +26,7 @@ crypto/CMakeFiles/crypto.dir/cipher_extra/e_rc4.c.o: \
  /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
  /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h \
  /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/../include/openssl/is_boringssl.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/../include/openssl/opensslconf.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/../include/openssl/nid.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/../include/openssl/rc4.h
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/../include/openssl/is_boringssl.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/../include/openssl/opensslconf.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/../include/openssl/nid.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/../include/openssl/rc4.h

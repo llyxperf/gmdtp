@@ -152,7 +152,7 @@ fn main() {
     if std::env::var_os("SSLKEYLOGFILE").is_some() {
         config.log_keys();
     }
-//lyx alternative
+ 
     if args.get_bool("--gmssl") {
         config.set_gmssl(1);
      }
@@ -168,13 +168,13 @@ fn main() {
         // TODO: use event loop that properly supports timers
         let timeout =
             clients.values().filter_map(|(_, c)| c.conn.timeout()).min();
-///lyx block until either at least one readiness event has been received or timeout has elapsed
+///block until either at least one readiness event has been received or timeout has elapsed
         poll.poll(&mut events, timeout).unwrap();
 
         // Read incoming UDP packets from the socket and feed them to quiche,
         // until there are no more packets to read.
 
-        /// lyx 一次pkt dump，存一次socketrecieve的东西。以u8格式存储
+      
         'read: loop {
             // If the event loop reported no events, it means that the timeout
             // has expired, so handle it without attempting to read packets. We
@@ -205,7 +205,7 @@ fn main() {
             debug!("got {} bytes", len);
 
             let pkt_buf = &mut buf[..len];
-/// lyxnote write
+
             if let Some(target_path) = dump_path {
                 let path = format!("{}/{}.pkt", target_path, pkt_count);
 
@@ -273,7 +273,7 @@ fn main() {
                 SystemRandom::new().fill(&mut scid[..]).unwrap();
 
                 let mut odcid = None;
-                //lyx previous validation
+                //previous validation
                 if !args.get_bool("--no-retry") {
                     // Token is always present in Initial packets.
                     let token = hdr.token.as_ref().unwrap();
@@ -322,11 +322,11 @@ fn main() {
                 }
 
                 debug!(
-                    "New connection: dcid={} scid={}",
+                    "New empty connection created: dcid={} scid={}",
                     hex_dump(&hdr.dcid),
                     hex_dump(&scid)
                 );
-            //    println!("finished?1");
+             
                 let conn = quiche::accept(&scid, odcid, &mut config).unwrap();
               //  println!("finished?2");//handshake havent done.
                 let client = Client {
@@ -349,7 +349,7 @@ fn main() {
             let read = match client.conn.recv(pkt_buf) {
                 Ok(v) => v,
 
-                Err(quiche::Error::Done) => {
+                Err(quiche::Error::Done) => {   //handle 早期连接 or 近期
                     debug!("{} done reading", client.conn.trace_id());
                     break;
                 },

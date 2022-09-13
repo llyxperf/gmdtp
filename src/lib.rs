@@ -502,7 +502,7 @@ impl Config {
             init_data_ack_ratio: 4,
             init_redundancy_rate: 0.0f32,
             scheduler_type: SchedulerType::Dynamic, // default scheduler
-            gm_on:0,// lyx default gmssl open.
+            gm_on:0,//default gmssl open.
         })
 
         
@@ -1634,8 +1634,10 @@ impl Connection {
 
         let aead_tag_len = aead.alg().tag_len();
         //移除头部保护。这是握手完成后需要考虑的流程
+        //header is not compeleted. get teh pktnum by using aead shit.
+        //so the aead must be saved all the time during gmssl.
         packet::decrypt_hdr(&mut b, &mut hdr, &aead)?;
-
+        //not about the decryption
         let pn = packet::decode_pkt_num(
             self.pkt_num_spaces[epoch].largest_rx_pkt_num,
             hdr.pkt_num,
@@ -1698,10 +1700,12 @@ impl Connection {
                 .entry(hdr.fec_info.group_id)
                 .or_insert(fec::FecGroup::new(hdr.fec_info, payload.cap()));
             // feed into the fec group.
+            //
             let fec_frame = fec::FecFrame {
                 info: hdr.fec_info,
                 data: payload.to_vec(),
             };
+
             fec_group.feed_fec_frame(&fec_frame);
             // Try to decode
             if let Some(shards) = fec_group.reconstruct() {
@@ -1723,10 +1727,11 @@ impl Connection {
         }
         // Is this packet redundant to FEC ?
        // If not, then process the frames normally
+       //now ,the buffer is decrpyted and handled to the process_frame_API;
         if hdr.fec_info.group_id == 0 ||
             (hdr.fec_info.group_id != 0 && hdr.fec_info.index < hdr.fec_info.m)
         {
-            
+            //process frame by frame.
             while payload.cap() > 0 {
                 let frame = frame::Frame::from_bytes(&mut payload, hdr.ty)?;
 
@@ -1893,6 +1898,7 @@ impl Connection {
 
         if !is_closing {
             self.do_handshake()?;
+            //lyx???
             //println!("\n222hshake\n");
         }
 
@@ -1917,7 +1923,7 @@ impl Connection {
         let epoch = self.write_epoch()?;
 
         let pkt_type = packet::Type::from_epoch(epoch);
-      //  println!("pkt type is {}\n",epoch);
+       
         // Process lost frames.
         for lost in self.recovery.lost[epoch].drain(..) {
             match lost {
@@ -2343,7 +2349,7 @@ impl Connection {
             }
 
             //lyxalter:Create cryptoFrame in the form gmssl.
-            //it wont affect the crypto stream,since it carries guomi imformation in the type crypto.
+            //it wont affect the crypto stream,since it carries gm imformation in the type crypto.
             // if it is server and gmssl is 1,then general the sm2 key and push to crypto frame
  
             if self.gm_on==1 && self.is_server
@@ -2351,7 +2357,6 @@ impl Connection {
                 let (ctx,pk,sk) =signature::getSm2key();
                 self.gm_pubkey=pk;
                 self.gm_skey=sk;
-               // println!("Server:general public key {} ;\n general secret key {}\n", self.gm_pubkey.as_ref().unwrap(), self.gm_skey.as_ref().unwrap());
                 info!("Server:general public key {} ;\n general secret key {}\n", self.gm_pubkey.as_ref().unwrap(), self.gm_skey.as_ref().unwrap());
                 
                 let mut pk_raw = ctx.serialize_pubkey(&pk.as_ref().unwrap(), true);
@@ -2392,8 +2397,6 @@ impl Connection {
                 self.gm_sm4key=Some(key.to_vec());
                 self.gm_iv=Some(iv.to_vec());
                 self.gm_cipher=Some(Cipher::new(&key, Mode::Cfb));
-
-               
 
                 let mut plain_text=key.to_vec();
                 let mut veciv=iv.to_vec();
@@ -3690,7 +3693,7 @@ impl Connection {
 //对于 gm理论上也应该如此
 //为了方便修改，将gmssl解析移到quic中
             frame::Frame::Crypto { data } => {
-
+                info!("gm_state{:?}  is server ? {:?} \n", self.gm_on,self.is_server);
                 if data.get_data()[0..5]=="gmssl".as_bytes().to_vec(){
                     if self.gm_on==2 &&self.is_server {
                         let enc_sm4key=data.get_data()[5..].to_vec();

@@ -53,10 +53,10 @@ RM = /usr/local/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/qwe/Desktop/code/gm-dtp/deps/boringssl
+CMAKE_SOURCE_DIR = /home/qwe/Desktop/code/gmdtp/deps/boringssl
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build
+CMAKE_BINARY_DIR = /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build
 
 # Include any dependencies generated for this target.
 include crypto/fipsmodule/CMakeFiles/fipsmodule.dir/depend.make
@@ -69,422 +69,422 @@ include crypto/fipsmodule/CMakeFiles/fipsmodule.dir/progress.make
 # Include the compile flags for this target's objects.
 include crypto/fipsmodule/CMakeFiles/fipsmodule.dir/flags.make
 
-crypto/fipsmodule/aesni-gcm-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/modes/asm/aesni-gcm-x86_64.pl
-crypto/fipsmodule/aesni-gcm-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/arm-xlate.pl
-crypto/fipsmodule/aesni-gcm-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/ppc-xlate.pl
-crypto/fipsmodule/aesni-gcm-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86_64-xlate.pl
-crypto/fipsmodule/aesni-gcm-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86asm.pl
-crypto/fipsmodule/aesni-gcm-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86gas.pl
-crypto/fipsmodule/aesni-gcm-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86masm.pl
-crypto/fipsmodule/aesni-gcm-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86nasm.pl
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating aesni-gcm-x86_64.S"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/local/bin/cmake -E make_directory .
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/perl /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/modes/asm/aesni-gcm-x86_64.pl elf aesni-gcm-x86_64.S
+crypto/fipsmodule/aesni-gcm-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/modes/asm/aesni-gcm-x86_64.pl
+crypto/fipsmodule/aesni-gcm-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/arm-xlate.pl
+crypto/fipsmodule/aesni-gcm-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/ppc-xlate.pl
+crypto/fipsmodule/aesni-gcm-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86_64-xlate.pl
+crypto/fipsmodule/aesni-gcm-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86asm.pl
+crypto/fipsmodule/aesni-gcm-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86gas.pl
+crypto/fipsmodule/aesni-gcm-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86masm.pl
+crypto/fipsmodule/aesni-gcm-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86nasm.pl
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating aesni-gcm-x86_64.S"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/local/bin/cmake -E make_directory .
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/perl /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/modes/asm/aesni-gcm-x86_64.pl elf aesni-gcm-x86_64.S
 
-crypto/fipsmodule/aesni-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/aes/asm/aesni-x86_64.pl
-crypto/fipsmodule/aesni-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/arm-xlate.pl
-crypto/fipsmodule/aesni-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/ppc-xlate.pl
-crypto/fipsmodule/aesni-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86_64-xlate.pl
-crypto/fipsmodule/aesni-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86asm.pl
-crypto/fipsmodule/aesni-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86gas.pl
-crypto/fipsmodule/aesni-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86masm.pl
-crypto/fipsmodule/aesni-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86nasm.pl
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating aesni-x86_64.S"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/local/bin/cmake -E make_directory .
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/perl /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/aes/asm/aesni-x86_64.pl elf aesni-x86_64.S
+crypto/fipsmodule/aesni-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/aes/asm/aesni-x86_64.pl
+crypto/fipsmodule/aesni-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/arm-xlate.pl
+crypto/fipsmodule/aesni-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/ppc-xlate.pl
+crypto/fipsmodule/aesni-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86_64-xlate.pl
+crypto/fipsmodule/aesni-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86asm.pl
+crypto/fipsmodule/aesni-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86gas.pl
+crypto/fipsmodule/aesni-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86masm.pl
+crypto/fipsmodule/aesni-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86nasm.pl
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating aesni-x86_64.S"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/local/bin/cmake -E make_directory .
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/perl /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/aes/asm/aesni-x86_64.pl elf aesni-x86_64.S
 
-crypto/fipsmodule/ghash-ssse3-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/modes/asm/ghash-ssse3-x86_64.pl
-crypto/fipsmodule/ghash-ssse3-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/arm-xlate.pl
-crypto/fipsmodule/ghash-ssse3-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/ppc-xlate.pl
-crypto/fipsmodule/ghash-ssse3-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86_64-xlate.pl
-crypto/fipsmodule/ghash-ssse3-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86asm.pl
-crypto/fipsmodule/ghash-ssse3-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86gas.pl
-crypto/fipsmodule/ghash-ssse3-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86masm.pl
-crypto/fipsmodule/ghash-ssse3-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86nasm.pl
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating ghash-ssse3-x86_64.S"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/local/bin/cmake -E make_directory .
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/perl /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/modes/asm/ghash-ssse3-x86_64.pl elf ghash-ssse3-x86_64.S
+crypto/fipsmodule/ghash-ssse3-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/modes/asm/ghash-ssse3-x86_64.pl
+crypto/fipsmodule/ghash-ssse3-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/arm-xlate.pl
+crypto/fipsmodule/ghash-ssse3-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/ppc-xlate.pl
+crypto/fipsmodule/ghash-ssse3-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86_64-xlate.pl
+crypto/fipsmodule/ghash-ssse3-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86asm.pl
+crypto/fipsmodule/ghash-ssse3-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86gas.pl
+crypto/fipsmodule/ghash-ssse3-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86masm.pl
+crypto/fipsmodule/ghash-ssse3-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86nasm.pl
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating ghash-ssse3-x86_64.S"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/local/bin/cmake -E make_directory .
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/perl /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/modes/asm/ghash-ssse3-x86_64.pl elf ghash-ssse3-x86_64.S
 
-crypto/fipsmodule/ghash-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/modes/asm/ghash-x86_64.pl
-crypto/fipsmodule/ghash-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/arm-xlate.pl
-crypto/fipsmodule/ghash-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/ppc-xlate.pl
-crypto/fipsmodule/ghash-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86_64-xlate.pl
-crypto/fipsmodule/ghash-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86asm.pl
-crypto/fipsmodule/ghash-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86gas.pl
-crypto/fipsmodule/ghash-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86masm.pl
-crypto/fipsmodule/ghash-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86nasm.pl
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating ghash-x86_64.S"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/local/bin/cmake -E make_directory .
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/perl /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/modes/asm/ghash-x86_64.pl elf ghash-x86_64.S
+crypto/fipsmodule/ghash-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/modes/asm/ghash-x86_64.pl
+crypto/fipsmodule/ghash-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/arm-xlate.pl
+crypto/fipsmodule/ghash-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/ppc-xlate.pl
+crypto/fipsmodule/ghash-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86_64-xlate.pl
+crypto/fipsmodule/ghash-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86asm.pl
+crypto/fipsmodule/ghash-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86gas.pl
+crypto/fipsmodule/ghash-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86masm.pl
+crypto/fipsmodule/ghash-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86nasm.pl
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating ghash-x86_64.S"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/local/bin/cmake -E make_directory .
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/perl /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/modes/asm/ghash-x86_64.pl elf ghash-x86_64.S
 
-crypto/fipsmodule/md5-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/md5/asm/md5-x86_64.pl
-crypto/fipsmodule/md5-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/arm-xlate.pl
-crypto/fipsmodule/md5-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/ppc-xlate.pl
-crypto/fipsmodule/md5-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86_64-xlate.pl
-crypto/fipsmodule/md5-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86asm.pl
-crypto/fipsmodule/md5-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86gas.pl
-crypto/fipsmodule/md5-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86masm.pl
-crypto/fipsmodule/md5-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86nasm.pl
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Generating md5-x86_64.S"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/local/bin/cmake -E make_directory .
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/perl /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/md5/asm/md5-x86_64.pl elf md5-x86_64.S
+crypto/fipsmodule/md5-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/md5/asm/md5-x86_64.pl
+crypto/fipsmodule/md5-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/arm-xlate.pl
+crypto/fipsmodule/md5-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/ppc-xlate.pl
+crypto/fipsmodule/md5-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86_64-xlate.pl
+crypto/fipsmodule/md5-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86asm.pl
+crypto/fipsmodule/md5-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86gas.pl
+crypto/fipsmodule/md5-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86masm.pl
+crypto/fipsmodule/md5-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86nasm.pl
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Generating md5-x86_64.S"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/local/bin/cmake -E make_directory .
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/perl /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/md5/asm/md5-x86_64.pl elf md5-x86_64.S
 
-crypto/fipsmodule/p256-x86_64-asm.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/ec/asm/p256-x86_64-asm.pl
-crypto/fipsmodule/p256-x86_64-asm.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/arm-xlate.pl
-crypto/fipsmodule/p256-x86_64-asm.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/ppc-xlate.pl
-crypto/fipsmodule/p256-x86_64-asm.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86_64-xlate.pl
-crypto/fipsmodule/p256-x86_64-asm.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86asm.pl
-crypto/fipsmodule/p256-x86_64-asm.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86gas.pl
-crypto/fipsmodule/p256-x86_64-asm.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86masm.pl
-crypto/fipsmodule/p256-x86_64-asm.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86nasm.pl
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Generating p256-x86_64-asm.S"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/local/bin/cmake -E make_directory .
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/perl /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/ec/asm/p256-x86_64-asm.pl elf p256-x86_64-asm.S
+crypto/fipsmodule/p256-x86_64-asm.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/ec/asm/p256-x86_64-asm.pl
+crypto/fipsmodule/p256-x86_64-asm.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/arm-xlate.pl
+crypto/fipsmodule/p256-x86_64-asm.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/ppc-xlate.pl
+crypto/fipsmodule/p256-x86_64-asm.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86_64-xlate.pl
+crypto/fipsmodule/p256-x86_64-asm.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86asm.pl
+crypto/fipsmodule/p256-x86_64-asm.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86gas.pl
+crypto/fipsmodule/p256-x86_64-asm.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86masm.pl
+crypto/fipsmodule/p256-x86_64-asm.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86nasm.pl
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Generating p256-x86_64-asm.S"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/local/bin/cmake -E make_directory .
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/perl /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/ec/asm/p256-x86_64-asm.pl elf p256-x86_64-asm.S
 
-crypto/fipsmodule/p256_beeu-x86_64-asm.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/ec/asm/p256_beeu-x86_64-asm.pl
-crypto/fipsmodule/p256_beeu-x86_64-asm.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/arm-xlate.pl
-crypto/fipsmodule/p256_beeu-x86_64-asm.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/ppc-xlate.pl
-crypto/fipsmodule/p256_beeu-x86_64-asm.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86_64-xlate.pl
-crypto/fipsmodule/p256_beeu-x86_64-asm.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86asm.pl
-crypto/fipsmodule/p256_beeu-x86_64-asm.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86gas.pl
-crypto/fipsmodule/p256_beeu-x86_64-asm.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86masm.pl
-crypto/fipsmodule/p256_beeu-x86_64-asm.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86nasm.pl
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Generating p256_beeu-x86_64-asm.S"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/local/bin/cmake -E make_directory .
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/perl /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/ec/asm/p256_beeu-x86_64-asm.pl elf p256_beeu-x86_64-asm.S
+crypto/fipsmodule/p256_beeu-x86_64-asm.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/ec/asm/p256_beeu-x86_64-asm.pl
+crypto/fipsmodule/p256_beeu-x86_64-asm.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/arm-xlate.pl
+crypto/fipsmodule/p256_beeu-x86_64-asm.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/ppc-xlate.pl
+crypto/fipsmodule/p256_beeu-x86_64-asm.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86_64-xlate.pl
+crypto/fipsmodule/p256_beeu-x86_64-asm.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86asm.pl
+crypto/fipsmodule/p256_beeu-x86_64-asm.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86gas.pl
+crypto/fipsmodule/p256_beeu-x86_64-asm.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86masm.pl
+crypto/fipsmodule/p256_beeu-x86_64-asm.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86nasm.pl
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Generating p256_beeu-x86_64-asm.S"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/local/bin/cmake -E make_directory .
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/perl /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/ec/asm/p256_beeu-x86_64-asm.pl elf p256_beeu-x86_64-asm.S
 
-crypto/fipsmodule/rdrand-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/rand/asm/rdrand-x86_64.pl
-crypto/fipsmodule/rdrand-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/arm-xlate.pl
-crypto/fipsmodule/rdrand-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/ppc-xlate.pl
-crypto/fipsmodule/rdrand-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86_64-xlate.pl
-crypto/fipsmodule/rdrand-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86asm.pl
-crypto/fipsmodule/rdrand-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86gas.pl
-crypto/fipsmodule/rdrand-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86masm.pl
-crypto/fipsmodule/rdrand-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86nasm.pl
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Generating rdrand-x86_64.S"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/local/bin/cmake -E make_directory .
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/perl /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/rand/asm/rdrand-x86_64.pl elf rdrand-x86_64.S
+crypto/fipsmodule/rdrand-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/rand/asm/rdrand-x86_64.pl
+crypto/fipsmodule/rdrand-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/arm-xlate.pl
+crypto/fipsmodule/rdrand-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/ppc-xlate.pl
+crypto/fipsmodule/rdrand-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86_64-xlate.pl
+crypto/fipsmodule/rdrand-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86asm.pl
+crypto/fipsmodule/rdrand-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86gas.pl
+crypto/fipsmodule/rdrand-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86masm.pl
+crypto/fipsmodule/rdrand-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86nasm.pl
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Generating rdrand-x86_64.S"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/local/bin/cmake -E make_directory .
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/perl /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/rand/asm/rdrand-x86_64.pl elf rdrand-x86_64.S
 
-crypto/fipsmodule/rsaz-avx2.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/bn/asm/rsaz-avx2.pl
-crypto/fipsmodule/rsaz-avx2.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/arm-xlate.pl
-crypto/fipsmodule/rsaz-avx2.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/ppc-xlate.pl
-crypto/fipsmodule/rsaz-avx2.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86_64-xlate.pl
-crypto/fipsmodule/rsaz-avx2.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86asm.pl
-crypto/fipsmodule/rsaz-avx2.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86gas.pl
-crypto/fipsmodule/rsaz-avx2.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86masm.pl
-crypto/fipsmodule/rsaz-avx2.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86nasm.pl
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Generating rsaz-avx2.S"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/local/bin/cmake -E make_directory .
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/perl /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/bn/asm/rsaz-avx2.pl elf rsaz-avx2.S
+crypto/fipsmodule/rsaz-avx2.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/bn/asm/rsaz-avx2.pl
+crypto/fipsmodule/rsaz-avx2.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/arm-xlate.pl
+crypto/fipsmodule/rsaz-avx2.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/ppc-xlate.pl
+crypto/fipsmodule/rsaz-avx2.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86_64-xlate.pl
+crypto/fipsmodule/rsaz-avx2.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86asm.pl
+crypto/fipsmodule/rsaz-avx2.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86gas.pl
+crypto/fipsmodule/rsaz-avx2.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86masm.pl
+crypto/fipsmodule/rsaz-avx2.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86nasm.pl
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Generating rsaz-avx2.S"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/local/bin/cmake -E make_directory .
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/perl /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/bn/asm/rsaz-avx2.pl elf rsaz-avx2.S
 
-crypto/fipsmodule/sha1-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/sha/asm/sha1-x86_64.pl
-crypto/fipsmodule/sha1-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/arm-xlate.pl
-crypto/fipsmodule/sha1-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/ppc-xlate.pl
-crypto/fipsmodule/sha1-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86_64-xlate.pl
-crypto/fipsmodule/sha1-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86asm.pl
-crypto/fipsmodule/sha1-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86gas.pl
-crypto/fipsmodule/sha1-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86masm.pl
-crypto/fipsmodule/sha1-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86nasm.pl
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Generating sha1-x86_64.S"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/local/bin/cmake -E make_directory .
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/perl /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/sha/asm/sha1-x86_64.pl elf sha1-x86_64.S
+crypto/fipsmodule/sha1-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/sha/asm/sha1-x86_64.pl
+crypto/fipsmodule/sha1-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/arm-xlate.pl
+crypto/fipsmodule/sha1-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/ppc-xlate.pl
+crypto/fipsmodule/sha1-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86_64-xlate.pl
+crypto/fipsmodule/sha1-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86asm.pl
+crypto/fipsmodule/sha1-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86gas.pl
+crypto/fipsmodule/sha1-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86masm.pl
+crypto/fipsmodule/sha1-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86nasm.pl
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Generating sha1-x86_64.S"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/local/bin/cmake -E make_directory .
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/perl /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/sha/asm/sha1-x86_64.pl elf sha1-x86_64.S
 
-crypto/fipsmodule/sha256-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/sha/asm/sha512-x86_64.pl
-crypto/fipsmodule/sha256-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/arm-xlate.pl
-crypto/fipsmodule/sha256-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/ppc-xlate.pl
-crypto/fipsmodule/sha256-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86_64-xlate.pl
-crypto/fipsmodule/sha256-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86asm.pl
-crypto/fipsmodule/sha256-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86gas.pl
-crypto/fipsmodule/sha256-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86masm.pl
-crypto/fipsmodule/sha256-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86nasm.pl
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Generating sha256-x86_64.S"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/local/bin/cmake -E make_directory .
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/perl /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/sha/asm/sha512-x86_64.pl elf sha256-x86_64.S
+crypto/fipsmodule/sha256-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/sha/asm/sha512-x86_64.pl
+crypto/fipsmodule/sha256-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/arm-xlate.pl
+crypto/fipsmodule/sha256-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/ppc-xlate.pl
+crypto/fipsmodule/sha256-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86_64-xlate.pl
+crypto/fipsmodule/sha256-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86asm.pl
+crypto/fipsmodule/sha256-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86gas.pl
+crypto/fipsmodule/sha256-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86masm.pl
+crypto/fipsmodule/sha256-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86nasm.pl
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Generating sha256-x86_64.S"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/local/bin/cmake -E make_directory .
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/perl /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/sha/asm/sha512-x86_64.pl elf sha256-x86_64.S
 
-crypto/fipsmodule/sha512-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/sha/asm/sha512-x86_64.pl
-crypto/fipsmodule/sha512-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/arm-xlate.pl
-crypto/fipsmodule/sha512-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/ppc-xlate.pl
-crypto/fipsmodule/sha512-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86_64-xlate.pl
-crypto/fipsmodule/sha512-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86asm.pl
-crypto/fipsmodule/sha512-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86gas.pl
-crypto/fipsmodule/sha512-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86masm.pl
-crypto/fipsmodule/sha512-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86nasm.pl
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Generating sha512-x86_64.S"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/local/bin/cmake -E make_directory .
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/perl /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/sha/asm/sha512-x86_64.pl elf sha512-x86_64.S
+crypto/fipsmodule/sha512-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/sha/asm/sha512-x86_64.pl
+crypto/fipsmodule/sha512-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/arm-xlate.pl
+crypto/fipsmodule/sha512-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/ppc-xlate.pl
+crypto/fipsmodule/sha512-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86_64-xlate.pl
+crypto/fipsmodule/sha512-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86asm.pl
+crypto/fipsmodule/sha512-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86gas.pl
+crypto/fipsmodule/sha512-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86masm.pl
+crypto/fipsmodule/sha512-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86nasm.pl
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Generating sha512-x86_64.S"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/local/bin/cmake -E make_directory .
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/perl /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/sha/asm/sha512-x86_64.pl elf sha512-x86_64.S
 
-crypto/fipsmodule/vpaes-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/aes/asm/vpaes-x86_64.pl
-crypto/fipsmodule/vpaes-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/arm-xlate.pl
-crypto/fipsmodule/vpaes-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/ppc-xlate.pl
-crypto/fipsmodule/vpaes-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86_64-xlate.pl
-crypto/fipsmodule/vpaes-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86asm.pl
-crypto/fipsmodule/vpaes-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86gas.pl
-crypto/fipsmodule/vpaes-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86masm.pl
-crypto/fipsmodule/vpaes-x86_64.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86nasm.pl
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Generating vpaes-x86_64.S"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/local/bin/cmake -E make_directory .
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/perl /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/aes/asm/vpaes-x86_64.pl elf vpaes-x86_64.S
+crypto/fipsmodule/vpaes-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/aes/asm/vpaes-x86_64.pl
+crypto/fipsmodule/vpaes-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/arm-xlate.pl
+crypto/fipsmodule/vpaes-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/ppc-xlate.pl
+crypto/fipsmodule/vpaes-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86_64-xlate.pl
+crypto/fipsmodule/vpaes-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86asm.pl
+crypto/fipsmodule/vpaes-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86gas.pl
+crypto/fipsmodule/vpaes-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86masm.pl
+crypto/fipsmodule/vpaes-x86_64.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86nasm.pl
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Generating vpaes-x86_64.S"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/local/bin/cmake -E make_directory .
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/perl /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/aes/asm/vpaes-x86_64.pl elf vpaes-x86_64.S
 
-crypto/fipsmodule/x86_64-mont5.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/bn/asm/x86_64-mont5.pl
-crypto/fipsmodule/x86_64-mont5.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/arm-xlate.pl
-crypto/fipsmodule/x86_64-mont5.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/ppc-xlate.pl
-crypto/fipsmodule/x86_64-mont5.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86_64-xlate.pl
-crypto/fipsmodule/x86_64-mont5.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86asm.pl
-crypto/fipsmodule/x86_64-mont5.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86gas.pl
-crypto/fipsmodule/x86_64-mont5.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86masm.pl
-crypto/fipsmodule/x86_64-mont5.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86nasm.pl
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Generating x86_64-mont5.S"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/local/bin/cmake -E make_directory .
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/perl /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/bn/asm/x86_64-mont5.pl elf x86_64-mont5.S
+crypto/fipsmodule/x86_64-mont5.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/bn/asm/x86_64-mont5.pl
+crypto/fipsmodule/x86_64-mont5.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/arm-xlate.pl
+crypto/fipsmodule/x86_64-mont5.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/ppc-xlate.pl
+crypto/fipsmodule/x86_64-mont5.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86_64-xlate.pl
+crypto/fipsmodule/x86_64-mont5.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86asm.pl
+crypto/fipsmodule/x86_64-mont5.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86gas.pl
+crypto/fipsmodule/x86_64-mont5.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86masm.pl
+crypto/fipsmodule/x86_64-mont5.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86nasm.pl
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Generating x86_64-mont5.S"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/local/bin/cmake -E make_directory .
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/perl /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/bn/asm/x86_64-mont5.pl elf x86_64-mont5.S
 
-crypto/fipsmodule/x86_64-mont.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/bn/asm/x86_64-mont.pl
-crypto/fipsmodule/x86_64-mont.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/arm-xlate.pl
-crypto/fipsmodule/x86_64-mont.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/ppc-xlate.pl
-crypto/fipsmodule/x86_64-mont.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86_64-xlate.pl
-crypto/fipsmodule/x86_64-mont.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86asm.pl
-crypto/fipsmodule/x86_64-mont.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86gas.pl
-crypto/fipsmodule/x86_64-mont.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86masm.pl
-crypto/fipsmodule/x86_64-mont.S: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/perlasm/x86nasm.pl
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Generating x86_64-mont.S"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/local/bin/cmake -E make_directory .
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/perl /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/bn/asm/x86_64-mont.pl elf x86_64-mont.S
+crypto/fipsmodule/x86_64-mont.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/bn/asm/x86_64-mont.pl
+crypto/fipsmodule/x86_64-mont.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/arm-xlate.pl
+crypto/fipsmodule/x86_64-mont.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/ppc-xlate.pl
+crypto/fipsmodule/x86_64-mont.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86_64-xlate.pl
+crypto/fipsmodule/x86_64-mont.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86asm.pl
+crypto/fipsmodule/x86_64-mont.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86gas.pl
+crypto/fipsmodule/x86_64-mont.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86masm.pl
+crypto/fipsmodule/x86_64-mont.S: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/perlasm/x86nasm.pl
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Generating x86_64-mont.S"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/local/bin/cmake -E make_directory .
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/perl /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/bn/asm/x86_64-mont.pl elf x86_64-mont.S
 
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/bcm.c.o: crypto/fipsmodule/CMakeFiles/fipsmodule.dir/flags.make
-crypto/fipsmodule/CMakeFiles/fipsmodule.dir/bcm.c.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/bcm.c
+crypto/fipsmodule/CMakeFiles/fipsmodule.dir/bcm.c.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/bcm.c
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/bcm.c.o: crypto/fipsmodule/CMakeFiles/fipsmodule.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building C object crypto/fipsmodule/CMakeFiles/fipsmodule.dir/bcm.c.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT crypto/fipsmodule/CMakeFiles/fipsmodule.dir/bcm.c.o -MF CMakeFiles/fipsmodule.dir/bcm.c.o.d -o CMakeFiles/fipsmodule.dir/bcm.c.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/bcm.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building C object crypto/fipsmodule/CMakeFiles/fipsmodule.dir/bcm.c.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT crypto/fipsmodule/CMakeFiles/fipsmodule.dir/bcm.c.o -MF CMakeFiles/fipsmodule.dir/bcm.c.o.d -o CMakeFiles/fipsmodule.dir/bcm.c.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/bcm.c
 
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/bcm.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/fipsmodule.dir/bcm.c.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/bcm.c > CMakeFiles/fipsmodule.dir/bcm.c.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/bcm.c > CMakeFiles/fipsmodule.dir/bcm.c.i
 
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/bcm.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/fipsmodule.dir/bcm.c.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/bcm.c -o CMakeFiles/fipsmodule.dir/bcm.c.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/bcm.c -o CMakeFiles/fipsmodule.dir/bcm.c.s
 
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/fips_shared_support.c.o: crypto/fipsmodule/CMakeFiles/fipsmodule.dir/flags.make
-crypto/fipsmodule/CMakeFiles/fipsmodule.dir/fips_shared_support.c.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/fips_shared_support.c
+crypto/fipsmodule/CMakeFiles/fipsmodule.dir/fips_shared_support.c.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/fips_shared_support.c
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/fips_shared_support.c.o: crypto/fipsmodule/CMakeFiles/fipsmodule.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building C object crypto/fipsmodule/CMakeFiles/fipsmodule.dir/fips_shared_support.c.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT crypto/fipsmodule/CMakeFiles/fipsmodule.dir/fips_shared_support.c.o -MF CMakeFiles/fipsmodule.dir/fips_shared_support.c.o.d -o CMakeFiles/fipsmodule.dir/fips_shared_support.c.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/fips_shared_support.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building C object crypto/fipsmodule/CMakeFiles/fipsmodule.dir/fips_shared_support.c.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT crypto/fipsmodule/CMakeFiles/fipsmodule.dir/fips_shared_support.c.o -MF CMakeFiles/fipsmodule.dir/fips_shared_support.c.o.d -o CMakeFiles/fipsmodule.dir/fips_shared_support.c.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/fips_shared_support.c
 
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/fips_shared_support.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/fipsmodule.dir/fips_shared_support.c.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/fips_shared_support.c > CMakeFiles/fipsmodule.dir/fips_shared_support.c.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/fips_shared_support.c > CMakeFiles/fipsmodule.dir/fips_shared_support.c.i
 
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/fips_shared_support.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/fipsmodule.dir/fips_shared_support.c.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/fips_shared_support.c -o CMakeFiles/fipsmodule.dir/fips_shared_support.c.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/fips_shared_support.c -o CMakeFiles/fipsmodule.dir/fips_shared_support.c.s
 
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/is_fips.c.o: crypto/fipsmodule/CMakeFiles/fipsmodule.dir/flags.make
-crypto/fipsmodule/CMakeFiles/fipsmodule.dir/is_fips.c.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/is_fips.c
+crypto/fipsmodule/CMakeFiles/fipsmodule.dir/is_fips.c.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/is_fips.c
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/is_fips.c.o: crypto/fipsmodule/CMakeFiles/fipsmodule.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building C object crypto/fipsmodule/CMakeFiles/fipsmodule.dir/is_fips.c.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT crypto/fipsmodule/CMakeFiles/fipsmodule.dir/is_fips.c.o -MF CMakeFiles/fipsmodule.dir/is_fips.c.o.d -o CMakeFiles/fipsmodule.dir/is_fips.c.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/is_fips.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building C object crypto/fipsmodule/CMakeFiles/fipsmodule.dir/is_fips.c.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT crypto/fipsmodule/CMakeFiles/fipsmodule.dir/is_fips.c.o -MF CMakeFiles/fipsmodule.dir/is_fips.c.o.d -o CMakeFiles/fipsmodule.dir/is_fips.c.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/is_fips.c
 
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/is_fips.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/fipsmodule.dir/is_fips.c.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/is_fips.c > CMakeFiles/fipsmodule.dir/is_fips.c.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/is_fips.c > CMakeFiles/fipsmodule.dir/is_fips.c.i
 
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/is_fips.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/fipsmodule.dir/is_fips.c.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/is_fips.c -o CMakeFiles/fipsmodule.dir/is_fips.c.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/is_fips.c -o CMakeFiles/fipsmodule.dir/is_fips.c.s
 
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/aesni-gcm-x86_64.S.o: crypto/fipsmodule/CMakeFiles/fipsmodule.dir/flags.make
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/aesni-gcm-x86_64.S.o: crypto/fipsmodule/aesni-gcm-x86_64.S
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building ASM object crypto/fipsmodule/CMakeFiles/fipsmodule.dir/aesni-gcm-x86_64.S.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/fipsmodule.dir/aesni-gcm-x86_64.S.o -c /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/aesni-gcm-x86_64.S
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building ASM object crypto/fipsmodule/CMakeFiles/fipsmodule.dir/aesni-gcm-x86_64.S.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/fipsmodule.dir/aesni-gcm-x86_64.S.o -c /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/aesni-gcm-x86_64.S
 
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/aesni-gcm-x86_64.S.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing ASM source to CMakeFiles/fipsmodule.dir/aesni-gcm-x86_64.S.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/aesni-gcm-x86_64.S > CMakeFiles/fipsmodule.dir/aesni-gcm-x86_64.S.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -E /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/aesni-gcm-x86_64.S > CMakeFiles/fipsmodule.dir/aesni-gcm-x86_64.S.i
 
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/aesni-gcm-x86_64.S.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling ASM source to assembly CMakeFiles/fipsmodule.dir/aesni-gcm-x86_64.S.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/aesni-gcm-x86_64.S -o CMakeFiles/fipsmodule.dir/aesni-gcm-x86_64.S.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -S /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/aesni-gcm-x86_64.S -o CMakeFiles/fipsmodule.dir/aesni-gcm-x86_64.S.s
 
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/aesni-x86_64.S.o: crypto/fipsmodule/CMakeFiles/fipsmodule.dir/flags.make
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/aesni-x86_64.S.o: crypto/fipsmodule/aesni-x86_64.S
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building ASM object crypto/fipsmodule/CMakeFiles/fipsmodule.dir/aesni-x86_64.S.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/fipsmodule.dir/aesni-x86_64.S.o -c /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/aesni-x86_64.S
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building ASM object crypto/fipsmodule/CMakeFiles/fipsmodule.dir/aesni-x86_64.S.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/fipsmodule.dir/aesni-x86_64.S.o -c /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/aesni-x86_64.S
 
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/aesni-x86_64.S.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing ASM source to CMakeFiles/fipsmodule.dir/aesni-x86_64.S.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/aesni-x86_64.S > CMakeFiles/fipsmodule.dir/aesni-x86_64.S.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -E /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/aesni-x86_64.S > CMakeFiles/fipsmodule.dir/aesni-x86_64.S.i
 
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/aesni-x86_64.S.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling ASM source to assembly CMakeFiles/fipsmodule.dir/aesni-x86_64.S.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/aesni-x86_64.S -o CMakeFiles/fipsmodule.dir/aesni-x86_64.S.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -S /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/aesni-x86_64.S -o CMakeFiles/fipsmodule.dir/aesni-x86_64.S.s
 
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/ghash-ssse3-x86_64.S.o: crypto/fipsmodule/CMakeFiles/fipsmodule.dir/flags.make
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/ghash-ssse3-x86_64.S.o: crypto/fipsmodule/ghash-ssse3-x86_64.S
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building ASM object crypto/fipsmodule/CMakeFiles/fipsmodule.dir/ghash-ssse3-x86_64.S.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/fipsmodule.dir/ghash-ssse3-x86_64.S.o -c /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/ghash-ssse3-x86_64.S
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building ASM object crypto/fipsmodule/CMakeFiles/fipsmodule.dir/ghash-ssse3-x86_64.S.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/fipsmodule.dir/ghash-ssse3-x86_64.S.o -c /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/ghash-ssse3-x86_64.S
 
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/ghash-ssse3-x86_64.S.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing ASM source to CMakeFiles/fipsmodule.dir/ghash-ssse3-x86_64.S.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/ghash-ssse3-x86_64.S > CMakeFiles/fipsmodule.dir/ghash-ssse3-x86_64.S.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -E /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/ghash-ssse3-x86_64.S > CMakeFiles/fipsmodule.dir/ghash-ssse3-x86_64.S.i
 
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/ghash-ssse3-x86_64.S.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling ASM source to assembly CMakeFiles/fipsmodule.dir/ghash-ssse3-x86_64.S.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/ghash-ssse3-x86_64.S -o CMakeFiles/fipsmodule.dir/ghash-ssse3-x86_64.S.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -S /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/ghash-ssse3-x86_64.S -o CMakeFiles/fipsmodule.dir/ghash-ssse3-x86_64.S.s
 
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/ghash-x86_64.S.o: crypto/fipsmodule/CMakeFiles/fipsmodule.dir/flags.make
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/ghash-x86_64.S.o: crypto/fipsmodule/ghash-x86_64.S
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building ASM object crypto/fipsmodule/CMakeFiles/fipsmodule.dir/ghash-x86_64.S.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/fipsmodule.dir/ghash-x86_64.S.o -c /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/ghash-x86_64.S
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building ASM object crypto/fipsmodule/CMakeFiles/fipsmodule.dir/ghash-x86_64.S.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/fipsmodule.dir/ghash-x86_64.S.o -c /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/ghash-x86_64.S
 
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/ghash-x86_64.S.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing ASM source to CMakeFiles/fipsmodule.dir/ghash-x86_64.S.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/ghash-x86_64.S > CMakeFiles/fipsmodule.dir/ghash-x86_64.S.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -E /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/ghash-x86_64.S > CMakeFiles/fipsmodule.dir/ghash-x86_64.S.i
 
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/ghash-x86_64.S.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling ASM source to assembly CMakeFiles/fipsmodule.dir/ghash-x86_64.S.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/ghash-x86_64.S -o CMakeFiles/fipsmodule.dir/ghash-x86_64.S.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -S /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/ghash-x86_64.S -o CMakeFiles/fipsmodule.dir/ghash-x86_64.S.s
 
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/md5-x86_64.S.o: crypto/fipsmodule/CMakeFiles/fipsmodule.dir/flags.make
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/md5-x86_64.S.o: crypto/fipsmodule/md5-x86_64.S
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building ASM object crypto/fipsmodule/CMakeFiles/fipsmodule.dir/md5-x86_64.S.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/fipsmodule.dir/md5-x86_64.S.o -c /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/md5-x86_64.S
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building ASM object crypto/fipsmodule/CMakeFiles/fipsmodule.dir/md5-x86_64.S.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/fipsmodule.dir/md5-x86_64.S.o -c /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/md5-x86_64.S
 
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/md5-x86_64.S.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing ASM source to CMakeFiles/fipsmodule.dir/md5-x86_64.S.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/md5-x86_64.S > CMakeFiles/fipsmodule.dir/md5-x86_64.S.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -E /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/md5-x86_64.S > CMakeFiles/fipsmodule.dir/md5-x86_64.S.i
 
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/md5-x86_64.S.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling ASM source to assembly CMakeFiles/fipsmodule.dir/md5-x86_64.S.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/md5-x86_64.S -o CMakeFiles/fipsmodule.dir/md5-x86_64.S.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -S /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/md5-x86_64.S -o CMakeFiles/fipsmodule.dir/md5-x86_64.S.s
 
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/p256-x86_64-asm.S.o: crypto/fipsmodule/CMakeFiles/fipsmodule.dir/flags.make
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/p256-x86_64-asm.S.o: crypto/fipsmodule/p256-x86_64-asm.S
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building ASM object crypto/fipsmodule/CMakeFiles/fipsmodule.dir/p256-x86_64-asm.S.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/fipsmodule.dir/p256-x86_64-asm.S.o -c /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/p256-x86_64-asm.S
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building ASM object crypto/fipsmodule/CMakeFiles/fipsmodule.dir/p256-x86_64-asm.S.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/fipsmodule.dir/p256-x86_64-asm.S.o -c /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/p256-x86_64-asm.S
 
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/p256-x86_64-asm.S.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing ASM source to CMakeFiles/fipsmodule.dir/p256-x86_64-asm.S.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/p256-x86_64-asm.S > CMakeFiles/fipsmodule.dir/p256-x86_64-asm.S.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -E /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/p256-x86_64-asm.S > CMakeFiles/fipsmodule.dir/p256-x86_64-asm.S.i
 
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/p256-x86_64-asm.S.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling ASM source to assembly CMakeFiles/fipsmodule.dir/p256-x86_64-asm.S.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/p256-x86_64-asm.S -o CMakeFiles/fipsmodule.dir/p256-x86_64-asm.S.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -S /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/p256-x86_64-asm.S -o CMakeFiles/fipsmodule.dir/p256-x86_64-asm.S.s
 
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/p256_beeu-x86_64-asm.S.o: crypto/fipsmodule/CMakeFiles/fipsmodule.dir/flags.make
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/p256_beeu-x86_64-asm.S.o: crypto/fipsmodule/p256_beeu-x86_64-asm.S
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building ASM object crypto/fipsmodule/CMakeFiles/fipsmodule.dir/p256_beeu-x86_64-asm.S.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/fipsmodule.dir/p256_beeu-x86_64-asm.S.o -c /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/p256_beeu-x86_64-asm.S
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building ASM object crypto/fipsmodule/CMakeFiles/fipsmodule.dir/p256_beeu-x86_64-asm.S.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/fipsmodule.dir/p256_beeu-x86_64-asm.S.o -c /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/p256_beeu-x86_64-asm.S
 
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/p256_beeu-x86_64-asm.S.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing ASM source to CMakeFiles/fipsmodule.dir/p256_beeu-x86_64-asm.S.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/p256_beeu-x86_64-asm.S > CMakeFiles/fipsmodule.dir/p256_beeu-x86_64-asm.S.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -E /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/p256_beeu-x86_64-asm.S > CMakeFiles/fipsmodule.dir/p256_beeu-x86_64-asm.S.i
 
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/p256_beeu-x86_64-asm.S.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling ASM source to assembly CMakeFiles/fipsmodule.dir/p256_beeu-x86_64-asm.S.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/p256_beeu-x86_64-asm.S -o CMakeFiles/fipsmodule.dir/p256_beeu-x86_64-asm.S.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -S /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/p256_beeu-x86_64-asm.S -o CMakeFiles/fipsmodule.dir/p256_beeu-x86_64-asm.S.s
 
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/rdrand-x86_64.S.o: crypto/fipsmodule/CMakeFiles/fipsmodule.dir/flags.make
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/rdrand-x86_64.S.o: crypto/fipsmodule/rdrand-x86_64.S
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building ASM object crypto/fipsmodule/CMakeFiles/fipsmodule.dir/rdrand-x86_64.S.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/fipsmodule.dir/rdrand-x86_64.S.o -c /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/rdrand-x86_64.S
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building ASM object crypto/fipsmodule/CMakeFiles/fipsmodule.dir/rdrand-x86_64.S.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/fipsmodule.dir/rdrand-x86_64.S.o -c /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/rdrand-x86_64.S
 
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/rdrand-x86_64.S.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing ASM source to CMakeFiles/fipsmodule.dir/rdrand-x86_64.S.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/rdrand-x86_64.S > CMakeFiles/fipsmodule.dir/rdrand-x86_64.S.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -E /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/rdrand-x86_64.S > CMakeFiles/fipsmodule.dir/rdrand-x86_64.S.i
 
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/rdrand-x86_64.S.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling ASM source to assembly CMakeFiles/fipsmodule.dir/rdrand-x86_64.S.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/rdrand-x86_64.S -o CMakeFiles/fipsmodule.dir/rdrand-x86_64.S.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -S /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/rdrand-x86_64.S -o CMakeFiles/fipsmodule.dir/rdrand-x86_64.S.s
 
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/rsaz-avx2.S.o: crypto/fipsmodule/CMakeFiles/fipsmodule.dir/flags.make
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/rsaz-avx2.S.o: crypto/fipsmodule/rsaz-avx2.S
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building ASM object crypto/fipsmodule/CMakeFiles/fipsmodule.dir/rsaz-avx2.S.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/fipsmodule.dir/rsaz-avx2.S.o -c /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/rsaz-avx2.S
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building ASM object crypto/fipsmodule/CMakeFiles/fipsmodule.dir/rsaz-avx2.S.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/fipsmodule.dir/rsaz-avx2.S.o -c /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/rsaz-avx2.S
 
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/rsaz-avx2.S.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing ASM source to CMakeFiles/fipsmodule.dir/rsaz-avx2.S.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/rsaz-avx2.S > CMakeFiles/fipsmodule.dir/rsaz-avx2.S.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -E /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/rsaz-avx2.S > CMakeFiles/fipsmodule.dir/rsaz-avx2.S.i
 
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/rsaz-avx2.S.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling ASM source to assembly CMakeFiles/fipsmodule.dir/rsaz-avx2.S.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/rsaz-avx2.S -o CMakeFiles/fipsmodule.dir/rsaz-avx2.S.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -S /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/rsaz-avx2.S -o CMakeFiles/fipsmodule.dir/rsaz-avx2.S.s
 
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/sha1-x86_64.S.o: crypto/fipsmodule/CMakeFiles/fipsmodule.dir/flags.make
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/sha1-x86_64.S.o: crypto/fipsmodule/sha1-x86_64.S
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building ASM object crypto/fipsmodule/CMakeFiles/fipsmodule.dir/sha1-x86_64.S.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/fipsmodule.dir/sha1-x86_64.S.o -c /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/sha1-x86_64.S
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building ASM object crypto/fipsmodule/CMakeFiles/fipsmodule.dir/sha1-x86_64.S.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/fipsmodule.dir/sha1-x86_64.S.o -c /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/sha1-x86_64.S
 
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/sha1-x86_64.S.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing ASM source to CMakeFiles/fipsmodule.dir/sha1-x86_64.S.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/sha1-x86_64.S > CMakeFiles/fipsmodule.dir/sha1-x86_64.S.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -E /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/sha1-x86_64.S > CMakeFiles/fipsmodule.dir/sha1-x86_64.S.i
 
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/sha1-x86_64.S.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling ASM source to assembly CMakeFiles/fipsmodule.dir/sha1-x86_64.S.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/sha1-x86_64.S -o CMakeFiles/fipsmodule.dir/sha1-x86_64.S.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -S /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/sha1-x86_64.S -o CMakeFiles/fipsmodule.dir/sha1-x86_64.S.s
 
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/sha256-x86_64.S.o: crypto/fipsmodule/CMakeFiles/fipsmodule.dir/flags.make
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/sha256-x86_64.S.o: crypto/fipsmodule/sha256-x86_64.S
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building ASM object crypto/fipsmodule/CMakeFiles/fipsmodule.dir/sha256-x86_64.S.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/fipsmodule.dir/sha256-x86_64.S.o -c /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/sha256-x86_64.S
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building ASM object crypto/fipsmodule/CMakeFiles/fipsmodule.dir/sha256-x86_64.S.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/fipsmodule.dir/sha256-x86_64.S.o -c /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/sha256-x86_64.S
 
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/sha256-x86_64.S.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing ASM source to CMakeFiles/fipsmodule.dir/sha256-x86_64.S.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/sha256-x86_64.S > CMakeFiles/fipsmodule.dir/sha256-x86_64.S.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -E /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/sha256-x86_64.S > CMakeFiles/fipsmodule.dir/sha256-x86_64.S.i
 
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/sha256-x86_64.S.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling ASM source to assembly CMakeFiles/fipsmodule.dir/sha256-x86_64.S.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/sha256-x86_64.S -o CMakeFiles/fipsmodule.dir/sha256-x86_64.S.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -S /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/sha256-x86_64.S -o CMakeFiles/fipsmodule.dir/sha256-x86_64.S.s
 
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/sha512-x86_64.S.o: crypto/fipsmodule/CMakeFiles/fipsmodule.dir/flags.make
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/sha512-x86_64.S.o: crypto/fipsmodule/sha512-x86_64.S
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building ASM object crypto/fipsmodule/CMakeFiles/fipsmodule.dir/sha512-x86_64.S.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/fipsmodule.dir/sha512-x86_64.S.o -c /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/sha512-x86_64.S
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building ASM object crypto/fipsmodule/CMakeFiles/fipsmodule.dir/sha512-x86_64.S.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/fipsmodule.dir/sha512-x86_64.S.o -c /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/sha512-x86_64.S
 
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/sha512-x86_64.S.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing ASM source to CMakeFiles/fipsmodule.dir/sha512-x86_64.S.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/sha512-x86_64.S > CMakeFiles/fipsmodule.dir/sha512-x86_64.S.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -E /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/sha512-x86_64.S > CMakeFiles/fipsmodule.dir/sha512-x86_64.S.i
 
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/sha512-x86_64.S.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling ASM source to assembly CMakeFiles/fipsmodule.dir/sha512-x86_64.S.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/sha512-x86_64.S -o CMakeFiles/fipsmodule.dir/sha512-x86_64.S.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -S /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/sha512-x86_64.S -o CMakeFiles/fipsmodule.dir/sha512-x86_64.S.s
 
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/vpaes-x86_64.S.o: crypto/fipsmodule/CMakeFiles/fipsmodule.dir/flags.make
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/vpaes-x86_64.S.o: crypto/fipsmodule/vpaes-x86_64.S
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building ASM object crypto/fipsmodule/CMakeFiles/fipsmodule.dir/vpaes-x86_64.S.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/fipsmodule.dir/vpaes-x86_64.S.o -c /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/vpaes-x86_64.S
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building ASM object crypto/fipsmodule/CMakeFiles/fipsmodule.dir/vpaes-x86_64.S.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/fipsmodule.dir/vpaes-x86_64.S.o -c /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/vpaes-x86_64.S
 
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/vpaes-x86_64.S.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing ASM source to CMakeFiles/fipsmodule.dir/vpaes-x86_64.S.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/vpaes-x86_64.S > CMakeFiles/fipsmodule.dir/vpaes-x86_64.S.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -E /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/vpaes-x86_64.S > CMakeFiles/fipsmodule.dir/vpaes-x86_64.S.i
 
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/vpaes-x86_64.S.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling ASM source to assembly CMakeFiles/fipsmodule.dir/vpaes-x86_64.S.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/vpaes-x86_64.S -o CMakeFiles/fipsmodule.dir/vpaes-x86_64.S.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -S /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/vpaes-x86_64.S -o CMakeFiles/fipsmodule.dir/vpaes-x86_64.S.s
 
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/x86_64-mont5.S.o: crypto/fipsmodule/CMakeFiles/fipsmodule.dir/flags.make
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/x86_64-mont5.S.o: crypto/fipsmodule/x86_64-mont5.S
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building ASM object crypto/fipsmodule/CMakeFiles/fipsmodule.dir/x86_64-mont5.S.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/fipsmodule.dir/x86_64-mont5.S.o -c /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/x86_64-mont5.S
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building ASM object crypto/fipsmodule/CMakeFiles/fipsmodule.dir/x86_64-mont5.S.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/fipsmodule.dir/x86_64-mont5.S.o -c /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/x86_64-mont5.S
 
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/x86_64-mont5.S.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing ASM source to CMakeFiles/fipsmodule.dir/x86_64-mont5.S.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/x86_64-mont5.S > CMakeFiles/fipsmodule.dir/x86_64-mont5.S.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -E /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/x86_64-mont5.S > CMakeFiles/fipsmodule.dir/x86_64-mont5.S.i
 
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/x86_64-mont5.S.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling ASM source to assembly CMakeFiles/fipsmodule.dir/x86_64-mont5.S.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/x86_64-mont5.S -o CMakeFiles/fipsmodule.dir/x86_64-mont5.S.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -S /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/x86_64-mont5.S -o CMakeFiles/fipsmodule.dir/x86_64-mont5.S.s
 
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/x86_64-mont.S.o: crypto/fipsmodule/CMakeFiles/fipsmodule.dir/flags.make
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/x86_64-mont.S.o: crypto/fipsmodule/x86_64-mont.S
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building ASM object crypto/fipsmodule/CMakeFiles/fipsmodule.dir/x86_64-mont.S.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/fipsmodule.dir/x86_64-mont.S.o -c /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/x86_64-mont.S
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building ASM object crypto/fipsmodule/CMakeFiles/fipsmodule.dir/x86_64-mont.S.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -o CMakeFiles/fipsmodule.dir/x86_64-mont.S.o -c /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/x86_64-mont.S
 
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/x86_64-mont.S.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing ASM source to CMakeFiles/fipsmodule.dir/x86_64-mont.S.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/x86_64-mont.S > CMakeFiles/fipsmodule.dir/x86_64-mont.S.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -E /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/x86_64-mont.S > CMakeFiles/fipsmodule.dir/x86_64-mont.S.i
 
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/x86_64-mont.S.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling ASM source to assembly CMakeFiles/fipsmodule.dir/x86_64-mont.S.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/x86_64-mont.S -o CMakeFiles/fipsmodule.dir/x86_64-mont.S.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && /usr/bin/cc $(ASM_DEFINES) $(ASM_INCLUDES) $(ASM_FLAGS) -S /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/x86_64-mont.S -o CMakeFiles/fipsmodule.dir/x86_64-mont.S.s
 
 fipsmodule: crypto/fipsmodule/CMakeFiles/fipsmodule.dir/bcm.c.o
 fipsmodule: crypto/fipsmodule/CMakeFiles/fipsmodule.dir/fips_shared_support.c.o
@@ -512,7 +512,7 @@ crypto/fipsmodule/CMakeFiles/fipsmodule.dir/build: fipsmodule
 .PHONY : crypto/fipsmodule/CMakeFiles/fipsmodule.dir/build
 
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/clean:
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && $(CMAKE_COMMAND) -P CMakeFiles/fipsmodule.dir/cmake_clean.cmake
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule && $(CMAKE_COMMAND) -P CMakeFiles/fipsmodule.dir/cmake_clean.cmake
 .PHONY : crypto/fipsmodule/CMakeFiles/fipsmodule.dir/clean
 
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/depend: crypto/fipsmodule/aesni-gcm-x86_64.S
@@ -530,6 +530,6 @@ crypto/fipsmodule/CMakeFiles/fipsmodule.dir/depend: crypto/fipsmodule/sha512-x86
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/depend: crypto/fipsmodule/vpaes-x86_64.S
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/depend: crypto/fipsmodule/x86_64-mont.S
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/depend: crypto/fipsmodule/x86_64-mont5.S
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/qwe/Desktop/code/gm-dtp/deps/boringssl /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/CMakeFiles/fipsmodule.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/qwe/Desktop/code/gmdtp/deps/boringssl /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/fipsmodule/CMakeFiles/fipsmodule.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : crypto/fipsmodule/CMakeFiles/fipsmodule.dir/depend
 

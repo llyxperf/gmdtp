@@ -1,8 +1,8 @@
-# Install script for directory: /home/qwe/Desktop/code/gm-dtp/deps/boringssl
+# Install script for directory: /home/qwe/Desktop/code/gmdtp/deps/boringssl
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out")
+  set(CMAKE_INSTALL_PREFIX "/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -44,13 +44,13 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/cmake_install.cmake")
-  include("/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/ssl/cmake_install.cmake")
-  include("/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/ssl/test/cmake_install.cmake")
-  include("/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/tool/cmake_install.cmake")
-  include("/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/util/fipstools/cavp/cmake_install.cmake")
-  include("/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/util/fipstools/acvp/modulewrapper/cmake_install.cmake")
-  include("/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/decrepit/cmake_install.cmake")
+  include("/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/cmake_install.cmake")
+  include("/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/ssl/cmake_install.cmake")
+  include("/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/ssl/test/cmake_install.cmake")
+  include("/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/tool/cmake_install.cmake")
+  include("/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/util/fipstools/cavp/cmake_install.cmake")
+  include("/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/util/fipstools/acvp/modulewrapper/cmake_install.cmake")
+  include("/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/decrepit/cmake_install.cmake")
 
 endif()
 
@@ -62,5 +62,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

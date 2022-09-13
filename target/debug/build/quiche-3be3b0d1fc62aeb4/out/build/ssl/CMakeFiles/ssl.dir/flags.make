@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = -DBORINGSSL_DISPATCH_TEST -DBORINGSSL_IMPLEMENTATION
 
-CXX_INCLUDES = -I/home/qwe/Desktop/code/gm-dtp/deps/boringssl/third_party/googletest/include -I/home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/../include
+CXX_INCLUDES = -I/home/qwe/Desktop/code/gmdtp/deps/boringssl/third_party/googletest/include -I/home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/../include
 
 CXX_FLAGS =  -ffunction-sections -fdata-sections -fPIC -m64 -Werror -Wformat=2 -Wsign-compare -Wmissing-field-initializers -Wwrite-strings -Wvla -ggdb -Wall -fvisibility=hidden -fno-common -Wno-free-nonheap-object -Wimplicit-fallthrough -Wmissing-declarations -std=c++11 -fno-exceptions -fno-rtti -Wshadow -g
 

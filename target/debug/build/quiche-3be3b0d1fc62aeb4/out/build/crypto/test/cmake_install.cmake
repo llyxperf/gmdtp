@@ -1,8 +1,8 @@
-# Install script for directory: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/test
+# Install script for directory: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/test
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out")
+  set(CMAKE_INSTALL_PREFIX "/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 

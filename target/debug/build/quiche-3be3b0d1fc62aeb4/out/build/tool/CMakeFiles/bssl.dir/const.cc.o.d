@@ -1,5 +1,5 @@
 tool/CMakeFiles/bssl.dir/const.cc.o: \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/tool/const.cc \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/tool/const.cc \
  /usr/include/stdc-predef.h \
  /usr/lib/gcc/x86_64-linux-gnu/7/include/stddef.h \
  /usr/lib/gcc/x86_64-linux-gnu/7/include/stdint.h /usr/include/stdint.h \
@@ -14,8 +14,8 @@ tool/CMakeFiles/bssl.dir/const.cc.o: \
  /usr/include/x86_64-linux-gnu/bits/wchar.h \
  /usr/include/x86_64-linux-gnu/bits/stdint-intn.h \
  /usr/include/x86_64-linux-gnu/bits/stdint-uintn.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/tool/internal.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/tool/../include/openssl/base.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/tool/internal.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/tool/../include/openssl/base.h \
  /usr/include/x86_64-linux-gnu/sys/types.h \
  /usr/include/x86_64-linux-gnu/bits/types/clock_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/clockid_t.h \
@@ -36,8 +36,8 @@ tool/CMakeFiles/bssl.dir/const.cc.o: \
  /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
  /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h \
  /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/tool/../include/openssl/is_boringssl.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/tool/../include/openssl/opensslconf.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/tool/../include/openssl/is_boringssl.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/tool/../include/openssl/opensslconf.h \
  /usr/include/c++/7/memory /usr/include/c++/7/bits/stl_algobase.h \
  /usr/include/x86_64-linux-gnu/c++/7/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/7/bits/os_defines.h \

@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto_test_data.cc" "CMakeFiles/crypto_test_data.dir/crypto_test_data.cc.o" "gcc" "CMakeFiles/crypto_test_data.dir/crypto_test_data.cc.o.d"
+  "/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto_test_data.cc" "CMakeFiles/crypto_test_data.dir/crypto_test_data.cc.o" "gcc" "CMakeFiles/crypto_test_data.dir/crypto_test_data.cc.o.d"
   )
 
 # Targets to which this target links.

@@ -1,8 +1,8 @@
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/is_fips.c.o: \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/is_fips.c \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/is_fips.c \
  /usr/include/stdc-predef.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/../include/openssl/crypto.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/../include/openssl/base.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/../include/openssl/crypto.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/../include/openssl/base.h \
  /usr/lib/gcc/x86_64-linux-gnu/7/include/stddef.h \
  /usr/lib/gcc/x86_64-linux-gnu/7/include/stdint.h /usr/include/stdint.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
@@ -24,14 +24,14 @@ crypto/fipsmodule/CMakeFiles/fipsmodule.dir/is_fips.c.o: \
  /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
  /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h \
  /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/../include/openssl/is_boringssl.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/../include/openssl/opensslconf.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/../include/openssl/sha.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/../include/openssl/mem.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/../include/openssl/is_boringssl.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/../include/openssl/opensslconf.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/../include/openssl/sha.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/../include/openssl/mem.h \
  /usr/include/stdlib.h /usr/include/x86_64-linux-gnu/bits/waitflags.h \
  /usr/include/x86_64-linux-gnu/bits/waitstatus.h \
  /usr/include/x86_64-linux-gnu/bits/floatn.h \
  /usr/include/x86_64-linux-gnu/bits/floatn-common.h \
  /usr/include/x86_64-linux-gnu/bits/stdlib-float.h \
  /usr/lib/gcc/x86_64-linux-gnu/7/include/stdarg.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/../include/openssl/thread.h
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/../include/openssl/thread.h

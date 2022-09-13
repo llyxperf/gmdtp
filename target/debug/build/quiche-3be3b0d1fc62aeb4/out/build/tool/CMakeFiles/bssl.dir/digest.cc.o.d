@@ -1,7 +1,7 @@
 tool/CMakeFiles/bssl.dir/digest.cc.o: \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/tool/digest.cc \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/tool/digest.cc \
  /usr/include/stdc-predef.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/tool/../include/openssl/base.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/tool/../include/openssl/base.h \
  /usr/lib/gcc/x86_64-linux-gnu/7/include/stddef.h \
  /usr/lib/gcc/x86_64-linux-gnu/7/include/stdint.h /usr/include/stdint.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
@@ -35,8 +35,8 @@ tool/CMakeFiles/bssl.dir/digest.cc.o: \
  /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
  /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h \
  /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/tool/../include/openssl/is_boringssl.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/tool/../include/openssl/opensslconf.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/tool/../include/openssl/is_boringssl.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/tool/../include/openssl/opensslconf.h \
  /usr/include/c++/7/memory /usr/include/c++/7/bits/stl_algobase.h \
  /usr/include/x86_64-linux-gnu/c++/7/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/7/bits/os_defines.h \
@@ -155,7 +155,7 @@ tool/CMakeFiles/bssl.dir/digest.cc.o: \
  /usr/include/x86_64-linux-gnu/bits/confname.h \
  /usr/include/x86_64-linux-gnu/bits/getopt_posix.h \
  /usr/include/x86_64-linux-gnu/bits/getopt_core.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/tool/../include/openssl/digest.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/tool/internal.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/tool/../include/openssl/digest.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/tool/internal.h \
  /usr/include/c++/7/map /usr/include/c++/7/bits/stl_tree.h \
  /usr/include/c++/7/bits/stl_map.h /usr/include/c++/7/bits/stl_multimap.h

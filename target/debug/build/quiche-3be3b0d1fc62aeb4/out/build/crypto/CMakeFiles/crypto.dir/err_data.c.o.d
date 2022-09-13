@@ -1,7 +1,7 @@
 crypto/CMakeFiles/crypto.dir/err_data.c.o: \
- /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/err_data.c \
+ /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/err_data.c \
  /usr/include/stdc-predef.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/../include/openssl/base.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/../include/openssl/base.h \
  /usr/lib/gcc/x86_64-linux-gnu/7/include/stddef.h \
  /usr/lib/gcc/x86_64-linux-gnu/7/include/stdint.h /usr/include/stdint.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
@@ -23,9 +23,9 @@ crypto/CMakeFiles/crypto.dir/err_data.c.o: \
  /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
  /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h \
  /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/../include/openssl/is_boringssl.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/../include/openssl/opensslconf.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/../include/openssl/err.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/../include/openssl/is_boringssl.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/../include/openssl/opensslconf.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/../include/openssl/err.h \
  /usr/include/stdio.h /usr/include/x86_64-linux-gnu/bits/types/__FILE.h \
  /usr/include/x86_64-linux-gnu/bits/types/FILE.h \
  /usr/include/x86_64-linux-gnu/bits/libio.h \
@@ -34,4 +34,4 @@ crypto/CMakeFiles/crypto.dir/err_data.c.o: \
  /usr/lib/gcc/x86_64-linux-gnu/7/include/stdarg.h \
  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
  /usr/include/x86_64-linux-gnu/bits/sys_errlist.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/../include/openssl/type_check.h
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/../include/openssl/type_check.h

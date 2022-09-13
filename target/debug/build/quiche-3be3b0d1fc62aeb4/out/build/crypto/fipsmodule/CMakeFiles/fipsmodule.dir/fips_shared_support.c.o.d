@@ -1,5 +1,5 @@
 crypto/fipsmodule/CMakeFiles/fipsmodule.dir/fips_shared_support.c.o: \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/fips_shared_support.c \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/fips_shared_support.c \
  /usr/include/stdc-predef.h \
  /usr/lib/gcc/x86_64-linux-gnu/7/include/stdint.h /usr/include/stdint.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \

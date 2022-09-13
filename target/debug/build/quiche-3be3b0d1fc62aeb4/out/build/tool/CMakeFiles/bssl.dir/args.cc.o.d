@@ -1,5 +1,5 @@
 tool/CMakeFiles/bssl.dir/args.cc.o: \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/tool/args.cc \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/tool/args.cc \
  /usr/include/stdc-predef.h /usr/include/c++/7/string \
  /usr/include/x86_64-linux-gnu/c++/7/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/7/bits/os_defines.h \
@@ -128,10 +128,10 @@ tool/CMakeFiles/bssl.dir/args.cc.o: \
  /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
  /usr/include/x86_64-linux-gnu/bits/uio_lim.h /usr/include/c++/7/stdlib.h \
  /usr/include/string.h /usr/include/strings.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/tool/internal.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/tool/../include/openssl/base.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/tool/../include/openssl/is_boringssl.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/tool/../include/openssl/opensslconf.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/tool/internal.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/tool/../include/openssl/base.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/tool/../include/openssl/is_boringssl.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/tool/../include/openssl/opensslconf.h \
  /usr/include/c++/7/memory /usr/include/c++/7/bits/stl_tempbuf.h \
  /usr/include/c++/7/bits/stl_raw_storage_iter.h \
  /usr/include/c++/7/ext/concurrence.h \

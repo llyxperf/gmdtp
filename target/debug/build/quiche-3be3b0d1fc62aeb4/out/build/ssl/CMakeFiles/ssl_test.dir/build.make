@@ -53,10 +53,10 @@ RM = /usr/local/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/qwe/Desktop/code/gm-dtp/deps/boringssl
+CMAKE_SOURCE_DIR = /home/qwe/Desktop/code/gmdtp/deps/boringssl
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build
+CMAKE_BINARY_DIR = /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build
 
 # Include any dependencies generated for this target.
 include ssl/CMakeFiles/ssl_test.dir/depend.make
@@ -70,46 +70,46 @@ include ssl/CMakeFiles/ssl_test.dir/progress.make
 include ssl/CMakeFiles/ssl_test.dir/flags.make
 
 ssl/CMakeFiles/ssl_test.dir/span_test.cc.o: ssl/CMakeFiles/ssl_test.dir/flags.make
-ssl/CMakeFiles/ssl_test.dir/span_test.cc.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/span_test.cc
+ssl/CMakeFiles/ssl_test.dir/span_test.cc.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/span_test.cc
 ssl/CMakeFiles/ssl_test.dir/span_test.cc.o: ssl/CMakeFiles/ssl_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object ssl/CMakeFiles/ssl_test.dir/span_test.cc.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/ssl && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT ssl/CMakeFiles/ssl_test.dir/span_test.cc.o -MF CMakeFiles/ssl_test.dir/span_test.cc.o.d -o CMakeFiles/ssl_test.dir/span_test.cc.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/span_test.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object ssl/CMakeFiles/ssl_test.dir/span_test.cc.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/ssl && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT ssl/CMakeFiles/ssl_test.dir/span_test.cc.o -MF CMakeFiles/ssl_test.dir/span_test.cc.o.d -o CMakeFiles/ssl_test.dir/span_test.cc.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/span_test.cc
 
 ssl/CMakeFiles/ssl_test.dir/span_test.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ssl_test.dir/span_test.cc.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/ssl && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/span_test.cc > CMakeFiles/ssl_test.dir/span_test.cc.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/ssl && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/span_test.cc > CMakeFiles/ssl_test.dir/span_test.cc.i
 
 ssl/CMakeFiles/ssl_test.dir/span_test.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ssl_test.dir/span_test.cc.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/ssl && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/span_test.cc -o CMakeFiles/ssl_test.dir/span_test.cc.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/ssl && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/span_test.cc -o CMakeFiles/ssl_test.dir/span_test.cc.s
 
 ssl/CMakeFiles/ssl_test.dir/ssl_test.cc.o: ssl/CMakeFiles/ssl_test.dir/flags.make
-ssl/CMakeFiles/ssl_test.dir/ssl_test.cc.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/ssl_test.cc
+ssl/CMakeFiles/ssl_test.dir/ssl_test.cc.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/ssl_test.cc
 ssl/CMakeFiles/ssl_test.dir/ssl_test.cc.o: ssl/CMakeFiles/ssl_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object ssl/CMakeFiles/ssl_test.dir/ssl_test.cc.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/ssl && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT ssl/CMakeFiles/ssl_test.dir/ssl_test.cc.o -MF CMakeFiles/ssl_test.dir/ssl_test.cc.o.d -o CMakeFiles/ssl_test.dir/ssl_test.cc.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/ssl_test.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object ssl/CMakeFiles/ssl_test.dir/ssl_test.cc.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/ssl && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT ssl/CMakeFiles/ssl_test.dir/ssl_test.cc.o -MF CMakeFiles/ssl_test.dir/ssl_test.cc.o.d -o CMakeFiles/ssl_test.dir/ssl_test.cc.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/ssl_test.cc
 
 ssl/CMakeFiles/ssl_test.dir/ssl_test.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ssl_test.dir/ssl_test.cc.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/ssl && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/ssl_test.cc > CMakeFiles/ssl_test.dir/ssl_test.cc.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/ssl && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/ssl_test.cc > CMakeFiles/ssl_test.dir/ssl_test.cc.i
 
 ssl/CMakeFiles/ssl_test.dir/ssl_test.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ssl_test.dir/ssl_test.cc.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/ssl && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/ssl_test.cc -o CMakeFiles/ssl_test.dir/ssl_test.cc.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/ssl && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/ssl_test.cc -o CMakeFiles/ssl_test.dir/ssl_test.cc.s
 
 ssl/CMakeFiles/ssl_test.dir/ssl_c_test.c.o: ssl/CMakeFiles/ssl_test.dir/flags.make
-ssl/CMakeFiles/ssl_test.dir/ssl_c_test.c.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/ssl_c_test.c
+ssl/CMakeFiles/ssl_test.dir/ssl_c_test.c.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/ssl_c_test.c
 ssl/CMakeFiles/ssl_test.dir/ssl_c_test.c.o: ssl/CMakeFiles/ssl_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object ssl/CMakeFiles/ssl_test.dir/ssl_c_test.c.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/ssl && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT ssl/CMakeFiles/ssl_test.dir/ssl_c_test.c.o -MF CMakeFiles/ssl_test.dir/ssl_c_test.c.o.d -o CMakeFiles/ssl_test.dir/ssl_c_test.c.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/ssl_c_test.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object ssl/CMakeFiles/ssl_test.dir/ssl_c_test.c.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/ssl && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT ssl/CMakeFiles/ssl_test.dir/ssl_c_test.c.o -MF CMakeFiles/ssl_test.dir/ssl_c_test.c.o.d -o CMakeFiles/ssl_test.dir/ssl_c_test.c.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/ssl_c_test.c
 
 ssl/CMakeFiles/ssl_test.dir/ssl_c_test.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/ssl_test.dir/ssl_c_test.c.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/ssl && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/ssl_c_test.c > CMakeFiles/ssl_test.dir/ssl_c_test.c.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/ssl && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/ssl_c_test.c > CMakeFiles/ssl_test.dir/ssl_c_test.c.i
 
 ssl/CMakeFiles/ssl_test.dir/ssl_c_test.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/ssl_test.dir/ssl_c_test.c.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/ssl && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/ssl_c_test.c -o CMakeFiles/ssl_test.dir/ssl_c_test.c.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/ssl && /usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/ssl_c_test.c -o CMakeFiles/ssl_test.dir/ssl_c_test.c.s
 
 # Object files for target ssl_test
 ssl_test_OBJECTS = \
@@ -119,7 +119,7 @@ ssl_test_OBJECTS = \
 
 # External object files for target ssl_test
 ssl_test_EXTERNAL_OBJECTS = \
-"/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/test/CMakeFiles/boringssl_gtest_main.dir/gtest_main.cc.o"
+"/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/test/CMakeFiles/boringssl_gtest_main.dir/gtest_main.cc.o"
 
 ssl/ssl_test: ssl/CMakeFiles/ssl_test.dir/span_test.cc.o
 ssl/ssl_test: ssl/CMakeFiles/ssl_test.dir/ssl_test.cc.o
@@ -131,18 +131,18 @@ ssl/ssl_test: libboringssl_gtest.a
 ssl/ssl_test: ssl/libssl.a
 ssl/ssl_test: crypto/libcrypto.a
 ssl/ssl_test: ssl/CMakeFiles/ssl_test.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable ssl_test"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/ssl && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ssl_test.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking CXX executable ssl_test"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/ssl && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ssl_test.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 ssl/CMakeFiles/ssl_test.dir/build: ssl/ssl_test
 .PHONY : ssl/CMakeFiles/ssl_test.dir/build
 
 ssl/CMakeFiles/ssl_test.dir/clean:
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/ssl && $(CMAKE_COMMAND) -P CMakeFiles/ssl_test.dir/cmake_clean.cmake
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/ssl && $(CMAKE_COMMAND) -P CMakeFiles/ssl_test.dir/cmake_clean.cmake
 .PHONY : ssl/CMakeFiles/ssl_test.dir/clean
 
 ssl/CMakeFiles/ssl_test.dir/depend:
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/qwe/Desktop/code/gm-dtp/deps/boringssl /home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/ssl /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/ssl/CMakeFiles/ssl_test.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/qwe/Desktop/code/gmdtp/deps/boringssl /home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/ssl /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/ssl/CMakeFiles/ssl_test.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : ssl/CMakeFiles/ssl_test.dir/depend
 

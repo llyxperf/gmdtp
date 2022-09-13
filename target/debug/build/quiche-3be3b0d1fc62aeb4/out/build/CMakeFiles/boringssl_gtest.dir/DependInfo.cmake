@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/qwe/Desktop/code/gm-dtp/deps/boringssl/third_party/googletest/src/gtest-all.cc" "CMakeFiles/boringssl_gtest.dir/third_party/googletest/src/gtest-all.cc.o" "gcc" "CMakeFiles/boringssl_gtest.dir/third_party/googletest/src/gtest-all.cc.o.d"
+  "/home/qwe/Desktop/code/gmdtp/deps/boringssl/third_party/googletest/src/gtest-all.cc" "CMakeFiles/boringssl_gtest.dir/third_party/googletest/src/gtest-all.cc.o" "gcc" "CMakeFiles/boringssl_gtest.dir/third_party/googletest/src/gtest-all.cc.o.d"
   )
 
 # Targets to which this target links.

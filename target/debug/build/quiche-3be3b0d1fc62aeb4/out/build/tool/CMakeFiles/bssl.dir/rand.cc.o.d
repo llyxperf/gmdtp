@@ -1,5 +1,5 @@
 tool/CMakeFiles/bssl.dir/rand.cc.o: \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/tool/rand.cc \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/tool/rand.cc \
  /usr/include/stdc-predef.h /usr/include/c++/7/string \
  /usr/include/x86_64-linux-gnu/c++/7/bits/c++config.h \
  /usr/include/x86_64-linux-gnu/c++/7/bits/os_defines.h \
@@ -120,10 +120,10 @@ tool/CMakeFiles/bssl.dir/rand.cc.o: \
  /usr/include/c++/7/bits/stl_vector.h \
  /usr/include/c++/7/bits/stl_bvector.h /usr/include/c++/7/bits/vector.tcc \
  /usr/include/c++/7/stdlib.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/tool/../include/openssl/rand.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/tool/../include/openssl/base.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/tool/../include/openssl/is_boringssl.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/tool/../include/openssl/opensslconf.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/tool/../include/openssl/rand.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/tool/../include/openssl/base.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/tool/../include/openssl/is_boringssl.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/tool/../include/openssl/opensslconf.h \
  /usr/include/c++/7/memory /usr/include/c++/7/bits/stl_tempbuf.h \
  /usr/include/c++/7/bits/stl_raw_storage_iter.h \
  /usr/include/c++/7/ext/concurrence.h \
@@ -140,6 +140,6 @@ tool/CMakeFiles/bssl.dir/rand.cc.o: \
  /usr/include/c++/7/bits/atomic_base.h \
  /usr/include/c++/7/bits/atomic_lockfree_defines.h \
  /usr/include/c++/7/backward/auto_ptr.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/tool/internal.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/tool/internal.h \
  /usr/include/c++/7/map /usr/include/c++/7/bits/stl_tree.h \
  /usr/include/c++/7/bits/stl_map.h /usr/include/c++/7/bits/stl_multimap.h

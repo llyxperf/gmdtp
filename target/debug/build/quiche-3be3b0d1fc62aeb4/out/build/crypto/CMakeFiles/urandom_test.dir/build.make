@@ -53,10 +53,10 @@ RM = /usr/local/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/qwe/Desktop/code/gm-dtp/deps/boringssl
+CMAKE_SOURCE_DIR = /home/qwe/Desktop/code/gmdtp/deps/boringssl
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build
+CMAKE_BINARY_DIR = /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build
 
 # Include any dependencies generated for this target.
 include crypto/CMakeFiles/urandom_test.dir/depend.make
@@ -70,18 +70,18 @@ include crypto/CMakeFiles/urandom_test.dir/progress.make
 include crypto/CMakeFiles/urandom_test.dir/flags.make
 
 crypto/CMakeFiles/urandom_test.dir/fipsmodule/rand/urandom_test.cc.o: crypto/CMakeFiles/urandom_test.dir/flags.make
-crypto/CMakeFiles/urandom_test.dir/fipsmodule/rand/urandom_test.cc.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/rand/urandom_test.cc
+crypto/CMakeFiles/urandom_test.dir/fipsmodule/rand/urandom_test.cc.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/rand/urandom_test.cc
 crypto/CMakeFiles/urandom_test.dir/fipsmodule/rand/urandom_test.cc.o: crypto/CMakeFiles/urandom_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object crypto/CMakeFiles/urandom_test.dir/fipsmodule/rand/urandom_test.cc.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/urandom_test.dir/fipsmodule/rand/urandom_test.cc.o -MF CMakeFiles/urandom_test.dir/fipsmodule/rand/urandom_test.cc.o.d -o CMakeFiles/urandom_test.dir/fipsmodule/rand/urandom_test.cc.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/rand/urandom_test.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object crypto/CMakeFiles/urandom_test.dir/fipsmodule/rand/urandom_test.cc.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/urandom_test.dir/fipsmodule/rand/urandom_test.cc.o -MF CMakeFiles/urandom_test.dir/fipsmodule/rand/urandom_test.cc.o.d -o CMakeFiles/urandom_test.dir/fipsmodule/rand/urandom_test.cc.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/rand/urandom_test.cc
 
 crypto/CMakeFiles/urandom_test.dir/fipsmodule/rand/urandom_test.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/urandom_test.dir/fipsmodule/rand/urandom_test.cc.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/rand/urandom_test.cc > CMakeFiles/urandom_test.dir/fipsmodule/rand/urandom_test.cc.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/rand/urandom_test.cc > CMakeFiles/urandom_test.dir/fipsmodule/rand/urandom_test.cc.i
 
 crypto/CMakeFiles/urandom_test.dir/fipsmodule/rand/urandom_test.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/urandom_test.dir/fipsmodule/rand/urandom_test.cc.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/rand/urandom_test.cc -o CMakeFiles/urandom_test.dir/fipsmodule/rand/urandom_test.cc.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/rand/urandom_test.cc -o CMakeFiles/urandom_test.dir/fipsmodule/rand/urandom_test.cc.s
 
 # Object files for target urandom_test
 urandom_test_OBJECTS = \
@@ -96,18 +96,18 @@ crypto/urandom_test: crypto/test/libtest_support_lib.a
 crypto/urandom_test: libboringssl_gtest.a
 crypto/urandom_test: crypto/libcrypto.a
 crypto/urandom_test: crypto/CMakeFiles/urandom_test.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable urandom_test"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/urandom_test.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable urandom_test"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/urandom_test.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 crypto/CMakeFiles/urandom_test.dir/build: crypto/urandom_test
 .PHONY : crypto/CMakeFiles/urandom_test.dir/build
 
 crypto/CMakeFiles/urandom_test.dir/clean:
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && $(CMAKE_COMMAND) -P CMakeFiles/urandom_test.dir/cmake_clean.cmake
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && $(CMAKE_COMMAND) -P CMakeFiles/urandom_test.dir/cmake_clean.cmake
 .PHONY : crypto/CMakeFiles/urandom_test.dir/clean
 
 crypto/CMakeFiles/urandom_test.dir/depend:
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/qwe/Desktop/code/gm-dtp/deps/boringssl /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/CMakeFiles/urandom_test.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/qwe/Desktop/code/gmdtp/deps/boringssl /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/CMakeFiles/urandom_test.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : crypto/CMakeFiles/urandom_test.dir/depend
 

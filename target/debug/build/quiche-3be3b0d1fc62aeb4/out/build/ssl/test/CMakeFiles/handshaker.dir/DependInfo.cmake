@@ -8,21 +8,21 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/test/async_bio.cc" "ssl/test/CMakeFiles/handshaker.dir/async_bio.cc.o" "gcc" "ssl/test/CMakeFiles/handshaker.dir/async_bio.cc.o.d"
-  "/home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/test/handshake_util.cc" "ssl/test/CMakeFiles/handshaker.dir/handshake_util.cc.o" "gcc" "ssl/test/CMakeFiles/handshaker.dir/handshake_util.cc.o.d"
-  "/home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/test/handshaker.cc" "ssl/test/CMakeFiles/handshaker.dir/handshaker.cc.o" "gcc" "ssl/test/CMakeFiles/handshaker.dir/handshaker.cc.o.d"
-  "/home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/test/mock_quic_transport.cc" "ssl/test/CMakeFiles/handshaker.dir/mock_quic_transport.cc.o" "gcc" "ssl/test/CMakeFiles/handshaker.dir/mock_quic_transport.cc.o.d"
-  "/home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/test/packeted_bio.cc" "ssl/test/CMakeFiles/handshaker.dir/packeted_bio.cc.o" "gcc" "ssl/test/CMakeFiles/handshaker.dir/packeted_bio.cc.o.d"
-  "/home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/test/settings_writer.cc" "ssl/test/CMakeFiles/handshaker.dir/settings_writer.cc.o" "gcc" "ssl/test/CMakeFiles/handshaker.dir/settings_writer.cc.o.d"
-  "/home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/test/test_config.cc" "ssl/test/CMakeFiles/handshaker.dir/test_config.cc.o" "gcc" "ssl/test/CMakeFiles/handshaker.dir/test_config.cc.o.d"
-  "/home/qwe/Desktop/code/gm-dtp/deps/boringssl/ssl/test/test_state.cc" "ssl/test/CMakeFiles/handshaker.dir/test_state.cc.o" "gcc" "ssl/test/CMakeFiles/handshaker.dir/test_state.cc.o.d"
+  "/home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/test/async_bio.cc" "ssl/test/CMakeFiles/handshaker.dir/async_bio.cc.o" "gcc" "ssl/test/CMakeFiles/handshaker.dir/async_bio.cc.o.d"
+  "/home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/test/handshake_util.cc" "ssl/test/CMakeFiles/handshaker.dir/handshake_util.cc.o" "gcc" "ssl/test/CMakeFiles/handshaker.dir/handshake_util.cc.o.d"
+  "/home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/test/handshaker.cc" "ssl/test/CMakeFiles/handshaker.dir/handshaker.cc.o" "gcc" "ssl/test/CMakeFiles/handshaker.dir/handshaker.cc.o.d"
+  "/home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/test/mock_quic_transport.cc" "ssl/test/CMakeFiles/handshaker.dir/mock_quic_transport.cc.o" "gcc" "ssl/test/CMakeFiles/handshaker.dir/mock_quic_transport.cc.o.d"
+  "/home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/test/packeted_bio.cc" "ssl/test/CMakeFiles/handshaker.dir/packeted_bio.cc.o" "gcc" "ssl/test/CMakeFiles/handshaker.dir/packeted_bio.cc.o.d"
+  "/home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/test/settings_writer.cc" "ssl/test/CMakeFiles/handshaker.dir/settings_writer.cc.o" "gcc" "ssl/test/CMakeFiles/handshaker.dir/settings_writer.cc.o.d"
+  "/home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/test/test_config.cc" "ssl/test/CMakeFiles/handshaker.dir/test_config.cc.o" "gcc" "ssl/test/CMakeFiles/handshaker.dir/test_config.cc.o.d"
+  "/home/qwe/Desktop/code/gmdtp/deps/boringssl/ssl/test/test_state.cc" "ssl/test/CMakeFiles/handshaker.dir/test_state.cc.o" "gcc" "ssl/test/CMakeFiles/handshaker.dir/test_state.cc.o.d"
   )
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/test/CMakeFiles/test_support_lib.dir/DependInfo.cmake"
-  "/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/ssl/CMakeFiles/ssl.dir/DependInfo.cmake"
-  "/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/CMakeFiles/crypto.dir/DependInfo.cmake"
+  "/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/test/CMakeFiles/test_support_lib.dir/DependInfo.cmake"
+  "/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/ssl/CMakeFiles/ssl.dir/DependInfo.cmake"
+  "/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/CMakeFiles/crypto.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

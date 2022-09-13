@@ -1,9 +1,9 @@
 crypto/CMakeFiles/crypto.dir/refcount_c11.c.o: \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/refcount_c11.c \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/refcount_c11.c \
  /usr/include/stdc-predef.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/internal.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/../include/openssl/ex_data.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/../include/openssl/base.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/internal.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/../include/openssl/ex_data.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/../include/openssl/base.h \
  /usr/lib/gcc/x86_64-linux-gnu/7/include/stddef.h \
  /usr/lib/gcc/x86_64-linux-gnu/7/include/stdint.h /usr/include/stdint.h \
  /usr/include/x86_64-linux-gnu/bits/libc-header-start.h \
@@ -25,11 +25,11 @@ crypto/CMakeFiles/crypto.dir/refcount_c11.c.o: \
  /usr/include/x86_64-linux-gnu/bits/pthreadtypes.h \
  /usr/include/x86_64-linux-gnu/bits/thread-shared-types.h \
  /usr/include/x86_64-linux-gnu/bits/pthreadtypes-arch.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/../include/openssl/is_boringssl.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/../include/openssl/opensslconf.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/../include/openssl/stack.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/../include/openssl/type_check.h \
- /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/../include/openssl/thread.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/../include/openssl/is_boringssl.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/../include/openssl/opensslconf.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/../include/openssl/stack.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/../include/openssl/type_check.h \
+ /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/../include/openssl/thread.h \
  /usr/include/assert.h /usr/include/string.h \
  /usr/include/x86_64-linux-gnu/bits/types/locale_t.h \
  /usr/include/x86_64-linux-gnu/bits/types/__locale_t.h \

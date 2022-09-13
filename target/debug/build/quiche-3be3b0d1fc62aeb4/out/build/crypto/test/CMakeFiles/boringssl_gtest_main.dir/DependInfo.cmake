@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/test/gtest_main.cc" "crypto/test/CMakeFiles/boringssl_gtest_main.dir/gtest_main.cc.o" "gcc" "crypto/test/CMakeFiles/boringssl_gtest_main.dir/gtest_main.cc.o.d"
+  "/home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/test/gtest_main.cc" "crypto/test/CMakeFiles/boringssl_gtest_main.dir/gtest_main.cc.o" "gcc" "crypto/test/CMakeFiles/boringssl_gtest_main.dir/gtest_main.cc.o.d"
   )
 
 # Targets to which this target links.

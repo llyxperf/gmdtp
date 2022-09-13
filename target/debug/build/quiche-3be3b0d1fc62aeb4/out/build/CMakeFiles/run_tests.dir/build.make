@@ -53,10 +53,10 @@ RM = /usr/local/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/qwe/Desktop/code/gm-dtp/deps/boringssl
+CMAKE_SOURCE_DIR = /home/qwe/Desktop/code/gmdtp/deps/boringssl
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build
+CMAKE_BINARY_DIR = /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build
 
 # Utility rule file for run_tests.
 
@@ -68,8 +68,8 @@ include CMakeFiles/run_tests.dir/progress.make
 
 CMakeFiles/run_tests: ssl/test/bssl_shim
 CMakeFiles/run_tests: ssl/test/handshaker
-	cd /home/qwe/Desktop/code/gm-dtp/deps/boringssl && /home/qwe/Desktop/program_files/go/bin/go run util/all_tests.go -build-dir /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build
-	cd /home/qwe/Desktop/code/gm-dtp/deps/boringssl && cd ssl/test/runner && /home/qwe/Desktop/program_files/go/bin/go test -shim-path /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/ssl/test/bssl_shim -handshaker-path /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/ssl/test/handshaker
+	cd /home/qwe/Desktop/code/gmdtp/deps/boringssl && /home/qwe/Desktop/program_files/go/bin/go run util/all_tests.go -build-dir /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build
+	cd /home/qwe/Desktop/code/gmdtp/deps/boringssl && cd ssl/test/runner && /home/qwe/Desktop/program_files/go/bin/go test -shim-path /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/ssl/test/bssl_shim -handshaker-path /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/ssl/test/handshaker
 
 run_tests: CMakeFiles/run_tests
 run_tests: CMakeFiles/run_tests.dir/build.make
@@ -84,6 +84,6 @@ CMakeFiles/run_tests.dir/clean:
 .PHONY : CMakeFiles/run_tests.dir/clean
 
 CMakeFiles/run_tests.dir/depend:
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/qwe/Desktop/code/gm-dtp/deps/boringssl /home/qwe/Desktop/code/gm-dtp/deps/boringssl /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles/run_tests.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/qwe/Desktop/code/gmdtp/deps/boringssl /home/qwe/Desktop/code/gmdtp/deps/boringssl /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles/run_tests.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/run_tests.dir/depend
 

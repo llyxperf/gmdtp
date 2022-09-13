@@ -327,7 +327,7 @@ impl Frame {
 
         Ok(frame)
     }
-
+//push bytes frame into a automatically growth buf
     pub fn to_bytes(&self, b: &mut octets::Octets) -> Result<usize> {
         let before = b.cap();
 

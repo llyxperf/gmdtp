@@ -53,10 +53,10 @@ RM = /usr/local/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/qwe/Desktop/code/gm-dtp/deps/boringssl
+CMAKE_SOURCE_DIR = /home/qwe/Desktop/code/gmdtp/deps/boringssl
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build
+CMAKE_BINARY_DIR = /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build
 
 # Include any dependencies generated for this target.
 include crypto/CMakeFiles/crypto_test.dir/depend.make
@@ -70,816 +70,816 @@ include crypto/CMakeFiles/crypto_test.dir/progress.make
 include crypto/CMakeFiles/crypto_test.dir/flags.make
 
 crypto/CMakeFiles/crypto_test.dir/abi_self_test.cc.o: crypto/CMakeFiles/crypto_test.dir/flags.make
-crypto/CMakeFiles/crypto_test.dir/abi_self_test.cc.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/abi_self_test.cc
+crypto/CMakeFiles/crypto_test.dir/abi_self_test.cc.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/abi_self_test.cc
 crypto/CMakeFiles/crypto_test.dir/abi_self_test.cc.o: crypto/CMakeFiles/crypto_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object crypto/CMakeFiles/crypto_test.dir/abi_self_test.cc.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/abi_self_test.cc.o -MF CMakeFiles/crypto_test.dir/abi_self_test.cc.o.d -o CMakeFiles/crypto_test.dir/abi_self_test.cc.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/abi_self_test.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object crypto/CMakeFiles/crypto_test.dir/abi_self_test.cc.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/abi_self_test.cc.o -MF CMakeFiles/crypto_test.dir/abi_self_test.cc.o.d -o CMakeFiles/crypto_test.dir/abi_self_test.cc.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/abi_self_test.cc
 
 crypto/CMakeFiles/crypto_test.dir/abi_self_test.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/crypto_test.dir/abi_self_test.cc.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/abi_self_test.cc > CMakeFiles/crypto_test.dir/abi_self_test.cc.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/abi_self_test.cc > CMakeFiles/crypto_test.dir/abi_self_test.cc.i
 
 crypto/CMakeFiles/crypto_test.dir/abi_self_test.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/crypto_test.dir/abi_self_test.cc.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/abi_self_test.cc -o CMakeFiles/crypto_test.dir/abi_self_test.cc.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/abi_self_test.cc -o CMakeFiles/crypto_test.dir/abi_self_test.cc.s
 
 crypto/CMakeFiles/crypto_test.dir/asn1/asn1_test.cc.o: crypto/CMakeFiles/crypto_test.dir/flags.make
-crypto/CMakeFiles/crypto_test.dir/asn1/asn1_test.cc.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/asn1/asn1_test.cc
+crypto/CMakeFiles/crypto_test.dir/asn1/asn1_test.cc.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/asn1/asn1_test.cc
 crypto/CMakeFiles/crypto_test.dir/asn1/asn1_test.cc.o: crypto/CMakeFiles/crypto_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object crypto/CMakeFiles/crypto_test.dir/asn1/asn1_test.cc.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/asn1/asn1_test.cc.o -MF CMakeFiles/crypto_test.dir/asn1/asn1_test.cc.o.d -o CMakeFiles/crypto_test.dir/asn1/asn1_test.cc.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/asn1/asn1_test.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object crypto/CMakeFiles/crypto_test.dir/asn1/asn1_test.cc.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/asn1/asn1_test.cc.o -MF CMakeFiles/crypto_test.dir/asn1/asn1_test.cc.o.d -o CMakeFiles/crypto_test.dir/asn1/asn1_test.cc.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/asn1/asn1_test.cc
 
 crypto/CMakeFiles/crypto_test.dir/asn1/asn1_test.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/crypto_test.dir/asn1/asn1_test.cc.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/asn1/asn1_test.cc > CMakeFiles/crypto_test.dir/asn1/asn1_test.cc.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/asn1/asn1_test.cc > CMakeFiles/crypto_test.dir/asn1/asn1_test.cc.i
 
 crypto/CMakeFiles/crypto_test.dir/asn1/asn1_test.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/crypto_test.dir/asn1/asn1_test.cc.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/asn1/asn1_test.cc -o CMakeFiles/crypto_test.dir/asn1/asn1_test.cc.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/asn1/asn1_test.cc -o CMakeFiles/crypto_test.dir/asn1/asn1_test.cc.s
 
 crypto/CMakeFiles/crypto_test.dir/base64/base64_test.cc.o: crypto/CMakeFiles/crypto_test.dir/flags.make
-crypto/CMakeFiles/crypto_test.dir/base64/base64_test.cc.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/base64/base64_test.cc
+crypto/CMakeFiles/crypto_test.dir/base64/base64_test.cc.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/base64/base64_test.cc
 crypto/CMakeFiles/crypto_test.dir/base64/base64_test.cc.o: crypto/CMakeFiles/crypto_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object crypto/CMakeFiles/crypto_test.dir/base64/base64_test.cc.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/base64/base64_test.cc.o -MF CMakeFiles/crypto_test.dir/base64/base64_test.cc.o.d -o CMakeFiles/crypto_test.dir/base64/base64_test.cc.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/base64/base64_test.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object crypto/CMakeFiles/crypto_test.dir/base64/base64_test.cc.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/base64/base64_test.cc.o -MF CMakeFiles/crypto_test.dir/base64/base64_test.cc.o.d -o CMakeFiles/crypto_test.dir/base64/base64_test.cc.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/base64/base64_test.cc
 
 crypto/CMakeFiles/crypto_test.dir/base64/base64_test.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/crypto_test.dir/base64/base64_test.cc.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/base64/base64_test.cc > CMakeFiles/crypto_test.dir/base64/base64_test.cc.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/base64/base64_test.cc > CMakeFiles/crypto_test.dir/base64/base64_test.cc.i
 
 crypto/CMakeFiles/crypto_test.dir/base64/base64_test.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/crypto_test.dir/base64/base64_test.cc.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/base64/base64_test.cc -o CMakeFiles/crypto_test.dir/base64/base64_test.cc.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/base64/base64_test.cc -o CMakeFiles/crypto_test.dir/base64/base64_test.cc.s
 
 crypto/CMakeFiles/crypto_test.dir/buf/buf_test.cc.o: crypto/CMakeFiles/crypto_test.dir/flags.make
-crypto/CMakeFiles/crypto_test.dir/buf/buf_test.cc.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/buf/buf_test.cc
+crypto/CMakeFiles/crypto_test.dir/buf/buf_test.cc.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/buf/buf_test.cc
 crypto/CMakeFiles/crypto_test.dir/buf/buf_test.cc.o: crypto/CMakeFiles/crypto_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object crypto/CMakeFiles/crypto_test.dir/buf/buf_test.cc.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/buf/buf_test.cc.o -MF CMakeFiles/crypto_test.dir/buf/buf_test.cc.o.d -o CMakeFiles/crypto_test.dir/buf/buf_test.cc.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/buf/buf_test.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object crypto/CMakeFiles/crypto_test.dir/buf/buf_test.cc.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/buf/buf_test.cc.o -MF CMakeFiles/crypto_test.dir/buf/buf_test.cc.o.d -o CMakeFiles/crypto_test.dir/buf/buf_test.cc.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/buf/buf_test.cc
 
 crypto/CMakeFiles/crypto_test.dir/buf/buf_test.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/crypto_test.dir/buf/buf_test.cc.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/buf/buf_test.cc > CMakeFiles/crypto_test.dir/buf/buf_test.cc.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/buf/buf_test.cc > CMakeFiles/crypto_test.dir/buf/buf_test.cc.i
 
 crypto/CMakeFiles/crypto_test.dir/buf/buf_test.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/crypto_test.dir/buf/buf_test.cc.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/buf/buf_test.cc -o CMakeFiles/crypto_test.dir/buf/buf_test.cc.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/buf/buf_test.cc -o CMakeFiles/crypto_test.dir/buf/buf_test.cc.s
 
 crypto/CMakeFiles/crypto_test.dir/bio/bio_test.cc.o: crypto/CMakeFiles/crypto_test.dir/flags.make
-crypto/CMakeFiles/crypto_test.dir/bio/bio_test.cc.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/bio/bio_test.cc
+crypto/CMakeFiles/crypto_test.dir/bio/bio_test.cc.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/bio/bio_test.cc
 crypto/CMakeFiles/crypto_test.dir/bio/bio_test.cc.o: crypto/CMakeFiles/crypto_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object crypto/CMakeFiles/crypto_test.dir/bio/bio_test.cc.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/bio/bio_test.cc.o -MF CMakeFiles/crypto_test.dir/bio/bio_test.cc.o.d -o CMakeFiles/crypto_test.dir/bio/bio_test.cc.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/bio/bio_test.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object crypto/CMakeFiles/crypto_test.dir/bio/bio_test.cc.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/bio/bio_test.cc.o -MF CMakeFiles/crypto_test.dir/bio/bio_test.cc.o.d -o CMakeFiles/crypto_test.dir/bio/bio_test.cc.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/bio/bio_test.cc
 
 crypto/CMakeFiles/crypto_test.dir/bio/bio_test.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/crypto_test.dir/bio/bio_test.cc.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/bio/bio_test.cc > CMakeFiles/crypto_test.dir/bio/bio_test.cc.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/bio/bio_test.cc > CMakeFiles/crypto_test.dir/bio/bio_test.cc.i
 
 crypto/CMakeFiles/crypto_test.dir/bio/bio_test.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/crypto_test.dir/bio/bio_test.cc.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/bio/bio_test.cc -o CMakeFiles/crypto_test.dir/bio/bio_test.cc.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/bio/bio_test.cc -o CMakeFiles/crypto_test.dir/bio/bio_test.cc.s
 
 crypto/CMakeFiles/crypto_test.dir/bytestring/bytestring_test.cc.o: crypto/CMakeFiles/crypto_test.dir/flags.make
-crypto/CMakeFiles/crypto_test.dir/bytestring/bytestring_test.cc.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/bytestring/bytestring_test.cc
+crypto/CMakeFiles/crypto_test.dir/bytestring/bytestring_test.cc.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/bytestring/bytestring_test.cc
 crypto/CMakeFiles/crypto_test.dir/bytestring/bytestring_test.cc.o: crypto/CMakeFiles/crypto_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object crypto/CMakeFiles/crypto_test.dir/bytestring/bytestring_test.cc.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/bytestring/bytestring_test.cc.o -MF CMakeFiles/crypto_test.dir/bytestring/bytestring_test.cc.o.d -o CMakeFiles/crypto_test.dir/bytestring/bytestring_test.cc.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/bytestring/bytestring_test.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object crypto/CMakeFiles/crypto_test.dir/bytestring/bytestring_test.cc.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/bytestring/bytestring_test.cc.o -MF CMakeFiles/crypto_test.dir/bytestring/bytestring_test.cc.o.d -o CMakeFiles/crypto_test.dir/bytestring/bytestring_test.cc.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/bytestring/bytestring_test.cc
 
 crypto/CMakeFiles/crypto_test.dir/bytestring/bytestring_test.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/crypto_test.dir/bytestring/bytestring_test.cc.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/bytestring/bytestring_test.cc > CMakeFiles/crypto_test.dir/bytestring/bytestring_test.cc.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/bytestring/bytestring_test.cc > CMakeFiles/crypto_test.dir/bytestring/bytestring_test.cc.i
 
 crypto/CMakeFiles/crypto_test.dir/bytestring/bytestring_test.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/crypto_test.dir/bytestring/bytestring_test.cc.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/bytestring/bytestring_test.cc -o CMakeFiles/crypto_test.dir/bytestring/bytestring_test.cc.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/bytestring/bytestring_test.cc -o CMakeFiles/crypto_test.dir/bytestring/bytestring_test.cc.s
 
 crypto/CMakeFiles/crypto_test.dir/chacha/chacha_test.cc.o: crypto/CMakeFiles/crypto_test.dir/flags.make
-crypto/CMakeFiles/crypto_test.dir/chacha/chacha_test.cc.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/chacha/chacha_test.cc
+crypto/CMakeFiles/crypto_test.dir/chacha/chacha_test.cc.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/chacha/chacha_test.cc
 crypto/CMakeFiles/crypto_test.dir/chacha/chacha_test.cc.o: crypto/CMakeFiles/crypto_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object crypto/CMakeFiles/crypto_test.dir/chacha/chacha_test.cc.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/chacha/chacha_test.cc.o -MF CMakeFiles/crypto_test.dir/chacha/chacha_test.cc.o.d -o CMakeFiles/crypto_test.dir/chacha/chacha_test.cc.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/chacha/chacha_test.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object crypto/CMakeFiles/crypto_test.dir/chacha/chacha_test.cc.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/chacha/chacha_test.cc.o -MF CMakeFiles/crypto_test.dir/chacha/chacha_test.cc.o.d -o CMakeFiles/crypto_test.dir/chacha/chacha_test.cc.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/chacha/chacha_test.cc
 
 crypto/CMakeFiles/crypto_test.dir/chacha/chacha_test.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/crypto_test.dir/chacha/chacha_test.cc.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/chacha/chacha_test.cc > CMakeFiles/crypto_test.dir/chacha/chacha_test.cc.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/chacha/chacha_test.cc > CMakeFiles/crypto_test.dir/chacha/chacha_test.cc.i
 
 crypto/CMakeFiles/crypto_test.dir/chacha/chacha_test.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/crypto_test.dir/chacha/chacha_test.cc.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/chacha/chacha_test.cc -o CMakeFiles/crypto_test.dir/chacha/chacha_test.cc.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/chacha/chacha_test.cc -o CMakeFiles/crypto_test.dir/chacha/chacha_test.cc.s
 
 crypto/CMakeFiles/crypto_test.dir/cipher_extra/aead_test.cc.o: crypto/CMakeFiles/crypto_test.dir/flags.make
-crypto/CMakeFiles/crypto_test.dir/cipher_extra/aead_test.cc.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/cipher_extra/aead_test.cc
+crypto/CMakeFiles/crypto_test.dir/cipher_extra/aead_test.cc.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/cipher_extra/aead_test.cc
 crypto/CMakeFiles/crypto_test.dir/cipher_extra/aead_test.cc.o: crypto/CMakeFiles/crypto_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object crypto/CMakeFiles/crypto_test.dir/cipher_extra/aead_test.cc.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/cipher_extra/aead_test.cc.o -MF CMakeFiles/crypto_test.dir/cipher_extra/aead_test.cc.o.d -o CMakeFiles/crypto_test.dir/cipher_extra/aead_test.cc.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/cipher_extra/aead_test.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object crypto/CMakeFiles/crypto_test.dir/cipher_extra/aead_test.cc.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/cipher_extra/aead_test.cc.o -MF CMakeFiles/crypto_test.dir/cipher_extra/aead_test.cc.o.d -o CMakeFiles/crypto_test.dir/cipher_extra/aead_test.cc.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/cipher_extra/aead_test.cc
 
 crypto/CMakeFiles/crypto_test.dir/cipher_extra/aead_test.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/crypto_test.dir/cipher_extra/aead_test.cc.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/cipher_extra/aead_test.cc > CMakeFiles/crypto_test.dir/cipher_extra/aead_test.cc.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/cipher_extra/aead_test.cc > CMakeFiles/crypto_test.dir/cipher_extra/aead_test.cc.i
 
 crypto/CMakeFiles/crypto_test.dir/cipher_extra/aead_test.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/crypto_test.dir/cipher_extra/aead_test.cc.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/cipher_extra/aead_test.cc -o CMakeFiles/crypto_test.dir/cipher_extra/aead_test.cc.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/cipher_extra/aead_test.cc -o CMakeFiles/crypto_test.dir/cipher_extra/aead_test.cc.s
 
 crypto/CMakeFiles/crypto_test.dir/cipher_extra/cipher_test.cc.o: crypto/CMakeFiles/crypto_test.dir/flags.make
-crypto/CMakeFiles/crypto_test.dir/cipher_extra/cipher_test.cc.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/cipher_extra/cipher_test.cc
+crypto/CMakeFiles/crypto_test.dir/cipher_extra/cipher_test.cc.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/cipher_extra/cipher_test.cc
 crypto/CMakeFiles/crypto_test.dir/cipher_extra/cipher_test.cc.o: crypto/CMakeFiles/crypto_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object crypto/CMakeFiles/crypto_test.dir/cipher_extra/cipher_test.cc.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/cipher_extra/cipher_test.cc.o -MF CMakeFiles/crypto_test.dir/cipher_extra/cipher_test.cc.o.d -o CMakeFiles/crypto_test.dir/cipher_extra/cipher_test.cc.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/cipher_extra/cipher_test.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object crypto/CMakeFiles/crypto_test.dir/cipher_extra/cipher_test.cc.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/cipher_extra/cipher_test.cc.o -MF CMakeFiles/crypto_test.dir/cipher_extra/cipher_test.cc.o.d -o CMakeFiles/crypto_test.dir/cipher_extra/cipher_test.cc.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/cipher_extra/cipher_test.cc
 
 crypto/CMakeFiles/crypto_test.dir/cipher_extra/cipher_test.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/crypto_test.dir/cipher_extra/cipher_test.cc.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/cipher_extra/cipher_test.cc > CMakeFiles/crypto_test.dir/cipher_extra/cipher_test.cc.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/cipher_extra/cipher_test.cc > CMakeFiles/crypto_test.dir/cipher_extra/cipher_test.cc.i
 
 crypto/CMakeFiles/crypto_test.dir/cipher_extra/cipher_test.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/crypto_test.dir/cipher_extra/cipher_test.cc.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/cipher_extra/cipher_test.cc -o CMakeFiles/crypto_test.dir/cipher_extra/cipher_test.cc.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/cipher_extra/cipher_test.cc -o CMakeFiles/crypto_test.dir/cipher_extra/cipher_test.cc.s
 
 crypto/CMakeFiles/crypto_test.dir/cmac/cmac_test.cc.o: crypto/CMakeFiles/crypto_test.dir/flags.make
-crypto/CMakeFiles/crypto_test.dir/cmac/cmac_test.cc.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/cmac/cmac_test.cc
+crypto/CMakeFiles/crypto_test.dir/cmac/cmac_test.cc.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/cmac/cmac_test.cc
 crypto/CMakeFiles/crypto_test.dir/cmac/cmac_test.cc.o: crypto/CMakeFiles/crypto_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object crypto/CMakeFiles/crypto_test.dir/cmac/cmac_test.cc.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/cmac/cmac_test.cc.o -MF CMakeFiles/crypto_test.dir/cmac/cmac_test.cc.o.d -o CMakeFiles/crypto_test.dir/cmac/cmac_test.cc.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/cmac/cmac_test.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object crypto/CMakeFiles/crypto_test.dir/cmac/cmac_test.cc.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/cmac/cmac_test.cc.o -MF CMakeFiles/crypto_test.dir/cmac/cmac_test.cc.o.d -o CMakeFiles/crypto_test.dir/cmac/cmac_test.cc.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/cmac/cmac_test.cc
 
 crypto/CMakeFiles/crypto_test.dir/cmac/cmac_test.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/crypto_test.dir/cmac/cmac_test.cc.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/cmac/cmac_test.cc > CMakeFiles/crypto_test.dir/cmac/cmac_test.cc.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/cmac/cmac_test.cc > CMakeFiles/crypto_test.dir/cmac/cmac_test.cc.i
 
 crypto/CMakeFiles/crypto_test.dir/cmac/cmac_test.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/crypto_test.dir/cmac/cmac_test.cc.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/cmac/cmac_test.cc -o CMakeFiles/crypto_test.dir/cmac/cmac_test.cc.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/cmac/cmac_test.cc -o CMakeFiles/crypto_test.dir/cmac/cmac_test.cc.s
 
 crypto/CMakeFiles/crypto_test.dir/compiler_test.cc.o: crypto/CMakeFiles/crypto_test.dir/flags.make
-crypto/CMakeFiles/crypto_test.dir/compiler_test.cc.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/compiler_test.cc
+crypto/CMakeFiles/crypto_test.dir/compiler_test.cc.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/compiler_test.cc
 crypto/CMakeFiles/crypto_test.dir/compiler_test.cc.o: crypto/CMakeFiles/crypto_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object crypto/CMakeFiles/crypto_test.dir/compiler_test.cc.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/compiler_test.cc.o -MF CMakeFiles/crypto_test.dir/compiler_test.cc.o.d -o CMakeFiles/crypto_test.dir/compiler_test.cc.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/compiler_test.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object crypto/CMakeFiles/crypto_test.dir/compiler_test.cc.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/compiler_test.cc.o -MF CMakeFiles/crypto_test.dir/compiler_test.cc.o.d -o CMakeFiles/crypto_test.dir/compiler_test.cc.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/compiler_test.cc
 
 crypto/CMakeFiles/crypto_test.dir/compiler_test.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/crypto_test.dir/compiler_test.cc.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/compiler_test.cc > CMakeFiles/crypto_test.dir/compiler_test.cc.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/compiler_test.cc > CMakeFiles/crypto_test.dir/compiler_test.cc.i
 
 crypto/CMakeFiles/crypto_test.dir/compiler_test.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/crypto_test.dir/compiler_test.cc.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/compiler_test.cc -o CMakeFiles/crypto_test.dir/compiler_test.cc.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/compiler_test.cc -o CMakeFiles/crypto_test.dir/compiler_test.cc.s
 
 crypto/CMakeFiles/crypto_test.dir/constant_time_test.cc.o: crypto/CMakeFiles/crypto_test.dir/flags.make
-crypto/CMakeFiles/crypto_test.dir/constant_time_test.cc.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/constant_time_test.cc
+crypto/CMakeFiles/crypto_test.dir/constant_time_test.cc.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/constant_time_test.cc
 crypto/CMakeFiles/crypto_test.dir/constant_time_test.cc.o: crypto/CMakeFiles/crypto_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object crypto/CMakeFiles/crypto_test.dir/constant_time_test.cc.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/constant_time_test.cc.o -MF CMakeFiles/crypto_test.dir/constant_time_test.cc.o.d -o CMakeFiles/crypto_test.dir/constant_time_test.cc.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/constant_time_test.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object crypto/CMakeFiles/crypto_test.dir/constant_time_test.cc.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/constant_time_test.cc.o -MF CMakeFiles/crypto_test.dir/constant_time_test.cc.o.d -o CMakeFiles/crypto_test.dir/constant_time_test.cc.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/constant_time_test.cc
 
 crypto/CMakeFiles/crypto_test.dir/constant_time_test.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/crypto_test.dir/constant_time_test.cc.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/constant_time_test.cc > CMakeFiles/crypto_test.dir/constant_time_test.cc.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/constant_time_test.cc > CMakeFiles/crypto_test.dir/constant_time_test.cc.i
 
 crypto/CMakeFiles/crypto_test.dir/constant_time_test.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/crypto_test.dir/constant_time_test.cc.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/constant_time_test.cc -o CMakeFiles/crypto_test.dir/constant_time_test.cc.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/constant_time_test.cc -o CMakeFiles/crypto_test.dir/constant_time_test.cc.s
 
 crypto/CMakeFiles/crypto_test.dir/cpu-arm-linux_test.cc.o: crypto/CMakeFiles/crypto_test.dir/flags.make
-crypto/CMakeFiles/crypto_test.dir/cpu-arm-linux_test.cc.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/cpu-arm-linux_test.cc
+crypto/CMakeFiles/crypto_test.dir/cpu-arm-linux_test.cc.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/cpu-arm-linux_test.cc
 crypto/CMakeFiles/crypto_test.dir/cpu-arm-linux_test.cc.o: crypto/CMakeFiles/crypto_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object crypto/CMakeFiles/crypto_test.dir/cpu-arm-linux_test.cc.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/cpu-arm-linux_test.cc.o -MF CMakeFiles/crypto_test.dir/cpu-arm-linux_test.cc.o.d -o CMakeFiles/crypto_test.dir/cpu-arm-linux_test.cc.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/cpu-arm-linux_test.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object crypto/CMakeFiles/crypto_test.dir/cpu-arm-linux_test.cc.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/cpu-arm-linux_test.cc.o -MF CMakeFiles/crypto_test.dir/cpu-arm-linux_test.cc.o.d -o CMakeFiles/crypto_test.dir/cpu-arm-linux_test.cc.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/cpu-arm-linux_test.cc
 
 crypto/CMakeFiles/crypto_test.dir/cpu-arm-linux_test.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/crypto_test.dir/cpu-arm-linux_test.cc.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/cpu-arm-linux_test.cc > CMakeFiles/crypto_test.dir/cpu-arm-linux_test.cc.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/cpu-arm-linux_test.cc > CMakeFiles/crypto_test.dir/cpu-arm-linux_test.cc.i
 
 crypto/CMakeFiles/crypto_test.dir/cpu-arm-linux_test.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/crypto_test.dir/cpu-arm-linux_test.cc.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/cpu-arm-linux_test.cc -o CMakeFiles/crypto_test.dir/cpu-arm-linux_test.cc.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/cpu-arm-linux_test.cc -o CMakeFiles/crypto_test.dir/cpu-arm-linux_test.cc.s
 
 crypto/CMakeFiles/crypto_test.dir/curve25519/ed25519_test.cc.o: crypto/CMakeFiles/crypto_test.dir/flags.make
-crypto/CMakeFiles/crypto_test.dir/curve25519/ed25519_test.cc.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/curve25519/ed25519_test.cc
+crypto/CMakeFiles/crypto_test.dir/curve25519/ed25519_test.cc.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/curve25519/ed25519_test.cc
 crypto/CMakeFiles/crypto_test.dir/curve25519/ed25519_test.cc.o: crypto/CMakeFiles/crypto_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object crypto/CMakeFiles/crypto_test.dir/curve25519/ed25519_test.cc.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/curve25519/ed25519_test.cc.o -MF CMakeFiles/crypto_test.dir/curve25519/ed25519_test.cc.o.d -o CMakeFiles/crypto_test.dir/curve25519/ed25519_test.cc.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/curve25519/ed25519_test.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object crypto/CMakeFiles/crypto_test.dir/curve25519/ed25519_test.cc.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/curve25519/ed25519_test.cc.o -MF CMakeFiles/crypto_test.dir/curve25519/ed25519_test.cc.o.d -o CMakeFiles/crypto_test.dir/curve25519/ed25519_test.cc.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/curve25519/ed25519_test.cc
 
 crypto/CMakeFiles/crypto_test.dir/curve25519/ed25519_test.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/crypto_test.dir/curve25519/ed25519_test.cc.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/curve25519/ed25519_test.cc > CMakeFiles/crypto_test.dir/curve25519/ed25519_test.cc.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/curve25519/ed25519_test.cc > CMakeFiles/crypto_test.dir/curve25519/ed25519_test.cc.i
 
 crypto/CMakeFiles/crypto_test.dir/curve25519/ed25519_test.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/crypto_test.dir/curve25519/ed25519_test.cc.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/curve25519/ed25519_test.cc -o CMakeFiles/crypto_test.dir/curve25519/ed25519_test.cc.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/curve25519/ed25519_test.cc -o CMakeFiles/crypto_test.dir/curve25519/ed25519_test.cc.s
 
 crypto/CMakeFiles/crypto_test.dir/curve25519/spake25519_test.cc.o: crypto/CMakeFiles/crypto_test.dir/flags.make
-crypto/CMakeFiles/crypto_test.dir/curve25519/spake25519_test.cc.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/curve25519/spake25519_test.cc
+crypto/CMakeFiles/crypto_test.dir/curve25519/spake25519_test.cc.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/curve25519/spake25519_test.cc
 crypto/CMakeFiles/crypto_test.dir/curve25519/spake25519_test.cc.o: crypto/CMakeFiles/crypto_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object crypto/CMakeFiles/crypto_test.dir/curve25519/spake25519_test.cc.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/curve25519/spake25519_test.cc.o -MF CMakeFiles/crypto_test.dir/curve25519/spake25519_test.cc.o.d -o CMakeFiles/crypto_test.dir/curve25519/spake25519_test.cc.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/curve25519/spake25519_test.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object crypto/CMakeFiles/crypto_test.dir/curve25519/spake25519_test.cc.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/curve25519/spake25519_test.cc.o -MF CMakeFiles/crypto_test.dir/curve25519/spake25519_test.cc.o.d -o CMakeFiles/crypto_test.dir/curve25519/spake25519_test.cc.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/curve25519/spake25519_test.cc
 
 crypto/CMakeFiles/crypto_test.dir/curve25519/spake25519_test.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/crypto_test.dir/curve25519/spake25519_test.cc.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/curve25519/spake25519_test.cc > CMakeFiles/crypto_test.dir/curve25519/spake25519_test.cc.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/curve25519/spake25519_test.cc > CMakeFiles/crypto_test.dir/curve25519/spake25519_test.cc.i
 
 crypto/CMakeFiles/crypto_test.dir/curve25519/spake25519_test.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/crypto_test.dir/curve25519/spake25519_test.cc.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/curve25519/spake25519_test.cc -o CMakeFiles/crypto_test.dir/curve25519/spake25519_test.cc.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/curve25519/spake25519_test.cc -o CMakeFiles/crypto_test.dir/curve25519/spake25519_test.cc.s
 
 crypto/CMakeFiles/crypto_test.dir/curve25519/x25519_test.cc.o: crypto/CMakeFiles/crypto_test.dir/flags.make
-crypto/CMakeFiles/crypto_test.dir/curve25519/x25519_test.cc.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/curve25519/x25519_test.cc
+crypto/CMakeFiles/crypto_test.dir/curve25519/x25519_test.cc.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/curve25519/x25519_test.cc
 crypto/CMakeFiles/crypto_test.dir/curve25519/x25519_test.cc.o: crypto/CMakeFiles/crypto_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object crypto/CMakeFiles/crypto_test.dir/curve25519/x25519_test.cc.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/curve25519/x25519_test.cc.o -MF CMakeFiles/crypto_test.dir/curve25519/x25519_test.cc.o.d -o CMakeFiles/crypto_test.dir/curve25519/x25519_test.cc.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/curve25519/x25519_test.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object crypto/CMakeFiles/crypto_test.dir/curve25519/x25519_test.cc.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/curve25519/x25519_test.cc.o -MF CMakeFiles/crypto_test.dir/curve25519/x25519_test.cc.o.d -o CMakeFiles/crypto_test.dir/curve25519/x25519_test.cc.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/curve25519/x25519_test.cc
 
 crypto/CMakeFiles/crypto_test.dir/curve25519/x25519_test.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/crypto_test.dir/curve25519/x25519_test.cc.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/curve25519/x25519_test.cc > CMakeFiles/crypto_test.dir/curve25519/x25519_test.cc.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/curve25519/x25519_test.cc > CMakeFiles/crypto_test.dir/curve25519/x25519_test.cc.i
 
 crypto/CMakeFiles/crypto_test.dir/curve25519/x25519_test.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/crypto_test.dir/curve25519/x25519_test.cc.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/curve25519/x25519_test.cc -o CMakeFiles/crypto_test.dir/curve25519/x25519_test.cc.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/curve25519/x25519_test.cc -o CMakeFiles/crypto_test.dir/curve25519/x25519_test.cc.s
 
 crypto/CMakeFiles/crypto_test.dir/ecdh_extra/ecdh_test.cc.o: crypto/CMakeFiles/crypto_test.dir/flags.make
-crypto/CMakeFiles/crypto_test.dir/ecdh_extra/ecdh_test.cc.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/ecdh_extra/ecdh_test.cc
+crypto/CMakeFiles/crypto_test.dir/ecdh_extra/ecdh_test.cc.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/ecdh_extra/ecdh_test.cc
 crypto/CMakeFiles/crypto_test.dir/ecdh_extra/ecdh_test.cc.o: crypto/CMakeFiles/crypto_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object crypto/CMakeFiles/crypto_test.dir/ecdh_extra/ecdh_test.cc.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/ecdh_extra/ecdh_test.cc.o -MF CMakeFiles/crypto_test.dir/ecdh_extra/ecdh_test.cc.o.d -o CMakeFiles/crypto_test.dir/ecdh_extra/ecdh_test.cc.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/ecdh_extra/ecdh_test.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object crypto/CMakeFiles/crypto_test.dir/ecdh_extra/ecdh_test.cc.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/ecdh_extra/ecdh_test.cc.o -MF CMakeFiles/crypto_test.dir/ecdh_extra/ecdh_test.cc.o.d -o CMakeFiles/crypto_test.dir/ecdh_extra/ecdh_test.cc.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/ecdh_extra/ecdh_test.cc
 
 crypto/CMakeFiles/crypto_test.dir/ecdh_extra/ecdh_test.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/crypto_test.dir/ecdh_extra/ecdh_test.cc.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/ecdh_extra/ecdh_test.cc > CMakeFiles/crypto_test.dir/ecdh_extra/ecdh_test.cc.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/ecdh_extra/ecdh_test.cc > CMakeFiles/crypto_test.dir/ecdh_extra/ecdh_test.cc.i
 
 crypto/CMakeFiles/crypto_test.dir/ecdh_extra/ecdh_test.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/crypto_test.dir/ecdh_extra/ecdh_test.cc.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/ecdh_extra/ecdh_test.cc -o CMakeFiles/crypto_test.dir/ecdh_extra/ecdh_test.cc.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/ecdh_extra/ecdh_test.cc -o CMakeFiles/crypto_test.dir/ecdh_extra/ecdh_test.cc.s
 
 crypto/CMakeFiles/crypto_test.dir/dh/dh_test.cc.o: crypto/CMakeFiles/crypto_test.dir/flags.make
-crypto/CMakeFiles/crypto_test.dir/dh/dh_test.cc.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/dh/dh_test.cc
+crypto/CMakeFiles/crypto_test.dir/dh/dh_test.cc.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/dh/dh_test.cc
 crypto/CMakeFiles/crypto_test.dir/dh/dh_test.cc.o: crypto/CMakeFiles/crypto_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object crypto/CMakeFiles/crypto_test.dir/dh/dh_test.cc.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/dh/dh_test.cc.o -MF CMakeFiles/crypto_test.dir/dh/dh_test.cc.o.d -o CMakeFiles/crypto_test.dir/dh/dh_test.cc.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/dh/dh_test.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object crypto/CMakeFiles/crypto_test.dir/dh/dh_test.cc.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/dh/dh_test.cc.o -MF CMakeFiles/crypto_test.dir/dh/dh_test.cc.o.d -o CMakeFiles/crypto_test.dir/dh/dh_test.cc.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/dh/dh_test.cc
 
 crypto/CMakeFiles/crypto_test.dir/dh/dh_test.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/crypto_test.dir/dh/dh_test.cc.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/dh/dh_test.cc > CMakeFiles/crypto_test.dir/dh/dh_test.cc.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/dh/dh_test.cc > CMakeFiles/crypto_test.dir/dh/dh_test.cc.i
 
 crypto/CMakeFiles/crypto_test.dir/dh/dh_test.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/crypto_test.dir/dh/dh_test.cc.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/dh/dh_test.cc -o CMakeFiles/crypto_test.dir/dh/dh_test.cc.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/dh/dh_test.cc -o CMakeFiles/crypto_test.dir/dh/dh_test.cc.s
 
 crypto/CMakeFiles/crypto_test.dir/digest_extra/digest_test.cc.o: crypto/CMakeFiles/crypto_test.dir/flags.make
-crypto/CMakeFiles/crypto_test.dir/digest_extra/digest_test.cc.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/digest_extra/digest_test.cc
+crypto/CMakeFiles/crypto_test.dir/digest_extra/digest_test.cc.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/digest_extra/digest_test.cc
 crypto/CMakeFiles/crypto_test.dir/digest_extra/digest_test.cc.o: crypto/CMakeFiles/crypto_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object crypto/CMakeFiles/crypto_test.dir/digest_extra/digest_test.cc.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/digest_extra/digest_test.cc.o -MF CMakeFiles/crypto_test.dir/digest_extra/digest_test.cc.o.d -o CMakeFiles/crypto_test.dir/digest_extra/digest_test.cc.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/digest_extra/digest_test.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object crypto/CMakeFiles/crypto_test.dir/digest_extra/digest_test.cc.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/digest_extra/digest_test.cc.o -MF CMakeFiles/crypto_test.dir/digest_extra/digest_test.cc.o.d -o CMakeFiles/crypto_test.dir/digest_extra/digest_test.cc.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/digest_extra/digest_test.cc
 
 crypto/CMakeFiles/crypto_test.dir/digest_extra/digest_test.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/crypto_test.dir/digest_extra/digest_test.cc.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/digest_extra/digest_test.cc > CMakeFiles/crypto_test.dir/digest_extra/digest_test.cc.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/digest_extra/digest_test.cc > CMakeFiles/crypto_test.dir/digest_extra/digest_test.cc.i
 
 crypto/CMakeFiles/crypto_test.dir/digest_extra/digest_test.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/crypto_test.dir/digest_extra/digest_test.cc.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/digest_extra/digest_test.cc -o CMakeFiles/crypto_test.dir/digest_extra/digest_test.cc.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/digest_extra/digest_test.cc -o CMakeFiles/crypto_test.dir/digest_extra/digest_test.cc.s
 
 crypto/CMakeFiles/crypto_test.dir/dsa/dsa_test.cc.o: crypto/CMakeFiles/crypto_test.dir/flags.make
-crypto/CMakeFiles/crypto_test.dir/dsa/dsa_test.cc.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/dsa/dsa_test.cc
+crypto/CMakeFiles/crypto_test.dir/dsa/dsa_test.cc.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/dsa/dsa_test.cc
 crypto/CMakeFiles/crypto_test.dir/dsa/dsa_test.cc.o: crypto/CMakeFiles/crypto_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object crypto/CMakeFiles/crypto_test.dir/dsa/dsa_test.cc.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/dsa/dsa_test.cc.o -MF CMakeFiles/crypto_test.dir/dsa/dsa_test.cc.o.d -o CMakeFiles/crypto_test.dir/dsa/dsa_test.cc.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/dsa/dsa_test.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object crypto/CMakeFiles/crypto_test.dir/dsa/dsa_test.cc.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/dsa/dsa_test.cc.o -MF CMakeFiles/crypto_test.dir/dsa/dsa_test.cc.o.d -o CMakeFiles/crypto_test.dir/dsa/dsa_test.cc.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/dsa/dsa_test.cc
 
 crypto/CMakeFiles/crypto_test.dir/dsa/dsa_test.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/crypto_test.dir/dsa/dsa_test.cc.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/dsa/dsa_test.cc > CMakeFiles/crypto_test.dir/dsa/dsa_test.cc.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/dsa/dsa_test.cc > CMakeFiles/crypto_test.dir/dsa/dsa_test.cc.i
 
 crypto/CMakeFiles/crypto_test.dir/dsa/dsa_test.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/crypto_test.dir/dsa/dsa_test.cc.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/dsa/dsa_test.cc -o CMakeFiles/crypto_test.dir/dsa/dsa_test.cc.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/dsa/dsa_test.cc -o CMakeFiles/crypto_test.dir/dsa/dsa_test.cc.s
 
 crypto/CMakeFiles/crypto_test.dir/err/err_test.cc.o: crypto/CMakeFiles/crypto_test.dir/flags.make
-crypto/CMakeFiles/crypto_test.dir/err/err_test.cc.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/err/err_test.cc
+crypto/CMakeFiles/crypto_test.dir/err/err_test.cc.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/err/err_test.cc
 crypto/CMakeFiles/crypto_test.dir/err/err_test.cc.o: crypto/CMakeFiles/crypto_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object crypto/CMakeFiles/crypto_test.dir/err/err_test.cc.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/err/err_test.cc.o -MF CMakeFiles/crypto_test.dir/err/err_test.cc.o.d -o CMakeFiles/crypto_test.dir/err/err_test.cc.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/err/err_test.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object crypto/CMakeFiles/crypto_test.dir/err/err_test.cc.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/err/err_test.cc.o -MF CMakeFiles/crypto_test.dir/err/err_test.cc.o.d -o CMakeFiles/crypto_test.dir/err/err_test.cc.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/err/err_test.cc
 
 crypto/CMakeFiles/crypto_test.dir/err/err_test.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/crypto_test.dir/err/err_test.cc.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/err/err_test.cc > CMakeFiles/crypto_test.dir/err/err_test.cc.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/err/err_test.cc > CMakeFiles/crypto_test.dir/err/err_test.cc.i
 
 crypto/CMakeFiles/crypto_test.dir/err/err_test.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/crypto_test.dir/err/err_test.cc.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/err/err_test.cc -o CMakeFiles/crypto_test.dir/err/err_test.cc.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/err/err_test.cc -o CMakeFiles/crypto_test.dir/err/err_test.cc.s
 
 crypto/CMakeFiles/crypto_test.dir/evp/evp_extra_test.cc.o: crypto/CMakeFiles/crypto_test.dir/flags.make
-crypto/CMakeFiles/crypto_test.dir/evp/evp_extra_test.cc.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/evp/evp_extra_test.cc
+crypto/CMakeFiles/crypto_test.dir/evp/evp_extra_test.cc.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/evp/evp_extra_test.cc
 crypto/CMakeFiles/crypto_test.dir/evp/evp_extra_test.cc.o: crypto/CMakeFiles/crypto_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object crypto/CMakeFiles/crypto_test.dir/evp/evp_extra_test.cc.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/evp/evp_extra_test.cc.o -MF CMakeFiles/crypto_test.dir/evp/evp_extra_test.cc.o.d -o CMakeFiles/crypto_test.dir/evp/evp_extra_test.cc.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/evp/evp_extra_test.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object crypto/CMakeFiles/crypto_test.dir/evp/evp_extra_test.cc.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/evp/evp_extra_test.cc.o -MF CMakeFiles/crypto_test.dir/evp/evp_extra_test.cc.o.d -o CMakeFiles/crypto_test.dir/evp/evp_extra_test.cc.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/evp/evp_extra_test.cc
 
 crypto/CMakeFiles/crypto_test.dir/evp/evp_extra_test.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/crypto_test.dir/evp/evp_extra_test.cc.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/evp/evp_extra_test.cc > CMakeFiles/crypto_test.dir/evp/evp_extra_test.cc.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/evp/evp_extra_test.cc > CMakeFiles/crypto_test.dir/evp/evp_extra_test.cc.i
 
 crypto/CMakeFiles/crypto_test.dir/evp/evp_extra_test.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/crypto_test.dir/evp/evp_extra_test.cc.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/evp/evp_extra_test.cc -o CMakeFiles/crypto_test.dir/evp/evp_extra_test.cc.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/evp/evp_extra_test.cc -o CMakeFiles/crypto_test.dir/evp/evp_extra_test.cc.s
 
 crypto/CMakeFiles/crypto_test.dir/evp/evp_test.cc.o: crypto/CMakeFiles/crypto_test.dir/flags.make
-crypto/CMakeFiles/crypto_test.dir/evp/evp_test.cc.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/evp/evp_test.cc
+crypto/CMakeFiles/crypto_test.dir/evp/evp_test.cc.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/evp/evp_test.cc
 crypto/CMakeFiles/crypto_test.dir/evp/evp_test.cc.o: crypto/CMakeFiles/crypto_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object crypto/CMakeFiles/crypto_test.dir/evp/evp_test.cc.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/evp/evp_test.cc.o -MF CMakeFiles/crypto_test.dir/evp/evp_test.cc.o.d -o CMakeFiles/crypto_test.dir/evp/evp_test.cc.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/evp/evp_test.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object crypto/CMakeFiles/crypto_test.dir/evp/evp_test.cc.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/evp/evp_test.cc.o -MF CMakeFiles/crypto_test.dir/evp/evp_test.cc.o.d -o CMakeFiles/crypto_test.dir/evp/evp_test.cc.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/evp/evp_test.cc
 
 crypto/CMakeFiles/crypto_test.dir/evp/evp_test.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/crypto_test.dir/evp/evp_test.cc.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/evp/evp_test.cc > CMakeFiles/crypto_test.dir/evp/evp_test.cc.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/evp/evp_test.cc > CMakeFiles/crypto_test.dir/evp/evp_test.cc.i
 
 crypto/CMakeFiles/crypto_test.dir/evp/evp_test.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/crypto_test.dir/evp/evp_test.cc.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/evp/evp_test.cc -o CMakeFiles/crypto_test.dir/evp/evp_test.cc.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/evp/evp_test.cc -o CMakeFiles/crypto_test.dir/evp/evp_test.cc.s
 
 crypto/CMakeFiles/crypto_test.dir/evp/pbkdf_test.cc.o: crypto/CMakeFiles/crypto_test.dir/flags.make
-crypto/CMakeFiles/crypto_test.dir/evp/pbkdf_test.cc.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/evp/pbkdf_test.cc
+crypto/CMakeFiles/crypto_test.dir/evp/pbkdf_test.cc.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/evp/pbkdf_test.cc
 crypto/CMakeFiles/crypto_test.dir/evp/pbkdf_test.cc.o: crypto/CMakeFiles/crypto_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object crypto/CMakeFiles/crypto_test.dir/evp/pbkdf_test.cc.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/evp/pbkdf_test.cc.o -MF CMakeFiles/crypto_test.dir/evp/pbkdf_test.cc.o.d -o CMakeFiles/crypto_test.dir/evp/pbkdf_test.cc.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/evp/pbkdf_test.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object crypto/CMakeFiles/crypto_test.dir/evp/pbkdf_test.cc.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/evp/pbkdf_test.cc.o -MF CMakeFiles/crypto_test.dir/evp/pbkdf_test.cc.o.d -o CMakeFiles/crypto_test.dir/evp/pbkdf_test.cc.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/evp/pbkdf_test.cc
 
 crypto/CMakeFiles/crypto_test.dir/evp/pbkdf_test.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/crypto_test.dir/evp/pbkdf_test.cc.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/evp/pbkdf_test.cc > CMakeFiles/crypto_test.dir/evp/pbkdf_test.cc.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/evp/pbkdf_test.cc > CMakeFiles/crypto_test.dir/evp/pbkdf_test.cc.i
 
 crypto/CMakeFiles/crypto_test.dir/evp/pbkdf_test.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/crypto_test.dir/evp/pbkdf_test.cc.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/evp/pbkdf_test.cc -o CMakeFiles/crypto_test.dir/evp/pbkdf_test.cc.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/evp/pbkdf_test.cc -o CMakeFiles/crypto_test.dir/evp/pbkdf_test.cc.s
 
 crypto/CMakeFiles/crypto_test.dir/evp/scrypt_test.cc.o: crypto/CMakeFiles/crypto_test.dir/flags.make
-crypto/CMakeFiles/crypto_test.dir/evp/scrypt_test.cc.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/evp/scrypt_test.cc
+crypto/CMakeFiles/crypto_test.dir/evp/scrypt_test.cc.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/evp/scrypt_test.cc
 crypto/CMakeFiles/crypto_test.dir/evp/scrypt_test.cc.o: crypto/CMakeFiles/crypto_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object crypto/CMakeFiles/crypto_test.dir/evp/scrypt_test.cc.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/evp/scrypt_test.cc.o -MF CMakeFiles/crypto_test.dir/evp/scrypt_test.cc.o.d -o CMakeFiles/crypto_test.dir/evp/scrypt_test.cc.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/evp/scrypt_test.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object crypto/CMakeFiles/crypto_test.dir/evp/scrypt_test.cc.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/evp/scrypt_test.cc.o -MF CMakeFiles/crypto_test.dir/evp/scrypt_test.cc.o.d -o CMakeFiles/crypto_test.dir/evp/scrypt_test.cc.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/evp/scrypt_test.cc
 
 crypto/CMakeFiles/crypto_test.dir/evp/scrypt_test.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/crypto_test.dir/evp/scrypt_test.cc.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/evp/scrypt_test.cc > CMakeFiles/crypto_test.dir/evp/scrypt_test.cc.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/evp/scrypt_test.cc > CMakeFiles/crypto_test.dir/evp/scrypt_test.cc.i
 
 crypto/CMakeFiles/crypto_test.dir/evp/scrypt_test.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/crypto_test.dir/evp/scrypt_test.cc.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/evp/scrypt_test.cc -o CMakeFiles/crypto_test.dir/evp/scrypt_test.cc.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/evp/scrypt_test.cc -o CMakeFiles/crypto_test.dir/evp/scrypt_test.cc.s
 
 crypto/CMakeFiles/crypto_test.dir/fipsmodule/aes/aes_test.cc.o: crypto/CMakeFiles/crypto_test.dir/flags.make
-crypto/CMakeFiles/crypto_test.dir/fipsmodule/aes/aes_test.cc.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/aes/aes_test.cc
+crypto/CMakeFiles/crypto_test.dir/fipsmodule/aes/aes_test.cc.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/aes/aes_test.cc
 crypto/CMakeFiles/crypto_test.dir/fipsmodule/aes/aes_test.cc.o: crypto/CMakeFiles/crypto_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object crypto/CMakeFiles/crypto_test.dir/fipsmodule/aes/aes_test.cc.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/fipsmodule/aes/aes_test.cc.o -MF CMakeFiles/crypto_test.dir/fipsmodule/aes/aes_test.cc.o.d -o CMakeFiles/crypto_test.dir/fipsmodule/aes/aes_test.cc.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/aes/aes_test.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object crypto/CMakeFiles/crypto_test.dir/fipsmodule/aes/aes_test.cc.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/fipsmodule/aes/aes_test.cc.o -MF CMakeFiles/crypto_test.dir/fipsmodule/aes/aes_test.cc.o.d -o CMakeFiles/crypto_test.dir/fipsmodule/aes/aes_test.cc.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/aes/aes_test.cc
 
 crypto/CMakeFiles/crypto_test.dir/fipsmodule/aes/aes_test.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/crypto_test.dir/fipsmodule/aes/aes_test.cc.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/aes/aes_test.cc > CMakeFiles/crypto_test.dir/fipsmodule/aes/aes_test.cc.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/aes/aes_test.cc > CMakeFiles/crypto_test.dir/fipsmodule/aes/aes_test.cc.i
 
 crypto/CMakeFiles/crypto_test.dir/fipsmodule/aes/aes_test.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/crypto_test.dir/fipsmodule/aes/aes_test.cc.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/aes/aes_test.cc -o CMakeFiles/crypto_test.dir/fipsmodule/aes/aes_test.cc.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/aes/aes_test.cc -o CMakeFiles/crypto_test.dir/fipsmodule/aes/aes_test.cc.s
 
 crypto/CMakeFiles/crypto_test.dir/fipsmodule/bn/bn_test.cc.o: crypto/CMakeFiles/crypto_test.dir/flags.make
-crypto/CMakeFiles/crypto_test.dir/fipsmodule/bn/bn_test.cc.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/bn/bn_test.cc
+crypto/CMakeFiles/crypto_test.dir/fipsmodule/bn/bn_test.cc.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/bn/bn_test.cc
 crypto/CMakeFiles/crypto_test.dir/fipsmodule/bn/bn_test.cc.o: crypto/CMakeFiles/crypto_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object crypto/CMakeFiles/crypto_test.dir/fipsmodule/bn/bn_test.cc.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/fipsmodule/bn/bn_test.cc.o -MF CMakeFiles/crypto_test.dir/fipsmodule/bn/bn_test.cc.o.d -o CMakeFiles/crypto_test.dir/fipsmodule/bn/bn_test.cc.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/bn/bn_test.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object crypto/CMakeFiles/crypto_test.dir/fipsmodule/bn/bn_test.cc.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/fipsmodule/bn/bn_test.cc.o -MF CMakeFiles/crypto_test.dir/fipsmodule/bn/bn_test.cc.o.d -o CMakeFiles/crypto_test.dir/fipsmodule/bn/bn_test.cc.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/bn/bn_test.cc
 
 crypto/CMakeFiles/crypto_test.dir/fipsmodule/bn/bn_test.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/crypto_test.dir/fipsmodule/bn/bn_test.cc.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/bn/bn_test.cc > CMakeFiles/crypto_test.dir/fipsmodule/bn/bn_test.cc.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/bn/bn_test.cc > CMakeFiles/crypto_test.dir/fipsmodule/bn/bn_test.cc.i
 
 crypto/CMakeFiles/crypto_test.dir/fipsmodule/bn/bn_test.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/crypto_test.dir/fipsmodule/bn/bn_test.cc.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/bn/bn_test.cc -o CMakeFiles/crypto_test.dir/fipsmodule/bn/bn_test.cc.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/bn/bn_test.cc -o CMakeFiles/crypto_test.dir/fipsmodule/bn/bn_test.cc.s
 
 crypto/CMakeFiles/crypto_test.dir/fipsmodule/ec/ec_test.cc.o: crypto/CMakeFiles/crypto_test.dir/flags.make
-crypto/CMakeFiles/crypto_test.dir/fipsmodule/ec/ec_test.cc.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/ec/ec_test.cc
+crypto/CMakeFiles/crypto_test.dir/fipsmodule/ec/ec_test.cc.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/ec/ec_test.cc
 crypto/CMakeFiles/crypto_test.dir/fipsmodule/ec/ec_test.cc.o: crypto/CMakeFiles/crypto_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building CXX object crypto/CMakeFiles/crypto_test.dir/fipsmodule/ec/ec_test.cc.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/fipsmodule/ec/ec_test.cc.o -MF CMakeFiles/crypto_test.dir/fipsmodule/ec/ec_test.cc.o.d -o CMakeFiles/crypto_test.dir/fipsmodule/ec/ec_test.cc.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/ec/ec_test.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building CXX object crypto/CMakeFiles/crypto_test.dir/fipsmodule/ec/ec_test.cc.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/fipsmodule/ec/ec_test.cc.o -MF CMakeFiles/crypto_test.dir/fipsmodule/ec/ec_test.cc.o.d -o CMakeFiles/crypto_test.dir/fipsmodule/ec/ec_test.cc.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/ec/ec_test.cc
 
 crypto/CMakeFiles/crypto_test.dir/fipsmodule/ec/ec_test.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/crypto_test.dir/fipsmodule/ec/ec_test.cc.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/ec/ec_test.cc > CMakeFiles/crypto_test.dir/fipsmodule/ec/ec_test.cc.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/ec/ec_test.cc > CMakeFiles/crypto_test.dir/fipsmodule/ec/ec_test.cc.i
 
 crypto/CMakeFiles/crypto_test.dir/fipsmodule/ec/ec_test.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/crypto_test.dir/fipsmodule/ec/ec_test.cc.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/ec/ec_test.cc -o CMakeFiles/crypto_test.dir/fipsmodule/ec/ec_test.cc.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/ec/ec_test.cc -o CMakeFiles/crypto_test.dir/fipsmodule/ec/ec_test.cc.s
 
 crypto/CMakeFiles/crypto_test.dir/fipsmodule/ec/p256-x86_64_test.cc.o: crypto/CMakeFiles/crypto_test.dir/flags.make
-crypto/CMakeFiles/crypto_test.dir/fipsmodule/ec/p256-x86_64_test.cc.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/ec/p256-x86_64_test.cc
+crypto/CMakeFiles/crypto_test.dir/fipsmodule/ec/p256-x86_64_test.cc.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/ec/p256-x86_64_test.cc
 crypto/CMakeFiles/crypto_test.dir/fipsmodule/ec/p256-x86_64_test.cc.o: crypto/CMakeFiles/crypto_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object crypto/CMakeFiles/crypto_test.dir/fipsmodule/ec/p256-x86_64_test.cc.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/fipsmodule/ec/p256-x86_64_test.cc.o -MF CMakeFiles/crypto_test.dir/fipsmodule/ec/p256-x86_64_test.cc.o.d -o CMakeFiles/crypto_test.dir/fipsmodule/ec/p256-x86_64_test.cc.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/ec/p256-x86_64_test.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object crypto/CMakeFiles/crypto_test.dir/fipsmodule/ec/p256-x86_64_test.cc.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/fipsmodule/ec/p256-x86_64_test.cc.o -MF CMakeFiles/crypto_test.dir/fipsmodule/ec/p256-x86_64_test.cc.o.d -o CMakeFiles/crypto_test.dir/fipsmodule/ec/p256-x86_64_test.cc.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/ec/p256-x86_64_test.cc
 
 crypto/CMakeFiles/crypto_test.dir/fipsmodule/ec/p256-x86_64_test.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/crypto_test.dir/fipsmodule/ec/p256-x86_64_test.cc.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/ec/p256-x86_64_test.cc > CMakeFiles/crypto_test.dir/fipsmodule/ec/p256-x86_64_test.cc.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/ec/p256-x86_64_test.cc > CMakeFiles/crypto_test.dir/fipsmodule/ec/p256-x86_64_test.cc.i
 
 crypto/CMakeFiles/crypto_test.dir/fipsmodule/ec/p256-x86_64_test.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/crypto_test.dir/fipsmodule/ec/p256-x86_64_test.cc.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/ec/p256-x86_64_test.cc -o CMakeFiles/crypto_test.dir/fipsmodule/ec/p256-x86_64_test.cc.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/ec/p256-x86_64_test.cc -o CMakeFiles/crypto_test.dir/fipsmodule/ec/p256-x86_64_test.cc.s
 
 crypto/CMakeFiles/crypto_test.dir/fipsmodule/ecdsa/ecdsa_test.cc.o: crypto/CMakeFiles/crypto_test.dir/flags.make
-crypto/CMakeFiles/crypto_test.dir/fipsmodule/ecdsa/ecdsa_test.cc.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/ecdsa/ecdsa_test.cc
+crypto/CMakeFiles/crypto_test.dir/fipsmodule/ecdsa/ecdsa_test.cc.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/ecdsa/ecdsa_test.cc
 crypto/CMakeFiles/crypto_test.dir/fipsmodule/ecdsa/ecdsa_test.cc.o: crypto/CMakeFiles/crypto_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object crypto/CMakeFiles/crypto_test.dir/fipsmodule/ecdsa/ecdsa_test.cc.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/fipsmodule/ecdsa/ecdsa_test.cc.o -MF CMakeFiles/crypto_test.dir/fipsmodule/ecdsa/ecdsa_test.cc.o.d -o CMakeFiles/crypto_test.dir/fipsmodule/ecdsa/ecdsa_test.cc.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/ecdsa/ecdsa_test.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object crypto/CMakeFiles/crypto_test.dir/fipsmodule/ecdsa/ecdsa_test.cc.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/fipsmodule/ecdsa/ecdsa_test.cc.o -MF CMakeFiles/crypto_test.dir/fipsmodule/ecdsa/ecdsa_test.cc.o.d -o CMakeFiles/crypto_test.dir/fipsmodule/ecdsa/ecdsa_test.cc.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/ecdsa/ecdsa_test.cc
 
 crypto/CMakeFiles/crypto_test.dir/fipsmodule/ecdsa/ecdsa_test.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/crypto_test.dir/fipsmodule/ecdsa/ecdsa_test.cc.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/ecdsa/ecdsa_test.cc > CMakeFiles/crypto_test.dir/fipsmodule/ecdsa/ecdsa_test.cc.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/ecdsa/ecdsa_test.cc > CMakeFiles/crypto_test.dir/fipsmodule/ecdsa/ecdsa_test.cc.i
 
 crypto/CMakeFiles/crypto_test.dir/fipsmodule/ecdsa/ecdsa_test.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/crypto_test.dir/fipsmodule/ecdsa/ecdsa_test.cc.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/ecdsa/ecdsa_test.cc -o CMakeFiles/crypto_test.dir/fipsmodule/ecdsa/ecdsa_test.cc.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/ecdsa/ecdsa_test.cc -o CMakeFiles/crypto_test.dir/fipsmodule/ecdsa/ecdsa_test.cc.s
 
 crypto/CMakeFiles/crypto_test.dir/fipsmodule/md5/md5_test.cc.o: crypto/CMakeFiles/crypto_test.dir/flags.make
-crypto/CMakeFiles/crypto_test.dir/fipsmodule/md5/md5_test.cc.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/md5/md5_test.cc
+crypto/CMakeFiles/crypto_test.dir/fipsmodule/md5/md5_test.cc.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/md5/md5_test.cc
 crypto/CMakeFiles/crypto_test.dir/fipsmodule/md5/md5_test.cc.o: crypto/CMakeFiles/crypto_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building CXX object crypto/CMakeFiles/crypto_test.dir/fipsmodule/md5/md5_test.cc.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/fipsmodule/md5/md5_test.cc.o -MF CMakeFiles/crypto_test.dir/fipsmodule/md5/md5_test.cc.o.d -o CMakeFiles/crypto_test.dir/fipsmodule/md5/md5_test.cc.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/md5/md5_test.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building CXX object crypto/CMakeFiles/crypto_test.dir/fipsmodule/md5/md5_test.cc.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/fipsmodule/md5/md5_test.cc.o -MF CMakeFiles/crypto_test.dir/fipsmodule/md5/md5_test.cc.o.d -o CMakeFiles/crypto_test.dir/fipsmodule/md5/md5_test.cc.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/md5/md5_test.cc
 
 crypto/CMakeFiles/crypto_test.dir/fipsmodule/md5/md5_test.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/crypto_test.dir/fipsmodule/md5/md5_test.cc.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/md5/md5_test.cc > CMakeFiles/crypto_test.dir/fipsmodule/md5/md5_test.cc.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/md5/md5_test.cc > CMakeFiles/crypto_test.dir/fipsmodule/md5/md5_test.cc.i
 
 crypto/CMakeFiles/crypto_test.dir/fipsmodule/md5/md5_test.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/crypto_test.dir/fipsmodule/md5/md5_test.cc.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/md5/md5_test.cc -o CMakeFiles/crypto_test.dir/fipsmodule/md5/md5_test.cc.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/md5/md5_test.cc -o CMakeFiles/crypto_test.dir/fipsmodule/md5/md5_test.cc.s
 
 crypto/CMakeFiles/crypto_test.dir/fipsmodule/modes/gcm_test.cc.o: crypto/CMakeFiles/crypto_test.dir/flags.make
-crypto/CMakeFiles/crypto_test.dir/fipsmodule/modes/gcm_test.cc.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/modes/gcm_test.cc
+crypto/CMakeFiles/crypto_test.dir/fipsmodule/modes/gcm_test.cc.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/modes/gcm_test.cc
 crypto/CMakeFiles/crypto_test.dir/fipsmodule/modes/gcm_test.cc.o: crypto/CMakeFiles/crypto_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building CXX object crypto/CMakeFiles/crypto_test.dir/fipsmodule/modes/gcm_test.cc.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/fipsmodule/modes/gcm_test.cc.o -MF CMakeFiles/crypto_test.dir/fipsmodule/modes/gcm_test.cc.o.d -o CMakeFiles/crypto_test.dir/fipsmodule/modes/gcm_test.cc.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/modes/gcm_test.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building CXX object crypto/CMakeFiles/crypto_test.dir/fipsmodule/modes/gcm_test.cc.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/fipsmodule/modes/gcm_test.cc.o -MF CMakeFiles/crypto_test.dir/fipsmodule/modes/gcm_test.cc.o.d -o CMakeFiles/crypto_test.dir/fipsmodule/modes/gcm_test.cc.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/modes/gcm_test.cc
 
 crypto/CMakeFiles/crypto_test.dir/fipsmodule/modes/gcm_test.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/crypto_test.dir/fipsmodule/modes/gcm_test.cc.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/modes/gcm_test.cc > CMakeFiles/crypto_test.dir/fipsmodule/modes/gcm_test.cc.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/modes/gcm_test.cc > CMakeFiles/crypto_test.dir/fipsmodule/modes/gcm_test.cc.i
 
 crypto/CMakeFiles/crypto_test.dir/fipsmodule/modes/gcm_test.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/crypto_test.dir/fipsmodule/modes/gcm_test.cc.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/modes/gcm_test.cc -o CMakeFiles/crypto_test.dir/fipsmodule/modes/gcm_test.cc.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/modes/gcm_test.cc -o CMakeFiles/crypto_test.dir/fipsmodule/modes/gcm_test.cc.s
 
 crypto/CMakeFiles/crypto_test.dir/fipsmodule/rand/ctrdrbg_test.cc.o: crypto/CMakeFiles/crypto_test.dir/flags.make
-crypto/CMakeFiles/crypto_test.dir/fipsmodule/rand/ctrdrbg_test.cc.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/rand/ctrdrbg_test.cc
+crypto/CMakeFiles/crypto_test.dir/fipsmodule/rand/ctrdrbg_test.cc.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/rand/ctrdrbg_test.cc
 crypto/CMakeFiles/crypto_test.dir/fipsmodule/rand/ctrdrbg_test.cc.o: crypto/CMakeFiles/crypto_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building CXX object crypto/CMakeFiles/crypto_test.dir/fipsmodule/rand/ctrdrbg_test.cc.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/fipsmodule/rand/ctrdrbg_test.cc.o -MF CMakeFiles/crypto_test.dir/fipsmodule/rand/ctrdrbg_test.cc.o.d -o CMakeFiles/crypto_test.dir/fipsmodule/rand/ctrdrbg_test.cc.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/rand/ctrdrbg_test.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building CXX object crypto/CMakeFiles/crypto_test.dir/fipsmodule/rand/ctrdrbg_test.cc.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/fipsmodule/rand/ctrdrbg_test.cc.o -MF CMakeFiles/crypto_test.dir/fipsmodule/rand/ctrdrbg_test.cc.o.d -o CMakeFiles/crypto_test.dir/fipsmodule/rand/ctrdrbg_test.cc.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/rand/ctrdrbg_test.cc
 
 crypto/CMakeFiles/crypto_test.dir/fipsmodule/rand/ctrdrbg_test.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/crypto_test.dir/fipsmodule/rand/ctrdrbg_test.cc.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/rand/ctrdrbg_test.cc > CMakeFiles/crypto_test.dir/fipsmodule/rand/ctrdrbg_test.cc.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/rand/ctrdrbg_test.cc > CMakeFiles/crypto_test.dir/fipsmodule/rand/ctrdrbg_test.cc.i
 
 crypto/CMakeFiles/crypto_test.dir/fipsmodule/rand/ctrdrbg_test.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/crypto_test.dir/fipsmodule/rand/ctrdrbg_test.cc.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/rand/ctrdrbg_test.cc -o CMakeFiles/crypto_test.dir/fipsmodule/rand/ctrdrbg_test.cc.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/rand/ctrdrbg_test.cc -o CMakeFiles/crypto_test.dir/fipsmodule/rand/ctrdrbg_test.cc.s
 
 crypto/CMakeFiles/crypto_test.dir/fipsmodule/sha/sha_test.cc.o: crypto/CMakeFiles/crypto_test.dir/flags.make
-crypto/CMakeFiles/crypto_test.dir/fipsmodule/sha/sha_test.cc.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/sha/sha_test.cc
+crypto/CMakeFiles/crypto_test.dir/fipsmodule/sha/sha_test.cc.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/sha/sha_test.cc
 crypto/CMakeFiles/crypto_test.dir/fipsmodule/sha/sha_test.cc.o: crypto/CMakeFiles/crypto_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building CXX object crypto/CMakeFiles/crypto_test.dir/fipsmodule/sha/sha_test.cc.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/fipsmodule/sha/sha_test.cc.o -MF CMakeFiles/crypto_test.dir/fipsmodule/sha/sha_test.cc.o.d -o CMakeFiles/crypto_test.dir/fipsmodule/sha/sha_test.cc.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/sha/sha_test.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building CXX object crypto/CMakeFiles/crypto_test.dir/fipsmodule/sha/sha_test.cc.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/fipsmodule/sha/sha_test.cc.o -MF CMakeFiles/crypto_test.dir/fipsmodule/sha/sha_test.cc.o.d -o CMakeFiles/crypto_test.dir/fipsmodule/sha/sha_test.cc.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/sha/sha_test.cc
 
 crypto/CMakeFiles/crypto_test.dir/fipsmodule/sha/sha_test.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/crypto_test.dir/fipsmodule/sha/sha_test.cc.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/sha/sha_test.cc > CMakeFiles/crypto_test.dir/fipsmodule/sha/sha_test.cc.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/sha/sha_test.cc > CMakeFiles/crypto_test.dir/fipsmodule/sha/sha_test.cc.i
 
 crypto/CMakeFiles/crypto_test.dir/fipsmodule/sha/sha_test.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/crypto_test.dir/fipsmodule/sha/sha_test.cc.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/fipsmodule/sha/sha_test.cc -o CMakeFiles/crypto_test.dir/fipsmodule/sha/sha_test.cc.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/fipsmodule/sha/sha_test.cc -o CMakeFiles/crypto_test.dir/fipsmodule/sha/sha_test.cc.s
 
 crypto/CMakeFiles/crypto_test.dir/hkdf/hkdf_test.cc.o: crypto/CMakeFiles/crypto_test.dir/flags.make
-crypto/CMakeFiles/crypto_test.dir/hkdf/hkdf_test.cc.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/hkdf/hkdf_test.cc
+crypto/CMakeFiles/crypto_test.dir/hkdf/hkdf_test.cc.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/hkdf/hkdf_test.cc
 crypto/CMakeFiles/crypto_test.dir/hkdf/hkdf_test.cc.o: crypto/CMakeFiles/crypto_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building CXX object crypto/CMakeFiles/crypto_test.dir/hkdf/hkdf_test.cc.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/hkdf/hkdf_test.cc.o -MF CMakeFiles/crypto_test.dir/hkdf/hkdf_test.cc.o.d -o CMakeFiles/crypto_test.dir/hkdf/hkdf_test.cc.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/hkdf/hkdf_test.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building CXX object crypto/CMakeFiles/crypto_test.dir/hkdf/hkdf_test.cc.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/hkdf/hkdf_test.cc.o -MF CMakeFiles/crypto_test.dir/hkdf/hkdf_test.cc.o.d -o CMakeFiles/crypto_test.dir/hkdf/hkdf_test.cc.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/hkdf/hkdf_test.cc
 
 crypto/CMakeFiles/crypto_test.dir/hkdf/hkdf_test.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/crypto_test.dir/hkdf/hkdf_test.cc.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/hkdf/hkdf_test.cc > CMakeFiles/crypto_test.dir/hkdf/hkdf_test.cc.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/hkdf/hkdf_test.cc > CMakeFiles/crypto_test.dir/hkdf/hkdf_test.cc.i
 
 crypto/CMakeFiles/crypto_test.dir/hkdf/hkdf_test.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/crypto_test.dir/hkdf/hkdf_test.cc.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/hkdf/hkdf_test.cc -o CMakeFiles/crypto_test.dir/hkdf/hkdf_test.cc.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/hkdf/hkdf_test.cc -o CMakeFiles/crypto_test.dir/hkdf/hkdf_test.cc.s
 
 crypto/CMakeFiles/crypto_test.dir/hmac_extra/hmac_test.cc.o: crypto/CMakeFiles/crypto_test.dir/flags.make
-crypto/CMakeFiles/crypto_test.dir/hmac_extra/hmac_test.cc.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/hmac_extra/hmac_test.cc
+crypto/CMakeFiles/crypto_test.dir/hmac_extra/hmac_test.cc.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/hmac_extra/hmac_test.cc
 crypto/CMakeFiles/crypto_test.dir/hmac_extra/hmac_test.cc.o: crypto/CMakeFiles/crypto_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building CXX object crypto/CMakeFiles/crypto_test.dir/hmac_extra/hmac_test.cc.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/hmac_extra/hmac_test.cc.o -MF CMakeFiles/crypto_test.dir/hmac_extra/hmac_test.cc.o.d -o CMakeFiles/crypto_test.dir/hmac_extra/hmac_test.cc.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/hmac_extra/hmac_test.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building CXX object crypto/CMakeFiles/crypto_test.dir/hmac_extra/hmac_test.cc.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/hmac_extra/hmac_test.cc.o -MF CMakeFiles/crypto_test.dir/hmac_extra/hmac_test.cc.o.d -o CMakeFiles/crypto_test.dir/hmac_extra/hmac_test.cc.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/hmac_extra/hmac_test.cc
 
 crypto/CMakeFiles/crypto_test.dir/hmac_extra/hmac_test.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/crypto_test.dir/hmac_extra/hmac_test.cc.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/hmac_extra/hmac_test.cc > CMakeFiles/crypto_test.dir/hmac_extra/hmac_test.cc.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/hmac_extra/hmac_test.cc > CMakeFiles/crypto_test.dir/hmac_extra/hmac_test.cc.i
 
 crypto/CMakeFiles/crypto_test.dir/hmac_extra/hmac_test.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/crypto_test.dir/hmac_extra/hmac_test.cc.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/hmac_extra/hmac_test.cc -o CMakeFiles/crypto_test.dir/hmac_extra/hmac_test.cc.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/hmac_extra/hmac_test.cc -o CMakeFiles/crypto_test.dir/hmac_extra/hmac_test.cc.s
 
 crypto/CMakeFiles/crypto_test.dir/hrss/hrss_test.cc.o: crypto/CMakeFiles/crypto_test.dir/flags.make
-crypto/CMakeFiles/crypto_test.dir/hrss/hrss_test.cc.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/hrss/hrss_test.cc
+crypto/CMakeFiles/crypto_test.dir/hrss/hrss_test.cc.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/hrss/hrss_test.cc
 crypto/CMakeFiles/crypto_test.dir/hrss/hrss_test.cc.o: crypto/CMakeFiles/crypto_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building CXX object crypto/CMakeFiles/crypto_test.dir/hrss/hrss_test.cc.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/hrss/hrss_test.cc.o -MF CMakeFiles/crypto_test.dir/hrss/hrss_test.cc.o.d -o CMakeFiles/crypto_test.dir/hrss/hrss_test.cc.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/hrss/hrss_test.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building CXX object crypto/CMakeFiles/crypto_test.dir/hrss/hrss_test.cc.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/hrss/hrss_test.cc.o -MF CMakeFiles/crypto_test.dir/hrss/hrss_test.cc.o.d -o CMakeFiles/crypto_test.dir/hrss/hrss_test.cc.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/hrss/hrss_test.cc
 
 crypto/CMakeFiles/crypto_test.dir/hrss/hrss_test.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/crypto_test.dir/hrss/hrss_test.cc.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/hrss/hrss_test.cc > CMakeFiles/crypto_test.dir/hrss/hrss_test.cc.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/hrss/hrss_test.cc > CMakeFiles/crypto_test.dir/hrss/hrss_test.cc.i
 
 crypto/CMakeFiles/crypto_test.dir/hrss/hrss_test.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/crypto_test.dir/hrss/hrss_test.cc.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/hrss/hrss_test.cc -o CMakeFiles/crypto_test.dir/hrss/hrss_test.cc.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/hrss/hrss_test.cc -o CMakeFiles/crypto_test.dir/hrss/hrss_test.cc.s
 
 crypto/CMakeFiles/crypto_test.dir/impl_dispatch_test.cc.o: crypto/CMakeFiles/crypto_test.dir/flags.make
-crypto/CMakeFiles/crypto_test.dir/impl_dispatch_test.cc.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/impl_dispatch_test.cc
+crypto/CMakeFiles/crypto_test.dir/impl_dispatch_test.cc.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/impl_dispatch_test.cc
 crypto/CMakeFiles/crypto_test.dir/impl_dispatch_test.cc.o: crypto/CMakeFiles/crypto_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building CXX object crypto/CMakeFiles/crypto_test.dir/impl_dispatch_test.cc.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/impl_dispatch_test.cc.o -MF CMakeFiles/crypto_test.dir/impl_dispatch_test.cc.o.d -o CMakeFiles/crypto_test.dir/impl_dispatch_test.cc.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/impl_dispatch_test.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building CXX object crypto/CMakeFiles/crypto_test.dir/impl_dispatch_test.cc.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/impl_dispatch_test.cc.o -MF CMakeFiles/crypto_test.dir/impl_dispatch_test.cc.o.d -o CMakeFiles/crypto_test.dir/impl_dispatch_test.cc.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/impl_dispatch_test.cc
 
 crypto/CMakeFiles/crypto_test.dir/impl_dispatch_test.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/crypto_test.dir/impl_dispatch_test.cc.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/impl_dispatch_test.cc > CMakeFiles/crypto_test.dir/impl_dispatch_test.cc.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/impl_dispatch_test.cc > CMakeFiles/crypto_test.dir/impl_dispatch_test.cc.i
 
 crypto/CMakeFiles/crypto_test.dir/impl_dispatch_test.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/crypto_test.dir/impl_dispatch_test.cc.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/impl_dispatch_test.cc -o CMakeFiles/crypto_test.dir/impl_dispatch_test.cc.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/impl_dispatch_test.cc -o CMakeFiles/crypto_test.dir/impl_dispatch_test.cc.s
 
 crypto/CMakeFiles/crypto_test.dir/lhash/lhash_test.cc.o: crypto/CMakeFiles/crypto_test.dir/flags.make
-crypto/CMakeFiles/crypto_test.dir/lhash/lhash_test.cc.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/lhash/lhash_test.cc
+crypto/CMakeFiles/crypto_test.dir/lhash/lhash_test.cc.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/lhash/lhash_test.cc
 crypto/CMakeFiles/crypto_test.dir/lhash/lhash_test.cc.o: crypto/CMakeFiles/crypto_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building CXX object crypto/CMakeFiles/crypto_test.dir/lhash/lhash_test.cc.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/lhash/lhash_test.cc.o -MF CMakeFiles/crypto_test.dir/lhash/lhash_test.cc.o.d -o CMakeFiles/crypto_test.dir/lhash/lhash_test.cc.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/lhash/lhash_test.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building CXX object crypto/CMakeFiles/crypto_test.dir/lhash/lhash_test.cc.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/lhash/lhash_test.cc.o -MF CMakeFiles/crypto_test.dir/lhash/lhash_test.cc.o.d -o CMakeFiles/crypto_test.dir/lhash/lhash_test.cc.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/lhash/lhash_test.cc
 
 crypto/CMakeFiles/crypto_test.dir/lhash/lhash_test.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/crypto_test.dir/lhash/lhash_test.cc.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/lhash/lhash_test.cc > CMakeFiles/crypto_test.dir/lhash/lhash_test.cc.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/lhash/lhash_test.cc > CMakeFiles/crypto_test.dir/lhash/lhash_test.cc.i
 
 crypto/CMakeFiles/crypto_test.dir/lhash/lhash_test.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/crypto_test.dir/lhash/lhash_test.cc.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/lhash/lhash_test.cc -o CMakeFiles/crypto_test.dir/lhash/lhash_test.cc.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/lhash/lhash_test.cc -o CMakeFiles/crypto_test.dir/lhash/lhash_test.cc.s
 
 crypto/CMakeFiles/crypto_test.dir/obj/obj_test.cc.o: crypto/CMakeFiles/crypto_test.dir/flags.make
-crypto/CMakeFiles/crypto_test.dir/obj/obj_test.cc.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/obj/obj_test.cc
+crypto/CMakeFiles/crypto_test.dir/obj/obj_test.cc.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/obj/obj_test.cc
 crypto/CMakeFiles/crypto_test.dir/obj/obj_test.cc.o: crypto/CMakeFiles/crypto_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building CXX object crypto/CMakeFiles/crypto_test.dir/obj/obj_test.cc.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/obj/obj_test.cc.o -MF CMakeFiles/crypto_test.dir/obj/obj_test.cc.o.d -o CMakeFiles/crypto_test.dir/obj/obj_test.cc.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/obj/obj_test.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building CXX object crypto/CMakeFiles/crypto_test.dir/obj/obj_test.cc.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/obj/obj_test.cc.o -MF CMakeFiles/crypto_test.dir/obj/obj_test.cc.o.d -o CMakeFiles/crypto_test.dir/obj/obj_test.cc.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/obj/obj_test.cc
 
 crypto/CMakeFiles/crypto_test.dir/obj/obj_test.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/crypto_test.dir/obj/obj_test.cc.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/obj/obj_test.cc > CMakeFiles/crypto_test.dir/obj/obj_test.cc.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/obj/obj_test.cc > CMakeFiles/crypto_test.dir/obj/obj_test.cc.i
 
 crypto/CMakeFiles/crypto_test.dir/obj/obj_test.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/crypto_test.dir/obj/obj_test.cc.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/obj/obj_test.cc -o CMakeFiles/crypto_test.dir/obj/obj_test.cc.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/obj/obj_test.cc -o CMakeFiles/crypto_test.dir/obj/obj_test.cc.s
 
 crypto/CMakeFiles/crypto_test.dir/pem/pem_test.cc.o: crypto/CMakeFiles/crypto_test.dir/flags.make
-crypto/CMakeFiles/crypto_test.dir/pem/pem_test.cc.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/pem/pem_test.cc
+crypto/CMakeFiles/crypto_test.dir/pem/pem_test.cc.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/pem/pem_test.cc
 crypto/CMakeFiles/crypto_test.dir/pem/pem_test.cc.o: crypto/CMakeFiles/crypto_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building CXX object crypto/CMakeFiles/crypto_test.dir/pem/pem_test.cc.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/pem/pem_test.cc.o -MF CMakeFiles/crypto_test.dir/pem/pem_test.cc.o.d -o CMakeFiles/crypto_test.dir/pem/pem_test.cc.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/pem/pem_test.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building CXX object crypto/CMakeFiles/crypto_test.dir/pem/pem_test.cc.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/pem/pem_test.cc.o -MF CMakeFiles/crypto_test.dir/pem/pem_test.cc.o.d -o CMakeFiles/crypto_test.dir/pem/pem_test.cc.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/pem/pem_test.cc
 
 crypto/CMakeFiles/crypto_test.dir/pem/pem_test.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/crypto_test.dir/pem/pem_test.cc.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/pem/pem_test.cc > CMakeFiles/crypto_test.dir/pem/pem_test.cc.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/pem/pem_test.cc > CMakeFiles/crypto_test.dir/pem/pem_test.cc.i
 
 crypto/CMakeFiles/crypto_test.dir/pem/pem_test.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/crypto_test.dir/pem/pem_test.cc.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/pem/pem_test.cc -o CMakeFiles/crypto_test.dir/pem/pem_test.cc.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/pem/pem_test.cc -o CMakeFiles/crypto_test.dir/pem/pem_test.cc.s
 
 crypto/CMakeFiles/crypto_test.dir/pkcs7/pkcs7_test.cc.o: crypto/CMakeFiles/crypto_test.dir/flags.make
-crypto/CMakeFiles/crypto_test.dir/pkcs7/pkcs7_test.cc.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/pkcs7/pkcs7_test.cc
+crypto/CMakeFiles/crypto_test.dir/pkcs7/pkcs7_test.cc.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/pkcs7/pkcs7_test.cc
 crypto/CMakeFiles/crypto_test.dir/pkcs7/pkcs7_test.cc.o: crypto/CMakeFiles/crypto_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building CXX object crypto/CMakeFiles/crypto_test.dir/pkcs7/pkcs7_test.cc.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/pkcs7/pkcs7_test.cc.o -MF CMakeFiles/crypto_test.dir/pkcs7/pkcs7_test.cc.o.d -o CMakeFiles/crypto_test.dir/pkcs7/pkcs7_test.cc.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/pkcs7/pkcs7_test.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Building CXX object crypto/CMakeFiles/crypto_test.dir/pkcs7/pkcs7_test.cc.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/pkcs7/pkcs7_test.cc.o -MF CMakeFiles/crypto_test.dir/pkcs7/pkcs7_test.cc.o.d -o CMakeFiles/crypto_test.dir/pkcs7/pkcs7_test.cc.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/pkcs7/pkcs7_test.cc
 
 crypto/CMakeFiles/crypto_test.dir/pkcs7/pkcs7_test.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/crypto_test.dir/pkcs7/pkcs7_test.cc.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/pkcs7/pkcs7_test.cc > CMakeFiles/crypto_test.dir/pkcs7/pkcs7_test.cc.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/pkcs7/pkcs7_test.cc > CMakeFiles/crypto_test.dir/pkcs7/pkcs7_test.cc.i
 
 crypto/CMakeFiles/crypto_test.dir/pkcs7/pkcs7_test.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/crypto_test.dir/pkcs7/pkcs7_test.cc.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/pkcs7/pkcs7_test.cc -o CMakeFiles/crypto_test.dir/pkcs7/pkcs7_test.cc.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/pkcs7/pkcs7_test.cc -o CMakeFiles/crypto_test.dir/pkcs7/pkcs7_test.cc.s
 
 crypto/CMakeFiles/crypto_test.dir/pkcs8/pkcs8_test.cc.o: crypto/CMakeFiles/crypto_test.dir/flags.make
-crypto/CMakeFiles/crypto_test.dir/pkcs8/pkcs8_test.cc.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/pkcs8/pkcs8_test.cc
+crypto/CMakeFiles/crypto_test.dir/pkcs8/pkcs8_test.cc.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/pkcs8/pkcs8_test.cc
 crypto/CMakeFiles/crypto_test.dir/pkcs8/pkcs8_test.cc.o: crypto/CMakeFiles/crypto_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building CXX object crypto/CMakeFiles/crypto_test.dir/pkcs8/pkcs8_test.cc.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/pkcs8/pkcs8_test.cc.o -MF CMakeFiles/crypto_test.dir/pkcs8/pkcs8_test.cc.o.d -o CMakeFiles/crypto_test.dir/pkcs8/pkcs8_test.cc.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/pkcs8/pkcs8_test.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_43) "Building CXX object crypto/CMakeFiles/crypto_test.dir/pkcs8/pkcs8_test.cc.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/pkcs8/pkcs8_test.cc.o -MF CMakeFiles/crypto_test.dir/pkcs8/pkcs8_test.cc.o.d -o CMakeFiles/crypto_test.dir/pkcs8/pkcs8_test.cc.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/pkcs8/pkcs8_test.cc
 
 crypto/CMakeFiles/crypto_test.dir/pkcs8/pkcs8_test.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/crypto_test.dir/pkcs8/pkcs8_test.cc.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/pkcs8/pkcs8_test.cc > CMakeFiles/crypto_test.dir/pkcs8/pkcs8_test.cc.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/pkcs8/pkcs8_test.cc > CMakeFiles/crypto_test.dir/pkcs8/pkcs8_test.cc.i
 
 crypto/CMakeFiles/crypto_test.dir/pkcs8/pkcs8_test.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/crypto_test.dir/pkcs8/pkcs8_test.cc.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/pkcs8/pkcs8_test.cc -o CMakeFiles/crypto_test.dir/pkcs8/pkcs8_test.cc.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/pkcs8/pkcs8_test.cc -o CMakeFiles/crypto_test.dir/pkcs8/pkcs8_test.cc.s
 
 crypto/CMakeFiles/crypto_test.dir/pkcs8/pkcs12_test.cc.o: crypto/CMakeFiles/crypto_test.dir/flags.make
-crypto/CMakeFiles/crypto_test.dir/pkcs8/pkcs12_test.cc.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/pkcs8/pkcs12_test.cc
+crypto/CMakeFiles/crypto_test.dir/pkcs8/pkcs12_test.cc.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/pkcs8/pkcs12_test.cc
 crypto/CMakeFiles/crypto_test.dir/pkcs8/pkcs12_test.cc.o: crypto/CMakeFiles/crypto_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building CXX object crypto/CMakeFiles/crypto_test.dir/pkcs8/pkcs12_test.cc.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/pkcs8/pkcs12_test.cc.o -MF CMakeFiles/crypto_test.dir/pkcs8/pkcs12_test.cc.o.d -o CMakeFiles/crypto_test.dir/pkcs8/pkcs12_test.cc.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/pkcs8/pkcs12_test.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_44) "Building CXX object crypto/CMakeFiles/crypto_test.dir/pkcs8/pkcs12_test.cc.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/pkcs8/pkcs12_test.cc.o -MF CMakeFiles/crypto_test.dir/pkcs8/pkcs12_test.cc.o.d -o CMakeFiles/crypto_test.dir/pkcs8/pkcs12_test.cc.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/pkcs8/pkcs12_test.cc
 
 crypto/CMakeFiles/crypto_test.dir/pkcs8/pkcs12_test.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/crypto_test.dir/pkcs8/pkcs12_test.cc.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/pkcs8/pkcs12_test.cc > CMakeFiles/crypto_test.dir/pkcs8/pkcs12_test.cc.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/pkcs8/pkcs12_test.cc > CMakeFiles/crypto_test.dir/pkcs8/pkcs12_test.cc.i
 
 crypto/CMakeFiles/crypto_test.dir/pkcs8/pkcs12_test.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/crypto_test.dir/pkcs8/pkcs12_test.cc.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/pkcs8/pkcs12_test.cc -o CMakeFiles/crypto_test.dir/pkcs8/pkcs12_test.cc.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/pkcs8/pkcs12_test.cc -o CMakeFiles/crypto_test.dir/pkcs8/pkcs12_test.cc.s
 
 crypto/CMakeFiles/crypto_test.dir/poly1305/poly1305_test.cc.o: crypto/CMakeFiles/crypto_test.dir/flags.make
-crypto/CMakeFiles/crypto_test.dir/poly1305/poly1305_test.cc.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/poly1305/poly1305_test.cc
+crypto/CMakeFiles/crypto_test.dir/poly1305/poly1305_test.cc.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/poly1305/poly1305_test.cc
 crypto/CMakeFiles/crypto_test.dir/poly1305/poly1305_test.cc.o: crypto/CMakeFiles/crypto_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Building CXX object crypto/CMakeFiles/crypto_test.dir/poly1305/poly1305_test.cc.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/poly1305/poly1305_test.cc.o -MF CMakeFiles/crypto_test.dir/poly1305/poly1305_test.cc.o.d -o CMakeFiles/crypto_test.dir/poly1305/poly1305_test.cc.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/poly1305/poly1305_test.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_45) "Building CXX object crypto/CMakeFiles/crypto_test.dir/poly1305/poly1305_test.cc.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/poly1305/poly1305_test.cc.o -MF CMakeFiles/crypto_test.dir/poly1305/poly1305_test.cc.o.d -o CMakeFiles/crypto_test.dir/poly1305/poly1305_test.cc.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/poly1305/poly1305_test.cc
 
 crypto/CMakeFiles/crypto_test.dir/poly1305/poly1305_test.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/crypto_test.dir/poly1305/poly1305_test.cc.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/poly1305/poly1305_test.cc > CMakeFiles/crypto_test.dir/poly1305/poly1305_test.cc.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/poly1305/poly1305_test.cc > CMakeFiles/crypto_test.dir/poly1305/poly1305_test.cc.i
 
 crypto/CMakeFiles/crypto_test.dir/poly1305/poly1305_test.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/crypto_test.dir/poly1305/poly1305_test.cc.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/poly1305/poly1305_test.cc -o CMakeFiles/crypto_test.dir/poly1305/poly1305_test.cc.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/poly1305/poly1305_test.cc -o CMakeFiles/crypto_test.dir/poly1305/poly1305_test.cc.s
 
 crypto/CMakeFiles/crypto_test.dir/pool/pool_test.cc.o: crypto/CMakeFiles/crypto_test.dir/flags.make
-crypto/CMakeFiles/crypto_test.dir/pool/pool_test.cc.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/pool/pool_test.cc
+crypto/CMakeFiles/crypto_test.dir/pool/pool_test.cc.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/pool/pool_test.cc
 crypto/CMakeFiles/crypto_test.dir/pool/pool_test.cc.o: crypto/CMakeFiles/crypto_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Building CXX object crypto/CMakeFiles/crypto_test.dir/pool/pool_test.cc.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/pool/pool_test.cc.o -MF CMakeFiles/crypto_test.dir/pool/pool_test.cc.o.d -o CMakeFiles/crypto_test.dir/pool/pool_test.cc.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/pool/pool_test.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_46) "Building CXX object crypto/CMakeFiles/crypto_test.dir/pool/pool_test.cc.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/pool/pool_test.cc.o -MF CMakeFiles/crypto_test.dir/pool/pool_test.cc.o.d -o CMakeFiles/crypto_test.dir/pool/pool_test.cc.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/pool/pool_test.cc
 
 crypto/CMakeFiles/crypto_test.dir/pool/pool_test.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/crypto_test.dir/pool/pool_test.cc.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/pool/pool_test.cc > CMakeFiles/crypto_test.dir/pool/pool_test.cc.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/pool/pool_test.cc > CMakeFiles/crypto_test.dir/pool/pool_test.cc.i
 
 crypto/CMakeFiles/crypto_test.dir/pool/pool_test.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/crypto_test.dir/pool/pool_test.cc.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/pool/pool_test.cc -o CMakeFiles/crypto_test.dir/pool/pool_test.cc.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/pool/pool_test.cc -o CMakeFiles/crypto_test.dir/pool/pool_test.cc.s
 
 crypto/CMakeFiles/crypto_test.dir/rand_extra/rand_test.cc.o: crypto/CMakeFiles/crypto_test.dir/flags.make
-crypto/CMakeFiles/crypto_test.dir/rand_extra/rand_test.cc.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/rand_extra/rand_test.cc
+crypto/CMakeFiles/crypto_test.dir/rand_extra/rand_test.cc.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/rand_extra/rand_test.cc
 crypto/CMakeFiles/crypto_test.dir/rand_extra/rand_test.cc.o: crypto/CMakeFiles/crypto_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Building CXX object crypto/CMakeFiles/crypto_test.dir/rand_extra/rand_test.cc.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/rand_extra/rand_test.cc.o -MF CMakeFiles/crypto_test.dir/rand_extra/rand_test.cc.o.d -o CMakeFiles/crypto_test.dir/rand_extra/rand_test.cc.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/rand_extra/rand_test.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_47) "Building CXX object crypto/CMakeFiles/crypto_test.dir/rand_extra/rand_test.cc.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/rand_extra/rand_test.cc.o -MF CMakeFiles/crypto_test.dir/rand_extra/rand_test.cc.o.d -o CMakeFiles/crypto_test.dir/rand_extra/rand_test.cc.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/rand_extra/rand_test.cc
 
 crypto/CMakeFiles/crypto_test.dir/rand_extra/rand_test.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/crypto_test.dir/rand_extra/rand_test.cc.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/rand_extra/rand_test.cc > CMakeFiles/crypto_test.dir/rand_extra/rand_test.cc.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/rand_extra/rand_test.cc > CMakeFiles/crypto_test.dir/rand_extra/rand_test.cc.i
 
 crypto/CMakeFiles/crypto_test.dir/rand_extra/rand_test.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/crypto_test.dir/rand_extra/rand_test.cc.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/rand_extra/rand_test.cc -o CMakeFiles/crypto_test.dir/rand_extra/rand_test.cc.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/rand_extra/rand_test.cc -o CMakeFiles/crypto_test.dir/rand_extra/rand_test.cc.s
 
 crypto/CMakeFiles/crypto_test.dir/refcount_test.cc.o: crypto/CMakeFiles/crypto_test.dir/flags.make
-crypto/CMakeFiles/crypto_test.dir/refcount_test.cc.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/refcount_test.cc
+crypto/CMakeFiles/crypto_test.dir/refcount_test.cc.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/refcount_test.cc
 crypto/CMakeFiles/crypto_test.dir/refcount_test.cc.o: crypto/CMakeFiles/crypto_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Building CXX object crypto/CMakeFiles/crypto_test.dir/refcount_test.cc.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/refcount_test.cc.o -MF CMakeFiles/crypto_test.dir/refcount_test.cc.o.d -o CMakeFiles/crypto_test.dir/refcount_test.cc.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/refcount_test.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_48) "Building CXX object crypto/CMakeFiles/crypto_test.dir/refcount_test.cc.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/refcount_test.cc.o -MF CMakeFiles/crypto_test.dir/refcount_test.cc.o.d -o CMakeFiles/crypto_test.dir/refcount_test.cc.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/refcount_test.cc
 
 crypto/CMakeFiles/crypto_test.dir/refcount_test.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/crypto_test.dir/refcount_test.cc.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/refcount_test.cc > CMakeFiles/crypto_test.dir/refcount_test.cc.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/refcount_test.cc > CMakeFiles/crypto_test.dir/refcount_test.cc.i
 
 crypto/CMakeFiles/crypto_test.dir/refcount_test.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/crypto_test.dir/refcount_test.cc.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/refcount_test.cc -o CMakeFiles/crypto_test.dir/refcount_test.cc.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/refcount_test.cc -o CMakeFiles/crypto_test.dir/refcount_test.cc.s
 
 crypto/CMakeFiles/crypto_test.dir/rsa_extra/rsa_test.cc.o: crypto/CMakeFiles/crypto_test.dir/flags.make
-crypto/CMakeFiles/crypto_test.dir/rsa_extra/rsa_test.cc.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/rsa_extra/rsa_test.cc
+crypto/CMakeFiles/crypto_test.dir/rsa_extra/rsa_test.cc.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/rsa_extra/rsa_test.cc
 crypto/CMakeFiles/crypto_test.dir/rsa_extra/rsa_test.cc.o: crypto/CMakeFiles/crypto_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building CXX object crypto/CMakeFiles/crypto_test.dir/rsa_extra/rsa_test.cc.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/rsa_extra/rsa_test.cc.o -MF CMakeFiles/crypto_test.dir/rsa_extra/rsa_test.cc.o.d -o CMakeFiles/crypto_test.dir/rsa_extra/rsa_test.cc.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/rsa_extra/rsa_test.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_49) "Building CXX object crypto/CMakeFiles/crypto_test.dir/rsa_extra/rsa_test.cc.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/rsa_extra/rsa_test.cc.o -MF CMakeFiles/crypto_test.dir/rsa_extra/rsa_test.cc.o.d -o CMakeFiles/crypto_test.dir/rsa_extra/rsa_test.cc.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/rsa_extra/rsa_test.cc
 
 crypto/CMakeFiles/crypto_test.dir/rsa_extra/rsa_test.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/crypto_test.dir/rsa_extra/rsa_test.cc.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/rsa_extra/rsa_test.cc > CMakeFiles/crypto_test.dir/rsa_extra/rsa_test.cc.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/rsa_extra/rsa_test.cc > CMakeFiles/crypto_test.dir/rsa_extra/rsa_test.cc.i
 
 crypto/CMakeFiles/crypto_test.dir/rsa_extra/rsa_test.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/crypto_test.dir/rsa_extra/rsa_test.cc.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/rsa_extra/rsa_test.cc -o CMakeFiles/crypto_test.dir/rsa_extra/rsa_test.cc.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/rsa_extra/rsa_test.cc -o CMakeFiles/crypto_test.dir/rsa_extra/rsa_test.cc.s
 
 crypto/CMakeFiles/crypto_test.dir/self_test.cc.o: crypto/CMakeFiles/crypto_test.dir/flags.make
-crypto/CMakeFiles/crypto_test.dir/self_test.cc.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/self_test.cc
+crypto/CMakeFiles/crypto_test.dir/self_test.cc.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/self_test.cc
 crypto/CMakeFiles/crypto_test.dir/self_test.cc.o: crypto/CMakeFiles/crypto_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Building CXX object crypto/CMakeFiles/crypto_test.dir/self_test.cc.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/self_test.cc.o -MF CMakeFiles/crypto_test.dir/self_test.cc.o.d -o CMakeFiles/crypto_test.dir/self_test.cc.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/self_test.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_50) "Building CXX object crypto/CMakeFiles/crypto_test.dir/self_test.cc.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/self_test.cc.o -MF CMakeFiles/crypto_test.dir/self_test.cc.o.d -o CMakeFiles/crypto_test.dir/self_test.cc.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/self_test.cc
 
 crypto/CMakeFiles/crypto_test.dir/self_test.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/crypto_test.dir/self_test.cc.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/self_test.cc > CMakeFiles/crypto_test.dir/self_test.cc.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/self_test.cc > CMakeFiles/crypto_test.dir/self_test.cc.i
 
 crypto/CMakeFiles/crypto_test.dir/self_test.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/crypto_test.dir/self_test.cc.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/self_test.cc -o CMakeFiles/crypto_test.dir/self_test.cc.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/self_test.cc -o CMakeFiles/crypto_test.dir/self_test.cc.s
 
 crypto/CMakeFiles/crypto_test.dir/stack/stack_test.cc.o: crypto/CMakeFiles/crypto_test.dir/flags.make
-crypto/CMakeFiles/crypto_test.dir/stack/stack_test.cc.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/stack/stack_test.cc
+crypto/CMakeFiles/crypto_test.dir/stack/stack_test.cc.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/stack/stack_test.cc
 crypto/CMakeFiles/crypto_test.dir/stack/stack_test.cc.o: crypto/CMakeFiles/crypto_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Building CXX object crypto/CMakeFiles/crypto_test.dir/stack/stack_test.cc.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/stack/stack_test.cc.o -MF CMakeFiles/crypto_test.dir/stack/stack_test.cc.o.d -o CMakeFiles/crypto_test.dir/stack/stack_test.cc.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/stack/stack_test.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_51) "Building CXX object crypto/CMakeFiles/crypto_test.dir/stack/stack_test.cc.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/stack/stack_test.cc.o -MF CMakeFiles/crypto_test.dir/stack/stack_test.cc.o.d -o CMakeFiles/crypto_test.dir/stack/stack_test.cc.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/stack/stack_test.cc
 
 crypto/CMakeFiles/crypto_test.dir/stack/stack_test.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/crypto_test.dir/stack/stack_test.cc.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/stack/stack_test.cc > CMakeFiles/crypto_test.dir/stack/stack_test.cc.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/stack/stack_test.cc > CMakeFiles/crypto_test.dir/stack/stack_test.cc.i
 
 crypto/CMakeFiles/crypto_test.dir/stack/stack_test.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/crypto_test.dir/stack/stack_test.cc.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/stack/stack_test.cc -o CMakeFiles/crypto_test.dir/stack/stack_test.cc.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/stack/stack_test.cc -o CMakeFiles/crypto_test.dir/stack/stack_test.cc.s
 
 crypto/CMakeFiles/crypto_test.dir/siphash/siphash_test.cc.o: crypto/CMakeFiles/crypto_test.dir/flags.make
-crypto/CMakeFiles/crypto_test.dir/siphash/siphash_test.cc.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/siphash/siphash_test.cc
+crypto/CMakeFiles/crypto_test.dir/siphash/siphash_test.cc.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/siphash/siphash_test.cc
 crypto/CMakeFiles/crypto_test.dir/siphash/siphash_test.cc.o: crypto/CMakeFiles/crypto_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_52) "Building CXX object crypto/CMakeFiles/crypto_test.dir/siphash/siphash_test.cc.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/siphash/siphash_test.cc.o -MF CMakeFiles/crypto_test.dir/siphash/siphash_test.cc.o.d -o CMakeFiles/crypto_test.dir/siphash/siphash_test.cc.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/siphash/siphash_test.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_52) "Building CXX object crypto/CMakeFiles/crypto_test.dir/siphash/siphash_test.cc.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/siphash/siphash_test.cc.o -MF CMakeFiles/crypto_test.dir/siphash/siphash_test.cc.o.d -o CMakeFiles/crypto_test.dir/siphash/siphash_test.cc.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/siphash/siphash_test.cc
 
 crypto/CMakeFiles/crypto_test.dir/siphash/siphash_test.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/crypto_test.dir/siphash/siphash_test.cc.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/siphash/siphash_test.cc > CMakeFiles/crypto_test.dir/siphash/siphash_test.cc.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/siphash/siphash_test.cc > CMakeFiles/crypto_test.dir/siphash/siphash_test.cc.i
 
 crypto/CMakeFiles/crypto_test.dir/siphash/siphash_test.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/crypto_test.dir/siphash/siphash_test.cc.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/siphash/siphash_test.cc -o CMakeFiles/crypto_test.dir/siphash/siphash_test.cc.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/siphash/siphash_test.cc -o CMakeFiles/crypto_test.dir/siphash/siphash_test.cc.s
 
 crypto/CMakeFiles/crypto_test.dir/test/file_test_gtest.cc.o: crypto/CMakeFiles/crypto_test.dir/flags.make
-crypto/CMakeFiles/crypto_test.dir/test/file_test_gtest.cc.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/test/file_test_gtest.cc
+crypto/CMakeFiles/crypto_test.dir/test/file_test_gtest.cc.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/test/file_test_gtest.cc
 crypto/CMakeFiles/crypto_test.dir/test/file_test_gtest.cc.o: crypto/CMakeFiles/crypto_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_53) "Building CXX object crypto/CMakeFiles/crypto_test.dir/test/file_test_gtest.cc.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/test/file_test_gtest.cc.o -MF CMakeFiles/crypto_test.dir/test/file_test_gtest.cc.o.d -o CMakeFiles/crypto_test.dir/test/file_test_gtest.cc.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/test/file_test_gtest.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_53) "Building CXX object crypto/CMakeFiles/crypto_test.dir/test/file_test_gtest.cc.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/test/file_test_gtest.cc.o -MF CMakeFiles/crypto_test.dir/test/file_test_gtest.cc.o.d -o CMakeFiles/crypto_test.dir/test/file_test_gtest.cc.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/test/file_test_gtest.cc
 
 crypto/CMakeFiles/crypto_test.dir/test/file_test_gtest.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/crypto_test.dir/test/file_test_gtest.cc.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/test/file_test_gtest.cc > CMakeFiles/crypto_test.dir/test/file_test_gtest.cc.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/test/file_test_gtest.cc > CMakeFiles/crypto_test.dir/test/file_test_gtest.cc.i
 
 crypto/CMakeFiles/crypto_test.dir/test/file_test_gtest.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/crypto_test.dir/test/file_test_gtest.cc.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/test/file_test_gtest.cc -o CMakeFiles/crypto_test.dir/test/file_test_gtest.cc.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/test/file_test_gtest.cc -o CMakeFiles/crypto_test.dir/test/file_test_gtest.cc.s
 
 crypto/CMakeFiles/crypto_test.dir/thread_test.cc.o: crypto/CMakeFiles/crypto_test.dir/flags.make
-crypto/CMakeFiles/crypto_test.dir/thread_test.cc.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/thread_test.cc
+crypto/CMakeFiles/crypto_test.dir/thread_test.cc.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/thread_test.cc
 crypto/CMakeFiles/crypto_test.dir/thread_test.cc.o: crypto/CMakeFiles/crypto_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_54) "Building CXX object crypto/CMakeFiles/crypto_test.dir/thread_test.cc.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/thread_test.cc.o -MF CMakeFiles/crypto_test.dir/thread_test.cc.o.d -o CMakeFiles/crypto_test.dir/thread_test.cc.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/thread_test.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_54) "Building CXX object crypto/CMakeFiles/crypto_test.dir/thread_test.cc.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/thread_test.cc.o -MF CMakeFiles/crypto_test.dir/thread_test.cc.o.d -o CMakeFiles/crypto_test.dir/thread_test.cc.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/thread_test.cc
 
 crypto/CMakeFiles/crypto_test.dir/thread_test.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/crypto_test.dir/thread_test.cc.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/thread_test.cc > CMakeFiles/crypto_test.dir/thread_test.cc.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/thread_test.cc > CMakeFiles/crypto_test.dir/thread_test.cc.i
 
 crypto/CMakeFiles/crypto_test.dir/thread_test.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/crypto_test.dir/thread_test.cc.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/thread_test.cc -o CMakeFiles/crypto_test.dir/thread_test.cc.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/thread_test.cc -o CMakeFiles/crypto_test.dir/thread_test.cc.s
 
 crypto/CMakeFiles/crypto_test.dir/x509/x509_test.cc.o: crypto/CMakeFiles/crypto_test.dir/flags.make
-crypto/CMakeFiles/crypto_test.dir/x509/x509_test.cc.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/x509/x509_test.cc
+crypto/CMakeFiles/crypto_test.dir/x509/x509_test.cc.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/x509/x509_test.cc
 crypto/CMakeFiles/crypto_test.dir/x509/x509_test.cc.o: crypto/CMakeFiles/crypto_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_55) "Building CXX object crypto/CMakeFiles/crypto_test.dir/x509/x509_test.cc.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/x509/x509_test.cc.o -MF CMakeFiles/crypto_test.dir/x509/x509_test.cc.o.d -o CMakeFiles/crypto_test.dir/x509/x509_test.cc.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/x509/x509_test.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_55) "Building CXX object crypto/CMakeFiles/crypto_test.dir/x509/x509_test.cc.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/x509/x509_test.cc.o -MF CMakeFiles/crypto_test.dir/x509/x509_test.cc.o.d -o CMakeFiles/crypto_test.dir/x509/x509_test.cc.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/x509/x509_test.cc
 
 crypto/CMakeFiles/crypto_test.dir/x509/x509_test.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/crypto_test.dir/x509/x509_test.cc.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/x509/x509_test.cc > CMakeFiles/crypto_test.dir/x509/x509_test.cc.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/x509/x509_test.cc > CMakeFiles/crypto_test.dir/x509/x509_test.cc.i
 
 crypto/CMakeFiles/crypto_test.dir/x509/x509_test.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/crypto_test.dir/x509/x509_test.cc.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/x509/x509_test.cc -o CMakeFiles/crypto_test.dir/x509/x509_test.cc.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/x509/x509_test.cc -o CMakeFiles/crypto_test.dir/x509/x509_test.cc.s
 
 crypto/CMakeFiles/crypto_test.dir/x509/x509_time_test.cc.o: crypto/CMakeFiles/crypto_test.dir/flags.make
-crypto/CMakeFiles/crypto_test.dir/x509/x509_time_test.cc.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/x509/x509_time_test.cc
+crypto/CMakeFiles/crypto_test.dir/x509/x509_time_test.cc.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/x509/x509_time_test.cc
 crypto/CMakeFiles/crypto_test.dir/x509/x509_time_test.cc.o: crypto/CMakeFiles/crypto_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_56) "Building CXX object crypto/CMakeFiles/crypto_test.dir/x509/x509_time_test.cc.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/x509/x509_time_test.cc.o -MF CMakeFiles/crypto_test.dir/x509/x509_time_test.cc.o.d -o CMakeFiles/crypto_test.dir/x509/x509_time_test.cc.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/x509/x509_time_test.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_56) "Building CXX object crypto/CMakeFiles/crypto_test.dir/x509/x509_time_test.cc.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/x509/x509_time_test.cc.o -MF CMakeFiles/crypto_test.dir/x509/x509_time_test.cc.o.d -o CMakeFiles/crypto_test.dir/x509/x509_time_test.cc.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/x509/x509_time_test.cc
 
 crypto/CMakeFiles/crypto_test.dir/x509/x509_time_test.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/crypto_test.dir/x509/x509_time_test.cc.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/x509/x509_time_test.cc > CMakeFiles/crypto_test.dir/x509/x509_time_test.cc.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/x509/x509_time_test.cc > CMakeFiles/crypto_test.dir/x509/x509_time_test.cc.i
 
 crypto/CMakeFiles/crypto_test.dir/x509/x509_time_test.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/crypto_test.dir/x509/x509_time_test.cc.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/x509/x509_time_test.cc -o CMakeFiles/crypto_test.dir/x509/x509_time_test.cc.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/x509/x509_time_test.cc -o CMakeFiles/crypto_test.dir/x509/x509_time_test.cc.s
 
 crypto/CMakeFiles/crypto_test.dir/x509v3/tab_test.cc.o: crypto/CMakeFiles/crypto_test.dir/flags.make
-crypto/CMakeFiles/crypto_test.dir/x509v3/tab_test.cc.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/x509v3/tab_test.cc
+crypto/CMakeFiles/crypto_test.dir/x509v3/tab_test.cc.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/x509v3/tab_test.cc
 crypto/CMakeFiles/crypto_test.dir/x509v3/tab_test.cc.o: crypto/CMakeFiles/crypto_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_57) "Building CXX object crypto/CMakeFiles/crypto_test.dir/x509v3/tab_test.cc.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/x509v3/tab_test.cc.o -MF CMakeFiles/crypto_test.dir/x509v3/tab_test.cc.o.d -o CMakeFiles/crypto_test.dir/x509v3/tab_test.cc.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/x509v3/tab_test.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_57) "Building CXX object crypto/CMakeFiles/crypto_test.dir/x509v3/tab_test.cc.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/x509v3/tab_test.cc.o -MF CMakeFiles/crypto_test.dir/x509v3/tab_test.cc.o.d -o CMakeFiles/crypto_test.dir/x509v3/tab_test.cc.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/x509v3/tab_test.cc
 
 crypto/CMakeFiles/crypto_test.dir/x509v3/tab_test.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/crypto_test.dir/x509v3/tab_test.cc.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/x509v3/tab_test.cc > CMakeFiles/crypto_test.dir/x509v3/tab_test.cc.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/x509v3/tab_test.cc > CMakeFiles/crypto_test.dir/x509v3/tab_test.cc.i
 
 crypto/CMakeFiles/crypto_test.dir/x509v3/tab_test.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/crypto_test.dir/x509v3/tab_test.cc.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/x509v3/tab_test.cc -o CMakeFiles/crypto_test.dir/x509v3/tab_test.cc.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/x509v3/tab_test.cc -o CMakeFiles/crypto_test.dir/x509v3/tab_test.cc.s
 
 crypto/CMakeFiles/crypto_test.dir/x509v3/v3name_test.cc.o: crypto/CMakeFiles/crypto_test.dir/flags.make
-crypto/CMakeFiles/crypto_test.dir/x509v3/v3name_test.cc.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/x509v3/v3name_test.cc
+crypto/CMakeFiles/crypto_test.dir/x509v3/v3name_test.cc.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/x509v3/v3name_test.cc
 crypto/CMakeFiles/crypto_test.dir/x509v3/v3name_test.cc.o: crypto/CMakeFiles/crypto_test.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_58) "Building CXX object crypto/CMakeFiles/crypto_test.dir/x509v3/v3name_test.cc.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/x509v3/v3name_test.cc.o -MF CMakeFiles/crypto_test.dir/x509v3/v3name_test.cc.o.d -o CMakeFiles/crypto_test.dir/x509v3/v3name_test.cc.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/x509v3/v3name_test.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_58) "Building CXX object crypto/CMakeFiles/crypto_test.dir/x509v3/v3name_test.cc.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/CMakeFiles/crypto_test.dir/x509v3/v3name_test.cc.o -MF CMakeFiles/crypto_test.dir/x509v3/v3name_test.cc.o.d -o CMakeFiles/crypto_test.dir/x509v3/v3name_test.cc.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/x509v3/v3name_test.cc
 
 crypto/CMakeFiles/crypto_test.dir/x509v3/v3name_test.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/crypto_test.dir/x509v3/v3name_test.cc.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/x509v3/v3name_test.cc > CMakeFiles/crypto_test.dir/x509v3/v3name_test.cc.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/x509v3/v3name_test.cc > CMakeFiles/crypto_test.dir/x509v3/v3name_test.cc.i
 
 crypto/CMakeFiles/crypto_test.dir/x509v3/v3name_test.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/crypto_test.dir/x509v3/v3name_test.cc.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/x509v3/v3name_test.cc -o CMakeFiles/crypto_test.dir/x509v3/v3name_test.cc.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/x509v3/v3name_test.cc -o CMakeFiles/crypto_test.dir/x509v3/v3name_test.cc.s
 
 # Object files for target crypto_test
 crypto_test_OBJECTS = \
@@ -944,8 +944,8 @@ crypto_test_OBJECTS = \
 
 # External object files for target crypto_test
 crypto_test_EXTERNAL_OBJECTS = \
-"/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles/crypto_test_data.dir/crypto_test_data.cc.o" \
-"/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/test/CMakeFiles/boringssl_gtest_main.dir/gtest_main.cc.o"
+"/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles/crypto_test_data.dir/crypto_test_data.cc.o" \
+"/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/test/CMakeFiles/boringssl_gtest_main.dir/gtest_main.cc.o"
 
 crypto/crypto_test: crypto/CMakeFiles/crypto_test.dir/abi_self_test.cc.o
 crypto/crypto_test: crypto/CMakeFiles/crypto_test.dir/asn1/asn1_test.cc.o
@@ -1012,18 +1012,18 @@ crypto/crypto_test: crypto/test/libtest_support_lib.a
 crypto/crypto_test: libboringssl_gtest.a
 crypto/crypto_test: crypto/libcrypto.a
 crypto/crypto_test: crypto/CMakeFiles/crypto_test.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_59) "Linking CXX executable crypto_test"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/crypto_test.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_59) "Linking CXX executable crypto_test"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/crypto_test.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 crypto/CMakeFiles/crypto_test.dir/build: crypto/crypto_test
 .PHONY : crypto/CMakeFiles/crypto_test.dir/build
 
 crypto/CMakeFiles/crypto_test.dir/clean:
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && $(CMAKE_COMMAND) -P CMakeFiles/crypto_test.dir/cmake_clean.cmake
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto && $(CMAKE_COMMAND) -P CMakeFiles/crypto_test.dir/cmake_clean.cmake
 .PHONY : crypto/CMakeFiles/crypto_test.dir/clean
 
 crypto/CMakeFiles/crypto_test.dir/depend:
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/qwe/Desktop/code/gm-dtp/deps/boringssl /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/CMakeFiles/crypto_test.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/qwe/Desktop/code/gmdtp/deps/boringssl /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/CMakeFiles/crypto_test.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : crypto/CMakeFiles/crypto_test.dir/depend
 

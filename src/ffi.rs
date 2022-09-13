@@ -99,7 +99,7 @@ pub extern fn quiche_config_load_cert_chain_from_pem_file(
     }
 }
 
-//lyx gmssl
+// gmssl
 #[no_mangle]
 pub extern fn quiche_config_set_gmssl(
     config: &mut Config, v: u64,
@@ -175,15 +175,7 @@ pub extern fn quiche_config_set_initial_max_stream_data_bidi_local(
 ) {
     config.set_initial_max_stream_data_bidi_local(v);
 }
-
-//lyx gmssl
-#[no_mangle]
-pub extern fn quiche_config_set_gmssl(
-    config: &mut Config, v: u64,
-) {
-    config.set_gmssl(v);
-}
-
+ 
 #[no_mangle]
 pub extern fn quiche_config_set_initial_max_stream_data_bidi_remote(
     config: &mut Config, v: u64,

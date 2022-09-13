@@ -53,10 +53,10 @@ RM = /usr/local/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/qwe/Desktop/code/gm-dtp/deps/boringssl
+CMAKE_SOURCE_DIR = /home/qwe/Desktop/code/gmdtp/deps/boringssl
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build
+CMAKE_BINARY_DIR = /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build
 
 # Include any dependencies generated for this target.
 include crypto/test/CMakeFiles/boringssl_gtest_main.dir/depend.make
@@ -70,18 +70,18 @@ include crypto/test/CMakeFiles/boringssl_gtest_main.dir/progress.make
 include crypto/test/CMakeFiles/boringssl_gtest_main.dir/flags.make
 
 crypto/test/CMakeFiles/boringssl_gtest_main.dir/gtest_main.cc.o: crypto/test/CMakeFiles/boringssl_gtest_main.dir/flags.make
-crypto/test/CMakeFiles/boringssl_gtest_main.dir/gtest_main.cc.o: /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/test/gtest_main.cc
+crypto/test/CMakeFiles/boringssl_gtest_main.dir/gtest_main.cc.o: /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/test/gtest_main.cc
 crypto/test/CMakeFiles/boringssl_gtest_main.dir/gtest_main.cc.o: crypto/test/CMakeFiles/boringssl_gtest_main.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object crypto/test/CMakeFiles/boringssl_gtest_main.dir/gtest_main.cc.o"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/test && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/test/CMakeFiles/boringssl_gtest_main.dir/gtest_main.cc.o -MF CMakeFiles/boringssl_gtest_main.dir/gtest_main.cc.o.d -o CMakeFiles/boringssl_gtest_main.dir/gtest_main.cc.o -c /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/test/gtest_main.cc
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object crypto/test/CMakeFiles/boringssl_gtest_main.dir/gtest_main.cc.o"
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/test && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT crypto/test/CMakeFiles/boringssl_gtest_main.dir/gtest_main.cc.o -MF CMakeFiles/boringssl_gtest_main.dir/gtest_main.cc.o.d -o CMakeFiles/boringssl_gtest_main.dir/gtest_main.cc.o -c /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/test/gtest_main.cc
 
 crypto/test/CMakeFiles/boringssl_gtest_main.dir/gtest_main.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/boringssl_gtest_main.dir/gtest_main.cc.i"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/test && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/test/gtest_main.cc > CMakeFiles/boringssl_gtest_main.dir/gtest_main.cc.i
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/test && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/test/gtest_main.cc > CMakeFiles/boringssl_gtest_main.dir/gtest_main.cc.i
 
 crypto/test/CMakeFiles/boringssl_gtest_main.dir/gtest_main.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/boringssl_gtest_main.dir/gtest_main.cc.s"
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/test && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/test/gtest_main.cc -o CMakeFiles/boringssl_gtest_main.dir/gtest_main.cc.s
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/test && /usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/test/gtest_main.cc -o CMakeFiles/boringssl_gtest_main.dir/gtest_main.cc.s
 
 boringssl_gtest_main: crypto/test/CMakeFiles/boringssl_gtest_main.dir/gtest_main.cc.o
 boringssl_gtest_main: crypto/test/CMakeFiles/boringssl_gtest_main.dir/build.make
@@ -92,10 +92,10 @@ crypto/test/CMakeFiles/boringssl_gtest_main.dir/build: boringssl_gtest_main
 .PHONY : crypto/test/CMakeFiles/boringssl_gtest_main.dir/build
 
 crypto/test/CMakeFiles/boringssl_gtest_main.dir/clean:
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/test && $(CMAKE_COMMAND) -P CMakeFiles/boringssl_gtest_main.dir/cmake_clean.cmake
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/test && $(CMAKE_COMMAND) -P CMakeFiles/boringssl_gtest_main.dir/cmake_clean.cmake
 .PHONY : crypto/test/CMakeFiles/boringssl_gtest_main.dir/clean
 
 crypto/test/CMakeFiles/boringssl_gtest_main.dir/depend:
-	cd /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/qwe/Desktop/code/gm-dtp/deps/boringssl /home/qwe/Desktop/code/gm-dtp/deps/boringssl/crypto/test /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/test /home/qwe/Desktop/code/gm-dtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/test/CMakeFiles/boringssl_gtest_main.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/qwe/Desktop/code/gmdtp/deps/boringssl /home/qwe/Desktop/code/gmdtp/deps/boringssl/crypto/test /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/test /home/qwe/Desktop/code/gmdtp/target/debug/build/quiche-3be3b0d1fc62aeb4/out/build/crypto/test/CMakeFiles/boringssl_gtest_main.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : crypto/test/CMakeFiles/boringssl_gtest_main.dir/depend
 
