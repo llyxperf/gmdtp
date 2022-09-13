@@ -1,1 +1,1 @@
-RUST_LOG=INFO cargo run --example server 1 --gmssl 
+RUST_LOG=DEBUG cargo run --example server 1 --gmssl 

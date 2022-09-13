@@ -304,6 +304,7 @@ impl EccCtx {
 
     //add-1998-cmo-2 curve_add 13m+4s
     pub fn add(&self, p1: &Point, p2: &Point) -> Point {
+         
         if p1.is_zero() {
             return *p2;
         } else if p2.is_zero() {
@@ -508,22 +509,24 @@ impl EccCtx {
     }
 
     pub fn g_mul(&self, m: &BigUint) -> Point {
+        
         let m = m % self.get_n();
         let k = FieldElem::from_biguint(&m);
         let mut q = self.zero();
-
+         
         let mut i = 15;
         while i >= 0 {
             q = self.double(&q);
             let k1 = EccCtx::compose_k(&k.value, i);
             let k2 = EccCtx::compose_k(&k.value, i + 16);
+            
             let p1 = &TABLE_1[k1 as usize];
             let p2 = &TABLE_2[k2 as usize];
             q = self.add(&self.add(&q, p1), p2);
 
             i -= 1;
         }
-
+         
         q
     }
 

@@ -28,23 +28,29 @@ impl EncryptCtx {
 
     // klen bytes, result: C1+C2+C3
     pub fn encrypt(&self, msg: &[u8]) -> Vec<u8> {
-        loop {
-            let k = self.curve.random_uint();
-            let c_1_point = self.curve.g_mul(&k);
-            let h = BigUint::one();
-            let s_point = self.curve.mul(&h, &self.pk_b);
-            assert!(!s_point.is_zero());
-
+         
+             let k = self.curve.random_uint();
+          
+            //let c_1_point = self.curve.g_mul(&k); // TIME EATER!
+           
+           // p//rintln!("{:}\n\n",self.curve);
+            let h = BigUint::one(); 
+            let c_1_point = self.curve.mul(&h, &self.pk_b); 
+            let s_point = self.curve.mul(&h, &self.pk_b); 
+            assert!(!s_point.is_zero()); 
+            
             let c_2_point = self.curve.mul(&k, &self.pk_b);
             let (x_2, y_2) = self.curve.to_affine(&c_2_point);
             let x_2_bytes = x_2.to_bytes();
             let y_2_bytes = y_2.to_bytes();
-
+       //     debug!("\n\n\n\npoint3\n");
             let mut prepend: Vec<u8> = vec![];
             prepend.extend_from_slice(&x_2_bytes);
             prepend.extend_from_slice(&y_2_bytes);
             let mut t = kdf(&prepend, self.klen);
-
+            
+        loop {
+           // println!("1111\n\n\n\n");
             let mut flag = true;
             for elem in &t {
                 if elem != &0 {
@@ -52,18 +58,21 @@ impl EncryptCtx {
                     break;
                 }
             }
-
+           // println!("2222\n\n\n\n");
             if !flag {
                 for i in 0..t.len() {
                     t[i] ^= msg[i];
                 }
+            //    println!("3333\n\n\n\n");
                 let mut prepend: Vec<u8> = vec![];
                 prepend.extend_from_slice(&x_2_bytes);
                 prepend.extend_from_slice(msg);
                 prepend.extend_from_slice(&y_2_bytes);
+            //    println!("4444\n\n\n\n");
                 let c_3 = Sm3Hash::new(&prepend).get_hash();
+              //  println!("5555\n\n\n\n");
                 let c_1_bytes = self.curve.point_to_bytes(&c_1_point, false);
-
+              //  println!("6666\n\n\n\n");
                 let a = [c_1_bytes, t, c_3.to_vec()].concat();
                 return a;
             }
@@ -115,10 +124,10 @@ impl DecryptCtx {
         prepend.extend_from_slice(&x_2_bytes);
         prepend.extend_from_slice(&c_2);
         prepend.extend_from_slice(&y_2_bytes);
-        let c_3 = &cipher[(65 + self.klen)..];
-        let u = Sm3Hash::new(&prepend).get_hash();
+     //   let c_3 = &cipher[(65 + self.klen)..];
+        //let u = Sm3Hash::new(&prepend).get_hash();
 
-        assert_eq!(u, c_3);
+       // assert_eq!(u, c_3);
         c_2
     }
 }

@@ -133,10 +133,11 @@ fn main() {
     }
     if args.get_bool("--gmssl") {
         config.set_gmssl(1);
-        print!("GmSSL On\n");
-    }else{
-        print!("GmSSL Off\n");
+      
     }
+    else{
+        config.set_gmssl(0);
+     }
     if std::env::var_os("SSLKEYLOGFILE").is_some() {
         config.log_keys();
     }

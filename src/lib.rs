@@ -2392,7 +2392,6 @@ impl Connection {
             else if self.gm_on==3 && !self.is_server{
 
                 let key = signature::rand_block();
-
                 let iv = signature::rand_block();
                 self.gm_sm4key=Some(key.to_vec());
                 self.gm_iv=Some(iv.to_vec());
@@ -2400,13 +2399,18 @@ impl Connection {
 
                 let mut plain_text=key.to_vec();
                 let mut veciv=iv.to_vec();
-
+               // let mut plain_text=[255,255,255];
                // println!("\nClient:key created:  {:?}+{:?}\n",&key,&iv);
                debug!("\nClient:key created:  {:?}+{:?}\n",&key,&iv);
                 plain_text.append(&mut veciv);
+                debug!("\n\n\n\npoint1\n");
                 let mut gmhdr="gmssl".as_bytes().to_vec();
+                debug!("\n\n\n\npoint2\n");
                // let cipher_text: Vec<u8> = self.gm_cipher.as_ref().unwrap().encrypt(&plain_text[..], &self.gm_iv.unwrap());
-               let mut cipher_text: Vec<u8> = EncryptCtx::new(plain_text.len(),self.gm_pubkey.unwrap()).encrypt(&plain_text[..]);
+               let mut ectx = EncryptCtx::new(plain_text.len(),self.gm_pubkey.unwrap());
+               debug!("\n\n\n\npoint3\n");
+               let mut cipher_text: Vec<u8> = ectx.encrypt(&plain_text[..]);
+               debug!("\n\n\n\npoint4\n");
                gmhdr.append(&mut cipher_text);
                info!("client:key frame created:{:?}\n", gmhdr.clone());
               // println!("\nClient:key frame created:{:?}\n", gmhdr.clone());
@@ -3689,11 +3693,11 @@ impl Connection {
                     return Err(Error::InvalidStreamState);
                 }
             },
-//lyx cryppto只负责收发层次上的设计。收发后如何分析所有的信息，都放在boringssl。
+//cryppto只负责收发层次上的设计。收发后如何分析所有的信息，都放在boringssl。
 //对于 gm理论上也应该如此
 //为了方便修改，将gmssl解析移到quic中
             frame::Frame::Crypto { data } => {
-                info!("gm_state{:?}  is server ? {:?} \n", self.gm_on,self.is_server);
+               
                 if data.get_data()[0..5]=="gmssl".as_bytes().to_vec(){
                     if self.gm_on==2 &&self.is_server {
                         let enc_sm4key=data.get_data()[5..].to_vec();
