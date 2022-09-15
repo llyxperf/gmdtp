@@ -68,6 +68,14 @@ foreign-types-shared = { version = "0.3.0", optional = true }
 qlog = { version = "0.7", path = "../qlog", optional = true }
 sfv = { version = "0.9", optional = true }
 
+rand = "0.7"
+time = "0.1"
+
+libsm = {path = "./deps/libsm"}
+rand_core = "0.6.0"
+num-bigint = "0.4"
+
+
 [target."cfg(windows)".dependencies]
 winapi = { version = "0.3", features = ["wincrypt", "ws2def", "ws2ipdef"] }
 

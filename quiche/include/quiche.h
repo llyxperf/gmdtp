@@ -225,6 +225,9 @@ void quiche_config_set_max_stream_window(quiche_config *config, uint64_t v);
 // Frees the config object.
 void quiche_config_free(quiche_config *config);
 
+//sets the 'gmssl' crypto.
+void quiche_config_set_gmssl(quiche_config *config,uint64_t v);
+
 // Extracts version, type, source / destination connection ID and address
 // verification token from the packet in |buf|.
 int quiche_header_info(const uint8_t *buf, size_t buf_len, size_t dcil,

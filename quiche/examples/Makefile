@@ -6,8 +6,8 @@ LIB_DIR = $(BUILD_DIR)/release
 INCLUDE_DIR = ../include
 
 INCS = -I$(INCLUDE_DIR)
-CFLAGS = -I. -Wall -Werror -pedantic -fsanitize=address -g
-
+CFLAGS = -I. -Wall -Werror -pedantic -fsanitize=address -g -O1
+ 
 ifeq ($(OS), Darwin)
 CFLAGS += -framework Security
 endif

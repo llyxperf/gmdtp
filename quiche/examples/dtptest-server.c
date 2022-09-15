@@ -658,6 +658,8 @@ int main(int argc, char *argv[]) {
   quiche_config_set_initial_max_streams_bidi(config, 40000);
   quiche_config_set_cc_algorithm(config, QUICHE_CC_RENO);
 
+  quiche_config_set_gmssl(config,1);
+
   struct connections c;
   c.sock = sock;
   c.ai_family = server->ai_family;

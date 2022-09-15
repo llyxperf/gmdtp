@@ -365,6 +365,23 @@ use std::str::FromStr;
 
 use std::collections::VecDeque;
 
+use libsm::sm2::ecc::Point;
+use libsm::sm2::signature::SigCtx;
+use libsm::sm4::cipher_mode::Sm4CipherMode;
+use libsm::sm4::{Mode, Cipher};
+use num_bigint::BigUint;
+//lyxalter
+extern crate libsm;
+
+//use std::{fs::OpenOptions, io::{Read, Write}};
+use libsm::sm2::signature;
+use libsm::sm2::encrypt::{EncryptCtx,DecryptCtx,};
+
+
+//use std::fs::OpenOptions;
+pub use rand_core::{CryptoRng, RngCore, SeedableRng};
+
+
 /// The current QUIC wire version.
 pub const PROTOCOL_VERSION: u32 = PROTOCOL_VERSION_V1;
 
@@ -647,6 +664,9 @@ pub struct Config {
 
     max_connection_window: u64,
     max_stream_window: u64,
+
+    ///gmssl state default:0
+    gm_on:u64,
 }
 
 // See https://quicwg.org/base-drafts/rfc9000.html#section-15
@@ -702,6 +722,7 @@ impl Config {
 
             max_connection_window: MAX_CONNECTION_WINDOW,
             max_stream_window: stream::MAX_STREAM_WINDOW,
+            gm_on:0,//default gmssl close.
         })
     }
 
@@ -897,6 +918,20 @@ impl Config {
             .initial_max_stream_data_bidi_local = v;
     }
 
+        /// Sets the gmssl 
+    /// 
+    /// The default value is '1' On.
+    pub fn set_gmssl(&mut self, v: u64) {
+        if v==1 {
+            println!("gmssl On");
+        }
+        else{
+            println!("gmssl Off");
+        }
+        self.gm_on = v;
+    }
+    
+    
     /// Sets the `initial_max_stream_data_bidi_remote` transport parameter.
     ///
     /// When set to a non-zero value quiche will only allow at most `v` bytes
@@ -1229,6 +1264,19 @@ pub struct Connection {
 
     /// Whether to emit DATAGRAM frames in the next packet.
     emit_dgram: bool,
+
+
+    /// Gmssl
+    gm_on: u64,
+    gm_pubkey:  Option<Point>,
+    gm_skey: Option<BigUint>,
+
+    gm_sm4key:Option<Vec<u8>>,
+    gm_iv:Option<Vec<u8>>,
+    gm_cipher:Option<Sm4CipherMode>,
+
+    gm_readoffset:Option<u64>,
+   // gmpkey:
 }
 
 /// Creates a new server-side connection.
@@ -1632,6 +1680,19 @@ impl Connection {
             ),
 
             emit_dgram: true,
+
+
+             //gmssl
+
+             gm_on:config.gm_on,
+             gm_pubkey: None,
+             gm_skey: None,
+             
+             gm_cipher:None,
+             gm_sm4key:None,
+             gm_iv:None,
+             gm_readoffset:None,
+
         };
 
         if let Some(odcid) = odcid {
@@ -1852,6 +1913,40 @@ impl Connection {
         if len == 0 {
             return Err(Error::BufferTooShort);
         }
+        /*
+      //  info!("\ngm state_={:?}\n",self.gm_on);
+
+               // Long header packets have an explicit payload length, but short
+        // packets don't so just use the remaining capacity in the buffer.
+        let mut b =  octets::OctetsMut::with_slice(buf);
+        let hdr=Header::from_bytes(&mut b, self.scid.len()).unwrap();
+
+        let payload_len = if hdr.ty == packet::Type::Short {
+            b.cap()
+        } else {
+            b.get_varint().map_err(|e| {
+                drop_pkt_on_err(
+                    e.into(),
+                    self.recv_count,
+                    self.is_server,
+                    &self.trace_id,
+                )
+            })? as usize
+        };
+
+        // Make sure the buffer is same or larger than an explicit
+        // payload length.
+        if payload_len > b.cap() {
+            return Err(drop_pkt_on_err(
+                Error::InvalidPacket,
+                self.recv_count,
+                self.is_server,
+                &self.trace_id,
+            ));
+        }
+ */
+
+
 
         // Keep track of how many bytes we received from the client, so we
         // can limit bytes sent back before address validation, to a multiple
@@ -2165,7 +2260,7 @@ impl Connection {
         };
 
         // Finally, discard packet if no usable key is available.
-        let aead = match aead {
+        let mut aead = match aead {
             Some(v) => v,
 
             None => {
@@ -2221,17 +2316,42 @@ impl Connection {
         #[cfg(feature = "qlog")]
         let mut qlog_frames = vec![];
 
-        let mut payload = packet::decrypt_pkt(
+        let mut payload:octets::Octets;
+      //  println!("now!!2320\n\n");
+        if self.gm_on==6 &&self.is_established(){
+            payload = packet::decrypt_pktgm(
+                &mut b,
+                pn,
+                pn_len,
+                payload_len,
+                aead,
+                self.gm_on,
+                self.is_established(),&mut self.gm_cipher,&self.gm_iv
+            )
+    
+             
+            .map_err(|e| {
+                drop_pkt_on_err(e, self.recv_count, self.is_server, &self.trace_id)
+            })?;
+        }
+        else{
+         payload = packet::decrypt_pkt(
             &mut b,
             pn,
             pn_len,
             payload_len,
             aead,
         )
+
+       
         .map_err(|e| {
             drop_pkt_on_err(e, self.recv_count, self.is_server, &self.trace_id)
         })?;
 
+    }
+   // println!("now!!2346\n\n");
+
+    
         if self.pkt_num_spaces[epoch].recv_pkt_num.contains(pn) {
             trace!("{} ignored duplicate packet {}", self.trace_id, pn);
             return Err(Error::Done);
@@ -2279,7 +2399,7 @@ impl Connection {
         // Process packet payload. If a frame cannot be processed, store the
         // error and stop further packet processing.
         let mut frame_processing_err = None;
-
+       // info!("\n\n\nhere??\n");
         while payload.cap() > 0 {
             let frame = frame::Frame::from_bytes(&mut payload, hdr.ty)?;
 
@@ -2296,7 +2416,7 @@ impl Connection {
                 break;
             }
         }
-
+       // info!("\n\n\nhere??\n");
         qlog_with_type!(QLOG_PACKET_RX, self.qlog, q, {
             let packet_size = b.len();
 
@@ -2945,6 +3065,13 @@ impl Connection {
                     ack_eliciting = true;
                     in_flight = true;
 
+                    //gmssl
+                    if self.gm_on == 4{
+                         println!("Server:Got gmssl key.\n");
+                         // debug!("N");
+                          self.gm_on=5;
+                      }
+
                     #[cfg(feature = "diffserv")]
                     if *diffserv < 4 << 3 {
                         *diffserv = 4 << 3;
@@ -3313,6 +3440,95 @@ impl Connection {
                 }
             }
         }
+
+
+         //createGmsslCryptoFrame
+       
+        //it wont affect the crypto stream,since it carries gm imformation in the type crypto.
+        // if it is server and gmssl is 1,then general the sm2 key and push to crypto frame
+ 
+        if self.gm_on==1 && self.is_server
+        {
+            let (ctx,pk,sk) =signature::getSm2key();
+            self.gm_pubkey=pk;
+            self.gm_skey=sk;
+            info!("Server:general public key {} ;\n general secret key {}\n", self.gm_pubkey.as_ref().unwrap(), self.gm_skey.as_ref().unwrap());
+            
+            let mut pk_raw = ctx.serialize_pubkey(&pk.as_ref().unwrap(), true);
+            let mut gmhdr="gmssl".as_bytes().to_vec();
+            gmhdr.append(&mut pk_raw);
+           
+            info!("Server:pubkey frame created:{:?}\n", gmhdr);
+            
+            let gmcrypto_buf=RangeBuf::from(&gmhdr[..], 0, true);
+
+            //temporary solution :using normal padding frame.
+
+
+
+            let frame = frame::Frame::Crypto { data: gmcrypto_buf };
+            self.gm_on=2;
+    
+
+            if push_frame_to_pkt!(b, frames, frame, left) {
+                ack_eliciting = true;
+                in_flight = true;
+                has_data = true;
+            }
+
+            ack_eliciting = true;
+            in_flight = true;
+        }
+        //client and have recieve pubkey,general key and encrypt it with pub,and sent.
+        else if self.gm_on==3 && !self.is_server{
+
+            let key = signature::rand_block();
+            let iv = signature::rand_block();
+            self.gm_sm4key=Some(key.to_vec());
+            self.gm_iv=Some(iv.to_vec());
+            self.gm_cipher=Some(Cipher::new(&key, Mode::Cfb));
+
+            let mut plain_text=key.to_vec();
+            let mut veciv=iv.to_vec();
+       
+
+           debug!("\nClient:key created:  {:?}+{:?}\n",&key,&iv);
+           plain_text.append(&mut veciv);
+            debug!("\n\n\n\npoint1\n");
+            let mut gmhdr="gmssl".as_bytes().to_vec();
+            debug!("\n\n\n\npoint2\n");
+            
+           let mut ectx = EncryptCtx::new(plain_text.len(),self.gm_pubkey.unwrap());
+           debug!("\n\n\n\npoint3\n");
+           //let mut cipher_text: Vec<u8> = ectx.encrypt(&plain_text[..]);
+           let mut cipher_text=plain_text;
+           debug!("\n\n\n\npoint4\n");
+           gmhdr.append(&mut cipher_text);
+           info!("client:key frame created:{:?}\n", gmhdr.clone());
+           
+       
+           let sm4cryptobuf=RangeBuf::from(&gmhdr[..], 0, true);
+
+          
+       
+            let frame = frame::Frame::Crypto { data: sm4cryptobuf };
+
+            self.gm_on=4;
+            
+            if push_frame_to_pkt!(b, frames, frame, left) {
+                ack_eliciting = true;
+                in_flight = true;
+                has_data = true;
+            }
+
+
+            ack_eliciting = true;
+            in_flight = true;
+        }
+           
+
+
+
 
         // The preference of data-bearing frame to include in a packet
         // is managed by `self.emit_dgram`. However, whether any frames
@@ -3723,20 +3939,37 @@ impl Connection {
             q.add_event_data_with_instant(ev_data, now).ok();
         });
 
-        let aead = match self.pkt_num_spaces[epoch].crypto_seal {
+        let mut aead = match self.pkt_num_spaces[epoch].crypto_seal {
             Some(ref v) => v,
             None => return Err(Error::InvalidState),
         };
-
-        let written = packet::encrypt_pkt(
-            &mut b,
-            pn,
-            pn_len,
-            payload_len,
-            payload_offset,
-            None,
-            aead,
-        )?;
+       // println!("now!!3943\n\n");
+        let mut written=0;
+        if self.gm_on==6 && self.is_established(){
+             written = packet::encrypt_pktgm(
+                &mut b,
+                pn,
+                pn_len,
+                payload_len,
+                payload_offset,
+                None,
+                aead,
+                self.gm_on,
+                self.is_established(),&mut self.gm_cipher,& self.gm_iv,
+            )?;
+        }
+        else{
+            written = packet::encrypt_pkt(
+                &mut b,
+                pn,
+                pn_len,
+                payload_len,
+                payload_offset,
+                None,
+                aead,
+            )?;
+        }
+       // println!("now!!3943 off\n\n");
 
         let sent_pkt = recovery::Sent {
             pkt_num: pn,
@@ -3799,6 +4032,21 @@ impl Connection {
         if ack_eliciting {
             self.ack_eliciting_sent = true;
         }
+
+         //gmssl recv(&mut self, buf: &mut [u8], info: RecvIn
+      //   if self.gm_on==6 && (self.handshake_done_sent||self.handshake_confirmed){
+        /*   if self.gm_on==6 && self.is_established(){
+            // let ms=;
+          
+             self.gm_cipher.as_ref().unwrap().cfb_encrypt_inplace(&mut out[payload_offset..], &self.gm_iv.as_ref().unwrap()[..],payload_len);
+             info!("\ngm Encrypt,len={:?}\n",written);
+         }
+         else  */ if self.gm_on==5{ //handshake frame push,dont encrypt .next epoch encrypt
+             self.gm_on=6;
+             
+             info!("\ngm handshake is finished.Next epoch start to encrypt{:?}\n",written);
+             println!("\nServer:Handshake from client finished,Gm state set to ENCRYPTION\n");
+         }
 
         Ok((pkt_type, written))
     }
@@ -5679,6 +5927,44 @@ impl Connection {
             },
 
             frame::Frame::Crypto { data } => {
+
+
+                if data[0..5]=="gmssl".as_bytes().to_vec(){
+                    if self.gm_on==2 &&self.is_server {
+                        let enc_sm4key=data[5..].to_vec();
+                        println!("\n get sm4key \n");
+                        let klen=16+16;
+                        let sk=self.gm_skey.clone().unwrap();
+                        
+                        //let plain_text=DecryptCtx::new(klen, sk).decrypt(&enc_sm4key);
+                        
+                        let plain_text=enc_sm4key;
+                        let sm4key=plain_text[0..16].to_vec();
+                        let iv=plain_text[16..].to_vec();
+                        //println!("\nServer:sm4key crypto frame recieved:{:?}  +{:?}  ,key length is {}+{}\n", sm4key,iv,sm4key.len(),iv.len());
+                      //  info!("Server:sm4key CFRed:{:?}  +{:?}  ,key length is {}+{}\n", sm4key,iv,sm4key.len(),iv.len());
+                        
+                        self.gm_sm4key=Some(sm4key);
+                        self.gm_iv=Some(iv);
+                        self.gm_cipher=Some(Cipher::new(&self.gm_sm4key.clone().unwrap()[..], Mode::Cfb));
+                        self.gm_on=4;
+                    }
+                    else if self.gm_on==1 &&!self.is_server{
+                        let pk_raw=data[5..].to_vec();
+                        let pubkey=SigCtx::new().load_pubkey(&pk_raw[..]).unwrap();
+                        self.gm_pubkey=Some(pubkey);
+    
+                        self.gm_on=3;
+                        //println!("\nClient:sm2 pubkey{:?}\n\n", pk_raw);
+                        info!("client:sm2 pubkey{:?}\n", pk_raw);
+                      
+                    }else if self.gm_on==0{
+                            error!("{}Tls failed: Invalid Gmssl Frame.", self.trace_id());
+                            self.close(false, Error::InvalidFrame.to_wire(), b"Invalid Gmssl frame").ok();
+                    }
+                }
+                //server recv encrypted key by sm2
+                else{
                 // Push the data to the stream so it can be re-ordered.
                 self.pkt_num_spaces[epoch].crypto_stream.recv.write(data)?;
 
@@ -5696,10 +5982,11 @@ impl Connection {
                 }
 
                 self.do_handshake()?;
+                  }
             },
 
             frame::Frame::CryptoHeader { .. } => unreachable!(),
-
+            
             // TODO: implement stateless retry
             frame::Frame::NewToken { .. } => (),
 
@@ -5880,6 +6167,15 @@ impl Connection {
                 self.peer_verified_address = true;
 
                 self.handshake_confirmed = true;
+
+
+                //gmssl
+
+                if self.gm_on == 4{
+                    self.gm_on=6;
+                    println!("\nClient:Handshake Done recieved,Gm state set to ENCRYPTION\n");
+                    //info!("client:Handshake Done,Gm state set to ENCRYPTION");
+                }
 
                 // Once the handshake is confirmed, we can drop Handshake keys.
                 self.drop_epoch_state(packet::EPOCH_HANDSHAKE, now);
@@ -6966,17 +7262,17 @@ pub mod testing {
             Some(ref v) => v,
             None => return Err(Error::InvalidState),
         };
-
+   //     println!("now!!7258\n\n");
         let written = packet::encrypt_pkt(
-            &mut b,
-            pn,
-            pn_len,
-            payload_len,
-            payload_offset,
-            None,
-            aead,
+                &mut b,
+                pn,
+                pn_len,
+                payload_len,
+                payload_offset,
+                None,
+                aead,
         )?;
-
+    //    println!("now!!7268\n\n");
         space.next_pkt_num += 1;
 
         Ok(written)
@@ -7002,11 +7298,12 @@ pub mod testing {
             hdr.pkt_num,
             hdr.pkt_num_len,
         );
-
+       
+   //     println!("now!!7295\n\n");
         let mut payload =
             packet::decrypt_pkt(&mut b, pn, hdr.pkt_num_len, payload_len, aead)
                 .unwrap();
-
+     //   println!("now!!7299\n\n");
         let mut frames = Vec::new();
 
         while payload.cap() > 0 {
@@ -9551,7 +9848,7 @@ mod tests {
         let payload_len = frames.iter().fold(0, |acc, x| acc + x.wire_len());
 
         let aead = space.crypto_seal.as_ref().unwrap();
-
+     //   println!("now!!9846\n\n");
         let written = packet::encrypt_pkt(
             &mut b,
             pn,
@@ -9562,7 +9859,7 @@ mod tests {
             aead,
         )
         .unwrap();
-
+     //   println!("now!!9846 off\n\n");
         assert_eq!(pipe.server.timeout(), None);
 
         assert_eq!(
@@ -12043,6 +12340,8 @@ pub use crate::packet::ConnectionId;
 pub use crate::packet::Header;
 pub use crate::packet::Type;
 
+
+
 pub use crate::recovery::CongestionControlAlgorithm;
 
 pub use crate::stream::StreamIter;
@@ -12064,3 +12363,6 @@ mod ranges;
 mod recovery;
 mod stream;
 mod tls;
+
+
+use crate::stream::RangeBuf;

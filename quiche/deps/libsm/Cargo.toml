@@ -1,0 +1,20 @@
+[package]
+name = "libsm"
+version = "0.4.1"
+
+
+[dependencies]
+rand = "0.8"
+byteorder = "1.0.0"
+num-bigint = "0.4"
+num-traits = "0.2"
+num-integer = "0.1"
+yasna = { version = "0.4.0", features = [ "num-bigint" ]}
+lazy_static = "1.0"
+
+[dev-dependencies]
+hex = "0.4"
+base64 = "0.13.0"
+
+[features]
+internal_benches = []
