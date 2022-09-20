@@ -36,6 +36,10 @@ use crate::rand;
 use crate::ranges;
 use crate::stream;
 
+use libsm::sm2::signature::SigCtx;
+use libsm::sm4::cipher_mode::Sm4CipherMode;
+use libsm::sm4::{Mode, Cipher};
+
 const FORM_BIT: u8 = 0x80;
 const FIXED_BIT: u8 = 0x40;
 const KEY_PHASE_BIT: u8 = 0x04;
@@ -299,6 +303,24 @@ impl<'a> Header<'a> {
         Header::from_bytes(&mut b, dcid_len)
     }
 
+
+
+      ///gmssl
+      pub fn get_headerAll(buf: &mut [u8], dcid_len: usize) -> (usize,usize) {
+     
+        let mut b = octets::OctetsMut::with_slice(buf);
+        let hdr=Header::from_bytes(&mut b, dcid_len).unwrap();
+        let payload_len = if hdr.ty == Type::Short {
+            b.cap() //whole lenth - offset(offset = 0,then cap = total lenth)
+        } else {
+            b.get_varint().unwrap() as usize
+        };
+
+        return (payload_len,b.off());
+    }
+
+
+    
     pub(crate) fn from_bytes<'b>(
         b: &'b mut octets::OctetsMut, dcid_len: usize,
     ) -> Result<Header<'a>> {
@@ -602,6 +624,47 @@ pub fn decode_pkt_num(largest_pn: u64, truncated_pn: u64, pn_len: usize) -> u64 
     candidate_pn
 }
 
+
+pub fn decrypt_pktgm<'a>(
+    b: &'a mut octets::OctetsMut, pn: u64, pn_len: usize, payload_len: usize,
+    aead: &crypto::Open,gm_on:u64,is_established:bool,cipher:&mut Option<Sm4CipherMode>,gm_iv:&Option<Vec<u8>>,
+) -> Result<octets::Octets<'a>> {
+    let payload_offset = b.off();
+
+    let (header, mut payload) = b.split_at(payload_offset)?;
+
+    let payload_len = payload_len
+        .checked_sub(pn_len)
+        .ok_or(Error::InvalidPacket)?;
+  
+
+    let mut ciphertext = payload.peek_bytes_mut(payload_len)?;
+
+
+
+    let payload_len =
+        aead.open_with_u64_counter(pn, header.as_ref(), ciphertext.as_mut())?;
+      //  info!("\nssl decrypt,len={:?}\n",payload_len);
+       // info!("\n\nssl content,{:?}\n\n",ciphertext);
+    
+      //got the payload decrypt the payload 
+      if gm_on==6 && is_established {
+        //let (plolen,offset)=self.get_headerAll(buf, self.scid.len());
+
+     //   let cipher=self.gm_cipher.as_ref();
+     //   let (plolen,offset)=Header::get_headerAll(buf, self.scid.len());
+     //info!("\n\nlen={:?},iv={:?},GM encrypted content,{:?}\n\n",payload_len,&gm_iv.clone().unwrap()[..],ciphertext);
+        cipher.as_ref().unwrap().cfb_decrypt_inplace(&mut ciphertext.as_mut()[..], &gm_iv.clone().unwrap()[..], payload_len);
+    
+       // info!("\ngm decrypt,len={:?}\n",payload_len);
+
+      //  info!("\n\ngm content,{:?}\n\n",ciphertext);
+ }
+
+    //let payload_len =b.len();
+    Ok(b.get_bytes(payload_len)?)
+}
+
 pub fn decrypt_pkt<'a>(
     b: &'a mut octets::OctetsMut, pn: u64, pn_len: usize, payload_len: usize,
     aead: &crypto::Open,
@@ -613,12 +676,29 @@ pub fn decrypt_pkt<'a>(
     let payload_len = payload_len
         .checked_sub(pn_len)
         .ok_or(Error::InvalidPacket)?;
+  
 
     let mut ciphertext = payload.peek_bytes_mut(payload_len)?;
+
+      
+
 
     let payload_len =
         aead.open_with_u64_counter(pn, header.as_ref(), ciphertext.as_mut())?;
 
+         //got the payload decrypt the payload 
+/*         if aead.gm_on==6 && aead.is_established {
+            //let (plolen,offset)=self.get_headerAll(buf, self.scid.len());
+    
+         //   let cipher=self.gm_cipher.as_ref();
+         //   let (plolen,offset)=Header::get_headerAll(buf, self.scid.len());
+         
+            aead.cipher.as_ref().unwrap().cfb_decrypt_inplace(&mut ciphertext.as_mut()[..], &aead.gm_iv.clone().unwrap()[..], payload_len);
+        
+            info!("\ngm decrypt,len={:?}\n",payload_len);
+     } */
+    
+    //let payload_len =b.len();
     Ok(b.get_bytes(payload_len)?)
 }
 
@@ -647,22 +727,64 @@ pub fn encrypt_hdr(
     Ok(())
 }
 
-pub fn encrypt_pkt(
+
+pub fn encrypt_pktgm(
     b: &mut octets::OctetsMut, pn: u64, pn_len: usize, payload_len: usize,
-    payload_offset: usize, extra_in: Option<&[u8]>, aead: &crypto::Seal,
+    payload_offset: usize, extra_in: Option<&[u8]>, aead: &crypto::Seal,gm_on:u64,is_established:bool,cipher:&mut Option<Sm4CipherMode>,gm_iv:&Option<Vec<u8>>,
 ) -> Result<usize> {
     let (mut header, mut payload) = b.split_at(payload_offset)?;
 
-    let ciphertext_len = aead.seal_with_u64_counter(
+    if  gm_on==6 &&  is_established {
+        // let ms=;
+       // info!("\n\n\nPLOADlen={:?},gm  BEFORE Encrypt,content={:?}\n\ngm_iv=={:?}\n",payload_len,payload,&gm_iv.clone().unwrap()[..],);
+        cipher.as_ref().unwrap().cfb_encrypt_inplace(&mut payload.as_mut()[..],&gm_iv.clone().unwrap()[..],payload_len);
+      //  info!("\n\n\ngm  Encrypt,content={:?}\n",payload);
+       //  info!("\ngm Encrypt,len={:?}\n",payload_len);
+         
+     }
+
+    let ciphertext_len
+     = aead.seal_with_u64_counter(
         pn,
         header.as_ref(),
         payload.as_mut(),
         payload_len,
         extra_in,
     )?;
+   // info!("\nssl Encrypt,len={:?}\n",ciphertext_len);
+  //  info!("\n\n\nssl Encrypt,content={:?}\n",payload);
 
     encrypt_hdr(&mut header, pn_len, payload.as_ref(), aead)?;
+    //let ciphertext_len
+    // = payload_len;
+    Ok(payload_offset + ciphertext_len)
+}
 
+pub fn encrypt_pkt(
+    b: &mut octets::OctetsMut, pn: u64, pn_len: usize, payload_len: usize,
+    payload_offset: usize, extra_in: Option<&[u8]>, aead: &crypto::Seal,
+) -> Result<usize> {
+    let (mut header, mut payload) = b.split_at(payload_offset)?;
+/*
+    if aead.gm_on==6 &&  aead.is_established {
+        // let ms=;
+        aead.cipher.as_ref().unwrap().cfb_encrypt_inplace(&mut payload.as_mut()[..],&aead.gm_iv.clone().unwrap()[..],payload_len);
+        
+         info!("\ngm Encrypt,len={:?}\n",payload_len);
+     } */
+    
+    let ciphertext_len
+     = aead.seal_with_u64_counter(
+        pn,
+        header.as_ref(),
+        payload.as_mut(),
+        payload_len,
+        extra_in,
+    )?;
+    
+    encrypt_hdr(&mut header, pn_len, payload.as_ref(), aead)?;
+    //let ciphertext_len
+    // = payload_len;
     Ok(payload_offset + ciphertext_len)
 }
 

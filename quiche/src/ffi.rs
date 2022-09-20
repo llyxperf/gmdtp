@@ -695,6 +695,15 @@ pub extern fn quiche_conn_send(
     }
 }
 
+
+// gmssl
+#[no_mangle]
+pub extern fn quiche_config_set_gmssl(
+    config: &mut Config, v: u64,
+) {
+    config.set_gmssl(v);
+}
+
 #[no_mangle]
 pub extern fn quiche_conn_stream_recv(
     conn: &mut Connection, stream_id: u64, out: *mut u8, out_len: size_t,

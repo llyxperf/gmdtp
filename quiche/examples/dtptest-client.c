@@ -397,6 +397,10 @@ int main(int argc, char *argv[]) {
   quiche_config_set_initial_max_streams_uni(config, 40000);
   quiche_config_set_disable_active_migration(config, true);
 
+
+
+   quiche_config_set_gmssl(config,1);
+
   if (getenv("SSLKEYLOGFILE")) {
     quiche_config_log_keys(config);
   }
