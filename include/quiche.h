@@ -165,7 +165,7 @@ void quiche_config_set_max_ack_delay(quiche_config *config, uint64_t v);
 void quiche_config_set_disable_active_migration(quiche_config *config, bool v);
 
 //sets the 'gmssl' crypto.
-void quiche_config_set_gmssl(quiche_config *config,uint64_t v);
+int dtp_config_set_gmssl(quiche_config *config,uint64_t v);
 
 enum quiche_cc_algorithm {
     QUICHE_CC_RENO = 0,

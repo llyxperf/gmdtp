@@ -171,8 +171,7 @@ impl Frame {
         b: &mut octets::Octets, pkt: packet::Type,
     ) -> Result<Frame> {
         let frame_type = b.get_varint()?;
-
-      //   println!("GOT FRAME {:x}", frame_type);
+ 
 
         let frame = match frame_type {
             0x00 => {

@@ -278,7 +278,7 @@ use libsm::sm2::ecc::Point;
 use libsm::sm2::signature::SigCtx;
 use libsm::sm4::cipher_mode::Sm4CipherMode;
 use num_bigint::BigUint;
-//lyxalter
+
 extern crate libsm;
 
 //use std::{fs::OpenOptions, io::{Read, Write}};
@@ -645,17 +645,27 @@ impl Config {
         self.local_transport_params
             .initial_max_stream_data_bidi_local = v;
     }
-        /// Sets the gmssl 
+    /// Sets the gmssl 
     /// 
     /// The default value is '1' On.
-    pub fn set_gmssl(&mut self, v: u64) {
+    pub fn set_gmssl(&mut self, v: u64) -> i32{
+        let mut res=0;
         if v==1 {
             println!("gmssl On");
+            self.gm_on = v;
+            res=1;
+        }
+        else if v ==0{
+            println!("gmssl Off");
+            self.gm_on = v;
+            res=1;
         }
         else{
-            println!("gmssl Off");
+            println!("invalid gmssl state");
+            res =0;
         }
-        self.gm_on = v;
+        
+        return res;
     }
     
     /// Sets the `initial_max_stream_data_bidi_remote` transport parameter.
@@ -972,7 +982,7 @@ pub struct Connection {
     /// fec tail size
     tail_size: Option<u64>,
 
-    /// lyx Gmssl
+    /// Gmssl
     gm_on: u64,
     gm_pubkey:  Option<Point>,
     gm_skey: Option<BigUint>,
@@ -1339,13 +1349,7 @@ impl Connection {
     pub fn recv(&mut self, buf: &mut [u8]) -> Result<usize> {
         let len = buf.len();
 
-        if self.gm_on==5{
-            let (plolen,offset)=Header::get_headerAll(buf, self.scid.len());
-
-            let cipher=self.gm_cipher.as_ref();
-         
-            cipher.unwrap().cfb_decrypt_inplace(&mut buf[plolen..], &self.gm_iv.clone().unwrap()[..], plolen);
-        }
+   
 
         let mut done = 0;
         let mut left = len;
@@ -1536,40 +1540,8 @@ impl Connection {
             return Err(Error::UnknownVersion);
         }
 
-        //lyx is client,now get the left space of the payload(length of long pkt,)
-        /*
-         Long Header Packet {
-     Header Form (1) = 1,
-     Fixed Bit (1) = 1,
-     Long Packet Type (2),
-     Type-Specific Bits (4),
-     Version (32),
-     Destination Connection ID Length (8),
-     Destination Connection ID (0..160),
-     Source Connection ID Length (8),
-     Source Connection ID (0..160),
-     Type-Specific Payload (..),
-   }
-
-      Initial Packet (specific packet){
-     Header Form (1) = 1,
-     Fixed Bit (1) = 1,
-     Long Packet Type (2) = 0,
-     Reserved Bits (2),
-     Packet Number Length (2),
-     Version (32),
-     Destination Connection ID Length (8),
-     Destination Connection ID (0..160),
-     Source Connection ID Length (8),
-     Source Connection ID (0..160),
-     Token Length (i),
-     Token (..),
-     Length (i),
-     Packet Number (8..32),
-     Packet Payload (8..),
-   }
-
-        */
+      
+       
         if !self.is_server && !self.got_peer_conn_id {
             // Replace the randomly generated destination connection ID with
             // the one supplied by the server.
@@ -1597,7 +1569,7 @@ impl Connection {
         }
 
         // Select packet number space epoch based on the received packet's type.
-        //lyx 不同包空间储存不同的包数组，和对应的加解密方案。
+     
         let epoch = hdr.ty.to_epoch()?;
 
         let aead = if hdr.ty == packet::Type::ZeroRTT &&
@@ -1654,7 +1626,46 @@ impl Connection {
             pn
         );
 
-        let mut payload =
+        let mut payload:octets::Octets;
+
+
+        if self.gm_on==6 &&self.is_established(){
+            payload =match packet::decrypt_pktgm(
+                &mut b,
+                pn,
+                pn_len,
+                payload_len,
+                aead,
+                self.gm_on,
+                self.is_established(),&mut self.gm_cipher,&self.gm_iv){
+                    Ok(v) => v,
+    
+                    Err(e) => {
+                        // Ignore packets that fail decryption, but only if we have
+                        // successfully processed at least another packet for the
+                        // connection. This way we can avoid closing the connection
+                        // when junk is injected, but we don't keep a connection
+                        // alive in case we only received junk.
+    
+                        if self.recv_count == 0 {
+                            return Err(e);
+                        }
+    
+                        trace!(
+                            "{} dropped undecryptable packet type={:?} len={}",
+                            self.trace_id,
+                            hdr.ty,
+                            payload_len
+                        );
+    
+                        return Err(Error::Done);
+                    },
+                };
+            
+        }
+        else{
+
+        payload =
             match packet::decrypt_pkt(&mut b, pn, pn_len, payload_len, &aead) {
                 Ok(v) => v,
 
@@ -1679,7 +1690,8 @@ impl Connection {
                     return Err(Error::Done);
                 },
             };
-
+            
+        }
         if self.pkt_num_spaces[epoch].recv_pkt_num.contains(pn) {
             trace!("{} ignored duplicate packet {}", self.trace_id, pn);
             return Err(Error::Done);
@@ -1898,8 +1910,7 @@ impl Connection {
 
         if !is_closing {
             self.do_handshake()?;
-            //lyx???
-            //println!("\n222hshake\n");
+        
         }
 
         // Use max_packet_size as sent by the peer, except during the handshake
@@ -2176,10 +2187,10 @@ impl Connection {
                     frames.push(frame);
 
                     self.handshake_done_sent = true;
-//lyxalter finished gm hndshake
+ 
                     if self.gm_on == 4{
-                        println!("\nHandshake Done sent,Gm state set to 5.\n");
-                       // debug!("N");
+                        println!("Server:Got gmssl key.\n");
+                       
                         self.gm_on=5;
                     }
                 }
@@ -2348,7 +2359,7 @@ impl Connection {
                 in_flight = true;
             }
 
-            //lyxalter:Create cryptoFrame in the form gmssl.
+            // Create cryptoFrame in the form gmssl.
             //it wont affect the crypto stream,since it carries gm imformation in the type crypto.
             // if it is server and gmssl is 1,then general the sm2 key and push to crypto frame
  
@@ -2362,21 +2373,12 @@ impl Connection {
                 let mut pk_raw = ctx.serialize_pubkey(&pk.as_ref().unwrap(), true);
                 let mut gmhdr="gmssl".as_bytes().to_vec();
                 gmhdr.append(&mut pk_raw);
-               // println!("\nServer:pubkey frame created:{:?}\n", gmhdr);
+               
                 info!("Server:pubkey frame created:{:?}\n", gmhdr);
                 
                 let gmcrypto_buf=RangeBuf::from(&gmhdr[..], 0, true);
 
-                //let new_pk = ctx.load_pubkey(&pk_raw[..]);
-              /*  usage: to create a rangebuf.
-                         for gm,just create a rangebuf including keys and special flags,and deal with it.
-                let crypto_len = left - frame::MAX_CRYPTO_OVERHEAD;
-                let crypto_buf = self.pkt_num_spaces[epoch]
-                    .crypto_stream
-                    .send
-                    .pop(crypto_len)?;
-*/
-                //create a rangebuf with gmssl+pubkey and push to the frame.
+               //create Crypto frame and encode it into buf
                 let frame = frame::Frame::Crypto { data: gmcrypto_buf };
                 self.gm_on=2;
                 
@@ -2399,34 +2401,22 @@ impl Connection {
 
                 let mut plain_text=key.to_vec();
                 let mut veciv=iv.to_vec();
-               // let mut plain_text=[255,255,255];
-               // println!("\nClient:key created:  {:?}+{:?}\n",&key,&iv);
+                
                debug!("\nClient:key created:  {:?}+{:?}\n",&key,&iv);
                 plain_text.append(&mut veciv);
-                debug!("\n\n\n\npoint1\n");
+                
                 let mut gmhdr="gmssl".as_bytes().to_vec();
-                debug!("\n\n\n\npoint2\n");
+            
                // let cipher_text: Vec<u8> = self.gm_cipher.as_ref().unwrap().encrypt(&plain_text[..], &self.gm_iv.unwrap());
-               let mut ectx = EncryptCtx::new(plain_text.len(),self.gm_pubkey.unwrap());
-               debug!("\n\n\n\npoint3\n");
-               let mut cipher_text: Vec<u8> = ectx.encrypt(&plain_text[..]);
-               debug!("\n\n\n\npoint4\n");
+             //  let mut ectx = EncryptCtx::new(plain_text.len(),self.gm_pubkey.unwrap());
+               
+               let mut cipher_text: Vec<u8> = plain_text;
+                
                gmhdr.append(&mut cipher_text);
                info!("client:key frame created:{:?}\n", gmhdr.clone());
-              // println!("\nClient:key frame created:{:?}\n", gmhdr.clone());
-           
+         
                let sm4cryptobuf=RangeBuf::from(&gmhdr[..], 0, true);
-
-                //let new_pk = ctx.load_pubkey(&pk_raw[..]);
-              /*  usage: to create a rangebuf.
-                         for gm,just create a rangebuf including keys and special flags,and deal with it.
-                let crypto_len = left - frame::MAX_CRYPTO_OVERHEAD;
-                let crypto_buf = self.pkt_num_spaces[epoch]
-                    .crypto_stream
-                    .send
-                    .pop(crypto_len)?;
-*/
-                //create a rangebuf with gmssl+pubkey and push to the frame.
+ 
                 let frame = frame::Frame::Crypto { data: sm4cryptobuf };
 
                 self.gm_on=4;
@@ -2688,7 +2678,7 @@ impl Connection {
             PAYLOAD_MIN_LEN
         };
         debug!("payload len is {}, min length should be {}", payload_len, payload_min_len);
-        // lyxalter : an example of creating a new frame
+        //  alter : an example of creating a new frame
         if payload_len < payload_min_len {
             let frame = frame::Frame::Padding {
                 len: payload_min_len - payload_len,
@@ -2710,7 +2700,7 @@ impl Connection {
         }
 
         packet::encode_pkt_num(pn, &mut b)?;
-        // lyxalter : alter the counting
+       
         let payload_offset = b.off();
 
         trace!(
@@ -2722,8 +2712,7 @@ impl Connection {
         );
 
         // Encode frames into the output packet.
-        // lyx frames start
-        // lyxalter : end of a send frames
+     
         for frame in &frames {
             debug!("Send Func: {} tx frm {:?}", self.trace_id, frame);
 
@@ -2774,20 +2763,34 @@ impl Connection {
             Some(ref v) => v,
             None => return Err(Error::InvalidState),
         };
-        //encrypt.
-        //println!("\nbefore {:?}\n",b.buf());
-
-           //alter b equals to altering out.
+        
            //it divided b into header and payload.And it encrypts them seperately
-        let written = packet::encrypt_pkt(
-            &mut b,
-            pn,
-            pn_len,
-            payload_len,
-            payload_offset,
-            aead,
-        )?;
-        //println!("\nafter enc {:?}\n",b.buf());
+           let mut written=0;
+           if self.gm_on==6 && self.is_established(){
+                written = packet::encrypt_pktgm(
+                   &mut b,
+                   pn,
+                   pn_len,
+                   payload_len,
+                   payload_offset,
+
+                   aead,
+                   self.gm_on,
+                   self.is_established(),&mut self.gm_cipher,& self.gm_iv,
+               )?;
+           }
+           else{
+               written = packet::encrypt_pkt(
+                   &mut b,
+                   pn,
+                   pn_len,
+                   payload_len,
+                   payload_offset,
+                   aead,
+               )?;
+           }
+ 
+        
         let encode_time = now.elapsed();
         trace!("Encode time is {}", encode_time.as_micros());
         now = time::Instant::now();
@@ -2837,16 +2840,13 @@ impl Connection {
         //returns the bytes that shold send.and just send the slices with length written out[..written]
         //so just encrypt it using gm
 
-        if self.gm_on==6 && (self.handshake_done_sent||self.handshake_confirmed){
-           // let ms=;
-            //let (mut header, mut payload) = b.split_at(payload_offset)?;
-            self.gm_cipher.as_ref().unwrap().cfb_encrypt_inplace(&mut out[payload_offset..], &self.gm_iv.as_ref().unwrap()[..],payload_len);
-            debug!("\ngm Encrypt,len={:?}\n",written);
-        }
-        else if self.gm_on==5{
+        if self.gm_on==5{ //handshake frame push,dont encrypt .next epoch encrypt
             self.gm_on=6;
-            debug!("\ngm handshake is finished.Next epoch start to encrypt{:?}\n",written);
+            
+            info!("\ngm handshake is finished.Next epoch start to encrypt{:?}\n",written);
+            println!("\nServer:Handshake from client finished,Gm state set to ENCRYPTION\n");
         }
+ 
         
         Ok(written)
     }
@@ -3693,23 +3693,22 @@ impl Connection {
                     return Err(Error::InvalidStreamState);
                 }
             },
-//cryppto只负责收发层次上的设计。收发后如何分析所有的信息，都放在boringssl。
-//对于 gm理论上也应该如此
-//为了方便修改，将gmssl解析移到quic中
+ 
             frame::Frame::Crypto { data } => {
-               
                 if data.get_data()[0..5]=="gmssl".as_bytes().to_vec(){
                     if self.gm_on==2 &&self.is_server {
                         let enc_sm4key=data.get_data()[5..].to_vec();
                         println!("\n get sm4key \n");
-                        let klen=16+16;
-                        let sk=self.gm_skey.clone().unwrap();
+                      //  let klen=16+16;
+                     //   let sk=self.gm_skey.clone().unwrap();
                         
-                        let plain_text=DecryptCtx::new(klen, sk).decrypt(&enc_sm4key);
+                     
+                        //   let plain_text=DecryptCtx::new(klen, sk).decrypt(&enc_sm4key);
+                        let plain_text= enc_sm4key;
                         let sm4key=plain_text[0..16].to_vec();
                         let iv=plain_text[16..].to_vec();
-                        //println!("\nServer:sm4key crypto frame recieved:{:?}  +{:?}  ,key length is {}+{}\n", sm4key,iv,sm4key.len(),iv.len());
-                        info!("Server:sm4key crypto frame recieved:{:?}  +{:?}  ,key length is {}+{}\n", sm4key,iv,sm4key.len(),iv.len());
+                     
+                     //   info!("Server:sm4key crypto frame recieved:{:?}  +{:?}  ,key length is {}+{}\n", sm4key,iv,sm4key.len(),iv.len());
                         
                         self.gm_sm4key=Some(sm4key);
                         self.gm_iv=Some(iv);
@@ -3722,7 +3721,7 @@ impl Connection {
                         self.gm_pubkey=Some(pubkey);
     
                         self.gm_on=3;
-                        //println!("\nClient:sm2 pubkey{:?}\n\n", pk_raw);
+                    
                         info!("client:sm2 pubkey{:?}\n", pk_raw);
                       
                     }else if self.gm_on==0{
@@ -3892,8 +3891,7 @@ impl Connection {
                 }
 
                 self.handshake_confirmed = true;
-                //println!("\n????\n");
-                //lyxalter finished gm hndshake
+         
                 if self.gm_on == 4{
                     self.gm_on=6;
                     println!("\nClient:Handshake Done recieved,Gm state set to ENCRYPTION\n");
@@ -4000,11 +3998,6 @@ impl Connection {
         }
     }
 
-    //lyxalter
-
-    fn get_gmflag(&mut self)->u64{
-       return self.gm_on;
-    }
 }
 
 /// Statistics about the connection.

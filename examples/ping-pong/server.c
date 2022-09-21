@@ -442,10 +442,12 @@ int main(int argc, char *argv[]) {
   quiche_config_set_initial_max_streams_bidi(config, 100);
   quiche_config_set_cc_algorithm(config, QUICHE_CC_RENO);
   
+
+
   struct connections c;
   c.sock = sock;
   c.h = NULL;
-
+  
   conns = &c;
 
   ev_io watcher;

@@ -26,6 +26,7 @@
 
 use std::time;
 
+use libsm::sm4::cipher_mode::Sm4CipherMode;
 use ring::aead;
 
 use crate::Error;
@@ -544,6 +545,38 @@ pub fn decode_pkt_num(largest_pn: u64, truncated_pn: u64, pn_len: usize) -> u64 
     candidate_pn
 }
 
+
+pub fn decrypt_pktgm<'a>(
+    b: &'a mut octets::Octets, pn: u64, pn_len: usize, payload_len: usize,
+    aead: &crypto::Open,gm_on:u64,is_established:bool,cipher:&mut Option<Sm4CipherMode>,gm_iv:&Option<Vec<u8>>,
+) -> Result<octets::Octets<'a>> {
+    let payload_offset = b.off();
+
+    let (header, mut payload) = b.split_at(payload_offset)?;
+
+    let payload_len = payload_len
+        .checked_sub(pn_len)
+        .ok_or(Error::InvalidPacket)?;
+  
+
+    let mut ciphertext = payload.peek_bytes(payload_len)?;
+
+
+
+    let payload_len =
+        aead.open_with_u64_counter(pn, header.as_ref(), ciphertext.as_mut())?;
+   
+      if gm_on==6 && is_established {
+       
+        cipher.as_ref().unwrap().cfb_decrypt_inplace(&mut ciphertext.as_mut()[..], &gm_iv.clone().unwrap()[..], payload_len);
+    
+       
+ }
+
+   
+    Ok(b.get_bytes(payload_len)?)
+}
+
 pub fn decrypt_pkt<'a>(
     b: &'a mut octets::Octets, pn: u64, pn_len: usize, payload_len: usize,
     aead: &crypto::Open,
@@ -588,15 +621,37 @@ pub fn encrypt_hdr(
 
     Ok(())
 }
-//puzzle:如何快速确定到底变没变 payload 和 header
+
+
+pub fn encrypt_pktgm(
+    b: &mut octets::Octets, pn: u64, pn_len: usize, payload_len: usize,
+    payload_offset: usize,   aead: &crypto::Seal,gm_on:u64,is_established:bool,cipher:&mut Option<Sm4CipherMode>,gm_iv:&Option<Vec<u8>>,
+) -> Result<usize> {
+    let (mut header, mut payload) = b.split_at(payload_offset)?;
+    let ciphertext = payload.slice(payload_len)?;
+
+    if  gm_on==6 &&  is_established {
+        cipher.as_ref().unwrap().cfb_encrypt_inplace(&mut ciphertext.as_mut()[..],&gm_iv.clone().unwrap()[..],payload_len);
+     
+     }
+
+     aead.seal_with_u64_counter(pn, header.as_ref(), ciphertext)?;
+ 
+
+    encrypt_hdr(&mut header, pn_len, ciphertext, aead)?;
+  
+    Ok(payload_offset + payload_len)
+}
+
+
+ 
 pub fn encrypt_pkt(
     b: &mut octets::Octets, pn: u64, pn_len: usize, payload_len: usize,
     payload_offset: usize, aead: &crypto::Seal,
 ) -> Result<usize> {
     let (mut header, mut payload) = b.split_at(payload_offset)?;
     
-  //  print!("\n{}+{}\n",offs,&payload_len);
-    // Encrypt + authenticate payload.
+  
     let ciphertext = payload.slice(payload_len)?;
     //encrypt the buf by straightly alter the ciphertext
     aead.seal_with_u64_counter(pn, header.as_ref(), ciphertext)?;

@@ -101,10 +101,11 @@ pub extern fn quiche_config_load_cert_chain_from_pem_file(
 
 // gmssl
 #[no_mangle]
-pub extern fn quiche_config_set_gmssl(
+pub extern fn dtp_config_set_gmssl (
     config: &mut Config, v: u64,
-) {
-    config.set_gmssl(v);
+) ->c_int{
+    return config.set_gmssl(v);
+    
 }
 
 
