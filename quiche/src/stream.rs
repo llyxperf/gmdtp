@@ -900,6 +900,11 @@ impl Block {
     pub fn real_priority(
         &self, delivery_rate: u64, rtt: u64, service_time: u64,
     ) -> Option<u64> {
+        let delivery_rate = if delivery_rate == 0 {
+            100000000000
+        } else {
+            delivery_rate
+        };
         match self
             .deadline
             .checked_sub(self.size / delivery_rate + rtt + service_time)
