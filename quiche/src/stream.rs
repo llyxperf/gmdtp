@@ -957,6 +957,7 @@ impl Stream {
                 max_window,
                 #[cfg(feature = "dtp")]
                 block.clone().map(|b| Arc::downgrade(&b)),
+                #[cfg(feature = "dtp")]
                 None,
             ),
             send: SendBuf::new(
