@@ -627,7 +627,8 @@ pub fn decode_pkt_num(largest_pn: u64, truncated_pn: u64, pn_len: usize) -> u64 
 
 pub fn decrypt_pktgm<'a>(
     b: &'a mut octets::OctetsMut, pn: u64, pn_len: usize, payload_len: usize,
-    aead: &crypto::Open,gm_on:u64,is_established:bool,cipher:&mut Option<Sm4CipherMode>,gm_iv:&Option<Vec<u8>>,
+    aead: &crypto::Open,gm_on:u64,is_established:bool,
+    cipher:&mut &Sm4CipherMode,gm_iv:&[u8],
 ) -> Result<octets::Octets<'a>> {
     let payload_offset = b.off();
 
@@ -649,16 +650,8 @@ pub fn decrypt_pktgm<'a>(
     
       //got the payload decrypt the payload 
       if gm_on==6 && is_established {
-        //let (plolen,offset)=self.get_headerAll(buf, self.scid.len());
-
-     //   let cipher=self.gm_cipher.as_ref();
-     //   let (plolen,offset)=Header::get_headerAll(buf, self.scid.len());
-     //info!("\n\nlen={:?},iv={:?},GM encrypted content,{:?}\n\n",payload_len,&gm_iv.clone().unwrap()[..],ciphertext);
-        cipher.as_ref().unwrap().cfb_decrypt_inplace(&mut ciphertext.as_mut()[..], &gm_iv.clone().unwrap()[..], payload_len);
-    
-       // info!("\ngm decrypt,len={:?}\n",payload_len);
-
-      //  info!("\n\ngm content,{:?}\n\n",ciphertext);
+       cipher.cfb_decrypt_inplace(&mut ciphertext.as_mut()[..], gm_iv, payload_len);
+      
  }
 
     //let payload_len =b.len();
@@ -730,18 +723,14 @@ pub fn encrypt_hdr(
 
 pub fn encrypt_pktgm(
     b: &mut octets::OctetsMut, pn: u64, pn_len: usize, payload_len: usize,
-    payload_offset: usize, extra_in: Option<&[u8]>, aead: &crypto::Seal,gm_on:u64,is_established:bool,cipher:&mut Option<Sm4CipherMode>,gm_iv:&Option<Vec<u8>>,
+    payload_offset: usize, extra_in: Option<&[u8]>, aead: &crypto::Seal,
+    gm_on:u64,is_established:bool,cipher:&mut &Sm4CipherMode,gm_iv:&[u8],
 ) -> Result<usize> {
     let (mut header, mut payload) = b.split_at(payload_offset)?;
 
     if  gm_on==6 &&  is_established {
-        // let ms=;
-       // info!("\n\n\nPLOADlen={:?},gm  BEFORE Encrypt,content={:?}\n\ngm_iv=={:?}\n",payload_len,payload,&gm_iv.clone().unwrap()[..],);
-        cipher.as_ref().unwrap().cfb_encrypt_inplace(&mut payload.as_mut()[..],&gm_iv.clone().unwrap()[..],payload_len);
-      //  info!("\n\n\ngm  Encrypt,content={:?}\n",payload);
-       //  info!("\ngm Encrypt,len={:?}\n",payload_len);
-         
-     }
+        cipher.cfb_encrypt_inplace(&mut payload.as_mut()[..],gm_iv,payload_len);
+      }
 
     let ciphertext_len
      = aead.seal_with_u64_counter(
@@ -751,12 +740,9 @@ pub fn encrypt_pktgm(
         payload_len,
         extra_in,
     )?;
-   // info!("\nssl Encrypt,len={:?}\n",ciphertext_len);
-  //  info!("\n\n\nssl Encrypt,content={:?}\n",payload);
-
+ 
     encrypt_hdr(&mut header, pn_len, payload.as_ref(), aead)?;
-    //let ciphertext_len
-    // = payload_len;
+   
     Ok(payload_offset + ciphertext_len)
 }
 

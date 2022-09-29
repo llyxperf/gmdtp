@@ -124,7 +124,7 @@
 //! # let from = "127.0.0.1:1234".parse().unwrap();
 //! # let mut conn = quiche::accept(&scid, None, from, &mut config)?;
 //! loop {
-//!     let (write, send_info) = match conn.send(&mut out) {
+//     let (write, send_info) = match conn.send(&mut out) {
 //!         Ok(v) => v,
 //!
 //!         Err(quiche::Error::Done) => {
@@ -2326,7 +2326,8 @@ impl Connection {
                 payload_len,
                 aead,
                 self.gm_on,
-                self.is_established(),&mut self.gm_cipher,&self.gm_iv
+                self.is_established(),&mut self.gm_cipher.as_ref().unwrap(),
+                & self.gm_iv.as_ref().unwrap()[..]
             )
     
              
@@ -2584,7 +2585,13 @@ impl Connection {
         // the client's address to be verified.
         if self.is_server && hdr.ty == packet::Type::Handshake {
             self.drop_epoch_state(packet::EPOCH_INITIAL, now);
-
+         
+            if self.gm_on==4{
+                self.gm_on=6;
+                info!("\nGm handshake is finished\n" );
+             //   println!("??test1\n\n\n");
+                println!("\nServer:Handshake from client finished,Gm state set to ENCRYPTION\n");
+            }
             self.verified_peer_address = true;
         }
 
@@ -3065,12 +3072,7 @@ impl Connection {
                     ack_eliciting = true;
                     in_flight = true;
 
-                    //gmssl
-                    if self.gm_on == 4{
-                         println!("Server:Got gmssl key.\n");
-                         // debug!("N");
-                          self.gm_on=5;
-                      }
+        
 
                     #[cfg(feature = "diffserv")]
                     if *diffserv < 4 << 3 {
@@ -3955,7 +3957,7 @@ impl Connection {
                 None,
                 aead,
                 self.gm_on,
-                self.is_established(),&mut self.gm_cipher,& self.gm_iv,
+                self.is_established(),&mut self.gm_cipher.as_ref().unwrap(),& self.gm_iv.as_ref().unwrap()[..],
             )?;
         }
         else{
@@ -4016,6 +4018,12 @@ impl Connection {
 
         // On the client, drop initial state after sending an Handshake packet.
         if !self.is_server && hdr.ty == packet::Type::Handshake {
+            if self.gm_on == 4{
+                self.gm_on=6;
+                println!("\nClient:Handshake Done recieved,Gm state set to ENCRYPTION\n");
+               
+            }
+
             self.drop_epoch_state(packet::EPOCH_INITIAL, now);
         }
 
@@ -4033,20 +4041,7 @@ impl Connection {
             self.ack_eliciting_sent = true;
         }
 
-         //gmssl recv(&mut self, buf: &mut [u8], info: RecvIn
-      //   if self.gm_on==6 && (self.handshake_done_sent||self.handshake_confirmed){
-        /*   if self.gm_on==6 && self.is_established(){
-            // let ms=;
-          
-             self.gm_cipher.as_ref().unwrap().cfb_encrypt_inplace(&mut out[payload_offset..], &self.gm_iv.as_ref().unwrap()[..],payload_len);
-             info!("\ngm Encrypt,len={:?}\n",written);
-         }
-         else  */ if self.gm_on==5{ //handshake frame push,dont encrypt .next epoch encrypt
-             self.gm_on=6;
-             
-             info!("\ngm handshake is finished.Next epoch start to encrypt{:?}\n",written);
-             println!("\nServer:Handshake from client finished,Gm state set to ENCRYPTION\n");
-         }
+        
 
         Ok((pkt_type, written))
     }
@@ -6167,15 +6162,7 @@ impl Connection {
                 self.peer_verified_address = true;
 
                 self.handshake_confirmed = true;
-
-
-                //gmssl
-
-                if self.gm_on == 4{
-                    self.gm_on=6;
-                    println!("\nClient:Handshake Done recieved,Gm state set to ENCRYPTION\n");
-                    //info!("client:Handshake Done,Gm state set to ENCRYPTION");
-                }
+ 
 
                 // Once the handshake is confirmed, we can drop Handshake keys.
                 self.drop_epoch_state(packet::EPOCH_HANDSHAKE, now);

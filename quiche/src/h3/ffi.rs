@@ -270,6 +270,28 @@ pub extern fn quiche_h3_send_body(
         Err(e) => e.to_c(),
     }
 }
+/*
+//llyxalter
+#[no_mangle]
+#[cfg(feature = "dtp")]
+pub extern fn quiche_h3_send_body_block(
+    conn: &mut h3::Connection, quic_conn: &mut Connection, stream_id: u64,
+    body: *const u8, body_len: size_t, fin: bool,block: &stream::Block
+) -> ssize_t {
+    if body_len > <ssize_t>::max_value() as usize {
+        panic!("The provided buffer is too large");
+    }
+
+    let body = unsafe { slice::from_raw_parts(body, body_len) };
+    let block = Arc::new(block.to_owned());
+
+    match conn.send_body_block(quic_conn, stream_id, body, fin,block) {
+        Ok(v) => v as ssize_t,
+
+        Err(e) => e.to_c(),
+    }
+}
+ */
 
 #[no_mangle]
 pub extern fn quiche_h3_recv_body(

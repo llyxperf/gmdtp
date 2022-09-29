@@ -607,6 +607,18 @@ impl Stream {
     }
 }
 
+//#[cfg(feature = "dtp")]
+//#[derive(Debug, Clone)]
+//#[repr(C)]
+pub struct Block {
+    /// The DTP block size.
+    pub size: u64,
+    /// The DTP block priority.
+    pub priority: u64,
+    /// The DTP block deadline.
+    pub deadline: u64,
+}
+
 #[cfg(test)]
 mod tests {
     use crate::h3::frame::*;

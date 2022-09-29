@@ -44,6 +44,7 @@ struct arguments {
   char *server_ip;
   char *server_port;
   char *dtp_trace_file;
+  char * gm_on;
 };
 
 static bool DIFFSERV_ENABLE = false;
@@ -83,6 +84,9 @@ static error_t parse_opt(int key, char *arg, struct argp_state *state) {
     }
     case 2:
       arguments->dtp_trace_file = arg;
+      break;
+    case 3:
+      arguments->gm_on = arg;
       break;
     default:
       argp_usage(state);
@@ -657,9 +661,10 @@ int main(int argc, char *argv[]) {
   quiche_config_set_initial_max_stream_data_bidi_remote(config, 10000000);
   quiche_config_set_initial_max_streams_bidi(config, 40000);
   quiche_config_set_cc_algorithm(config, QUICHE_CC_RENO);
-
-  quiche_config_set_gmssl(config,1);
-
+ // if(args.gm_on[0]=='g'){
+//quiche_config_set_gmssl(config,1);
+//  }
+    
   struct connections c;
   c.sock = sock;
   c.ai_family = server->ai_family;

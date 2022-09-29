@@ -42,6 +42,7 @@ struct arguments {
   FILE *out_file;
   char *server_ip;
   char *server_port;
+  char * gm_on;
 };
 
 static bool DIFFSERV_ENABLE = false;
@@ -78,6 +79,10 @@ static error_t parse_opt(int key, char *arg, struct argp_state *state) {
     }
     case 1: {
       arguments->server_port = arg;
+      break;
+    }
+    case 2: {
+      arguments->gm_on = arg;
       break;
     }
     default:
@@ -385,7 +390,7 @@ int main(int argc, char *argv[]) {
   quiche_config_set_application_protos(
       config,
       (uint8_t *)"\x0ahq-interop\x05hq-29\x05hq-28\x05hq-27\x08http/0.9", 38);
-
+ // quiche_config_set_gmssl(config,1);
   quiche_config_set_max_idle_timeout(config, 5000);
   quiche_config_set_max_recv_udp_payload_size(config, MAX_DATAGRAM_SIZE);
   quiche_config_set_max_send_udp_payload_size(config, MAX_DATAGRAM_SIZE);
@@ -399,7 +404,9 @@ int main(int argc, char *argv[]) {
 
 
 
-   quiche_config_set_gmssl(config,1);
+  // if(args.gm_on[0]=='g'){
+  //   quiche_config_set_gmssl(config,1);
+  // }
 
   if (getenv("SSLKEYLOGFILE")) {
     quiche_config_log_keys(config);

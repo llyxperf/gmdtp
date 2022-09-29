@@ -285,6 +285,7 @@ use std::collections::VecDeque;
 
 #[cfg(feature = "sfv")]
 use std::convert::TryFrom;
+use std::sync::Arc;
 
 #[cfg(feature = "qlog")]
 use qlog::events::h3::H3FrameCreated;
@@ -306,6 +307,9 @@ use qlog::events::EventData;
 use qlog::events::EventImportance;
 #[cfg(feature = "qlog")]
 use qlog::events::EventType;
+
+use crate::h3::stream::Block;
+use crate::h3::stream::Stream;
 
 /// List of ALPN tokens of supported HTTP/3 versions.
 ///
@@ -1043,7 +1047,88 @@ impl Connection {
 
         Ok(header_block)
     }
+    fn send_headers_block<T: NameValue>(
+        &mut self, conn: &mut super::Connection, stream_id: u64, headers: &[T],
+        fin: bool,block: &stream::Block
+    ) -> Result<()> {
+        let mut d = [42; 10];
+        let mut b = octets::OctetsMut::with_slice(&mut d);
 
+        if !self.frames_greased && conn.grease {
+            self.send_grease_frames(conn, stream_id)?;
+            self.frames_greased = true;
+        }
+
+        let header_block = self.encode_header_block(headers)?;
+
+        let overhead = octets::varint_len(frame::HEADERS_FRAME_TYPE_ID) +
+            octets::varint_len(header_block.len() as u64);
+
+        // Headers need to be sent atomically, so make sure the stream has
+        // enough capacity.
+        match conn.stream_writable(stream_id, overhead + header_block.len()) {
+            Ok(true) => (),
+
+            Ok(false) => return Err(Error::StreamBlocked),
+
+            Err(e) => {
+                if conn.stream_finished(stream_id) {
+                    self.streams.remove(&stream_id);
+                }
+
+                return Err(e.into());
+            },
+        };
+
+        b.put_varint(frame::HEADERS_FRAME_TYPE_ID)?;
+        b.put_varint(header_block.len() as u64)?;
+        let off = b.off();
+        conn.stream_send(stream_id, &d[..off], false)?;
+
+        // Sending header block separately avoids unnecessary copy.
+        conn.stream_send(stream_id, &header_block, fin)?;
+
+        trace!(
+            "{} tx frm HEADERS stream={} len={} fin={}",
+            conn.trace_id(),
+            stream_id,
+            header_block.len(),
+            fin
+        );
+
+        qlog_with_type!(QLOG_FRAME_CREATED, conn.qlog, q, {
+            let qlog_headers = headers
+                .iter()
+                .map(|h| qlog::events::h3::HttpHeader {
+                    name: String::from_utf8_lossy(h.name()).into_owned(),
+                    value: String::from_utf8_lossy(h.value()).into_owned(),
+                })
+                .collect();
+
+            let frame = Http3Frame::Headers {
+                headers: qlog_headers,
+            };
+            let ev_data = EventData::H3FrameCreated(H3FrameCreated {
+                stream_id,
+                length: Some(header_block.len() as u64),
+                frame,
+                raw: None,
+            });
+
+            q.add_event_data_now(ev_data).ok();
+        });
+
+        if let Some(s) = self.streams.get_mut(&stream_id) {
+            s.initialize_local();
+        }
+
+        if fin && conn.stream_finished(stream_id) {
+            self.streams.remove(&stream_id);
+        }
+
+        Ok(())
+    }
+    
     fn send_headers<T: NameValue>(
         &mut self, conn: &mut super::Connection, stream_id: u64, headers: &[T],
         fin: bool,
@@ -1209,6 +1294,7 @@ impl Connection {
         b.put_varint(frame::DATA_FRAME_TYPE_ID)?;
         b.put_varint(body_len as u64)?;
         let off = b.off();
+        
         conn.stream_send(stream_id, &d[..off], false)?;
 
         // Return how many bytes were written, excluding the frame header.
@@ -1241,6 +1327,123 @@ impl Connection {
 
         Ok(written)
     }
+
+//block alterg
+
+//llyxalter
+/* 
+    #[cfg(feature = "dtp")]
+    pub fn send_body_block(
+        &mut self, conn: &mut super::Connection, stream_id: u64, body: &[u8],
+        fin: bool,block: Arc<Block>
+    ) -> Result<usize> {
+        let mut d = [42; 10];
+        let mut b = octets::OctetsMut::with_slice(&mut d);
+
+        // Validate that it is sane to send data on the stream.
+        if stream_id % 4 != 0 {
+            return Err(Error::FrameUnexpected);
+        }
+
+        match self.streams.get(&stream_id) {
+            Some(s) =>
+                if !s.local_initialized() {
+                    return Err(Error::FrameUnexpected);
+                },
+
+            None => {
+                return Err(Error::FrameUnexpected);
+            },
+        };
+
+        // Avoid sending 0-length DATA frames when the fin flag is false.
+        if body.is_empty() && !fin {
+            return Err(Error::Done);
+        }
+
+        let overhead = octets::varint_len(frame::DATA_FRAME_TYPE_ID) +
+            octets::varint_len(body.len() as u64);
+
+        let stream_cap = match conn.stream_capacity(stream_id) {
+            Ok(v) => v,
+
+            Err(e) => {
+                if conn.stream_finished(stream_id) {
+                    self.streams.remove(&stream_id);
+                }
+
+                return Err(e.into());
+            },
+        };
+
+        if stream_cap < overhead + body.len() {
+            // Ensure the peer is notified that the connection or stream is
+            // blocked when the stream's capacity is limited by flow control.
+            let _ = conn.stream_writable(stream_id, overhead + body.len());
+        }
+
+        // Make sure there is enough capacity to send the DATA frame header.
+        if stream_cap < overhead {
+            return Err(Error::Done);
+        }
+
+        // Cap the frame payload length to the stream's capacity.
+        let body_len = std::cmp::min(body.len(), stream_cap - overhead);
+
+        // If we can't send the entire body, set the fin flag to false so the
+        // application can try again later.
+        let fin = if body_len != body.len() { false } else { fin };
+
+        // Again, avoid sending 0-length DATA frames when the fin flag is false.
+        if body_len == 0 && !fin {
+            return Err(Error::Done);
+        }
+
+        b.put_varint(frame::DATA_FRAME_TYPE_ID)?;
+        b.put_varint(body_len as u64)?;
+        let off = b.off();
+
+        //let dblock = Stream::Block{ size:off, priority: 1, deadline: 3333};
+
+        conn.stream_send(stream_id, &d[..off], false);
+
+        //conn.stream_send()?;
+
+        // Return how many bytes were written, excluding the frame header.
+        // Sending body separately avoids unnecessary copy.
+        let block = Arc::new(block.to_owned());
+
+        let written =conn.block_send(stream_id, &body[..body_len], fin, block);
+
+       // let written = conn.stream_send(stream_id, &body[..body_len], fin)?;
+
+        trace!(
+            "{} tx frm DATA stream={} len={} fin={}",
+            conn.trace_id(),
+            stream_id,
+            written,
+            fin
+        );
+
+        qlog_with_type!(QLOG_FRAME_CREATED, conn.qlog, q, {
+            let frame = Http3Frame::Data { raw: None };
+            let ev_data = EventData::H3FrameCreated(H3FrameCreated {
+                stream_id,
+                length: Some(written as u64),
+                frame,
+                raw: None,
+            });
+
+            q.add_event_data_now(ev_data).ok();
+        });
+
+        if fin && written == body.len() && conn.stream_finished(stream_id) {
+            self.streams.remove(&stream_id);
+        }
+
+        Ok(written)
+    }*/
+
 
     /// Returns whether the peer enabled HTTP/3 DATAGRAM frame support.
     ///
