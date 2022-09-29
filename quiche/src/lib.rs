@@ -4239,11 +4239,11 @@ impl Connection {
         // When the cap is zero, the method returns Ok(0) *only* when the passed
         // buffer is empty. We return Error::Done otherwise.
         let cap = self.tx_cap;
-        if cap == 0 && !(fin && buf.is_empty()) {
-            return Err(Error::Done);
-        }
+        // if cap == 0 && !(fin && buf.is_empty()) {
+        //     return Err(Error::Done);
+        // }
 
-        let (buf, fin) = if cap < buf.len() {
+        let (unblocked_buf, unblocked_fin) = if cap < buf.len() {
             (&buf[..cap], false)
         } else {
             (buf, fin)
@@ -4257,7 +4257,7 @@ impl Connection {
 
         let was_flushable = stream.is_flushable();
 
-        let sent = match stream.send.write(buf, fin) {
+        let mut sent = match stream.send.write(unblocked_buf, unblocked_fin) {
             Ok(v) => v,
 
             Err(e) => {
@@ -4266,6 +4266,17 @@ impl Connection {
             },
         };
 
+        if cap < buf.len() {
+            match stream.send.write(&buf[cap..], fin) {
+            Ok(v) => v,
+
+            Err(e) => {
+                self.streams.mark_writable(stream_id, false);
+                return Err(e);
+            },
+        };
+        }
+
         let urgency = stream.urgency;
         let incremental = stream.incremental;
 
@@ -4273,7 +4284,7 @@ impl Connection {
 
         let writable = stream.is_writable();
 
-        let empty_fin = buf.is_empty() && fin;
+        let empty_fin = unblocked_buf.is_empty() && fin;
 
         if sent < buf.len() {
             let max_off = stream.send.max_off();
@@ -4331,7 +4342,7 @@ impl Connection {
             return Err(Error::Done);
         }
 
-        Ok(sent)
+        Ok(buf.len())
     }
 
     /// Writes data to a DTP block.
