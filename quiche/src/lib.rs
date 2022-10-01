@@ -2318,22 +2318,38 @@ impl Connection {
 
         let mut payload:octets::Octets;
       //  println!("now!!2320\n\n");
-        if self.gm_on==6 &&self.is_established(){
-            payload = packet::decrypt_pktgm(
-                &mut b,
-                pn,
-                pn_len,
-                payload_len,
-                aead,
-                self.gm_on,
-                self.is_established(),&mut self.gm_cipher.as_ref().unwrap(),
-                & self.gm_iv.as_ref().unwrap()[..]
-            )
-    
-             
-            .map_err(|e| {
-                drop_pkt_on_err(e, self.recv_count, self.is_server, &self.trace_id)
-            })?;
+        if self.gm_on==6 &&self.is_established() {
+            if self.gm_readoffset.is_some(){
+                self.gm_readoffset=None;
+                payload = packet::decrypt_pkt(
+                    &mut b,
+                    pn,
+                    pn_len,
+                    payload_len,
+                    aead,
+                )
+                .map_err(|e| {
+                    drop_pkt_on_err(e, self.recv_count, self.is_server, &self.trace_id)
+                })?;
+        
+            }else{
+                payload = packet::decrypt_pktgm(
+                    &mut b,
+                    pn,
+                    pn_len,
+                    payload_len,
+                    aead,
+                    self.gm_on,
+                    self.is_established(),&mut self.gm_cipher.as_ref().unwrap(),
+                    & self.gm_iv.as_ref().unwrap()[..]
+                )
+        
+                 
+                .map_err(|e| {
+                    drop_pkt_on_err(e, self.recv_count, self.is_server, &self.trace_id)
+                })?;
+            }
+  
         }
         else{
          payload = packet::decrypt_pkt(
@@ -2351,7 +2367,7 @@ impl Connection {
 
     }
    // println!("now!!2346\n\n");
-
+   //println!("\n?1bro");
     
         if self.pkt_num_spaces[epoch].recv_pkt_num.contains(pn) {
             trace!("{} ignored duplicate packet {}", self.trace_id, pn);
@@ -2391,7 +2407,7 @@ impl Connection {
 
             self.got_peer_conn_id = true;
         }
-
+     //   println!("\n?2bro");
         // To avoid sending an ACK in response to an ACK-only packet, we need
         // to keep track of whether this packet contains any frame other than
         // ACK and PADDING.
@@ -2417,6 +2433,7 @@ impl Connection {
                 break;
             }
         }
+        //println!("\n?in2bro");
        // info!("\n\n\nhere??\n");
         qlog_with_type!(QLOG_PACKET_RX, self.qlog, q, {
             let packet_size = b.len();
@@ -2456,7 +2473,7 @@ impl Connection {
                 q.add_event_data_with_instant(ev_data, now).ok();
             }
         });
-
+     //   println!("\n?3bro");
         if let Some(e) = frame_processing_err {
             // Any frame error is terminal, so now just return.
             return Err(e);
@@ -2478,7 +2495,7 @@ impl Connection {
                 }
             });
         }
-
+      //  println!("\n?4bro");
         // Process acked frames.
         for acked in self.recovery.acked[epoch].drain(..) {
             match acked {
@@ -2588,12 +2605,14 @@ impl Connection {
          
             if self.gm_on==4{
                 self.gm_on=6;
+                self.gm_readoffset=Some(1);
                 info!("\nGm handshake is finished\n" );
              //   println!("??test1\n\n\n");
                 println!("\nServer:Handshake from client finished,Gm state set to ENCRYPTION\n");
             }
             self.verified_peer_address = true;
         }
+       // println!("\n?777bro");
 
         self.ack_eliciting_sent = false;
 

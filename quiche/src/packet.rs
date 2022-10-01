@@ -625,6 +625,100 @@ pub fn decode_pkt_num(largest_pn: u64, truncated_pn: u64, pn_len: usize) -> u64 
 }
 
 
+pub fn encrypt_pktgm(
+    b: &mut octets::OctetsMut, pn: u64, pn_len: usize, payload_len: usize,
+    payload_offset: usize, extra_in: Option<&[u8]>, aead: &crypto::Seal,
+    gm_on:u64,is_established:bool,cipher:&mut &Sm4CipherMode,gm_iv:&[u8],
+) -> Result<usize> {
+    let (mut header, mut payload) = b.split_at(payload_offset)?;
+    //println!("\nnow sbefore encgm  {:?} {:?} {:?}\n", payload.as_ref()[0], payload.as_ref()[1], payload.as_ref()[2]);
+ 
+    if  gm_on==6 &&  is_established {
+       cipher.cfb_encrypt_inplace(&mut payload.as_mut()[..],gm_iv,payload_len);
+}
+
+//println!("\nnow after encgm  {:?} {:?} {:?}\n", payload.as_ref()[0], payload.as_ref()[1], payload.as_ref()[2]);
+ 
+/*
+    let ciphertext_len
+     = aead.seal_with_u64_counter(
+        pn,
+        header.as_ref(),
+        payload.as_mut(),
+        payload_len,
+        extra_in,
+    )?;
+  */
+    encrypt_hdr(&mut header, pn_len, payload.as_ref(), aead)?;
+   
+    Ok(payload_offset + payload_len+16)
+}
+
+pub fn encrypt_pkt2(
+    b: &mut octets::OctetsMut, pn: u64, pn_len: usize, payload_len: usize,
+    payload_offset: usize, extra_in: Option<&[u8]>, aead: &crypto::Seal,
+) -> Result<usize> {
+    let (mut header, mut payload) = b.split_at(payload_offset)?;
+ /*
+    let ciphertext_len
+     = aead.seal_with_u64_counter(
+        pn,
+        header.as_ref(),
+        payload.as_mut(),
+        payload_len,
+        extra_in,
+    )?;
+     */
+   // println!("????");
+    encrypt_hdr(&mut header, pn_len, payload.as_ref(), aead)?;
+    //let ciphertext_len
+    // = payload_len;
+    Ok(payload_offset + payload_len+16)
+   // Ok(payload_offset + payload_len+16)
+}
+
+
+pub fn encrypt_pkt(
+    b: &mut octets::OctetsMut, pn: u64, pn_len: usize, payload_len: usize,
+    payload_offset: usize, extra_in: Option<&[u8]>, aead: &crypto::Seal,
+) -> Result<usize> {
+    let (mut header, mut payload) = b.split_at(payload_offset)?;
+  //  println!("\nnow before encNormal  {:?} {:?} {:?}\n", payload.as_ref()[0], payload.as_ref()[1], payload.as_ref()[2]);
+
+    let ciphertext_len
+     = aead.seal_with_u64_counter(
+        pn,
+        header.as_ref(),
+        payload.as_mut(),
+        payload_len,
+        extra_in,
+    )?;
+   // println!("\nnow after encNormal  {:?} {:?} {:?}\n", payload.as_ref()[0], payload.as_ref()[1], payload.as_ref()[2]);
+
+    encrypt_hdr(&mut header, pn_len, payload.as_ref(), aead)?;
+    //let ciphertext_len
+    // = payload_len;
+    Ok(payload_offset + ciphertext_len)
+}
+
+pub fn encode_pkt_num(pn: u64, b: &mut octets::OctetsMut) -> Result<()> {
+    let len = pkt_num_len(pn)?;
+
+    match len {
+        1 => b.put_u8(pn as u8)?,
+
+        2 => b.put_u16(pn as u16)?,
+
+        3 => b.put_u24(pn as u32)?,
+
+        4 => b.put_u32(pn as u32)?,
+
+        _ => return Err(Error::InvalidPacket),
+    };
+
+    Ok(())
+}
+
 pub fn decrypt_pktgm<'a>(
     b: &'a mut octets::OctetsMut, pn: u64, pn_len: usize, payload_len: usize,
     aead: &crypto::Open,gm_on:u64,is_established:bool,
@@ -633,28 +727,45 @@ pub fn decrypt_pktgm<'a>(
     let payload_offset = b.off();
 
     let (header, mut payload) = b.split_at(payload_offset)?;
+ //   println!("?bro");
+    let payload_len = payload_len
+        .checked_sub(pn_len+16)
+        .ok_or(Error::InvalidPacket)?;
+  
+    //    println!("\n?bro");
+    let mut ciphertext = payload.peek_bytes_mut(payload_len)?;
+
+
+
+    //let payload_len =aead.open_with_u64_counter(pn, header.as_ref(), ciphertext.as_mut())?;
+  //  println!("\nnow start is before decgm {:?} {:?} {:?}", ciphertext.as_ref()[0], ciphertext.as_ref()[1], ciphertext.as_ref()[2]);
+ 
+      if gm_on==6 && is_established  {
+       cipher.cfb_decrypt_inplace(&mut ciphertext.as_mut()[..], gm_iv, payload_len);
+      
+ }
+   // println!("\nnow start is after decgm {:?} {:?} {:?}", ciphertext.as_ref()[0], ciphertext.as_ref()[1], ciphertext.as_ref()[2]);
+ 
+    Ok(b.get_bytes(payload_len)?)
+}
+
+
+pub fn decrypt_pkt2<'a>(
+    b: &'a mut octets::OctetsMut, pn: u64, pn_len: usize, payload_len: usize,
+    aead: &crypto::Open,
+) -> Result<octets::Octets<'a>> {
+    let payload_offset = b.off();
+
+    let (header, mut payload) = b.split_at(payload_offset)?;
 
     let payload_len = payload_len
-        .checked_sub(pn_len)
+        .checked_sub(pn_len+16)
         .ok_or(Error::InvalidPacket)?;
   
 
     let mut ciphertext = payload.peek_bytes_mut(payload_len)?;
 
-
-
-    let payload_len =
-        aead.open_with_u64_counter(pn, header.as_ref(), ciphertext.as_mut())?;
-      //  info!("\nssl decrypt,len={:?}\n",payload_len);
-       // info!("\n\nssl content,{:?}\n\n",ciphertext);
-    
-      //got the payload decrypt the payload 
-      if gm_on==6 && is_established {
-       cipher.cfb_decrypt_inplace(&mut ciphertext.as_mut()[..], gm_iv, payload_len);
       
- }
-
-    //let payload_len =b.len();
     Ok(b.get_bytes(payload_len)?)
 }
 
@@ -665,33 +776,21 @@ pub fn decrypt_pkt<'a>(
     let payload_offset = b.off();
 
     let (header, mut payload) = b.split_at(payload_offset)?;
-
-    let payload_len = payload_len
+     let payload_len = payload_len
         .checked_sub(pn_len)
         .ok_or(Error::InvalidPacket)?;
   
-
+      
     let mut ciphertext = payload.peek_bytes_mut(payload_len)?;
 
       
-
+    //println!("\nnow start is before dec {:?} {:?} {:?}", ciphertext.as_ref()[0], ciphertext.as_ref()[1], ciphertext.as_ref()[2]);
+ 
 
     let payload_len =
         aead.open_with_u64_counter(pn, header.as_ref(), ciphertext.as_mut())?;
-
-         //got the payload decrypt the payload 
-/*         if aead.gm_on==6 && aead.is_established {
-            //let (plolen,offset)=self.get_headerAll(buf, self.scid.len());
-    
-         //   let cipher=self.gm_cipher.as_ref();
-         //   let (plolen,offset)=Header::get_headerAll(buf, self.scid.len());
-         
-            aead.cipher.as_ref().unwrap().cfb_decrypt_inplace(&mut ciphertext.as_mut()[..], &aead.gm_iv.clone().unwrap()[..], payload_len);
-        
-            info!("\ngm decrypt,len={:?}\n",payload_len);
-     } */
-    
-    //let payload_len =b.len();
+      //  println!("\nnow start is after dec {:?} {:?} {:?}", ciphertext.as_ref()[0], ciphertext.as_ref()[1], ciphertext.as_ref()[2]);
+ 
     Ok(b.get_bytes(payload_len)?)
 }
 
@@ -721,76 +820,7 @@ pub fn encrypt_hdr(
 }
 
 
-pub fn encrypt_pktgm(
-    b: &mut octets::OctetsMut, pn: u64, pn_len: usize, payload_len: usize,
-    payload_offset: usize, extra_in: Option<&[u8]>, aead: &crypto::Seal,
-    gm_on:u64,is_established:bool,cipher:&mut &Sm4CipherMode,gm_iv:&[u8],
-) -> Result<usize> {
-    let (mut header, mut payload) = b.split_at(payload_offset)?;
 
-    if  gm_on==6 &&  is_established {
-        cipher.cfb_encrypt_inplace(&mut payload.as_mut()[..],gm_iv,payload_len);
-      }
-
-    let ciphertext_len
-     = aead.seal_with_u64_counter(
-        pn,
-        header.as_ref(),
-        payload.as_mut(),
-        payload_len,
-        extra_in,
-    )?;
- 
-    encrypt_hdr(&mut header, pn_len, payload.as_ref(), aead)?;
-   
-    Ok(payload_offset + ciphertext_len)
-}
-
-pub fn encrypt_pkt(
-    b: &mut octets::OctetsMut, pn: u64, pn_len: usize, payload_len: usize,
-    payload_offset: usize, extra_in: Option<&[u8]>, aead: &crypto::Seal,
-) -> Result<usize> {
-    let (mut header, mut payload) = b.split_at(payload_offset)?;
-/*
-    if aead.gm_on==6 &&  aead.is_established {
-        // let ms=;
-        aead.cipher.as_ref().unwrap().cfb_encrypt_inplace(&mut payload.as_mut()[..],&aead.gm_iv.clone().unwrap()[..],payload_len);
-        
-         info!("\ngm Encrypt,len={:?}\n",payload_len);
-     } */
-    
-    let ciphertext_len
-     = aead.seal_with_u64_counter(
-        pn,
-        header.as_ref(),
-        payload.as_mut(),
-        payload_len,
-        extra_in,
-    )?;
-    
-    encrypt_hdr(&mut header, pn_len, payload.as_ref(), aead)?;
-    //let ciphertext_len
-    // = payload_len;
-    Ok(payload_offset + ciphertext_len)
-}
-
-pub fn encode_pkt_num(pn: u64, b: &mut octets::OctetsMut) -> Result<()> {
-    let len = pkt_num_len(pn)?;
-
-    match len {
-        1 => b.put_u8(pn as u8)?,
-
-        2 => b.put_u16(pn as u16)?,
-
-        3 => b.put_u24(pn as u32)?,
-
-        4 => b.put_u32(pn as u32)?,
-
-        _ => return Err(Error::InvalidPacket),
-    };
-
-    Ok(())
-}
 
 pub fn negotiate_version(
     scid: &[u8], dcid: &[u8], out: &mut [u8],

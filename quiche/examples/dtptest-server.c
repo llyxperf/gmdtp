@@ -662,7 +662,7 @@ int main(int argc, char *argv[]) {
   quiche_config_set_initial_max_streams_bidi(config, 40000);
   quiche_config_set_cc_algorithm(config, QUICHE_CC_RENO);
  // if(args.gm_on[0]=='g'){
-//quiche_config_set_gmssl(config,1);
+  quiche_config_set_gmssl(config,1);
 //  }
     
   struct connections c;
