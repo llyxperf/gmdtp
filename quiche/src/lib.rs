@@ -3479,7 +3479,7 @@ impl Connection {
             let mut gmhdr="gmssl".as_bytes().to_vec();
             gmhdr.append(&mut pk_raw);
            
-            info!("Server:pubkey frame created:{:?}\n", gmhdr);
+            info!("Server:pubkey frame created\n",  );
             
             let gmcrypto_buf=RangeBuf::from(&gmhdr[..], 0, true);
 
@@ -5957,7 +5957,7 @@ impl Connection {
                 if data[0..5]=="gmssl".as_bytes().to_vec(){
                     if self.gm_on==2 &&self.is_server {
                         let enc_sm4key=data[5..].to_vec();
-                        println!("\n get sm4key \n");
+                        println!("\nget sm4key");
                         let klen=16+16;
                         let sk=self.gm_skey.clone().unwrap();
                         

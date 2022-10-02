@@ -21,7 +21,8 @@ pub enum CipherMode {
     Ofb,
     Ctr,
     Cbc,
-    //Cfbinplace,
+  
+     
 }
 
 pub struct Sm4CipherMode {
@@ -46,7 +47,7 @@ fn block_add_one(a: &mut [u8]) {
         if !c {
             return;
         }
-        carry = c as u8;
+        carry = c as u8;    //only c==1
     }
 }
 
@@ -56,7 +57,7 @@ impl Sm4CipherMode {
         Sm4CipherMode { cipher, mode }
     }
 
-    pub fn encrypt(&self, data: &[u8], iv: &[u8]) -> Vec<u8> {
+    pub fn encrypt(&self, data: &  [u8], iv: &[u8]) -> Vec<u8> {
         if iv.len() != 16 {
             panic!("the iv of sm4 must be 16-byte long");
         }
@@ -65,7 +66,7 @@ impl Sm4CipherMode {
             CipherMode::Ofb => self.ofb_encrypt(data, iv),
             CipherMode::Ctr => self.ctr_encrypt(data, iv),
             CipherMode::Cbc => self.cbc_encrypt(data, iv),
-         //   CipherMode::Cfbinplace=>self.cfb_encrypt_inplace(data, iv),
+                
         }
     }
 
@@ -78,7 +79,7 @@ impl Sm4CipherMode {
             CipherMode::Ofb => self.ofb_encrypt(data, iv),
             CipherMode::Ctr => self.ctr_encrypt(data, iv),
             CipherMode::Cbc => self.cbc_decrypt(data, iv),
-         //   CipherMode::Cfbinplace=>self.cfb_decrypt(data, iv),
+       
             
         }
     }
@@ -112,13 +113,17 @@ impl Sm4CipherMode {
     //lyxalter
     //cipher to be self
     pub fn cfb_encrypt_inplace(&self, data: &mut [u8], iv: &[u8],datalen:usize ){
+        
+        let mut now = std::time::SystemTime::now();
+        
         let block_num = datalen / 16;
         let tail_len = datalen - block_num * 16;
 
         let mut out: Vec<u8> = Vec::new();
         let mut vec_buf: Vec<u8> = vec![0; 16];
         vec_buf.clone_from_slice(iv);
-     
+      
+        now = std::time::SystemTime::now();
         // Normal
         for i in 0..block_num {
             let enc = self.cipher.encrypt(&vec_buf[..]);
@@ -128,7 +133,8 @@ impl Sm4CipherMode {
             }
             vec_buf.clone_from_slice(&ct);
         }
-
+        
+        now = std::time::SystemTime::now();
         // Last block
         let enc = self.cipher.encrypt(&vec_buf[..]);
         for i in 0..tail_len {
@@ -139,7 +145,7 @@ impl Sm4CipherMode {
         for i in 0..out.len(){
             data[i]=out[i];
         }
-        
+       
     }
 
     fn cfb_decrypt(&self, data: &[u8], iv: &[u8]) -> Vec<u8> {
@@ -225,6 +231,98 @@ impl Sm4CipherMode {
         }
         out
     }
+    pub fn tctr_encrypt_inplace(&self, data: &mut [u8], iv: &[u8],datalen:usize )
+    {
+     // let mut encTime=0;
+     let mut index:usize=0;
+     let mut now = std::time::SystemTime::now();
+      let block_num = datalen / 16;
+      let tail_len = datalen- block_num * 16;
+      
+     // let mut out: Vec<u8> = Vec::new();
+      let mut vec_buf: Vec<u8> = vec![0; 16];
+      vec_buf.clone_from_slice(iv);
+    //  encTime+=now.elapsed().unwrap().as_millis();
+
+    //  println!("1 cost {:?}\n",now.elapsed().unwrap().as_millis());
+      
+      // Normal
+
+      let mut enc1=0;
+      let mut enc2=0;
+      let mut enc3=0;
+      let mut enc4=0;
+      now = std::time::SystemTime::now();
+      for i in 0..block_num {
+          let pre1=std::time::SystemTime::now();
+          let enc = self.cipher.encrypt(&vec_buf[..]);
+          enc1+=pre1.elapsed().unwrap().as_nanos();
+          let pre2=std::time::SystemTime::now();
+          let ct = block_xor(&enc, &data[i * 16..i * 16 + 16]);
+          enc2+=pre2.elapsed().unwrap().as_nanos();
+          let pre3=std::time::SystemTime::now();
+          for i in ct.iter() {
+              data[index]=*i;
+              index+=1;
+          }
+          enc3+=pre3.elapsed().unwrap().as_nanos();
+          let pre4=std::time::SystemTime::now();
+          block_add_one(&mut vec_buf[..]);
+          enc4+=pre4.elapsed().unwrap().as_nanos();
+      }
+      
+      // Last block
+      let enc = self.cipher.encrypt(&vec_buf[..]);
+      for i in 0..tail_len {
+         // let b = data[block_num * 16 + i] ^ enc[i];
+          data[index]=data[block_num * 16 + i] ^ enc[i];
+          index+=1;
+      }
+  
+     
+  }
+
+
+    pub fn ctr_encrypt_inplace(&self, data: &mut [u8], iv: &[u8],datalen:usize )
+      {
+       // let mut encTime=0;
+       let mut now = std::time::SystemTime::now();
+        let block_num = datalen / 16;
+        let tail_len = datalen- block_num * 16;
+        
+        let mut out: Vec<u8> = Vec::new();
+        let mut vec_buf: Vec<u8> = vec![0; 16];
+        vec_buf.clone_from_slice(iv);
+      //  encTime+=now.elapsed().unwrap().as_millis();
+
+      //  println!("1 cost {:?}\n",now.elapsed().unwrap().as_millis());
+        now = std::time::SystemTime::now();
+        // Normal
+        for i in 0..block_num {
+            let enc = self.cipher.encrypt(&vec_buf[..]);
+            let ct = block_xor(&enc, &data[i * 16..i * 16 + 16]);
+            for i in ct.iter() {
+                out.push(*i);
+            }
+            block_add_one(&mut vec_buf[..]);
+        }
+        
+        now = std::time::SystemTime::now();
+        // Last block
+        let enc = self.cipher.encrypt(&vec_buf[..]);
+        for i in 0..tail_len {
+            let b = data[block_num * 16 + i] ^ enc[i];
+            out.push(b);
+        }
+       // println!("3 cost {:?}\n",now.elapsed().unwrap().as_millis());
+        now = std::time::SystemTime::now();
+        for i in 0..out.len(){
+            data[i]=out[i];
+        }
+        println!("4 cost second {:?}\n",now.elapsed().unwrap().as_millis());
+       
+    }
+
 
     fn ctr_encrypt(&self, data: &[u8], iv: &[u8]) -> Vec<u8> {
         let block_num = data.len() / 16;

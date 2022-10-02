@@ -41,10 +41,9 @@ fn split(input: u32) -> [u8; 4] {
 }
 
 fn combine(input: &[u8]) -> u32 {
-    let out: u32 = u32::from(input[3]);
-    let out = out | (u32::from(input[2]) << 8);
-    let out = out | (u32::from(input[1]) << 16);
-    out | (u32::from(input[0]) << 24)
+    let out: u32 = u32::from(input[3])| (u32::from(input[2]) << 8)
+    | (u32::from(input[1]) << 16)| (u32::from(input[0]) << 24);
+    out
 }
 
 fn split_block(input: &[u8]) -> [u32; 4] {
@@ -52,10 +51,9 @@ fn split_block(input: &[u8]) -> [u32; 4] {
         panic!("the block size of SM4 must be 16.")
     }
     let mut out: [u32; 4] = [0; 4];
-    for (i, v) in out.iter_mut().enumerate().take(4) {
+    for i in 0..4 {
         let start = 4 * i;
-        let end = 4 * i + 4;
-        *v = combine(&input[start..end])
+        out[i] = combine(&input[start..start+4])
     }
     out
 }
@@ -90,7 +88,12 @@ fn l_trans(input: u32) -> u32 {
 }
 
 fn t_trans(input: u32) -> u32 {
-    l_trans(tau_trans(input))
+    let input = split(input);
+    let mut out: [u8; 4] = [0; 4];
+    for i in 0..4 {
+        out[i] = SBOX[input[i] as usize];
+    }
+    combine(&out)
 }
 
 fn l_prime_trans(input: u32) -> u32 {
@@ -175,6 +178,8 @@ impl Sm4Cipher {
             x[3] ^= t_trans(x[0] ^ x[1] ^ x[2] ^ rk[i * 4 + 3]);
         }
         let y = [x[3], x[2], x[1], x[0]];
+        
+        
         combine_block(&y)
     }
 
