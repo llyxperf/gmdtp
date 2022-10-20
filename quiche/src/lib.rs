@@ -372,7 +372,8 @@ use libsm::sm4::{Mode, Cipher};
 use num_bigint::BigUint;
 //lyxalter
 extern crate libsm;
-
+use ansi_term;
+use hex_slice::AsHex;
 //use std::{fs::OpenOptions, io::{Read, Write}};
 use libsm::sm2::signature;
 use libsm::sm2::encrypt::{EncryptCtx,DecryptCtx,};
@@ -923,10 +924,10 @@ impl Config {
     /// The default value is '1' On.
     pub fn set_gmssl(&mut self, v: u64) {
         if v==1 {
-            println!("gmssl On");
+            println!("国密开启");
         }
         else{
-            println!("gmssl Off");
+            println!("国密关闭");
         }
         self.gm_on = v;
     }
@@ -2606,9 +2607,15 @@ impl Connection {
             if self.gm_on==4{
                 self.gm_on=6;
                 self.gm_readoffset=Some(1);
-                info!("\nGm handshake is finished\n" );
+                //info!("Server:Gm handshake is finished\n" );
              //   println!("??test1\n\n\n");
-                println!("\nServer:Handshake from client finished,Gm state set to ENCRYPTION\n");
+                
+            //  println!("{}    Recieved Handshake Done frame from client.State is ENCRYPTION\n",ansi_term::Color::Red.paint("步骤5:"));
+            //  println!("{}    Start to encrypt using symmertric key\n",ansi_term::Color::Red.paint("步骤6:"));
+            println!("{}   发送握手完成帧\n",ansi_term::Color::Red.paint("步骤7:"));
+            //  println!("{}   收到客户端握手结束帧。状态是加密状态\n",ansi_term::Color::Red.paint("步骤5:"));
+             
+             println!("{}\n",ansi_term::Color::Red.paint("开始使用对称密钥加密传输"));
             }
             self.verified_peer_address = true;
         }
@@ -3473,14 +3480,25 @@ impl Connection {
             let (ctx,pk,sk) =signature::getSm2key();
             self.gm_pubkey=pk;
             self.gm_skey=sk;
-            info!("Server:general public key {} ;\n general secret key {}\n", self.gm_pubkey.as_ref().unwrap(), self.gm_skey.as_ref().unwrap());
+            // println!("\n\n{}    Generate public key {}.\n\n{}    Generate secret key {}\n",
+            //     ansi_term::Color::Red.paint("步骤1:"), 
+            //     ansi_term::Color::Yellow.paint(self.gm_pubkey.as_ref().unwrap().to_string()),
+            //     ansi_term::Color::Red.paint("步骤2:"), 
+            //     self.gm_skey.as_ref().unwrap());
             
+
+            println!("\n\n{}    生成公钥 {}.\n\n{}    生成私钥 {}\n",
+            ansi_term::Color::Red.paint("步骤1:"), 
+            ansi_term::Color::Yellow.paint(self.gm_pubkey.as_ref().unwrap().to_string()),
+            ansi_term::Color::Red.paint("步骤2:"), 
+            self.gm_skey.as_ref().unwrap());
+
             let mut pk_raw = ctx.serialize_pubkey(&pk.as_ref().unwrap(), true);
             let mut gmhdr="gmssl".as_bytes().to_vec();
             gmhdr.append(&mut pk_raw);
            
-            info!("Server:pubkey frame created\n",  );
-            
+            // println!("{}    Public key frame created.Sending to the client.\n",ansi_term::Color::Red.paint("步骤3:")  );
+            println!("{}    发送公钥帧给客户端.\n",ansi_term::Color::Red.paint("步骤3:") );
             let gmcrypto_buf=RangeBuf::from(&gmhdr[..], 0, true);
 
             //temporary solution :using normal padding frame.
@@ -3513,7 +3531,7 @@ impl Connection {
             let mut veciv=iv.to_vec();
        
 
-           debug!("\nClient:key created:  {:?}+{:?}\n",&key,&iv);
+            // println!("\nClient:key created:  {:?}+{:?}\n",&key,&iv);
            plain_text.append(&mut veciv);
             debug!("\n\n\n\npoint1\n");
             let mut gmhdr="gmssl".as_bytes().to_vec();
@@ -3525,8 +3543,12 @@ impl Connection {
            let mut cipher_text=plain_text;
            debug!("\n\n\n\npoint4\n");
            gmhdr.append(&mut cipher_text);
-           info!("client:key frame created:{:?}\n", gmhdr.clone());
-           
+        //    println!("{}    Encrypted symmetrical key frame created.Sending to the server. {:?}\n",
+        //     ansi_term::Color::Green.paint("步骤2:"),
+        //     self.gm_sm4key.as_ref().unwrap());
+            println!("{}    生成对称密钥。发送给服务端{:?}\n",
+            ansi_term::Color::Green.paint("步骤5:"),
+            self.gm_sm4key.as_ref().unwrap());
        
            let sm4cryptobuf=RangeBuf::from(&gmhdr[..], 0, true);
 
@@ -4039,8 +4061,11 @@ impl Connection {
         if !self.is_server && hdr.ty == packet::Type::Handshake {
             if self.gm_on == 4{
                 self.gm_on=6;
-                println!("\nClient:Handshake Done recieved,Gm state set to ENCRYPTION\n");
                
+            //    println!("{}    Recieved Handshake Done frame from server.State is ENCRYPTION\n",ansi_term::Color::Green.paint("步骤3:"));
+            //    println!("{}    Start to encrypt using symmetric key\n",ansi_term::Color::Green.paint("步骤4:"));
+               println!("{}    接受到服务端的握手结束.状态是加密状态\n",ansi_term::Color::Green.paint("步骤8:"));
+               println!("{}\n",ansi_term::Color::Green.paint("开始使用对称密钥进行加密传输"));
             }
 
             self.drop_epoch_state(packet::EPOCH_INITIAL, now);
@@ -5955,9 +5980,9 @@ impl Connection {
 
 
                 if data[0..5]=="gmssl".as_bytes().to_vec(){
-                    if self.gm_on==2 &&self.is_server {
+                    if self.gm_on==2 && self.is_server {
                         let enc_sm4key=data[5..].to_vec();
-                        println!("\nget sm4key");
+                        
                         let klen=16+16;
                         let sk=self.gm_skey.clone().unwrap();
                         
@@ -5973,6 +5998,8 @@ impl Connection {
                         self.gm_iv=Some(iv);
                         self.gm_cipher=Some(Cipher::new(&self.gm_sm4key.clone().unwrap()[..], Mode::Cfb));
                         self.gm_on=4;
+                        // println!("{}:    Recieved symmetric key. {:?}\n",ansi_term::Color::Red.paint("步骤4"), self.gm_sm4key.as_ref().unwrap());
+                        println!("{}    接收到对称密钥. {:?}\n",ansi_term::Color::Red.paint("步骤6:"), self.gm_sm4key.as_ref().unwrap());
                     }
                     else if self.gm_on==1 &&!self.is_server{
                         let pk_raw=data[5..].to_vec();
@@ -5981,10 +6008,14 @@ impl Connection {
     
                         self.gm_on=3;
                         //println!("\nClient:sm2 pubkey{:?}\n\n", pk_raw);
-                        info!("client:sm2 pubkey{:?}\n", pk_raw);
+                        // println!("{}    Recieved sm2 public key from server:{}\n",
+                        // ansi_term::Color::Green.paint("步骤1:"),ansi_term::Color::Yellow.paint(self.gm_pubkey.as_ref().unwrap().to_string()) );
+
+                        println!("{}    接收到服务端的公钥:{}\n",
+                        ansi_term::Color::Green.paint("步骤4:"),ansi_term::Color::Yellow.paint(self.gm_pubkey.as_ref().unwrap().to_string()) );
                       
                     }else if self.gm_on==0{
-                            error!("{}Tls failed: Invalid Gmssl Frame.", self.trace_id());
+                        println!("会话id：{}失败: 无效国密帧", self.trace_id());
                             self.close(false, Error::InvalidFrame.to_wire(), b"Invalid Gmssl frame").ok();
                     }
                 }

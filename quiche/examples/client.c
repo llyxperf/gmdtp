@@ -68,7 +68,7 @@ static void flush_egress(struct ev_loop *loop, struct conn_io *conn_io) {
                                            &send_info);
 
         if (written == QUICHE_ERR_DONE) {
-            fprintf(stderr, "done writing\n");
+            // fprintf(stderr, "done writing\n");
             break;
         }
 
@@ -86,7 +86,7 @@ static void flush_egress(struct ev_loop *loop, struct conn_io *conn_io) {
             return;
         }
 
-        fprintf(stderr, "sent %zd bytes\n", sent);
+        // fprintf(stderr, "sent %zd bytes\n", sent);
     }
 
     double t = quiche_conn_timeout_as_nanos(conn_io->conn) / 1e9f;
@@ -112,7 +112,7 @@ static void recv_cb(EV_P_ ev_io *w, int revents) {
 
         if (read < 0) {
             if ((errno == EWOULDBLOCK) || (errno == EAGAIN)) {
-                fprintf(stderr, "recv would block\n");
+                // fprintf(stderr, "recv would block\n");
                 break;
             }
 
@@ -133,13 +133,13 @@ static void recv_cb(EV_P_ ev_io *w, int revents) {
             continue;
         }
 
-        fprintf(stderr, "recv %zd bytes\n", done);
+        // fprintf(stderr, "recv %zd bytes\n", done);
     }
 
-    fprintf(stderr, "done reading\n");
+    // fprintf(stderr, "done reading\n");
 
     if (quiche_conn_is_closed(conn_io->conn)) {
-        fprintf(stderr, "connection closed\n");
+        fprintf(stderr, "链接关闭\n");
 
         ev_break(EV_A_ EVBREAK_ONE);
         return;
@@ -151,16 +151,16 @@ static void recv_cb(EV_P_ ev_io *w, int revents) {
 
         quiche_conn_application_proto(conn_io->conn, &app_proto, &app_proto_len);
 
-        fprintf(stderr, "connection established: %.*s\n",
-                (int) app_proto_len, app_proto);
+        // fprintf(stderr, "connection established: %.*s\n",
+        //         (int) app_proto_len, app_proto);
 
-        const static uint8_t r[] = "GET /index.html\r\n";
+        const static uint8_t r[] = "你好，世界\r\n";
         if (quiche_conn_stream_send(conn_io->conn, 4, r, sizeof(r), true) < 0) {
             fprintf(stderr, "failed to send HTTP request\n");
             return;
         }
 
-        fprintf(stderr, "sent HTTP request\n");
+        // fprintf(stderr, "sent HTTP request\n");
 
         req_sent = true;
     }
@@ -171,7 +171,7 @@ static void recv_cb(EV_P_ ev_io *w, int revents) {
         quiche_stream_iter *readable = quiche_conn_readable(conn_io->conn);
 
         while (quiche_stream_iter_next(readable, &s)) {
-            fprintf(stderr, "stream %" PRIu64 " is readable\n", s);
+            fprintf(stderr, "流ID %" PRIu64 " 可读\n", s);
 
             bool fin = false;
             ssize_t recv_len = quiche_conn_stream_recv(conn_io->conn, s,
@@ -181,7 +181,7 @@ static void recv_cb(EV_P_ ev_io *w, int revents) {
                 break;
             }
 
-            printf("%.*s", (int) recv_len, buf);
+            printf("收到数据->    %.*s", (int) recv_len, buf);
 
             if (fin) {
                 if (quiche_conn_close(conn_io->conn, true, 0, NULL, 0) < 0) {
@@ -200,7 +200,7 @@ static void timeout_cb(EV_P_ ev_timer *w, int revents) {
     struct conn_io *conn_io = w->data;
     quiche_conn_on_timeout(conn_io->conn);
 
-    fprintf(stderr, "timeout\n");
+    // fprintf(stderr, "timeout\n");
 
     flush_egress(loop, conn_io);
 
@@ -209,9 +209,10 @@ static void timeout_cb(EV_P_ ev_timer *w, int revents) {
 
         quiche_conn_stats(conn_io->conn, &stats);
 
-        fprintf(stderr, "connection closed, recv=%zu sent=%zu lost=%zu rtt=%" PRIu64 "ns\n",
-                stats.recv, stats.sent, stats.lost, stats.rtt);
-
+        // fprintf(stderr, "connection closed, recv=%zu sent=%zu lost=%zu rtt=%" PRIu64 "ns\n",
+        //         stats.recv, stats.sent, stats.lost, stats.rtt);
+fprintf(stderr, "链接关闭, 接受包=%zu 发送包=%zu 丢失包=%zu 往返时间=%" PRIu64 "ns 拥塞窗口=%zu\n",
+                    stats.recv, stats.sent, stats.lost, stats.rtt, stats.cwnd);
         ev_break(EV_A_ EVBREAK_ONE);
         return;
     }
@@ -254,7 +255,7 @@ int main(int argc, char *argv[]) {
 
     quiche_config_set_application_protos(config,
         (uint8_t *) "\x0ahq-interop\x05hq-29\x05hq-28\x05hq-27\x08http/0.9", 38);
-
+    quiche_config_set_gmssl(config,1);
     quiche_config_set_max_idle_timeout(config, 5000);
     quiche_config_set_max_recv_udp_payload_size(config, MAX_DATAGRAM_SIZE);
     quiche_config_set_max_send_udp_payload_size(config, MAX_DATAGRAM_SIZE);

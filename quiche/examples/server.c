@@ -93,7 +93,7 @@ static void flush_egress(struct ev_loop *loop, struct conn_io *conn_io) {
                                            &send_info);
 
         if (written == QUICHE_ERR_DONE) {
-            fprintf(stderr, "done writing\n");
+            // fprintf(stderr, "done writing\n");
             break;
         }
 
@@ -111,7 +111,7 @@ static void flush_egress(struct ev_loop *loop, struct conn_io *conn_io) {
             return;
         }
 
-        fprintf(stderr, "sent %zd bytes\n", sent);
+        // fprintf(stderr, "sent %zd bytes\n", sent);
     }
 
     double t = quiche_conn_timeout_as_nanos(conn_io->conn) / 1e9f;
@@ -211,7 +211,7 @@ static struct conn_io *create_conn(uint8_t *scid, size_t scid_len,
 
     HASH_ADD(hh, conns->h, cid, LOCAL_CONN_ID_LEN, conn_io);
 
-    fprintf(stderr, "new connection\n");
+    fprintf(stderr, "状态->    新的链接建立\n");
 
     return conn_io;
 }
@@ -233,7 +233,7 @@ static void recv_cb(EV_P_ ev_io *w, int revents) {
 
         if (read < 0) {
             if ((errno == EWOULDBLOCK) || (errno == EAGAIN)) {
-                fprintf(stderr, "recv would block\n");
+                // fprintf(stderr, "recv would block\n");
                 break;
             }
 
@@ -268,7 +268,7 @@ static void recv_cb(EV_P_ ev_io *w, int revents) {
 
         if (conn_io == NULL) {
             if (!quiche_version_is_supported(version)) {
-                fprintf(stderr, "version negotiation\n");
+                fprintf(stderr, "收到数据->    版本协商\n");
 
                 ssize_t written = quiche_negotiate_version(scid, scid_len,
                                                            dcid, dcid_len,
@@ -288,12 +288,12 @@ static void recv_cb(EV_P_ ev_io *w, int revents) {
                     continue;
                 }
 
-                fprintf(stderr, "sent %zd bytes\n", sent);
+                // fprintf(stderr, "sent %zd bytes\n", sent);
                 continue;
             }
 
             if (token_len == 0) {
-                fprintf(stderr, "stateless retry\n");
+                fprintf(stderr, "发送数据->    无状态重试\n");
 
                 mint_token(dcid, dcid_len, &peer_addr, peer_addr_len,
                            token, &token_len);
@@ -324,7 +324,7 @@ static void recv_cb(EV_P_ ev_io *w, int revents) {
                     continue;
                 }
 
-                fprintf(stderr, "sent %zd bytes\n", sent);
+                // fprintf(stderr, "sent %zd bytes\n", sent);
                 continue;
             }
 
@@ -356,7 +356,7 @@ static void recv_cb(EV_P_ ev_io *w, int revents) {
             continue;
         }
 
-        fprintf(stderr, "recv %zd bytes\n", done);
+        // fprintf(stderr, "recv %zd bytes\n", done);
 
         if (quiche_conn_is_established(conn_io->conn)) {
             uint64_t s = 0;
@@ -364,7 +364,7 @@ static void recv_cb(EV_P_ ev_io *w, int revents) {
             quiche_stream_iter *readable = quiche_conn_readable(conn_io->conn);
 
             while (quiche_stream_iter_next(readable, &s)) {
-                fprintf(stderr, "stream %" PRIu64 " is readable\n", s);
+                fprintf(stderr, "流ID %" PRIu64 " 可读\n", s);
 
                 bool fin = false;
                 ssize_t recv_len = quiche_conn_stream_recv(conn_io->conn, s,
@@ -373,11 +373,12 @@ static void recv_cb(EV_P_ ev_io *w, int revents) {
                 if (recv_len < 0) {
                     break;
                 }
+                printf("收到数据->  :%s\n",buf);
 
                 if (fin) {
-                    static const char *resp = "byez\n";
+                    static const char *resp = "再见\n";
                     quiche_conn_stream_send(conn_io->conn, s, (uint8_t *) resp,
-                                            5, true);
+                                            strlen(resp), true);
                 }
             }
 
@@ -392,7 +393,7 @@ static void recv_cb(EV_P_ ev_io *w, int revents) {
             quiche_stats stats;
 
             quiche_conn_stats(conn_io->conn, &stats);
-            fprintf(stderr, "connection closed, recv=%zu sent=%zu lost=%zu rtt=%" PRIu64 "ns cwnd=%zu\n",
+            fprintf(stderr, "链接关闭, 接受包=%zu 发送包=%zu 丢失包=%zu 往返时间=%" PRIu64 "ns 拥塞窗口=%zu\n",
                     stats.recv, stats.sent, stats.lost, stats.rtt, stats.cwnd);
 
             HASH_DELETE(hh, conns->h, conn_io);
@@ -408,7 +409,7 @@ static void timeout_cb(EV_P_ ev_timer *w, int revents) {
     struct conn_io *conn_io = w->data;
     quiche_conn_on_timeout(conn_io->conn);
 
-    fprintf(stderr, "timeout\n");
+    // fprintf(stderr, "timeout\n");
 
     flush_egress(loop, conn_io);
 
@@ -416,9 +417,10 @@ static void timeout_cb(EV_P_ ev_timer *w, int revents) {
         quiche_stats stats;
 
         quiche_conn_stats(conn_io->conn, &stats);
-        fprintf(stderr, "connection closed, recv=%zu sent=%zu lost=%zu rtt=%" PRIu64 "ns cwnd=%zu\n",
-                stats.recv, stats.sent, stats.lost, stats.rtt, stats.cwnd);
-
+        // fprintf(stderr, "connection closed, recv=%zu sent=%zu lost=%zu rtt=%" PRIu64 "ns cwnd=%zu\n",
+        //         stats.recv, stats.sent, stats.lost, stats.rtt, stats.cwnd);
+        fprintf(stderr, "链接关闭, 接受包=%zu 发送包=%zu 丢失包=%zu 往返时间=%" PRIu64 "ns 拥塞窗口=%zu\n",
+                    stats.recv, stats.sent, stats.lost, stats.rtt, stats.cwnd);
         HASH_DELETE(hh, conns->h, conn_io);
 
         ev_timer_stop(loop, &conn_io->timer);
@@ -474,7 +476,7 @@ int main(int argc, char *argv[]) {
 
     quiche_config_set_application_protos(config,
         (uint8_t *) "\x0ahq-interop\x05hq-29\x05hq-28\x05hq-27\x08http/0.9", 38);
-
+quiche_config_set_gmssl(config,1);
     quiche_config_set_max_idle_timeout(config, 5000);
     quiche_config_set_max_recv_udp_payload_size(config, MAX_DATAGRAM_SIZE);
     quiche_config_set_max_send_udp_payload_size(config, MAX_DATAGRAM_SIZE);
