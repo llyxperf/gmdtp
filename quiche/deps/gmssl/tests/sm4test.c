@@ -1,4 +1,4 @@
-﻿/*
+/*
  *  Copyright 2014-2022 The GmSSL Project. All Rights Reserved.
  *
  *  Licensed under the Apache License, Version 2.0 (the License); you may
@@ -16,6 +16,21 @@
 #include <gmssl/error.h>
 #include <gmssl/rand.h>
 
+
+#include <time.h>   // `clock_gettime()` and `timespec_get()`
+
+#include <sys/time.h>
+
+/**
+ * Returns the current time in microseconds.
+ */
+long getMicrotime(){
+	struct timeval currentTime;
+	gettimeofday(&currentTime, NULL);
+	return currentTime.tv_sec * (int)1e6 + currentTime.tv_usec;
+}
+//int timeval_subtract(struct timeval*result, struct timeval* x, struct timeval *y);
+static int Effi_test_sm4_ctr(uint8_t crazyKyo_);
 
 static int test_sm4(void)
 {
@@ -169,6 +184,80 @@ static int test_sm4_cbc_padding(void)
 	printf("%s() ok\n", __FUNCTION__);
 	return 1;
 }
+static int test_sm4r(void)
+{
+	SM4_KEY sm4_key;
+	uint8_t key[16] = {0};
+	uint8_t ctr[16];
+	uint8_t buf1[30] = {0};
+	uint8_t buf2[30] = {0};
+	uint8_t buf3[30] = {0};
+	const int cipherLen=1000000;
+ 
+	sm4_set_encrypt_key(&sm4_key, key);
+
+	memset(ctr, 0, sizeof(ctr));
+
+	 sm4_ctr_encrypt(&sm4_key, ctr, buf1, sizeof(buf1), buf2);
+//sm4_ctr_encrypt_inplace(&sm4_key, ctr, buf1, sizeof(buf1), buf2);
+	memset(ctr, 0, sizeof(ctr));
+	sm4_ctr_decrypt(&sm4_key, ctr, buf2, sizeof(buf2), buf3);
+
+	if (memcmp(buf1, buf3, sizeof(buf3)) != 0) {
+		fprintf(stderr, "%s %d: error\n", __FILE__, __LINE__);
+		return -1;
+	}
+
+	printf("%s() ok\n", __FUNCTION__);
+	return 1;
+}
+
+static int Effi_test_sm4_ctr(uint8_t crazyKyo_)
+{
+	SM4_KEY sm4_key;
+	uint8_t key[16] = {0};
+	uint8_t ctr[16];
+ 
+	const int cipherLen=1000000;
+	uint8_t cipherTest[cipherLen];
+	uint8_t plainTest[cipherLen];
+	memset(cipherTest, 0, sizeof(cipherTest));
+	memset(plainTest, 0, sizeof(plainTest));
+	sm4_set_encrypt_key(&sm4_key, key);
+
+	memset(ctr, 0, sizeof(ctr));
+
+	long encTime=0;
+  	
+	for (int i=0;i<crazyKyo_;i++){
+	long pre=getMicrotime();
+	 
+	sm4_ctr_encrypt_inplace(&sm4_key, ctr, cipherTest, cipherLen);
+	long after=getMicrotime();
+	 
+	encTime+=after-pre;
+	
+	memset(ctr, 0, sizeof(ctr));
+	sm4_ctr_encrypt_inplace(&sm4_key, ctr, cipherTest, cipherLen);
+
+memset(cipherTest, 0, sizeof(cipherTest));
+}
+
+	float k=(float)crazyKyo_;
+	float enc=(float)(encTime)/1000000;
+	float encSpeed=k/enc;
+
+	printf("%fMB,time %f encSPeed= %f MB/s \n",k,enc,encSpeed);
+ 
+ 		if (memcmp(cipherTest, plainTest, sizeof(plainTest)) != 0) {
+			printf("error\n");
+	//	fprintf(stderr, "%s %d: error\n", __FILE__, __LINE__);
+		return -1;
+	}
+
+	printf("%s() ok\n", __FUNCTION__);
+	return 1;
+}
 
 static int test_sm4_ctr(void)
 {
@@ -178,15 +267,23 @@ static int test_sm4_ctr(void)
 	uint8_t buf1[30] = {0};
 	uint8_t buf2[30] = {0};
 	uint8_t buf3[30] = {0};
+	const int cipherLen=1000000;
+	uint8_t cipherTest[cipherLen];
+	uint8_t cipherTest2[cipherLen];
+
+ 	memset(cipherTest, 0, sizeof(cipherTest2));
+	memset(cipherTest2, 0, sizeof(cipherTest2));
 
 	sm4_set_encrypt_key(&sm4_key, key);
-	memset(ctr, 0, sizeof(ctr));
-	sm4_ctr_encrypt(&sm4_key, ctr, buf1, sizeof(buf1), buf2);
 
 	memset(ctr, 0, sizeof(ctr));
-	sm4_ctr_decrypt(&sm4_key, ctr, buf2, sizeof(buf2), buf3);
 
-	if (memcmp(buf1, buf3, sizeof(buf3)) != 0) {
+	sm4_ctr_encrypt_inplace(&sm4_key, ctr, cipherTest, cipherLen);
+
+	memset(ctr, 0, sizeof(ctr));
+	sm4_ctr_encrypt_inplace(&sm4_key, ctr, cipherTest, cipherLen);
+
+	if (memcmp(cipherTest2, cipherTest, sizeof(cipherTest2)) != 0) {
 		fprintf(stderr, "%s %d: error\n", __FILE__, __LINE__);
 		return -1;
 	}
@@ -579,16 +676,23 @@ static int test_sm4_ctr_update(void)
 
 int main(void)
 {
-	if (test_sm4() != 1) goto err;
-	if (test_sm4_cbc() != 1) goto err;
-	if (test_sm4_cbc_padding() != 1) goto err;
-	if (test_sm4_ctr() != 1) goto err;
-	if (test_sm4_gcm() != 1) goto err;
-	if (test_sm4_cbc_update() != 1) goto err;
-	if (test_sm4_ctr_update() != 1) goto err;
-	printf("%s all tests passed\n", __FILE__);
-	return 0;
-err:
-	error_print();
-	return 1;
+	//if (test_sm4() != 1) goto err;
+	//if (test_sm4_cbc() != 1) goto err;
+//	if (test_sm4_cbc_padding() != 1) goto err;
+ 	if (test_sm4_ctr() != 1);
+//	if (test_sm4_gcm() != 1) goto err;
+//	if (test_sm4_cbc_update() != 1) goto err;
+//	if (test_sm4_ctr_update() != 1) goto err;
+//	printf("%s all tests passed\n", __FILE__);
+
+	printf("okay\n effi\n");
+	Effi_test_sm4_ctr(10);
+
+
+ return 0;
+//err:
+//	error_print();
+//	return 1;
 }
+
+ 

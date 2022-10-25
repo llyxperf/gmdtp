@@ -628,13 +628,19 @@ pub fn decode_pkt_num(largest_pn: u64, truncated_pn: u64, pn_len: usize) -> u64 
 pub fn encrypt_pktgm(
     b: &mut octets::OctetsMut, pn: u64, pn_len: usize, payload_len: usize,
     payload_offset: usize, extra_in: Option<&[u8]>, aead: &crypto::Seal,
-    gm_on:u64,is_established:bool,cipher:&mut &Sm4CipherMode,gm_iv:&[u8],
+    gm_on:u64,is_established:bool,gm_iv:&[u8;16],sm4key:*const crypto::SM4_KEY
 ) -> Result<usize> {
     let (mut header, mut payload) = b.split_at(payload_offset)?;
     //println!("\nnow sbefore encgm  {:?} {:?} {:?}\n", payload.as_ref()[0], payload.as_ref()[1], payload.as_ref()[2]);
  
     if  gm_on==6 &&  is_established {
-       cipher.cfb_encrypt_inplace(&mut payload.as_mut()[..],gm_iv,payload_len);
+      // cipher.cfb_encrypt_inplace(&mut payload.as_mut()[..],gm_iv,payload_len);
+    let mut crt=gm_iv.clone();
+   // let exact=payload.as_mut()[..];
+    unsafe {
+        crypto::sm4_ctr_encrypt_inplace(sm4key,crt.as_mut_ptr(), payload.as_mut().as_mut_ptr(),payload_len);
+    }
+
 }
 
 //println!("\nnow after encgm  {:?} {:?} {:?}\n", payload.as_ref()[0], payload.as_ref()[1], payload.as_ref()[2]);
@@ -722,17 +728,16 @@ pub fn encode_pkt_num(pn: u64, b: &mut octets::OctetsMut) -> Result<()> {
 pub fn decrypt_pktgm<'a>(
     b: &'a mut octets::OctetsMut, pn: u64, pn_len: usize, payload_len: usize,
     aead: &crypto::Open,gm_on:u64,is_established:bool,
-    cipher:&mut &Sm4CipherMode,gm_iv:&[u8],
+    gm_iv:&[u8;16],sm4key:*const crypto::SM4_KEY
 ) -> Result<octets::Octets<'a>> {
     let payload_offset = b.off();
 
     let (header, mut payload) = b.split_at(payload_offset)?;
- //   println!("?bro");
+ 
     let payload_len = payload_len
         .checked_sub(pn_len+16)
         .ok_or(Error::InvalidPacket)?;
-  
-    //    println!("\n?bro");
+ 
     let mut ciphertext = payload.peek_bytes_mut(payload_len)?;
 
 
@@ -740,10 +745,22 @@ pub fn decrypt_pktgm<'a>(
     //let payload_len =aead.open_with_u64_counter(pn, header.as_ref(), ciphertext.as_mut())?;
   //  println!("\nnow start is before decgm {:?} {:?} {:?}", ciphertext.as_ref()[0], ciphertext.as_ref()[1], ciphertext.as_ref()[2]);
  
-      if gm_on==6 && is_established  {
-       cipher.cfb_decrypt_inplace(&mut ciphertext.as_mut()[..], gm_iv, payload_len);
-      
- }
+
+
+    if  gm_on==6 &&  is_established {
+        // cipher.cfb_encrypt_inplace(&mut payload.as_mut()[..],gm_iv,payload_len);
+        let mut crt=gm_iv.clone();
+        // let exact=payload.as_mut()[..];
+
+       // cipher.cfb_decrypt_inplace(&mut ciphertext.as_mut()[..], gm_iv, payload_len);
+
+        unsafe {
+            crypto::sm4_ctr_encrypt_inplace(sm4key,crt.as_mut_ptr(), ciphertext.as_mut().as_mut_ptr(),payload_len);
+        }
+
+    }
+
+ 
    // println!("\nnow start is after decgm {:?} {:?} {:?}", ciphertext.as_ref()[0], ciphertext.as_ref()[1], ciphertext.as_ref()[2]);
  
     Ok(b.get_bytes(payload_len)?)

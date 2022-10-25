@@ -49,16 +49,13 @@ int tlcp_client_main(int argc, char *argv[])
 	char *pass = NULL;
 	struct hostent *hp;
 	struct sockaddr_in server;
-#ifdef WIN32
-	SOCKET sock;
-#else	
 	int sock;
-#endif
 	TLS_CTX ctx;
 	TLS_CONNECT conn;
 	char buf[1024] = {0};
 	size_t len = sizeof(buf);
 	char send_buf[1024] = {0};
+	size_t send_len;
 
 	argc--;
 	argv++;
@@ -160,8 +157,7 @@ bad:
 		FD_SET(conn.sock, &fds);
 		FD_SET(fileno(stdin), &fds); //FD_SET(STDIN_FILENO, &fds);
 
-		if (select((int)(conn.sock + 1), // WinSock2 select() ignore this arg
-			&fds, NULL, NULL, NULL) < 0) {
+		if (select(conn.sock + 1, &fds, NULL, NULL, NULL) < 0) {
 			fprintf(stderr, "%s: select failed\n", prog);
 			goto end;
 		}
@@ -206,11 +202,7 @@ bad:
 
 
 end:
-#ifdef WIN32
-	closesocket(sock);
-#else
 	close(sock);
-#endif
 	tls_ctx_cleanup(&ctx);
 	tls_cleanup(&conn);
 	return 0;

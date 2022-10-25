@@ -25,10 +25,6 @@
 #include <gmssl/x509.h>
 #include <gmssl/error.h>
 
-#ifdef WIN32
-#include "u_time.h"
-#endif
-
 
 const char *x509_version_name(int version)
 {
@@ -101,11 +97,7 @@ int x509_time_to_der(time_t tv, uint8_t **out, size_t *outlen)
 	int ret;
 	struct tm tm_val;
 
-#ifdef WIN32
-	GMSSL_gmtime(&tv, &tm_val);
-#else
 	gmtime_r(&tv, &tm_val);
-#endif
 	if (tm_val.tm_year < 2050 - 1900) {
 		if ((ret = asn1_utc_time_to_der(tv, out, outlen)) != 1) {
 			if (ret < 0) error_print();
@@ -144,11 +136,7 @@ int x509_validity_add_days(time_t *not_after, time_t not_before, int days)
 		error_print();
 		return -1;
 	}
-#ifdef WIN32
-	GMSSL_gmtime(&not_before, &tm_val);
-#else	
 	gmtime_r(&not_before, &tm_val);
-#endif
 	tm_val.tm_mday += days;
 	*not_after = mktime(&tm_val);
 	return 1;
@@ -415,7 +403,7 @@ int x509_name_add_rdn(uint8_t *d, size_t *dlen, size_t maxlen,
 	return 1;
 }
 
-int x509_name_add_country_name(uint8_t *d, size_t *dlen, size_t maxlen, const char val[2])
+int x509_name_add_country_name(uint8_t *d, size_t *dlen, int maxlen, const char val[2])
 {
 	int ret;
 	ret = x509_name_add_rdn(d, dlen, maxlen,
@@ -424,7 +412,7 @@ int x509_name_add_country_name(uint8_t *d, size_t *dlen, size_t maxlen, const ch
 	return ret;
 }
 
-int x509_name_add_state_or_province_name(uint8_t *d, size_t *dlen, size_t maxlen,
+int x509_name_add_state_or_province_name(uint8_t *d, size_t *dlen, int maxlen,
 	int tag, const uint8_t *val, size_t vlen)
 {
 	int ret;
@@ -433,7 +421,7 @@ int x509_name_add_state_or_province_name(uint8_t *d, size_t *dlen, size_t maxlen
 	return ret;
 }
 
-int x509_name_add_locality_name(uint8_t *d, size_t *dlen, size_t maxlen,
+int x509_name_add_locality_name(uint8_t *d, size_t *dlen, int maxlen,
 	int tag, const uint8_t *val, size_t vlen)
 {
 	int ret;
@@ -442,7 +430,7 @@ int x509_name_add_locality_name(uint8_t *d, size_t *dlen, size_t maxlen,
 	return ret;
 }
 
-int x509_name_add_organization_name(uint8_t *d, size_t *dlen, size_t maxlen,
+int x509_name_add_organization_name(uint8_t *d, size_t *dlen, int maxlen,
 	int tag, const uint8_t *val, size_t vlen)
 {
 	int ret;
@@ -451,7 +439,7 @@ int x509_name_add_organization_name(uint8_t *d, size_t *dlen, size_t maxlen,
 	return ret;
 }
 
-int x509_name_add_organizational_unit_name(uint8_t *d, size_t *dlen, size_t maxlen,
+int x509_name_add_organizational_unit_name(uint8_t *d, size_t *dlen, int maxlen,
 	int tag, const uint8_t *val, size_t vlen)
 {
 	int ret;
@@ -460,7 +448,7 @@ int x509_name_add_organizational_unit_name(uint8_t *d, size_t *dlen, size_t maxl
 	return ret;
 }
 
-int x509_name_add_common_name(uint8_t *d, size_t *dlen, size_t maxlen,
+int x509_name_add_common_name(uint8_t *d, size_t *dlen, int maxlen,
 	int tag, const uint8_t *val, size_t vlen)
 {
 	int ret;
@@ -469,7 +457,7 @@ int x509_name_add_common_name(uint8_t *d, size_t *dlen, size_t maxlen,
 	return ret;
 }
 
-int x509_name_add_domain_component(uint8_t *d, size_t *dlen, size_t maxlen,
+int x509_name_add_domain_component(uint8_t *d, size_t *dlen, int maxlen,
 	const char *val, size_t vlen)
 {
 	int ret;

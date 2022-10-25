@@ -560,6 +560,9 @@ struct EVP_AEAD_CTX {
     tag_len: u8,
 }
 
+pub struct SM4_KEY {
+    pub(crate) rk: [u32; 32],
+}
 extern {
     // EVP_AEAD
     fn EVP_aead_aes_128_gcm() -> *const EVP_AEAD;
@@ -586,6 +589,19 @@ extern {
         nonce_len: usize, inp: *const u8, in_len: usize, extra_in: *const u8,
         extra_in_len: usize, ad: *const u8, ad_len: usize,
     ) -> c_int;
+
+    pub fn sm4_set_encrypt_key(
+        key:*mut SM4_KEY,
+        user_key: *mut u8,
+    );
+    
+
+    pub fn sm4_ctr_encrypt_inplace(
+        key:*const SM4_KEY,
+        ctr: *mut u8,
+        inbuf:*mut u8,
+        buflen:usize,
+    );
 }
 
 #[cfg(test)]

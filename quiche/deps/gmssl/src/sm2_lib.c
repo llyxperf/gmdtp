@@ -241,6 +241,7 @@ int sm2_verify(const SM2_KEY *key, const uint8_t dgst[32], const uint8_t *sig, s
 	int ret;
 	SM2_SIGNATURE signature;
 	const uint8_t *p;
+	size_t len;
 
 	if (!key
 		|| !dgst
@@ -492,12 +493,13 @@ int sm2_do_encrypt(const SM2_KEY *key, const uint8_t *in, size_t inlen, SM2_CIPH
 
 int sm2_do_decrypt(const SM2_KEY *key, const SM2_CIPHERTEXT *in, uint8_t *out, size_t *outlen)
 {
-	uint32_t inlen, i;
+	uint32_t inlen;
 	SM2_BN d;
 	SM2_JACOBIAN_POINT _P, *P = &_P;
 	SM3_CTX sm3_ctx;
 	uint8_t buf[64];
 	uint8_t hash[32];
+	int i;
 
 	// FIXME: check SM2_CIPHERTEXT format
 
@@ -613,6 +615,7 @@ int sm2_ciphertext_print(FILE *fp, int fmt, int ind, const char *label, const ui
 {
 	uint8_t buf[512] = {0};
 	SM2_CIPHERTEXT *c = (SM2_CIPHERTEXT *)buf;
+	int i;
 
 	if (sm2_ciphertext_from_der(c, &a, &alen) != 1
 		|| asn1_length_is_zero(alen) != 1) {

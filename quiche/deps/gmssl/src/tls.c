@@ -240,7 +240,7 @@ int tls_record_set_type(uint8_t *record, int type)
 		error_print();
 		return -1;
 	}
-	record[0] = (uint8_t)type;
+	record[0] = type;
 	return 1;
 }
 
@@ -250,8 +250,8 @@ int tls_record_set_protocol(uint8_t *record, int protocol)
 		error_print();
 		return -1;
 	}
-	record[1] = (uint8_t)(protocol >> 8);
-	record[2] = (uint8_t)(protocol);
+	record[1] = protocol >> 8;
+	record[2] = protocol;
 	return 1;
 }
 
@@ -263,7 +263,7 @@ int tls_record_set_length(uint8_t *record, size_t length)
 		error_print();
 		return -1;
 	}
-	tls_uint16_to_bytes((uint16_t)length, &p, &len);
+	tls_uint16_to_bytes(length, &p, &len);
 	return 1;
 }
 
@@ -313,7 +313,7 @@ int tls_cbc_encrypt(const SM3_HMAC_CTX *inited_hmac_ctx, const SM4_KEY *enc_key,
 	padding = mac + 32;
 	padding_len = 16 - rem - 1;
 	for (i = 0; i <= padding_len; i++) {
-		padding[i] = (uint8_t)padding_len;
+		padding[i] = padding_len;
 	}
 
 	iv = out;
@@ -381,8 +381,8 @@ int tls_cbc_decrypt(const SM3_HMAC_CTX *inited_hmac_ctx, const SM4_KEY *dec_key,
 	header[0] = enced_header[0];
 	header[1] = enced_header[1];
 	header[2] = enced_header[2];
-	header[3] = (uint8_t)((*outlen) >> 8);
-	header[4] = (uint8_t)(*outlen);
+	header[3] = (*outlen) >> 8;
+	header[4] = (*outlen);
 	mac = padding - 32;
 
 	memcpy(&hmac_ctx, inited_hmac_ctx, sizeof(SM3_HMAC_CTX));
@@ -411,8 +411,8 @@ int tls_record_encrypt(const SM3_HMAC_CTX *hmac_ctx, const SM4_KEY *cbc_key,
 	out[0] = in[0];
 	out[1] = in[1];
 	out[2] = in[2];
-	out[3] = (uint8_t)((*outlen) >> 8);
-	out[4] = (uint8_t)(*outlen);
+	out[3] = (*outlen) >> 8;
+	out[4] = (*outlen);
 	(*outlen) += 5;
 	return 1;
 }
@@ -431,8 +431,8 @@ int tls_record_decrypt(const SM3_HMAC_CTX *hmac_ctx, const SM4_KEY *cbc_key,
 	out[0] = in[0];
 	out[1] = in[1];
 	out[2] = in[2];
-	out[3] = (uint8_t)((*outlen) >> 8);
-	out[4] = (uint8_t)(*outlen);
+	out[3] = (*outlen) >> 8;
+	out[4] = (*outlen);
 	(*outlen) += 5;
 
 	return 1;
@@ -514,8 +514,8 @@ int tls_pre_master_secret_generate(uint8_t pre_master_secret[48], int protocol)
 		error_print();
 		return -1;
 	}
-	pre_master_secret[0] = (uint8_t)(protocol >> 8);
-	pre_master_secret[1] = (uint8_t)(protocol);
+	pre_master_secret[0] = protocol >> 8;
+	pre_master_secret[1] = protocol;
 	if (rand_bytes(pre_master_secret + 2, 46) != 1) {
 		error_print();
 		return -1;
@@ -560,8 +560,8 @@ int tls_sign_server_ecdh_params(const SM2_KEY *server_sign_key,
 		return -1;
 	}
 	server_ecdh_params[0] = TLS_curve_type_named_curve;
-	server_ecdh_params[1] = (uint8_t)(curve >> 8);
-	server_ecdh_params[2] = (uint8_t)curve;
+	server_ecdh_params[1] = curve >> 8;
+	server_ecdh_params[2] = curve;
 	server_ecdh_params[3] = 65;
 	sm2_point_to_uncompressed_octets(point, server_ecdh_params + 4);
 
@@ -589,8 +589,8 @@ int tls_verify_server_ecdh_params(const SM2_KEY *server_sign_key,
 		return -1;
 	}
 	server_ecdh_params[0] = TLS_curve_type_named_curve;
-	server_ecdh_params[1] = (uint8_t)(curve >> 8);
-	server_ecdh_params[2] = (uint8_t)(curve);
+	server_ecdh_params[1] = curve >> 8;
+	server_ecdh_params[2] = curve;
 	server_ecdh_params[3] = 65;
 	sm2_point_to_uncompressed_octets(point, server_ecdh_params + 4);
 
@@ -627,12 +627,12 @@ int tls_record_set_handshake(uint8_t *record, size_t *recordlen,
 	}
 	handshakelen = TLS_HANDSHAKE_HEADER_SIZE + datalen;
 	record[0] = TLS_record_handshake;
-	record[3] = (uint8_t)(handshakelen >> 8);
-	record[4] = (uint8_t)(handshakelen);
-	record[5] = (uint8_t)(type);
-	record[6] = (uint8_t)(datalen >> 16);
-	record[7] = (uint8_t)(datalen >> 8);
-	record[8] = (uint8_t)(datalen);
+	record[3] = handshakelen >> 8;
+	record[4] = handshakelen;
+	record[5] = type;
+	record[6] = datalen >> 16;
+	record[7] = datalen >> 8;
+	record[8] = datalen;
 	if (data) {
 		memcpy(tls_handshake_data(tls_record_data(record)), data, datalen);
 	}
@@ -739,7 +739,7 @@ int tls_record_set_handshake_client_hello(uint8_t *record, size_t *recordlen,
 	tls_uint16_to_bytes((uint16_t)protocol, &p, &len);
 	tls_array_to_bytes(random, 32, &p, &len);
 	tls_uint8array_to_bytes(session_id, session_id_len, &p, &len);
-	tls_uint16_to_bytes((uint16_t)(cipher_suites_count * 2), &p, &len);
+	tls_uint16_to_bytes(cipher_suites_count * 2, &p, &len);
 	while (cipher_suites_count--) {
 		if (!tls_cipher_suite_name(*cipher_suites)) {
 			error_print();
@@ -1019,7 +1019,7 @@ int tls_record_set_handshake_certificate(uint8_t *record, size_t *recordlen,
 		}
 		tls_uint24array_to_bytes(cert, certlen, &p, &len);
 	}
-	tls_uint24_to_bytes((uint24_t)len, &data, &len);
+	tls_uint24_to_bytes(len, &data, &len);
 	tls_record_set_handshake(record, recordlen, type, NULL, datalen);
 	return 1;
 }
@@ -1460,11 +1460,7 @@ int tls_cipher_suite_in_list(int cipher, const int *list, size_t list_count)
 	return 0;
 }
 
-#ifdef WIN32
-int tls_record_send(const uint8_t *record, size_t recordlen, SOCKET sock)
-#else
 int tls_record_send(const uint8_t *record, size_t recordlen, int sock)
-#endif
 {
 #ifdef WIN32
 	int r;
@@ -1483,11 +1479,7 @@ int tls_record_send(const uint8_t *record, size_t recordlen, int sock)
 		error_print();
 		return -1;
 	}
-#ifdef WIN32
-	if ((r = send(sock, record, (int)recordlen, 0)) < 0) {
-#else	
 	if ((r = send(sock, record, recordlen, 0)) < 0) {
-#endif
 		perror("tls_record_send");
 		error_print();
 		return -1;
@@ -1498,26 +1490,19 @@ int tls_record_send(const uint8_t *record, size_t recordlen, int sock)
 	return 1;
 }
 
-#ifdef WIN32
-int tls_record_do_recv(uint8_t *record, size_t *recordlen, SOCKET sock)
-#else
 int tls_record_do_recv(uint8_t *record, size_t *recordlen, int sock)
-#endif
 {
 #ifdef WIN32
 	int r;
 #else
 	ssize_t r;
 #endif
+	int type;
 	size_t len;
 
 	len = 5;
 	while (len) {
-#ifdef WIN32
-		if ((r = recv(sock, record + 5 - len, (int)len, 0)) < 0) {
-#else
 		if ((r = recv(sock, record + 5 - len, len, 0)) < 0) {
-#endif
 			perror("tls_record_do_recv");
 			error_print();
 			return -1;
@@ -1546,11 +1531,7 @@ int tls_record_do_recv(uint8_t *record, size_t *recordlen, int sock)
 		return -1;
 	}
 	while (len) {
-#ifdef WIN32
-		if ((r = recv(sock, record + *recordlen - len, (int)len, 0)) < 0) {
-#else
 		if ((r = recv(sock, record + *recordlen - len, len, 0)) < 0) {
-#endif
 			perror("tls_record_do_recv");
 			error_print();
 			return -1;
@@ -1560,11 +1541,7 @@ int tls_record_do_recv(uint8_t *record, size_t *recordlen, int sock)
 	return 1;
 }
 
-#ifdef WIN32
-int tls_record_recv(uint8_t *record, size_t *recordlen, SOCKET sock)
-#else
 int tls_record_recv(uint8_t *record, size_t *recordlen, int sock)
-#endif
 {
 retry:
 	if (tls_record_do_recv(record, recordlen, sock) != 1) {
@@ -1660,9 +1637,11 @@ int tls_alert_level(int alert)
 		return 0;
 	case TLS_alert_user_canceled:
 	case TLS_alert_no_renegotiation:
-		return TLS_alert_level_warning;	
+		return TLS_alert_level_warning;
+	default:
+		return TLS_alert_level_fatal;
 	}
-	return TLS_alert_level_fatal;	
+	return -1;
 }
 
 int tls_send_warning(TLS_CONNECT *conn, int alert)
@@ -1695,6 +1674,8 @@ int tls_send(TLS_CONNECT *conn, const uint8_t *in, size_t inlen, size_t *sentlen
 	const SM4_KEY *enc_key;
 	uint8_t *seq_num;
 	uint8_t *record;
+	size_t recordlen;
+	uint8_t *data;
 	size_t datalen;
 
 	if (!conn) {
@@ -1854,11 +1835,7 @@ int tls_authorities_from_certs(uint8_t *names, size_t *nameslen, size_t maxlen, 
 			error_print();
 			return -1;
 		}
-		if (alen > UINT16_MAX) {
-			error_print();
-			return -1;
-		}
-		tls_uint16_to_bytes((uint16_t)alen, &names, nameslen);
+		tls_uint16_to_bytes(alen, &names, nameslen);
 		if (asn1_sequence_to_der(name, namelen, &names, nameslen) != 1) {
 			error_print();
 			return -1;
@@ -2303,15 +2280,12 @@ void tls_cleanup(TLS_CONNECT *conn)
 	gmssl_secure_clear(conn, sizeof(TLS_CONNECT));
 }
 
-#ifdef WIN32
-int tls_set_socket(TLS_CONNECT *conn, SOCKET sock)
-#else
+
 int tls_set_socket(TLS_CONNECT *conn, int sock)
-#endif
 {
-#if 0
 	int opts;
 
+#if 0
 	// FIXME: do we still need this? when using select?
 	if ((opts = fcntl(sock, F_GETFL)) < 0) {
 		error_print();

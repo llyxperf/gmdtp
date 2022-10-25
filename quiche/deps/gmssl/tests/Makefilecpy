@@ -1,0 +1,20 @@
+VPATH =../src:../include/gmssl
+objects = sm4test.o sm4_avx.o sm4_modes.o
+
+sm4Test:$(objects)
+	cc -o sm4Test $(objects)
+
+sm4test.o :sm4test.c hex.h sm4.h error.h rand.h
+	cc -c sm4test.c -I /home/lyx/projects/GmSSL/include/gmssl
+
+sm4_avx.o :sm4_avx.c sm4.h mem.h gcm.h error.h
+	cc -c /home/lyx/projects/GmSSL/src/sm4_avx.c -I /home/lyx/projects/GmSSL/include
+
+sm4_modes.o :sm4_modes.c sm4.h mem.h gcm.h error.h
+	cc -c /home/lyx/projects/GmSSL/src/sm4_modes.c -I /home/lyx/projects/GmSSL/include
+
+
+
+.PHONY: clean
+clean :
+	rm sm4Test $(objects)

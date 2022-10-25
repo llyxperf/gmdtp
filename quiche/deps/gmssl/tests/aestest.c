@@ -20,6 +20,7 @@
 int test_aes(void)
 {
 	AES_KEY aes_key;
+	int i;
 
 	/* test 1 */
 	uint8_t key128[16] = {

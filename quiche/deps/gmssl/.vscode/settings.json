@@ -1,0 +1,29 @@
+{
+    "files.associations": {
+        "cstddef": "c",
+        "cstdio": "c",
+        "ctime": "c",
+        "cwchar": "c",
+        "array": "c",
+        "atomic": "c",
+        "*.tcc": "c",
+        "vector": "c",
+        "functional": "c",
+        "memory": "c",
+        "memory_resource": "c",
+        "optional": "c",
+        "string_view": "c",
+        "tuple": "c",
+        "type_traits": "c",
+        "random": "c",
+        "fstream": "c",
+        "initializer_list": "c",
+        "new": "c",
+        "stdexcept": "c",
+        "string": "c",
+        "system_error": "c",
+        "ratio": "c",
+        "typeinfo": "c",
+        "utility": "c"
+    }
+}

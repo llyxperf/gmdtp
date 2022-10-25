@@ -1,4 +1,4 @@
-ï»¿/*
+/*
  *  Copyright 2014-2022 The GmSSL Project. All Rights Reserved.
  *
  *  Licensed under the Apache License, Version 2.0 (the License); you may
@@ -19,7 +19,7 @@
 #include <gmssl/endian.h>
 
 
-#define sm2_print_bn(label,a) sm2_bn_print(stderr,0,0,label,a) // è¿™ä¸ªä¸åº”è¯¥æ”¾åœ¨è¿™é‡Œï¼Œåº”è¯¥æ”¾åœ¨æµ‹è¯•æ–‡ä»¶ä¸­
+#define sm2_print_bn(label,a) sm2_bn_print(stderr,0,0,label,a) // Õâ¸ö²»Ó¦¸Ã·ÅÔÚÕâÀï£¬Ó¦¸Ã·ÅÔÚ²âÊÔÎÄ¼þÖÐ
 
 
 
@@ -219,9 +219,8 @@ int sm2_bn_print(FILE *fp, int fmt, int ind, const char *label, const SM2_BN a)
 void sm2_bn_to_bits(const SM2_BN a, char bits[256])
 {
 	int i, j;
-	uint64_t w;
 	for (i = 7; i >= 0; i--) {
-		w = a[i];
+		uint32_t w = a[i];
 		for (j = 0; j < 32; j++) {
 			*bits++ = (w & 0x80000000) ? '1' : '0';
 			w <<= 1;

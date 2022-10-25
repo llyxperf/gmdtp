@@ -40,20 +40,14 @@ int tls12_server_main(int argc , char **argv)
 	char *cacertfile = NULL;
 
 	int server_ciphers[] = { TLS_cipher_ecdhe_sm4_cbc_sm3, };
+	uint8_t verify_buf[4096];
 
 	TLS_CTX ctx;
 	TLS_CONNECT conn;
 	char buf[1600] = {0};
 	size_t len = sizeof(buf);
 
-#ifdef WIN32
-	SOCKET sock;
-	SOCKET conn_sock;
-#else
 	int sock;
-	int conn_sock;
-#endif
-
 	struct sockaddr_in server_addr;
 	struct sockaddr_in client_addr;
 #ifdef WIN32
@@ -61,7 +55,7 @@ int tls12_server_main(int argc , char **argv)
 #else
 	socklen_t client_addrlen;
 #endif
-
+	int conn_sock;
 
 
 	argc--;
@@ -187,11 +181,7 @@ restart:
 
 		if (tls_send(&conn, (uint8_t *)buf, len, &sentlen) != 1) {
 			fprintf(stderr, "%s: send failure, close connection\n", prog);
-#ifdef WIN32
-			closesocket(conn.sock);
-#else
 			close(conn.sock);
-#endif
 			goto end;
 		}
 	}

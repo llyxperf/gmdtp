@@ -29,6 +29,7 @@ int rand_main(int argc, char **argv)
 	char *outfile = NULL;
 	FILE *outfp = stdout;
 	uint8_t buf[2048];
+	int i;
 
 	argc--;
 	argv++;
@@ -78,7 +79,7 @@ bad:
 		goto end;
 	}
 
-	while (outlen > 0) {
+	while (outlen) {
 		size_t len = outlen < sizeof(buf) ? outlen : sizeof(buf);
 
 		if (rdrand) {
@@ -106,7 +107,7 @@ bad:
 				goto end;
 			}
 		}
-		outlen -= (int)len;
+		outlen -= len;
 	}
 	if (hex) {
 		fprintf(outfp, "\n");

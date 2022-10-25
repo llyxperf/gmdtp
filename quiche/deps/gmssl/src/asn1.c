@@ -460,6 +460,7 @@ int asn1_integer_to_der_ex(int tag, const uint8_t *a, size_t alen, uint8_t **out
 
 int asn1_int_to_der_ex(int tag, int a, uint8_t **out, size_t *outlen)
 {
+	int i;
 	uint8_t buf[4] = {0};
 	size_t len = 0;
 
@@ -1193,7 +1194,7 @@ int asn1_utc_time_from_der_ex(int tag, time_t *t, const uint8_t **pin, size_t *p
 	}
 	if (len == sizeof("YYMMDDHHMMSSZ")-1) {
 #ifdef WIN32
-		asn1_generalizedtime_to_tm(buf, &tm_val);
+		asn1_generalizedtime_to_tm(&tm_val, buf);
 		*t = GMSSL_timegm(&tm_val);
 #else
 		if (!strptime(buf, "%Y%m%d%H%M%SZ", &tm_val)) {

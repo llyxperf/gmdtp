@@ -69,6 +69,12 @@ int sm4_cbc_padding_decrypt(const SM4_KEY *key, const uint8_t iv[SM4_BLOCK_SIZE]
 
 void sm4_ctr_encrypt(const SM4_KEY *key, uint8_t ctr[SM4_BLOCK_SIZE],
 	const uint8_t *in, size_t inlen, uint8_t *out);
+
+
+
+void sm4_ctr_encrypt_inplace(const SM4_KEY *key, uint8_t ctr[16], uint8_t *in, size_t inlen);
+
+
 #define sm4_ctr_decrypt(key,ctr,in,inlen,out) sm4_ctr_encrypt(key,ctr,in,inlen,out)
 
 

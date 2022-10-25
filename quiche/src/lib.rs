@@ -364,7 +364,7 @@ use std::net::SocketAddr;
 use std::str::FromStr;
 
 use std::collections::VecDeque;
-
+use std::{fs::OpenOptions, io::{Read, Write}};
 use libsm::sm2::ecc::Point;
 use libsm::sm2::signature::SigCtx;
 use libsm::sm4::cipher_mode::Sm4CipherMode;
@@ -1272,8 +1272,8 @@ pub struct Connection {
     gm_pubkey:  Option<Point>,
     gm_skey: Option<BigUint>,
 
-    gm_sm4key:Option<Vec<u8>>,
-    gm_iv:Option<Vec<u8>>,
+    gm_sm4key:Option<crypto::SM4_KEY>,
+    gm_iv:Option<[u8;16]>,
     gm_cipher:Option<Sm4CipherMode>,
 
     gm_readoffset:Option<u64>,
@@ -2341,8 +2341,7 @@ impl Connection {
                     payload_len,
                     aead,
                     self.gm_on,
-                    self.is_established(),&mut self.gm_cipher.as_ref().unwrap(),
-                    & self.gm_iv.as_ref().unwrap()[..]
+                    self.is_established(),&self.gm_iv.unwrap(),self.gm_sm4key.as_ref().unwrap(),
                 )
         
                  
@@ -3520,12 +3519,21 @@ impl Connection {
         }
         //client and have recieve pubkey,general key and encrypt it with pub,and sent.
         else if self.gm_on==3 && !self.is_server{
+            let mut key:[u8;16]=[0;16];
+            rand::rand_bytes(&mut key);
+          //  let key = signature::rand_block();
+          let mut iv:[u8;16]=[0;16];
 
-            let key = signature::rand_block();
-            let iv = signature::rand_block();
-            self.gm_sm4key=Some(key.to_vec());
-            self.gm_iv=Some(iv.to_vec());
-            self.gm_cipher=Some(Cipher::new(&key, Mode::Cfb));
+            let mut sm4key=crypto::SM4_KEY{
+                rk:[0;32],
+            };
+            unsafe {
+                crypto::sm4_set_encrypt_key(&mut sm4key, key.as_mut_ptr());
+            }; 
+            
+            self.gm_sm4key=Some(sm4key);
+            self.gm_iv=Some(iv);
+         //   self.gm_cipher=Some(Cipher::new(&key, Mode::Cfb));
 
             let mut plain_text=key.to_vec();
             let mut veciv=iv.to_vec();
@@ -3533,22 +3541,22 @@ impl Connection {
 
             // println!("\nClient:key created:  {:?}+{:?}\n",&key,&iv);
            plain_text.append(&mut veciv);
-            debug!("\n\n\n\npoint1\n");
+         //   debug!("\n\n\n\npoint1\n");
             let mut gmhdr="gmssl".as_bytes().to_vec();
-            debug!("\n\n\n\npoint2\n");
+         //   debug!("\n\n\n\npoint2\n");
             
            let mut ectx = EncryptCtx::new(plain_text.len(),self.gm_pubkey.unwrap());
-           debug!("\n\n\n\npoint3\n");
+         //  debug!("\n\n\n\npoint3\n");
            //let mut cipher_text: Vec<u8> = ectx.encrypt(&plain_text[..]);
            let mut cipher_text=plain_text;
-           debug!("\n\n\n\npoint4\n");
+           //debug!("\n\n\n\npoint4\n");
            gmhdr.append(&mut cipher_text);
         //    println!("{}    Encrypted symmetrical key frame created.Sending to the server. {:?}\n",
         //     ansi_term::Color::Green.paint("步骤2:"),
         //     self.gm_sm4key.as_ref().unwrap());
             println!("{}    生成对称密钥。发送给服务端{:?}\n",
             ansi_term::Color::Green.paint("步骤5:"),
-            self.gm_sm4key.as_ref().unwrap());
+            key);
        
            let sm4cryptobuf=RangeBuf::from(&gmhdr[..], 0, true);
 
@@ -3998,7 +4006,7 @@ impl Connection {
                 None,
                 aead,
                 self.gm_on,
-                self.is_established(),&mut self.gm_cipher.as_ref().unwrap(),& self.gm_iv.as_ref().unwrap()[..],
+                self.is_established(),&self.gm_iv.unwrap(),self.gm_sm4key.as_ref().unwrap(),
             )?;
         }
         else{
@@ -5989,17 +5997,41 @@ impl Connection {
                         //let plain_text=DecryptCtx::new(klen, sk).decrypt(&enc_sm4key);
                         
                         let plain_text=enc_sm4key;
-                        let sm4key=plain_text[0..16].to_vec();
-                        let iv=plain_text[16..].to_vec();
+                       //  let sm4k=plain_text.clone();
+                         /*
+                        let mut f = OpenOptions::new()
+                            .read(true)
+                            .write(true)
+                            .create(true) // 新建，若文件存在则打开这个文件
+                            .open("sm4symKey.prk").unwrap();
+
+
+
+                        f.write_all(&sm4k[..]);
+ */
+
+                        let mut sm4keyvec=plain_text[0..16].to_vec();
+                        let mut iv:[u8;16]=[0;16];
+                        for i in 16..32{
+                            iv[i-16]=plain_text[i];
+                        }
                         //println!("\nServer:sm4key crypto frame recieved:{:?}  +{:?}  ,key length is {}+{}\n", sm4key,iv,sm4key.len(),iv.len());
                       //  info!("Server:sm4key CFRed:{:?}  +{:?}  ,key length is {}+{}\n", sm4key,iv,sm4key.len(),iv.len());
-                        
-                        self.gm_sm4key=Some(sm4key);
+                      let mut sm4key=crypto::SM4_KEY{
+                        rk:[0;32],
+                     };
+                     
+                     unsafe {
+                        crypto::sm4_set_encrypt_key(&mut sm4key, sm4keyvec.as_mut_ptr());
+                    }; 
+                    
+                    self.gm_sm4key=Some(sm4key);
+                    
                         self.gm_iv=Some(iv);
-                        self.gm_cipher=Some(Cipher::new(&self.gm_sm4key.clone().unwrap()[..], Mode::Cfb));
+                      //  self.gm_cipher=Some(Cipher::new(&self.gm_sm4key.clone().unwrap()[..], Mode::Cfb));
                         self.gm_on=4;
                         // println!("{}:    Recieved symmetric key. {:?}\n",ansi_term::Color::Red.paint("步骤4"), self.gm_sm4key.as_ref().unwrap());
-                        println!("{}    接收到对称密钥. {:?}\n",ansi_term::Color::Red.paint("步骤6:"), self.gm_sm4key.as_ref().unwrap());
+                        println!("{}    接收到对称密钥. {:?}\n",ansi_term::Color::Red.paint("步骤6:"), sm4keyvec);
                     }
                     else if self.gm_on==1 &&!self.is_server{
                         let pk_raw=data[5..].to_vec();
@@ -6010,7 +6042,7 @@ impl Connection {
                         //println!("\nClient:sm2 pubkey{:?}\n\n", pk_raw);
                         // println!("{}    Recieved sm2 public key from server:{}\n",
                         // ansi_term::Color::Green.paint("步骤1:"),ansi_term::Color::Yellow.paint(self.gm_pubkey.as_ref().unwrap().to_string()) );
-
+                        
                         println!("{}    接收到服务端的公钥:{}\n",
                         ansi_term::Color::Green.paint("步骤4:"),ansi_term::Color::Yellow.paint(self.gm_pubkey.as_ref().unwrap().to_string()) );
                       

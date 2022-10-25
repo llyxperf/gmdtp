@@ -120,6 +120,8 @@ if (ENABLE_RDRND)
 	list(APPEND src src/rdrand.c)
 	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -mrdrnd -mrdseed")
 endif()
+#mrboringssl
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIC")
 
 if (WIN32)
 	set(CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON)

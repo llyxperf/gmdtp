@@ -418,6 +418,8 @@ int x509_crl_ext_id_to_der(int oid, uint8_t **out, size_t *outlen)
 int x509_crl_ext_id_from_der_ex(int *oid, uint32_t *nodes, size_t *nodes_cnt, const uint8_t **in, size_t *inlen)
 {
 	int ret;
+	const uint8_t *p;
+	size_t len;
 	const ASN1_OID_INFO *info;
 
 	*oid = 0;
@@ -1099,7 +1101,7 @@ int x509_crl_get_details(const uint8_t *a, size_t alen,
 		return -1;
 	}
 	if (asn1_any_from_der(&tbs, &tbs_len, &d, &dlen) != 1
-		|| x509_signature_algor_from_der(&signature_algor, &d, &dlen) != 1
+		|| x509_signature_algor_from_der(&sig_alg, &d, &dlen) != 1
 		|| asn1_bit_octets_from_der(&sig, &siglen, &d, &dlen) != 1
 		|| asn1_length_is_zero(dlen) != 1) {
 		error_print();

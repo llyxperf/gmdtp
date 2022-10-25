@@ -16,7 +16,6 @@
 #pragma comment (lib, "Ws2_32.lib")
 #pragma comment (lib, "Mswsock.lib")
 #pragma comment (lib, "AdvApi32.lib")
-#include <winsock2.h>
 #endif
 
 
@@ -458,15 +457,11 @@ int tls_record_set_data(uint8_t *record, const uint8_t *data, size_t datalen);
 int tls_record_print(FILE *fp, const uint8_t *record,  size_t recordlen, int format, int indent);
 int tlcp_record_print(FILE *fp, const uint8_t *record,  size_t recordlen, int format, int indent);
 
-#ifdef WIN32
-int tls_record_send(const uint8_t* record, size_t recordlen, SOCKET sock);
-int tls_record_recv(uint8_t* record, size_t* recordlen, SOCKET sock);
-int tls12_record_recv(uint8_t* record, size_t* recordlen, SOCKET sock);
-#else
+
 int tls_record_send(const uint8_t *record, size_t recordlen, int sock);
 int tls_record_recv(uint8_t *record, size_t *recordlen, int sock);
 int tls12_record_recv(uint8_t *record, size_t *recordlen, int sock);
-#endif
+
 
 
 // Handshake
@@ -753,11 +748,7 @@ typedef struct {
 	int cipher_suites[TLS_MAX_CIPHER_SUITES_COUNT];
 	size_t cipher_suites_cnt;
 
-#ifdef WIN32
-	SOCKET sock;
-#else
 	int sock;
-#endif
 
 	uint8_t enced_record[TLS_MAX_RECORD_SIZE];
 	size_t enced_record_len;
@@ -807,11 +798,7 @@ typedef struct {
 
 
 int tls_init(TLS_CONNECT *conn, const TLS_CTX *ctx);
-#ifdef WIN32
-int tls_set_socket(TLS_CONNECT* conn, SOCKET sock);
-#else
 int tls_set_socket(TLS_CONNECT *conn, int sock);
-#endif
 int tls_do_handshake(TLS_CONNECT *conn);
 int tls_send(TLS_CONNECT *conn, const uint8_t *in, size_t inlen, size_t *sentlen);
 int tls_recv(TLS_CONNECT *conn, uint8_t *out, size_t outlen, size_t *recvlen);

@@ -1,6 +1,10 @@
 // Additional parameters for Android build of BoringSSL.
 //
 // Requires Android NDK >= 19.
+
+use std::process::Command;
+
+
 const CMAKE_PARAMS_ANDROID_NDK: &[(&str, &[(&str, &str)])] = &[
     ("aarch64", &[("ANDROID_ABI", "arm64-v8a")]),
     ("arm", &[("ANDROID_ABI", "armeabi-v7a")]),
@@ -243,6 +247,25 @@ fn main() {
         println!("cargo:rustc-link-lib=static=crypto");
         println!("cargo:rustc-link-lib=static=ssl");
     }
+
+
+//gmssl
+ 
+    let curpwd = std::env::current_dir().unwrap().into_os_string().into_string().unwrap();
+    println!("\n\npwd :{}\n\n",curpwd);
+
+    Command::new("mkdir").arg("deps/gmssl/build").status().unwrap();
+    let libgmssldir = std::env::current_dir().unwrap();
+    let gmdir=libgmssldir.join("deps/gmssl/build/bin");
+
+    let _=std::env::set_current_dir("deps/gmssl/build");
+    Command::new("cmake").arg("..").status().unwrap();
+    Command::new("make").status().unwrap();
+  
+    println!("cargo:rustc-link-search=native={}", gmdir.into_os_string().into_string().unwrap());
+    println!("cargo:rustc-link-lib=static=gmssl");
+
+    let _=std::env::set_current_dir(curpwd);
 
     // MacOS: Allow cdylib to link with undefined symbols
     let target_os = std::env::var("CARGO_CFG_TARGET_OS").unwrap();

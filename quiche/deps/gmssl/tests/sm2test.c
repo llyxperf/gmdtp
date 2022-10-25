@@ -1,4 +1,4 @@
-﻿/*
+/*
  *  Copyright 2014-2022 The GmSSL Project. All Rights Reserved.
  *
  *  Licensed under the Apache License, Version 2.0 (the License); you may
@@ -15,6 +15,9 @@
 #include <gmssl/error.h>
 #include <gmssl/sm2.h>
 #include <gmssl/pkcs8.h>
+#include <time.h>   // `clock_gettime()` and `timespec_get()`
+
+#include <sys/time.h>
 
 #define sm2_print_bn(label,a) sm2_bn_print(stderr,0,0,label,a) // 这个不应该放在这里，应该放在测试文件中
 
@@ -44,20 +47,6 @@
 
 int test_sm2_bn(void)
 {
-	const SM2_JACOBIAN_POINT _G = {
-		{
-		0x334c74c7, 0x715a4589, 0xf2660be1, 0x8fe30bbf,
-		0x6a39c994, 0x5f990446, 0x1f198119, 0x32c4ae2c,
-		},
-		{
-		0x2139f0a0, 0x02df32e5, 0xc62a4740, 0xd0a9877c,
-		0x6b692153, 0x59bdcee3, 0xf4f6779c, 0xbc3736a2,
-		},
-		{
-		1, 0, 0, 0, 0, 0, 0, 0,
-		},
-	};
-	const SM2_JACOBIAN_POINT *G = &_G;
 	SM2_BN r;
 	SM2_BN x;
 	SM2_BN y;
@@ -72,8 +61,8 @@ int test_sm2_bn(void)
 
 	SM2_BN t;
 
-	sm2_bn_copy(x, G->X);
-	sm2_bn_copy(y, G->Y);
+	sm2_bn_copy(x, SM2_G->X);
+	sm2_bn_copy(y, SM2_G->Y);
 
 	sm2_bn_from_hex(r, hex_v);
 	ok = (sm2_bn_cmp(r, v) == 0);
@@ -204,21 +193,8 @@ int test_sm2_bn(void)
 
 int test_sm2_jacobian_point(void)
 {
-	const SM2_JACOBIAN_POINT _G = {
-		{
-		0x334c74c7, 0x715a4589, 0xf2660be1, 0x8fe30bbf,
-		0x6a39c994, 0x5f990446, 0x1f198119, 0x32c4ae2c,
-		},
-		{
-		0x2139f0a0, 0x02df32e5, 0xc62a4740, 0xd0a9877c,
-		0x6b692153, 0x59bdcee3, 0xf4f6779c, 0xbc3736a2,
-		},
-		{
-		1, 0, 0, 0, 0, 0, 0, 0,
-		},
-	};
-	const SM2_JACOBIAN_POINT *G = &_G;
 	SM2_JACOBIAN_POINT _P, *P = &_P;
+	SM2_JACOBIAN_POINT _G, *G = &_G;
 	SM2_BN k;
 	int i = 1, ok;
 
@@ -226,6 +202,7 @@ int test_sm2_jacobian_point(void)
 
 	printf("sm2_jacobian_point_test\n");
 
+	sm2_jacobian_point_copy(G, SM2_G);
 	ok = sm2_jacobian_point_equ_hex(G, hex_G);
 	printf("sm2 point test %d %s\n", i++, ok ? "ok" : "failed");
 	if (!ok) return -1;
@@ -439,7 +416,11 @@ static int test_sm2_point_from_x(void)
 	printf("%s() ok\n", __FUNCTION__);
 	return 1;
 }
-
+long getMicrotime(){
+	struct timeval currentTime;
+	gettimeofday(&currentTime, NULL);
+	return currentTime.tv_sec * (int)1e6 + currentTime.tv_usec;
+}
 static int test_sm2_signature(void)
 {
 	SM2_SIGNATURE sig;
@@ -676,27 +657,47 @@ static int test_sm2_encrypt(void)
 		msg[i] = (uint8_t)i;
 	}
 
-	for (i = 0; i < sizeof(lens)/sizeof(lens[0]); i++) {
+  long encTime=0;
+  long decTime=0;
+
+
+	
 		format_print(stderr, 0, 0, "test %d\n", i + 1);
-		format_bytes(stderr, 0, 4, "plaintext", msg, lens[i]);
-		if (sm2_encrypt(&sm2_key, msg, lens[i], cbuf, &clen) != 1) {
+	//	format_bytes(stderr, 0, 4, "plaintext", msg, lens[i]);
+
+	long pre=getMicrotime();
+
+		if (sm2_encrypt(&sm2_key, msg, lens[2], cbuf, &clen) != 1) {
 			error_print();
 			return -1;
 		}
-		format_bytes(stderr, 0, 4, "ciphertext", cbuf, clen);
-		sm2_ciphertext_print(stderr, 0, 4, "Ciphertext", cbuf, clen);
-		format_print(stderr, 0, 0, "\n");
+		
+		long after=getMicrotime();
+		encTime=encTime+after-pre;
+		float enc=(float)(encTime)/1000000;
+printf("src len is %d,after enc is %d,timeSpent is %f\n",lens[2],clen,enc);
+ 
 
+		 pre=getMicrotime();
 		if (sm2_decrypt(&sm2_key, cbuf, clen, mbuf, &mlen) != 1) {
 			error_print();
 			return -1;
 		}
-		if (mlen != lens[i]
-			|| memcmp(mbuf, msg, lens[i]) != 0) {
+
+	
+		 after=getMicrotime();
+
+		decTime=decTime+after-pre;
+float dec=(float)(decTime)/1000000;
+
+	printf("src len is %d,after dec is %d,time is %f\n",clen,mlen,dec);
+		
+		if (mlen != lens[2]
+			|| memcmp(mbuf, msg, lens[2]) != 0) {
 			error_print();
 			return -1;
 		}
-	}
+	
 
 	printf("%s() ok\n", __FUNCTION__);
 	return 1;
@@ -860,19 +861,19 @@ static int test_sm2_enced_private_key_info(void)
 
 int main(void)
 {
-	if (test_sm2_bn()  != 1) goto err;
-	if (test_sm2_jacobian_point() != 1) goto err;
-	if (test_sm2_point() != 1) goto err;
-	if (test_sm2_point_octets() != 1) goto err;
-	if (test_sm2_point_from_x() != 1) goto err;
-	if (test_sm2_point_der() != 1) goto err;
-	if (test_sm2_private_key() != 1) goto err;
-	if (test_sm2_private_key_info() != 1) goto err;
-	if (test_sm2_enced_private_key_info() != 1) goto err;
-	if (test_sm2_signature() != 1) goto err;
-	if (test_sm2_sign() != 1) goto err;
+//	if (test_sm2_bn()  != 1) goto err;
+	//if (test_sm2_jacobian_point() != 1) goto err;
+//	if (test_sm2_point() != 1) goto err;
+//	if (test_sm2_point_octets() != 1) goto err;
+//	if (test_sm2_point_from_x() != 1) goto err;
+//	if (test_sm2_point_der() != 1) goto err;
+//	if (test_sm2_private_key() != 1) goto err;
+//	if (test_sm2_private_key_info() != 1) goto err;
+//	if (test_sm2_enced_private_key_info() != 1) goto err;
+//	if (test_sm2_signature() != 1) goto err;
+//	if (test_sm2_sign() != 1) goto err;
 	//if (test_sm2_ciphertext() != 1) goto err; // 需要正确的Ciphertext数据
-	if (test_sm2_do_encrypt() != 1) goto err;
+//	if (test_sm2_do_encrypt() != 1) goto err;
 	if (test_sm2_encrypt() != 1) goto err;
 	printf("%s all tests passed\n", __FILE__);
 	return 0;

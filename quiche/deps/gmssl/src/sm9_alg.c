@@ -18,7 +18,6 @@
 #include <gmssl/sm9.h>
 #include <gmssl/error.h>
 #include <gmssl/endian.h>
-#include <gmssl/rand.h>
 
 
 const sm9_bn_t SM9_ZERO = {0,0,0,0,0,0,0,0};
@@ -126,7 +125,7 @@ void sm9_bn_to_bits(const sm9_bn_t a, char bits[256])
 {
 	int i, j;
 	for (i = 7; i >= 0; i--) {
-		uint32_t w = (uint32_t)a[i];
+		uint32_t w = a[i];
 		for (j = 0; j < 32; j++) {
 			*bits++ = (w & 0x80000000) ? '1' : '0';
 			w <<= 1;
@@ -188,12 +187,15 @@ void sm9_bn_sub(sm9_bn_t ret, const sm9_bn_t a, const sm9_bn_t b)
 
 int sm9_bn_rand_range(sm9_bn_t r, const sm9_bn_t range)
 {
+	FILE *fp;
 	uint8_t buf[256];
 
+	fp = fopen("/dev/urandom", "rb");
 	do {
-		rand_bytes(buf, sizeof(buf));
+		fread(buf, 1, 256, fp);
 		sm9_bn_from_bytes(r, buf);
 	} while (sm9_bn_cmp(r, range) >= 0);
+	fclose(fp);
 	return 1;
 }
 
@@ -210,9 +212,8 @@ int sm9_bn_equ(const sm9_bn_t a, const sm9_bn_t b)
 void sm9_fp_add(sm9_fp_t r, const sm9_fp_t a, const sm9_fp_t b)
 {
 	sm9_bn_add(r, a, b);
-	if (sm9_bn_cmp(r, SM9_P) >= 0) {
-		sm9_bn_sub(r, r, SM9_P);
-	}
+	if (sm9_bn_cmp(r, SM9_P) >= 0)
+		return sm9_bn_sub(r, r, SM9_P);
 }
 
 void sm9_fp_sub(sm9_fp_t r, const sm9_fp_t a, const sm9_fp_t b)
@@ -1205,7 +1206,7 @@ void sm9_fp2_conjugate(sm9_fp2_t r, const sm9_fp2_t a)
 
 void sm9_fp2_frobenius(sm9_fp2_t r, const sm9_fp2_t a)
 {
-	sm9_fp2_conjugate(r, a);
+	return sm9_fp2_conjugate(r, a);
 }
 
 // beta   = 0x6c648de5dc0a3f2cf55acc93ee0baf159f9d411806dc5177f5b21fd3da24d011
@@ -1237,7 +1238,7 @@ void sm9_fp4_conjugate(sm9_fp4_t r, const sm9_fp4_t a)
 
 void sm9_fp4_frobenius2(sm9_fp4_t r, const sm9_fp4_t a)
 {
-	sm9_fp4_conjugate(r, a);
+	return sm9_fp4_conjugate(r, a);
 }
 
 void sm9_fp4_frobenius3(sm9_fp4_t r, const sm9_fp4_t a)
@@ -1778,12 +1779,10 @@ void sm9_twist_point_add_full(SM9_TWIST_POINT *R, const SM9_TWIST_POINT *P, cons
 	sm9_fp2_sub(T1, T1, T2);
 
 	if (sm9_fp2_is_zero(T1) && sm9_fp2_is_zero(T3)) {
-		sm9_twist_point_dbl(R, P);
-		return;
+		return sm9_twist_point_dbl(R, P);
 	}
 	if (sm9_fp2_is_zero(T1) && sm9_fp2_is_zero(T6)) {
-		sm9_twist_point_set_infinity(R);
-		return;
+		return sm9_twist_point_set_infinity(R);
 	}
 
 	sm9_fp2_sqr(T6, T1);
@@ -2072,9 +2071,8 @@ void sm9_pairing(sm9_fp12_t r, const SM9_TWIST_POINT *Q, const SM9_POINT *P) {
 void sm9_fn_add(sm9_fn_t r, const sm9_fn_t a, const sm9_fn_t b)
 {
 	sm9_bn_add(r, a, b);
-	if (sm9_bn_cmp(r, SM9_N) >= 0) {
-		sm9_bn_sub(r, r, SM9_N);
-	}
+	if (sm9_bn_cmp(r, SM9_N) >= 0)
+		return sm9_bn_sub(r, r, SM9_N);
 }
 
 void sm9_fn_sub(sm9_fn_t r, const sm9_fn_t a, const sm9_fn_t b)
