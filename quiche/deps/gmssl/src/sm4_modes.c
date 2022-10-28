@@ -105,7 +105,7 @@ static void ctr_incr(uint8_t a[16])
 void sm4_ctr_encrypt_inplace(const SM4_KEY *key, uint8_t ctr[16], uint8_t *in, size_t inlen)
 {
 
-	printf("1");
+ 
 	uint8_t block[16];
 	size_t len;
 
