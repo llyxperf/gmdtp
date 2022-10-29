@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ![quiche](quiche.svg)
 
 [![crates.io](https://img.shields.io/crates/v/quiche.svg)](https://crates.io/crates/quiche)
@@ -413,3 +414,7 @@ Copyright (C) 2018-2019, Cloudflare, Inc.
 See [COPYING] for the license.
 
 [COPYING]: https://github.com/cloudflare/quiche/tree/master/COPYING
+=======
+# gmdtp
+
+>>>>>>> ce3260b3e52729a3f245866f21c0c06a649ead72
