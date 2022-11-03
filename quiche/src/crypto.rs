@@ -559,10 +559,19 @@ struct EVP_AEAD_CTX {
     alignment: u64,
     tag_len: u8,
 }
-
+#[repr(C)]
 pub struct SM4_KEY {
     pub(crate) rk: [u32; 32],
 }
+
+//pub :ECC.x ECC.y
+#[repr(C)]
+pub struct SM2_KEY {
+    pub(crate)  x: [u8; 32],
+    pub(crate)  y: [u8; 32],
+    pub(crate)  private_key: [u8; 32],
+}
+
 extern {
     // EVP_AEAD
     fn EVP_aead_aes_128_gcm() -> *const EVP_AEAD;
@@ -601,6 +610,30 @@ extern {
         ctr: *mut u8,
         inbuf:*mut u8,
         buflen:usize,
+    );
+
+   
+    pub fn sm2_key_generate(
+        key:*mut SM2_KEY,
+
+    );
+
+    pub fn sm2_pub_encrypt(
+        pubkey:*const u8,
+        inbuf:*const u8,
+        inlen:usize,
+        outbuf:*mut u8,
+        outlen:*mut usize,
+
+    );
+
+
+    pub fn sm2_decrypt(
+        key:*const SM2_KEY,
+        inbuf:*const u8,
+        inlen:usize,
+        outbuf:*mut u8,
+        outlen:*mut usize,
     );
 }
 

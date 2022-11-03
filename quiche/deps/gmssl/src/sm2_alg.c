@@ -19,7 +19,7 @@
 #include <gmssl/endian.h>
 
 
-#define sm2_print_bn(label,a) sm2_bn_print(stderr,0,0,label,a) // Õâ¸ö²»Ó¦¸Ã·ÅÔÚÕâÀï£¬Ó¦¸Ã·ÅÔÚ²âÊÔÎÄ¼şÖĞ
+#define sm2_print_bn(label,a) sm2_bn_print(stderr,0,0,label,a) // ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï£¬Ó¦ï¿½Ã·ï¿½ï¿½Ú²ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½
 
 
 

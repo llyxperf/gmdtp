@@ -637,7 +637,7 @@ static int test_sm2_encrypt(void)
 {
 	SM2_KEY sm2_key;
 	uint8_t msg[SM2_MAX_PLAINTEXT_SIZE];
-	uint8_t cbuf[SM2_MAX_CIPHERTEXT_SIZE+100];
+	uint8_t cbuf[SM2_MAX_CIPHERTEXT_SIZE+200];
 	uint8_t mbuf[SM2_MAX_CIPHERTEXT_SIZE];
 	size_t lens[] = {
 //		0,
@@ -666,8 +666,9 @@ static int test_sm2_encrypt(void)
 	//	format_bytes(stderr, 0, 4, "plaintext", msg, lens[i]);
 
 	long pre=getMicrotime();
-
-		if (sm2_encrypt(&sm2_key, msg, lens[2], cbuf, &clen) != 1) {
+	SM2_KEY sm2_keyPub=sm2_key;
+	memset(&sm2_keyPub.private_key, 0, sizeof(sm2_keyPub.private_key));
+		if (sm2_pub_encrypt((uint8_t *)(&sm2_keyPub.public_key), msg, lens[2], cbuf, &clen) != 1) {
 			error_print();
 			return -1;
 		}
@@ -675,7 +676,7 @@ static int test_sm2_encrypt(void)
 		long after=getMicrotime();
 		encTime=encTime+after-pre;
 		float enc=(float)(encTime)/1000000;
-printf("src len is %d,after enc is %d,timeSpent is %f\n",lens[2],clen,enc);
+printf("src len is %d,after enc is %d,timsseSpent is %f\n",lens[2],clen,enc);
  
 
 		 pre=getMicrotime();
@@ -694,6 +695,7 @@ float dec=(float)(decTime)/1000000;
 		
 		if (mlen != lens[2]
 			|| memcmp(mbuf, msg, lens[2]) != 0) {
+				printf("NOT RIGHT!!!");
 			error_print();
 			return -1;
 		}
@@ -712,6 +714,7 @@ static int test_sm2_private_key(void)
 	uint8_t buf[SM2_PRIVATE_KEY_BUF_SIZE];
 	uint8_t *p = buf;
 	const uint8_t *cp = buf;
+
 	size_t len = 0;
 	const uint8_t *d;
 	size_t dlen;
@@ -726,9 +729,11 @@ static int test_sm2_private_key(void)
 		error_print();
 		return -1;
 	}
+
+		uint8_t *p2=buf;
 	format_bytes(stderr, 0, 4, "ECPrivateKey", buf, len);
 	format_print(stderr, 0, 4, "#define SM2_PRIVATE_KEY_DEFAULT_SIZE %zu\n", len);
-	if (sm2_private_key_from_der(&tmp_key, &cp, &len) != 1
+	if (sm2_private_key_from_der(&tmp_key, &p2, &len) != 1
 		|| asn1_length_is_zero(len) != 1) {
 		error_print();
 		return -1;
@@ -863,19 +868,20 @@ int main(void)
 {
 //	if (test_sm2_bn()  != 1) goto err;
 	//if (test_sm2_jacobian_point() != 1) goto err;
-//	if (test_sm2_point() != 1) goto err;
+	//if (test_sm2_point() != 1) goto err;
 //	if (test_sm2_point_octets() != 1) goto err;
 //	if (test_sm2_point_from_x() != 1) goto err;
 //	if (test_sm2_point_der() != 1) goto err;
-//	if (test_sm2_private_key() != 1) goto err;
+ 	//if (test_sm2_private_key() != 1) goto err;
 //	if (test_sm2_private_key_info() != 1) goto err;
 //	if (test_sm2_enced_private_key_info() != 1) goto err;
-//	if (test_sm2_signature() != 1) goto err;
-//	if (test_sm2_sign() != 1) goto err;
+ //	if (test_sm2_signature() != 1) goto err;
+ //	if (test_sm2_sign() != 1) goto err;
 	//if (test_sm2_ciphertext() != 1) goto err; // 需要正确的Ciphertext数据
-//	if (test_sm2_do_encrypt() != 1) goto err;
+	//if (test_sm2_do_encrypt() != 1) goto err;
 	if (test_sm2_encrypt() != 1) goto err;
 	printf("%s all tests passed\n", __FILE__);
+	
 	return 0;
 err:
 	error_print();

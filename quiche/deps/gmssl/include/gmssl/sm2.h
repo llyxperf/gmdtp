@@ -355,6 +355,8 @@ int sm2_do_encrypt_ex(const SM2_KEY *key, int flags, const uint8_t *in, size_t i
 int sm2_do_encrypt(const SM2_KEY *key, const uint8_t *in, size_t inlen, SM2_CIPHERTEXT *out);
 int sm2_do_decrypt(const SM2_KEY *key, const SM2_CIPHERTEXT *in, uint8_t *out, size_t *outlen);
 
+int sm2Pub_do_encrypt_ex(uint8_t * public_key, int fixed_outlen, const uint8_t *in, size_t inlen, SM2_CIPHERTEXT *out);
+
 #define SM2_MIN_CIPHERTEXT_SIZE	45 // dependes on SM2_MIN_PLAINTEXT_SIZE
 #define SM2_MAX_CIPHERTEXT_SIZE	366 // depends on SM2_MAX_PLAINTEXT_SIZE
 int sm2_ciphertext_to_der(const SM2_CIPHERTEXT *c, uint8_t **out, size_t *outlen);
@@ -364,6 +366,7 @@ int sm2_encrypt_ex(const SM2_KEY *key, int flags, const uint8_t *in, size_t inle
 int sm2_encrypt(const SM2_KEY *key, const uint8_t *in, size_t inlen, uint8_t *out, size_t *outlen);
 int sm2_decrypt(const SM2_KEY *key, const uint8_t *in, size_t inlen, uint8_t *out, size_t *outlen);
 
+int sm2_pub_encrypt(uint8_t * public_key,const uint8_t *in, size_t inlen, uint8_t *out, size_t *outlen);
 
 int sm2_ecdh(const SM2_KEY *key, const SM2_POINT *peer_public, SM2_POINT *out);
 

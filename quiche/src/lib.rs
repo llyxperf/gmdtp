@@ -1269,8 +1269,7 @@ pub struct Connection {
 
     /// Gmssl
     gm_on: u64,
-    gm_pubkey:  Option<Point>,
-    gm_skey: Option<BigUint>,
+    gm_sm2key:  Option<crypto::SM2_KEY>,
 
     gm_sm4key:Option<crypto::SM4_KEY>,
     gm_iv:Option<[u8;16]>,
@@ -1686,8 +1685,7 @@ impl Connection {
              //gmssl
 
              gm_on:config.gm_on,
-             gm_pubkey: None,
-             gm_skey: None,
+             gm_sm2key:None,
              
              gm_cipher:None,
              gm_sm4key:None,
@@ -3475,35 +3473,47 @@ impl Connection {
         // if it is server and gmssl is 1,then general the sm2 key and push to crypto frame
  
         if self.gm_on==1 && self.is_server
-        {
-            let (ctx,pk,sk) =signature::getSm2key();
-            self.gm_pubkey=pk;
-            self.gm_skey=sk;
+        {   
+            //let (ctx,pk,sk) =signature::getSm2key();
+            let mut sm2key=crypto::SM2_KEY{
+                x:[0;32],
+                y:[0;32],
+                private_key:[0;32],
+            };
+
+            unsafe {
+                crypto::sm2_key_generate(&mut sm2key);
+            }; 
+            let mut pubkey:[u8;64]=[0;64];
+            //extract pubkey
+            for  index in 0..32 {
+              pubkey[index]=sm2key.x[index];
+              pubkey[index+32]=sm2key.y[index];
+             }
+ 
+            self.gm_sm2key=Some(sm2key);
             // println!("\n\n{}    Generate public key {}.\n\n{}    Generate secret key {}\n",
             //     ansi_term::Color::Red.paint("步骤1:"), 
             //     ansi_term::Color::Yellow.paint(self.gm_pubkey.as_ref().unwrap().to_string()),
             //     ansi_term::Color::Red.paint("步骤2:"), 
             //     self.gm_skey.as_ref().unwrap());
-            
 
+/*
             println!("\n\n{}    生成公钥 {}.\n\n{}    生成私钥 {}\n",
             ansi_term::Color::Red.paint("步骤1:"), 
-            ansi_term::Color::Yellow.paint(self.gm_pubkey.as_ref().unwrap().to_string()),
+            ansi_term::Color::Yellow.paint(pubkey),
             ansi_term::Color::Red.paint("步骤2:"), 
-            self.gm_skey.as_ref().unwrap());
+            self.gm_sm2key.unwrap().private_key);
+ */
+           let mut pk_raw = pubkey.to_vec();
 
-            let mut pk_raw = ctx.serialize_pubkey(&pk.as_ref().unwrap(), true);
             let mut gmhdr="gmssl".as_bytes().to_vec();
             gmhdr.append(&mut pk_raw);
            
             // println!("{}    Public key frame created.Sending to the client.\n",ansi_term::Color::Red.paint("步骤3:")  );
-            println!("{}    发送公钥帧给客户端.\n",ansi_term::Color::Red.paint("步骤3:") );
+           // println!("{}    发送公钥帧给客户端.\n",ansi_term::Color::Red.paint("步骤3:") );
             let gmcrypto_buf=RangeBuf::from(&gmhdr[..], 0, true);
-
             //temporary solution :using normal padding frame.
-
-
-
             let frame = frame::Frame::Crypto { data: gmcrypto_buf };
             self.gm_on=2;
     
@@ -3519,10 +3529,12 @@ impl Connection {
         }
         //client and have recieve pubkey,general key and encrypt it with pub,and sent.
         else if self.gm_on==3 && !self.is_server{
+            const keylen:usize=16;
+            const sm2extend:usize=200;
             let mut key:[u8;16]=[0;16];
             rand::rand_bytes(&mut key);
           //  let key = signature::rand_block();
-          let mut iv:[u8;16]=[0;16];
+          let mut iv:[u8;keylen]=[0;keylen];
 
             let mut sm4key=crypto::SM4_KEY{
                 rk:[0;32],
@@ -3533,37 +3545,46 @@ impl Connection {
             
             self.gm_sm4key=Some(sm4key);
             self.gm_iv=Some(iv);
-         //   self.gm_cipher=Some(Cipher::new(&key, Mode::Cfb));
 
             let mut plain_text=key.to_vec();
             let mut veciv=iv.to_vec();
-       
 
-            // println!("\nClient:key created:  {:?}+{:?}\n",&key,&iv);
-           plain_text.append(&mut veciv);
+            plain_text.append(&mut veciv);
          //   debug!("\n\n\n\npoint1\n");
             let mut gmhdr="gmssl".as_bytes().to_vec();
          //   debug!("\n\n\n\npoint2\n");
             
-           let mut ectx = EncryptCtx::new(plain_text.len(),self.gm_pubkey.unwrap());
-         //  debug!("\n\n\n\npoint3\n");
+         
+           let mut pubkey:[u8;64]=[0;64];
+      
+           let sm2key=self.gm_sm2key.as_ref().unwrap();
+          // let f=self.gm_sm2key.unwrap();//(相当于初始化一个f，在c里边，会把右边的值赋值给f，但是rust不知道这个结构该怎么赋值)
+           //extract pubkey
+           for  i in 0..32 {
+                pubkey[i]=sm2key.x[i];
+                pubkey[i+32]=sm2key.y[i];
+            }
+            let mut sm2cipher:[u8;keylen*2+sm2extend]=[0;keylen*2+sm2extend];
+           let mut sm2cipherlen:usize=0;
+           unsafe{
+            crypto::sm2_pub_encrypt(pubkey.as_ptr(), plain_text[..].as_ptr(), 
+            32, sm2cipher.as_mut_ptr(), 
+            &mut sm2cipherlen)
+            };
+
            //let mut cipher_text: Vec<u8> = ectx.encrypt(&plain_text[..]);
-           let mut cipher_text=plain_text;
+           let mut cipher_text=sm2cipher[0..sm2cipherlen].to_vec();
            //debug!("\n\n\n\npoint4\n");
            gmhdr.append(&mut cipher_text);
         //    println!("{}    Encrypted symmetrical key frame created.Sending to the server. {:?}\n",
         //     ansi_term::Color::Green.paint("步骤2:"),
         //     self.gm_sm4key.as_ref().unwrap());
-            println!("{}    生成对称密钥。发送给服务端{:?}\n",
-            ansi_term::Color::Green.paint("步骤5:"),
-            key);
+         //   println!("{}    生成对称密钥。发送给服务端{:?}\n",
+       //     ansi_term::Color::Green.paint("步骤5:"),
+     //       key);
        
            let sm4cryptobuf=RangeBuf::from(&gmhdr[..], 0, true);
-
-          
-       
             let frame = frame::Frame::Crypto { data: sm4cryptobuf };
-
             self.gm_on=4;
             
             if push_frame_to_pkt!(b, frames, frame, left) {
@@ -4072,8 +4093,8 @@ impl Connection {
                
             //    println!("{}    Recieved Handshake Done frame from server.State is ENCRYPTION\n",ansi_term::Color::Green.paint("步骤3:"));
             //    println!("{}    Start to encrypt using symmetric key\n",ansi_term::Color::Green.paint("步骤4:"));
-               println!("{}    接受到服务端的握手结束.状态是加密状态\n",ansi_term::Color::Green.paint("步骤8:"));
-               println!("{}\n",ansi_term::Color::Green.paint("开始使用对称密钥进行加密传输"));
+          //     println!("{}    接受到服务端的握手结束.状态是加密状态\n",ansi_term::Color::Green.paint("步骤8:"));
+          //     println!("{}\n",ansi_term::Color::Green.paint("开始使用对称密钥进行加密传输"));
             }
 
             self.drop_epoch_state(packet::EPOCH_INITIAL, now);
@@ -5992,30 +6013,27 @@ impl Connection {
                         let enc_sm4key=data[5..].to_vec();
                         
                         let klen=16+16;
-                        let sk=self.gm_skey.clone().unwrap();
+                      //  let sm2=self.gm_skey.clone().unwrap();
                         
                         //let plain_text=DecryptCtx::new(klen, sk).decrypt(&enc_sm4key);
-                        
-                        let plain_text=enc_sm4key;
-                       //  let sm4k=plain_text.clone();
-                         /*
-                        let mut f = OpenOptions::new()
-                            .read(true)
-                            .write(true)
-                            .create(true) // 新建，若文件存在则打开这个文件
-                            .open("sm4symKey.prk").unwrap();
+                        let mut plain_text:[u8;32]=[0;32];
+                        let mut inrag:usize=0;
+                        unsafe{
 
+                            crypto::sm2_decrypt(self.gm_sm2key.as_ref().unwrap(), enc_sm4key[..].as_ptr(),
+                            enc_sm4key.len(), plain_text.as_mut_ptr(), &mut inrag)
+                        };
 
-
-                        f.write_all(&sm4k[..]);
- */
+                        if(inrag==32){
+                            println!("Faied to get sm2 key!\n");
+                        }
 
                         let mut sm4keyvec=plain_text[0..16].to_vec();
                         let mut iv:[u8;16]=[0;16];
                         for i in 16..32{
                             iv[i-16]=plain_text[i];
                         }
-                        //println!("\nServer:sm4key crypto frame recieved:{:?}  +{:?}  ,key length is {}+{}\n", sm4key,iv,sm4key.len(),iv.len());
+                   
                       //  info!("Server:sm4key CFRed:{:?}  +{:?}  ,key length is {}+{}\n", sm4key,iv,sm4key.len(),iv.len());
                       let mut sm4key=crypto::SM4_KEY{
                         rk:[0;32],
@@ -6034,17 +6052,26 @@ impl Connection {
                         println!("{}    接收到对称密钥. {:?}\n",ansi_term::Color::Red.paint("步骤6:"), sm4keyvec);
                     }
                     else if self.gm_on==1 &&!self.is_server{
+
                         let pk_raw=data[5..].to_vec();
-                        let pubkey=SigCtx::new().load_pubkey(&pk_raw[..]).unwrap();
-                        self.gm_pubkey=Some(pubkey);
-    
+
+                        let mut sm2key=crypto::SM2_KEY{
+                            x:[0;32],
+                            y:[0;32],
+                            private_key:[0;32],
+                        };
+
+                        for  i in 0..32 {
+                            sm2key.x[i]=pk_raw[i];
+                            sm2key.y[i]=pk_raw[i+32];
+                        }
+
+                    self.gm_sm2key=Some(sm2key);
+         
+           //         let mut pubkey:[u8;64]=[0;64];   
                         self.gm_on=3;
-                        //println!("\nClient:sm2 pubkey{:?}\n\n", pk_raw);
-                        // println!("{}    Recieved sm2 public key from server:{}\n",
-                        // ansi_term::Color::Green.paint("步骤1:"),ansi_term::Color::Yellow.paint(self.gm_pubkey.as_ref().unwrap().to_string()) );
-                        
-                        println!("{}    接收到服务端的公钥:{}\n",
-                        ansi_term::Color::Green.paint("步骤4:"),ansi_term::Color::Yellow.paint(self.gm_pubkey.as_ref().unwrap().to_string()) );
+                       // println!("{}    接收到服务端的公钥:{}\n",
+                     //   ansi_term::Color::Green.paint("步骤4:"),ansi_term::Color::Yellow.paint(pk_raw) );
                       
                     }else if self.gm_on==0{
                         println!("会话id：{}失败: 无效国密帧", self.trace_id());

@@ -433,6 +433,62 @@ int sm2_kdf(const uint8_t *in, size_t inlen, size_t outlen, uint8_t *out)
 	return 1;
 }
 
+
+int sm2Pub_do_encrypt_ex(uint8_t * public_key, int fixed_outlen, const uint8_t *in, size_t inlen, SM2_CIPHERTEXT *out)
+{
+	SM2_BN k;
+	SM2_JACOBIAN_POINT _P, *P = &_P;
+	SM3_CTX sm3_ctx;
+	uint8_t buf[64];
+	int i;
+
+retry:
+	// rand k in [1, n - 1]
+	sm2_bn_rand_range(k, SM2_N);
+	if (sm2_bn_is_zero(k)) goto retry;
+
+	// C1 = k * G = (x1, y1)
+	sm2_jacobian_point_mul_generator(P, k);
+	sm2_jacobian_point_to_bytes(P, (uint8_t *)&out->point);
+
+	if (fixed_outlen) {
+		size_t xlen = 0, ylen = 0;
+		asn1_integer_to_der(out->point.x, 32, NULL, &xlen);
+		if (xlen != 34) goto retry;
+		asn1_integer_to_der(out->point.y, 32, NULL, &ylen);
+		if (ylen != 34) goto retry;
+	}
+
+	// Q = k * P = (x2, y2)
+	sm2_jacobian_point_from_bytes(P, public_key);
+
+	sm2_jacobian_point_mul(P, k, P);
+
+	sm2_jacobian_point_to_bytes(P, buf);
+
+
+	// t = KDF(x2 || y2, klen)
+	sm2_kdf(buf, sizeof(buf), inlen, out->ciphertext);
+
+
+	// C2 = M xor t
+	for (i = 0; i < inlen; i++) {
+		out->ciphertext[i] ^= in[i];
+	}
+	out->ciphertext_size = (uint32_t)inlen;
+
+	// C3 = Hash(x2 || m || y2)
+	sm3_init(&sm3_ctx);
+	sm3_update(&sm3_ctx, buf, 32);
+	sm3_update(&sm3_ctx, in, inlen);
+	sm3_update(&sm3_ctx, buf + 32, 32);
+	sm3_finish(&sm3_ctx, out->hash);
+
+	return 1;
+}
+
+
+
 int sm2_do_encrypt_ex(const SM2_KEY *key, int fixed_outlen, const uint8_t *in, size_t inlen, SM2_CIPHERTEXT *out)
 {
 	SM2_BN k;
@@ -658,6 +714,33 @@ int sm2_encrypt_ex(const SM2_KEY *key, int fixed_outlen, const uint8_t *in, size
 int sm2_encrypt(const SM2_KEY *key, const uint8_t *in, size_t inlen, uint8_t *out, size_t *outlen)
 {
 	return sm2_encrypt_ex(key, 0, in, inlen, out, outlen);
+}
+//gmsslDTP
+int sm2_pub_encrypt(uint8_t * public_key, const uint8_t *in, size_t inlen, uint8_t *out, size_t *outlen)
+{
+	//sm2_encrypt_ex(const SM2_KEY *key, int fixed_outlen, const uint8_t *in, size_t inlen, uint8_t *out, size_t *outlen)
+	//return sm2_encrypt_ex(key, 0, in, inlen, out, outlen);
+
+	SM2_CIPHERTEXT C;
+
+	if (!public_key || !in || !out || !outlen) {
+		error_print();
+		return -1;
+	}
+	if (inlen < SM2_MIN_PLAINTEXT_SIZE || inlen > SM2_MAX_PLAINTEXT_SIZE) {
+		error_print();
+		return -1;
+	}
+	
+	if (sm2Pub_do_encrypt_ex(public_key, 0, in, inlen, &C) != 1) {
+		error_print();
+		return -1;
+	}
+	*outlen = 0;
+	if (sm2_ciphertext_to_der(&C, &out, outlen) != 1) {
+		error_print();
+		return -1;
+	}
 }
 
 int sm2_decrypt(const SM2_KEY *key, const uint8_t *in, size_t inlen, uint8_t *out, size_t *outlen)
