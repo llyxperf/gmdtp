@@ -70,7 +70,7 @@ sfv = { version = "0.9", optional = true }
 
 ansi_term = "0.12.1"
 hex-slice = "0.1.4"
-rand = "0.7"
+rand = "0.8"
 time = "0.1"
 
 libsm = {path = "./deps/libsm"}
