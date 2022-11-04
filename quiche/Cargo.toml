@@ -68,12 +68,12 @@ foreign-types-shared = { version = "0.3.0", optional = true }
 qlog = { version = "0.7", path = "../qlog", optional = true }
 sfv = { version = "0.9", optional = true }
 
-ansi_term = "0.12.1"
+#ansi_term = "0.12.1"
 hex-slice = "0.1.4"
 rand = "0.7"
 time = "0.1"
 
-libsm = {path = "./deps/libsm"}
+#libsm = {path = "./deps/libsm"}
 rand_core = "0.6.0"
 num-bigint = "0.4"
 

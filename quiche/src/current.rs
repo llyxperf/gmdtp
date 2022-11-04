@@ -370,10 +370,10 @@ use libsm::sm2::signature::SigCtx;
 use libsm::sm4::cipher_mode::Sm4CipherMode;
 use libsm::sm4::{Mode, Cipher};
 use num_bigint::BigUint;
-//lyxalter
+ 
 extern crate libsm;
 
-//use std::{fs::OpenOptions, io::{Read, Write}};
+ 
 use libsm::sm2::signature;
 use libsm::sm2::encrypt::{EncryptCtx,DecryptCtx,};
 
@@ -923,10 +923,10 @@ impl Config {
     /// The default value is '1' On.
     pub fn set_gmssl(&mut self, v: u64) {
         if v==1 {
-            //OKey bro lets hide println!("gmssl On");
+   
         }
         else{
-            //OKey bro lets hide println!("gmssl Off");
+           
         }
         self.gm_on = v;
     }
@@ -2030,7 +2030,7 @@ impl Connection {
         }
 
         let mut b = octets::OctetsMut::with_slice(buf);
-        //OKey bro lets hide println!("Before get hdrs,initial cap ={:?},offset = {:?}\n",b.cap(),b.off());
+       
         let mut hdr =
             Header::from_bytes(&mut b, self.scid.len()).map_err(|e| {
                 drop_pkt_on_err(
@@ -2040,7 +2040,7 @@ impl Connection {
                     &self.trace_id,
                 )
             })?;
-            //OKey bro lets hide println!("\nafter get hdrs, cap ={:?},offset = {:?}",b.cap(),b.off());
+           
         if hdr.ty == packet::Type::VersionNegotiation {
             // Version negotiation packets can only be sent by the server.
             if self.is_server {
@@ -2232,7 +2232,7 @@ impl Connection {
             let after=b.off();
             
             if after-before==1{
-                println!("IIINNN\n");
+            
                 b.skip(1);
             }
             else if after==before{
@@ -2241,7 +2241,7 @@ impl Connection {
         }
         
         //off:pnlen
-     //   //OKey bro lets hide println!("\nplace111 payload Len {:?} ",payload_len);
+     
         // Make sure the buffer is same or larger than an explicit
         // payload length.
         if payload_len > b.cap() {
@@ -2314,19 +2314,18 @@ impl Connection {
         };
 
         let aead_tag_len = aead.alg().tag_len();
-        //OKey bro lets hide println!("Before decrypt_hdr.  b.off {:?} pload_len={:?}\n",b.off(),payload_len);
+        
         packet::decrypt_hdr(&mut b, &mut hdr, aead).map_err(|e| {
             drop_pkt_on_err(e, self.recv_count, self.is_server, &self.trace_id)
         })?;
-        //OKey bro lets hide println!("Before decode_pkt_num.  b.off {:?} pload_len={:?}\n",b.off(),payload_len);
+       
         let pn = packet::decode_pkt_num(
             self.pkt_num_spaces[epoch].largest_rx_pkt_num,
             hdr.pkt_num,
             hdr.pkt_num_len,
-        );
-        //OKey bro lets hide println!("AFTER decode_pkt_num.  b.off {:?} pload_len={:?}\n",b.off(),payload_len);
+        ); 
         let pn_len = hdr.pkt_num_len;
-      //  //OKey bro lets hide println!("\nplace2 pnlen={:?}",payload_len);
+     
         trace!(
             "{} rx pkt {:?} len={} pn={}",
             self.trace_id,
@@ -2339,10 +2338,7 @@ impl Connection {
         let mut qlog_frames = vec![];
 
         let mut payload:octets::Octets;
-      //  //OKey bro lets hide println!("now!!2320\n\n");
-    // b.off =payload_len
-  //  //OKey bro lets hide println!("Before decrypt.  b.off {:?}  \n",b.off());
-    //OKey bro lets hide println!("Before here.  b.off {:?} pload_len={:?}\n",b.off(),payload_len);
+       
         if self.gm_on==6 &&self.is_established(){
             payload = packet::decrypt_pktgm(
                 &mut b,
@@ -2372,8 +2368,7 @@ impl Connection {
         })?;
 
     }
-   // //OKey bro lets hide println!("now!!2346\n\n");
-  // //OKey bro lets hide println!("\n{:?} b.22offset -  " ,b.off());
+  
     
         if self.pkt_num_spaces[epoch].recv_pkt_num.contains(pn) {
             trace!("{} ignored duplicate packet {}", self.trace_id, pn);
@@ -2422,11 +2417,10 @@ impl Connection {
         // Process packet payload. If a frame cannot be processed, store the
         // error and stop further packet processing.
         let mut frame_processing_err = None;
-       // info!("\n\n\nhere??\n");
-       let mut bro=0;
+ 
         while payload.cap() > 0 {
             bro+=1;
-            println!("bro == {:?}\n",bro);
+          
 
             let frame = frame::Frame::from_bytes(&mut payload, hdr.ty)?;
 
@@ -2604,7 +2598,7 @@ impl Connection {
 
        // let read = b.off() + aead_tag_len;
        let read = b.off();
-  //      //OKey bro lets hide println!("\n{:?} b.offset -{:?} aead {:?}",read,b.off(),aead_tag_len);
+ 
         self.recv_bytes += read as u64;
 
         // An Handshake packet has been received from the client and has been
@@ -2616,8 +2610,7 @@ impl Connection {
             if self.gm_on==4{
                 self.gm_on=6;
                 info!("\nGm handshake is finished\n" );
-             //   //OKey bro lets hide println!("??test1\n\n\n");
-             //   //OKey bro lets hide println!("\nServer:Handshake from client finished,Gm state set to ENCRYPTION\n");
+ 
             }
             self.verified_peer_address = true;
         }
@@ -2991,15 +2984,15 @@ impl Connection {
             versions: None,
             key_phase: false,
         };
-        //OKey bro lets hide println!("Before place hdr in buf.offset is{:?},cap is{:?}\n",b.off(),b.cap());
+ 
         hdr.to_bytes(&mut b)?;
-        //OKey bro lets hide println!("After place hdr in buf.offset is{:?},cap is{:?}\n",b.off(),b.cap());
+      
         // Calculate the space required for the packet, including the header
         // the payload length, the packet number and the AEAD overhead.
-        //lyx unwrap aes
+     
       // let mut overhead = b.off() + pn_len + crypto_overhead;
       let mut overhead = b.off() + pn_len;
-   //lyxalter
+ 
  //  let mut overhead = b.off() + pn_len ;
         // We assume that the payload length, which is only present in long
         // header packets, can always be encoded with a 2-byte varint.
@@ -3034,9 +3027,9 @@ impl Connection {
         let mut ack_eliciting = false;
         let mut in_flight = false;
         let mut has_data = false;
-        //OKey bro lets hide println!("befpore header_offset.offset is{:?},cap is{:?}\n",b.off(),b.cap());
+         
         let header_offset = b.off();
-        //OKey bro lets hide println!("after header_offset.offset is{:?},cap is{:?}\n",b.off(),b.cap());
+        
         // Reserve space for payload length in advance. Since we don't yet know
         // what the final length will be, we reserve 2 bytes in all cases.
         //headr|payloadLen|pnlen|payload|cryptooverhead
@@ -3044,9 +3037,9 @@ impl Connection {
         if pkt_type != packet::Type::Short {
             b.skip(PAYLOAD_LENGTH_LEN)?;    //b.off =hdr+payloadLengthLen
         }
-        //OKey bro lets hide println!("Before encode_pkt_num.offset is{:?},cap is{:?}\n",b.off(),b.cap());
+ 
         packet::encode_pkt_num(pn, &mut b)?;
-        //OKey bro lets hide println!("after encode_pkt_num.offset(pload offset) is{:?},cap is{:?}\n",b.off(),b.cap());
+        
         let payload_offset = b.off();
         //after pktNUm
 
@@ -3906,29 +3899,25 @@ impl Connection {
                 in_flight = true;
             }
         }
-        //OKey bro lets hide println!("after frame end and pad.offset(hdr +pload) is{:?},cap is{:?}\n",b.off(),b.cap());
+      ;
         let payload_len = b.off() - payload_offset;
-        //OKey bro lets hide println!("payload len is{:?} \n",payload_len);
+        
         // Fill in payload length.
-        //OKey bro lets hide println!("before intergrate pnlen+payLoadlen+overhead.offset is{:?},cap is{:?}\n",b.off(),b.cap());
+       
      
         if pkt_type != packet::Type::Short {
           //  let len = pn_len + payload_len + crypto_overhead; //to be the crypto
               let len = pn_len + payload_len ; //to be the crypto
-            //2+xxx+16
-           //hdr is 17
+           
+ 
         
            let (_, mut payload_with_len) = b.split_at(header_offset)?;
-           //OKey bro lets hide println!("BBEEFORE  pnlen+payLoadlen+overhead.offset is{:?},cap is{:?}\n",payload_with_len.off(),payload_with_len.cap());
         
-           //  offset回调到 |pnlen处
             payload_with_len
                 .put_varint_with_len(len as u64, PAYLOAD_LENGTH_LEN)?;
-                //OKey bro lets hide println!("AFTER  pnlen+payLoadlen+overhead.offset is{:?},cap is{:?}\n",payload_with_len.off(),payload_with_len.cap());
-       
+                
         }
-        //OKey bro lets hide println!("after intergrate pnlen+payLoadlen+overhead.offset is{:?},cap is{:?}\n",b.off(),b.cap());
-     
+        
         trace!(
             "{} tx pkt {:?} len={} pn={}",
             self.trace_id,
@@ -7292,9 +7281,8 @@ pub mod testing {
         let payload_len = frames.iter().fold(0, |acc, x| acc + x.wire_len());
 
         if pkt_type != packet::Type::Short {
-           // println!("\n\n\n\n\n\n in encode pkt\n\n\n\n\");
-           println!("\n\n\n\n\n\n in encode pkt\n\n\n\n");
-            //lyxalter
+ 
+    
            // let len = pn_len + payload_len + space.crypto_overhead().unwrap();
            let len = pn_len + payload_len;  
             b.put_varint(len as u64)?;

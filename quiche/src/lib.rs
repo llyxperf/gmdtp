@@ -364,23 +364,10 @@ use std::net::SocketAddr;
 use std::str::FromStr;
 
 use std::collections::VecDeque;
-use std::{fs::OpenOptions, io::{Read, Write}};
-use libsm::sm2::ecc::Point;
-use libsm::sm2::signature::SigCtx;
-use libsm::sm4::cipher_mode::Sm4CipherMode;
-use libsm::sm4::{Mode, Cipher};
-use num_bigint::BigUint;
-//lyxalter
-extern crate libsm;
-use ansi_term;
-use hex_slice::AsHex;
-//use std::{fs::OpenOptions, io::{Read, Write}};
-use libsm::sm2::signature;
-use libsm::sm2::encrypt::{EncryptCtx,DecryptCtx,};
-
+ 
 
 //use std::fs::OpenOptions;
-pub use rand_core::{CryptoRng, RngCore, SeedableRng};
+//pub use rand_core::{CryptoRng, RngCore, SeedableRng};
 
 
 /// The current QUIC wire version.
@@ -1273,7 +1260,7 @@ pub struct Connection {
 
     gm_sm4key:Option<crypto::SM4_KEY>,
     gm_iv:Option<[u8;16]>,
-    gm_cipher:Option<Sm4CipherMode>,
+    
 
     gm_readoffset:Option<u64>,
    // gmpkey:
@@ -1687,7 +1674,7 @@ impl Connection {
              gm_on:config.gm_on,
              gm_sm2key:None,
              
-             gm_cipher:None,
+    
              gm_sm4key:None,
              gm_iv:None,
              gm_readoffset:None,
@@ -2316,7 +2303,7 @@ impl Connection {
         let mut qlog_frames = vec![];
 
         let mut payload:octets::Octets;
-      //  println!("now!!2320\n\n");
+    
         if self.gm_on==6 &&self.is_established() {
             if self.gm_readoffset.is_some(){
                 self.gm_readoffset=None;
@@ -2364,8 +2351,7 @@ impl Connection {
         })?;
 
     }
-   // println!("now!!2346\n\n");
-   //println!("\n?1bro");
+ 
     
         if self.pkt_num_spaces[epoch].recv_pkt_num.contains(pn) {
             trace!("{} ignored duplicate packet {}", self.trace_id, pn);
@@ -2405,7 +2391,7 @@ impl Connection {
 
             self.got_peer_conn_id = true;
         }
-     //   println!("\n?2bro");
+ 
         // To avoid sending an ACK in response to an ACK-only packet, we need
         // to keep track of whether this packet contains any frame other than
         // ACK and PADDING.
@@ -2431,8 +2417,7 @@ impl Connection {
                 break;
             }
         }
-        //println!("\n?in2bro");
-       // info!("\n\n\nhere??\n");
+   
         qlog_with_type!(QLOG_PACKET_RX, self.qlog, q, {
             let packet_size = b.len();
 
@@ -2471,7 +2456,7 @@ impl Connection {
                 q.add_event_data_with_instant(ev_data, now).ok();
             }
         });
-     //   println!("\n?3bro");
+ 
         if let Some(e) = frame_processing_err {
             // Any frame error is terminal, so now just return.
             return Err(e);
@@ -2493,7 +2478,7 @@ impl Connection {
                 }
             });
         }
-      //  println!("\n?4bro");
+ 
         // Process acked frames.
         for acked in self.recovery.acked[epoch].drain(..) {
             match acked {
@@ -2604,19 +2589,11 @@ impl Connection {
             if self.gm_on==4{
                 self.gm_on=6;
                 self.gm_readoffset=Some(1);
-                //info!("Server:Gm handshake is finished\n" );
-             //   println!("??test1\n\n\n");
-                
-            //  println!("{}    Recieved Handshake Done frame from client.State is ENCRYPTION\n",ansi_term::Color::Red.paint("步骤5:"));
-            //  println!("{}    Start to encrypt using symmertric key\n",ansi_term::Color::Red.paint("步骤6:"));
-            println!("{}   发送握手完成帧\n",ansi_term::Color::Red.paint("步骤7:"));
-            //  println!("{}   收到客户端握手结束帧。状态是加密状态\n",ansi_term::Color::Red.paint("步骤5:"));
-             
-             println!("{}\n",ansi_term::Color::Red.paint("开始使用对称密钥加密传输"));
+ 
             }
             self.verified_peer_address = true;
         }
-       // println!("\n?777bro");
+ 
 
         self.ack_eliciting_sent = false;
 
@@ -3492,26 +3469,13 @@ impl Connection {
              }
  
             self.gm_sm2key=Some(sm2key);
-            // println!("\n\n{}    Generate public key {}.\n\n{}    Generate secret key {}\n",
-            //     ansi_term::Color::Red.paint("步骤1:"), 
-            //     ansi_term::Color::Yellow.paint(self.gm_pubkey.as_ref().unwrap().to_string()),
-            //     ansi_term::Color::Red.paint("步骤2:"), 
-            //     self.gm_skey.as_ref().unwrap());
-
-/*
-            println!("\n\n{}    生成公钥 {}.\n\n{}    生成私钥 {}\n",
-            ansi_term::Color::Red.paint("步骤1:"), 
-            ansi_term::Color::Yellow.paint(pubkey),
-            ansi_term::Color::Red.paint("步骤2:"), 
-            self.gm_sm2key.unwrap().private_key);
- */
+ 
            let mut pk_raw = pubkey.to_vec();
 
             let mut gmhdr="gmssl".as_bytes().to_vec();
             gmhdr.append(&mut pk_raw);
            
-            // println!("{}    Public key frame created.Sending to the client.\n",ansi_term::Color::Red.paint("步骤3:")  );
-           // println!("{}    发送公钥帧给客户端.\n",ansi_term::Color::Red.paint("步骤3:") );
+        
             let gmcrypto_buf=RangeBuf::from(&gmhdr[..], 0, true);
             //temporary solution :using normal padding frame.
             let frame = frame::Frame::Crypto { data: gmcrypto_buf };
@@ -3574,14 +3538,9 @@ impl Connection {
 
            //let mut cipher_text: Vec<u8> = ectx.encrypt(&plain_text[..]);
            let mut cipher_text=sm2cipher[0..sm2cipherlen].to_vec();
-           //debug!("\n\n\n\npoint4\n");
+       
            gmhdr.append(&mut cipher_text);
-        //    println!("{}    Encrypted symmetrical key frame created.Sending to the server. {:?}\n",
-        //     ansi_term::Color::Green.paint("步骤2:"),
-        //     self.gm_sm4key.as_ref().unwrap());
-         //   println!("{}    生成对称密钥。发送给服务端{:?}\n",
-       //     ansi_term::Color::Green.paint("步骤5:"),
-     //       key);
+     
        
            let sm4cryptobuf=RangeBuf::from(&gmhdr[..], 0, true);
             let frame = frame::Frame::Crypto { data: sm4cryptobuf };
@@ -4015,7 +3974,7 @@ impl Connection {
             Some(ref v) => v,
             None => return Err(Error::InvalidState),
         };
-       // println!("now!!3943\n\n");
+   
         let mut written=0;
         if self.gm_on==6 && self.is_established(){
              written = packet::encrypt_pktgm(
@@ -4041,7 +4000,7 @@ impl Connection {
                 aead,
             )?;
         }
-       // println!("now!!3943 off\n\n");
+   
 
         let sent_pkt = recovery::Sent {
             pkt_num: pn,
@@ -4091,11 +4050,7 @@ impl Connection {
             if self.gm_on == 4{
                 self.gm_on=6;
                
-            //    println!("{}    Recieved Handshake Done frame from server.State is ENCRYPTION\n",ansi_term::Color::Green.paint("步骤3:"));
-            //    println!("{}    Start to encrypt using symmetric key\n",ansi_term::Color::Green.paint("步骤4:"));
-          //     println!("{}    接受到服务端的握手结束.状态是加密状态\n",ansi_term::Color::Green.paint("步骤8:"));
-          //     println!("{}\n",ansi_term::Color::Green.paint("开始使用对称密钥进行加密传输"));
-            }
+                 }
 
             self.drop_epoch_state(packet::EPOCH_INITIAL, now);
         }
@@ -6024,9 +5979,7 @@ impl Connection {
                             enc_sm4key.len(), plain_text.as_mut_ptr(), &mut inrag)
                         };
 
-                        if(inrag==32){
-                            println!("Faied to get sm2 key!\n");
-                        }
+           
 
                         let mut sm4keyvec=plain_text[0..16].to_vec();
                         let mut iv:[u8;16]=[0;16];
@@ -6034,7 +5987,7 @@ impl Connection {
                             iv[i-16]=plain_text[i];
                         }
                    
-                      //  info!("Server:sm4key CFRed:{:?}  +{:?}  ,key length is {}+{}\n", sm4key,iv,sm4key.len(),iv.len());
+                  
                       let mut sm4key=crypto::SM4_KEY{
                         rk:[0;32],
                      };
@@ -6046,10 +5999,8 @@ impl Connection {
                     self.gm_sm4key=Some(sm4key);
                     
                         self.gm_iv=Some(iv);
-                      //  self.gm_cipher=Some(Cipher::new(&self.gm_sm4key.clone().unwrap()[..], Mode::Cfb));
-                        self.gm_on=4;
-                        // println!("{}:    Recieved symmetric key. {:?}\n",ansi_term::Color::Red.paint("步骤4"), self.gm_sm4key.as_ref().unwrap());
-                        println!("{}    接收到对称密钥. {:?}\n",ansi_term::Color::Red.paint("步骤6:"), sm4keyvec);
+                               self.gm_on=4;
+                             
                     }
                     else if self.gm_on==1 &&!self.is_server{
 
@@ -6067,14 +6018,12 @@ impl Connection {
                         }
 
                     self.gm_sm2key=Some(sm2key);
-         
-           //         let mut pubkey:[u8;64]=[0;64];   
+   
                         self.gm_on=3;
-                       // println!("{}    接收到服务端的公钥:{}\n",
-                     //   ansi_term::Color::Green.paint("步骤4:"),ansi_term::Color::Yellow.paint(pk_raw) );
+             
                       
                     }else if self.gm_on==0{
-                        println!("会话id：{}失败: 无效国密帧", self.trace_id());
+                
                             self.close(false, Error::InvalidFrame.to_wire(), b"Invalid Gmssl frame").ok();
                     }
                 }
@@ -7369,7 +7318,7 @@ pub mod testing {
             Some(ref v) => v,
             None => return Err(Error::InvalidState),
         };
-   //     println!("now!!7258\n\n");
+    
         let written = packet::encrypt_pkt(
                 &mut b,
                 pn,
@@ -7379,7 +7328,7 @@ pub mod testing {
                 None,
                 aead,
         )?;
-    //    println!("now!!7268\n\n");
+   
         space.next_pkt_num += 1;
 
         Ok(written)
@@ -7406,11 +7355,11 @@ pub mod testing {
             hdr.pkt_num_len,
         );
        
-   //     println!("now!!7295\n\n");
+    
         let mut payload =
             packet::decrypt_pkt(&mut b, pn, hdr.pkt_num_len, payload_len, aead)
                 .unwrap();
-     //   println!("now!!7299\n\n");
+    
         let mut frames = Vec::new();
 
         while payload.cap() > 0 {
@@ -9955,7 +9904,7 @@ mod tests {
         let payload_len = frames.iter().fold(0, |acc, x| acc + x.wire_len());
 
         let aead = space.crypto_seal.as_ref().unwrap();
-     //   println!("now!!9846\n\n");
+ 
         let written = packet::encrypt_pkt(
             &mut b,
             pn,
@@ -9966,7 +9915,7 @@ mod tests {
             aead,
         )
         .unwrap();
-     //   println!("now!!9846 off\n\n");
+    
         assert_eq!(pipe.server.timeout(), None);
 
         assert_eq!(

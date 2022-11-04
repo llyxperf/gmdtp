@@ -35,11 +35,7 @@ use crate::crypto;
 use crate::rand;
 use crate::ranges;
 use crate::stream;
-
-use libsm::sm2::signature::SigCtx;
-use libsm::sm4::cipher_mode::Sm4CipherMode;
-use libsm::sm4::{Mode, Cipher};
-
+ 
 const FORM_BIT: u8 = 0x80;
 const FIXED_BIT: u8 = 0x40;
 const KEY_PHASE_BIT: u8 = 0x04;
@@ -302,10 +298,7 @@ impl<'a> Header<'a> {
         let mut b = octets::OctetsMut::with_slice(buf);
         Header::from_bytes(&mut b, dcid_len)
     }
-
-
-
-      ///gmssl
+ 
       pub fn get_headerAll(buf: &mut [u8], dcid_len: usize) -> (usize,usize) {
      
         let mut b = octets::OctetsMut::with_slice(buf);
@@ -631,30 +624,15 @@ pub fn encrypt_pktgm(
     gm_on:u64,is_established:bool,gm_iv:&[u8;16],sm4key:*const crypto::SM4_KEY
 ) -> Result<usize> {
     let (mut header, mut payload) = b.split_at(payload_offset)?;
-    //println!("\nnow sbefore encgm  {:?} {:?} {:?}\n", payload.as_ref()[0], payload.as_ref()[1], payload.as_ref()[2]);
- 
-    if  gm_on==6 &&  is_established {
-      // cipher.cfb_encrypt_inplace(&mut payload.as_mut()[..],gm_iv,payload_len);
-    let mut crt=gm_iv.clone();
-   // let exact=payload.as_mut()[..];
-    unsafe {
+       if  gm_on==6 &&  is_established {
+      let mut crt=gm_iv.clone();
+      unsafe {
         crypto::sm4_ctr_encrypt_inplace(sm4key,crt.as_mut_ptr(), payload.as_mut().as_mut_ptr(),payload_len);
     }
 
 }
 
-//println!("\nnow after encgm  {:?} {:?} {:?}\n", payload.as_ref()[0], payload.as_ref()[1], payload.as_ref()[2]);
  
-/*
-    let ciphertext_len
-     = aead.seal_with_u64_counter(
-        pn,
-        header.as_ref(),
-        payload.as_mut(),
-        payload_len,
-        extra_in,
-    )?;
-  */
     encrypt_hdr(&mut header, pn_len, payload.as_ref(), aead)?;
    
     Ok(payload_offset + payload_len+16)
@@ -665,22 +643,11 @@ pub fn encrypt_pkt2(
     payload_offset: usize, extra_in: Option<&[u8]>, aead: &crypto::Seal,
 ) -> Result<usize> {
     let (mut header, mut payload) = b.split_at(payload_offset)?;
- /*
-    let ciphertext_len
-     = aead.seal_with_u64_counter(
-        pn,
-        header.as_ref(),
-        payload.as_mut(),
-        payload_len,
-        extra_in,
-    )?;
-     */
-   // println!("????");
+ 
     encrypt_hdr(&mut header, pn_len, payload.as_ref(), aead)?;
-    //let ciphertext_len
-    // = payload_len;
+ 
     Ok(payload_offset + payload_len+16)
-   // Ok(payload_offset + payload_len+16)
+ 
 }
 
 
@@ -689,9 +656,7 @@ pub fn encrypt_pkt(
     payload_offset: usize, extra_in: Option<&[u8]>, aead: &crypto::Seal,
 ) -> Result<usize> {
     let (mut header, mut payload) = b.split_at(payload_offset)?;
-  //  println!("\nnow before encNormal  {:?} {:?} {:?}\n", payload.as_ref()[0], payload.as_ref()[1], payload.as_ref()[2]);
-
-    let ciphertext_len
+     let ciphertext_len
      = aead.seal_with_u64_counter(
         pn,
         header.as_ref(),
@@ -699,11 +664,8 @@ pub fn encrypt_pkt(
         payload_len,
         extra_in,
     )?;
-   // println!("\nnow after encNormal  {:?} {:?} {:?}\n", payload.as_ref()[0], payload.as_ref()[1], payload.as_ref()[2]);
-
-    encrypt_hdr(&mut header, pn_len, payload.as_ref(), aead)?;
-    //let ciphertext_len
-    // = payload_len;
+     encrypt_hdr(&mut header, pn_len, payload.as_ref(), aead)?;
+ 
     Ok(payload_offset + ciphertext_len)
 }
 
@@ -739,29 +701,16 @@ pub fn decrypt_pktgm<'a>(
         .ok_or(Error::InvalidPacket)?;
  
     let mut ciphertext = payload.peek_bytes_mut(payload_len)?;
-
-
-
-    //let payload_len =aead.open_with_u64_counter(pn, header.as_ref(), ciphertext.as_mut())?;
-  //  println!("\nnow start is before decgm {:?} {:?} {:?}", ciphertext.as_ref()[0], ciphertext.as_ref()[1], ciphertext.as_ref()[2]);
  
-
-
     if  gm_on==6 &&  is_established {
-        // cipher.cfb_encrypt_inplace(&mut payload.as_mut()[..],gm_iv,payload_len);
+ 
         let mut crt=gm_iv.clone();
-        // let exact=payload.as_mut()[..];
-
-       // cipher.cfb_decrypt_inplace(&mut ciphertext.as_mut()[..], gm_iv, payload_len);
-
+ 
         unsafe {
             crypto::sm4_ctr_encrypt_inplace(sm4key,crt.as_mut_ptr(), ciphertext.as_mut().as_mut_ptr(),payload_len);
         }
 
     }
-
- 
-   // println!("\nnow start is after decgm {:?} {:?} {:?}", ciphertext.as_ref()[0], ciphertext.as_ref()[1], ciphertext.as_ref()[2]);
  
     Ok(b.get_bytes(payload_len)?)
 }
@@ -799,15 +748,9 @@ pub fn decrypt_pkt<'a>(
   
       
     let mut ciphertext = payload.peek_bytes_mut(payload_len)?;
-
-      
-    //println!("\nnow start is before dec {:?} {:?} {:?}", ciphertext.as_ref()[0], ciphertext.as_ref()[1], ciphertext.as_ref()[2]);
- 
-
     let payload_len =
         aead.open_with_u64_counter(pn, header.as_ref(), ciphertext.as_mut())?;
-      //  println!("\nnow start is after dec {:?} {:?} {:?}", ciphertext.as_ref()[0], ciphertext.as_ref()[1], ciphertext.as_ref()[2]);
- 
+   
     Ok(b.get_bytes(payload_len)?)
 }
 
